@@ -7,7 +7,7 @@ Check Date: 2026-08-18
 Codex Session: initial local setup
 Repository: ai-project-os
 Branch: main
-Commit: pending first commit
+Commit: 64d6504
 Status: Draft
 ```
 
@@ -35,8 +35,9 @@ Status: Draft
 | Git repository detected | Yes | Local repo initialized |
 | GitHub CLI available | Yes | `gh` is installed |
 | GitHub auth ready | Yes | Logged in as `adwasd-dvd` |
-| GitHub repository created | No | Pending private repo creation |
+| GitHub repository created | Yes | `https://github.com/adwasd-dvd/ai-project-os` |
 | Required privacy | Private only | Public repo creation is not allowed |
+| GitHub visibility verified | Yes | `PRIVATE` |
 
 ## Linear
 
@@ -104,7 +105,6 @@ These block Phase 1.
 These do not block Phase 1 but must be resolved before later phases.
 
 ```text
-- Private GitHub repository not created yet.
 - Linear app is not connected in Codex.
 - Linear team/project not confirmed yet.
 - No automated policy validation script yet.
@@ -122,5 +122,5 @@ These do not block Phase 1 but must be resolved before later phases.
 ```text
 Can start Phase 1 Audit: Yes
 Reason: This is a documentation/template repository with no runtime dependencies and no current blockers.
-Recommended next step: Commit locally, create the private GitHub repo, and resume Linear import after the Linear app is connected.
+Recommended next step: Connect the Linear app, choose a Linear team, then approve Phase 3 import when ready.
 ```

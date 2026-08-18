@@ -31,7 +31,7 @@ Team: TBD
 
 | Project Name | Purpose | Version | Create / Use Existing | Notes |
 |---|---|---|---|---|
-| AI Project OS v0.1 | Initial OS source project and learning flow | v0.1.0 | Create if not existing | Blocked until Linear app is connected |
+| AI Project OS v0.1 | Initial OS source project and learning flow | v0.1.0 | Create if not existing | Pair with private GitHub repo `adwasd-dvd/ai-project-os` |
 
 ### Labels
 
@@ -89,7 +89,7 @@ Must be filled before write. Current blocker: Linear app is not connected in Cod
 | Decision ID | Title | Blocking | Owner | Needed By |
 |---|---|---|---|---|
 | DEC-001 | Choose Linear team for AI Project OS | Yes | Owner | Before Phase 3 import |
-| DEC-002 | Confirm private GitHub repo owner/name | Yes | Owner | Before repo creation |
+| DEC-002 | Confirm private GitHub repo owner/name | No | Owner | Completed |
 | DEC-003 | Decide whether release zips are committed or GitHub-release-only | No | Owner | Before v0.1.0 release |
 
 ## Items To Skip

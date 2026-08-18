@@ -7,7 +7,7 @@ Audit Date: 2026-08-18
 Codex Session: initial AI Project OS source setup
 Repository: ai-project-os
 Branch: main
-Commit: pending first commit
+Commit: 64d6504
 Auditor: Codex
 Status: Draft
 ```
@@ -22,7 +22,7 @@ Status: Draft
 - No runtime dependencies are required.
 - GitHub CLI is available and authenticated as `adwasd-dvd`.
 - Linear tools are installed but the Linear app is not connected in this Codex session.
-- Private GitHub repository creation is pending.
+- Private GitHub repository exists at `https://github.com/adwasd-dvd/ai-project-os`.
 - First Linear bulk import requires human approval.
 
 ## Repository Overview
@@ -54,7 +54,7 @@ Test Framework: Manual policy/file inventory checks
 
 | Area | Reason | Risk |
 |---|---|---|
-| GitHub remote repo | Not created yet | Cannot push until created |
+| GitHub remote repo | Created and private | Push is working |
 | Linear existing project | Linear app not connected yet | Duplicate preflight pending |
 | CI | Not configured | No automated validation yet |
 
@@ -78,19 +78,19 @@ The project is currently a documentation/template repository. It does not ship e
 ## Main Risks
 
 - Linear app connection and team/project selection are not yet confirmed.
-- GitHub private repo does not exist yet.
+- GitHub private repo exists and is verified private.
 - No automated policy validator exists.
 - Template and self-installed OS can drift if updates are not managed.
 
 ## Main Unknowns
 
 - Which Linear team should own this project, after Linear app connection.
-- Whether the GitHub repo should be exactly `adwasd-dvd/ai-project-os`.
+- Whether GitHub Releases should host generated zip artifacts.
 - Whether release zip files should be stored only as GitHub Releases or also tracked locally.
 
 ## Human Confirmation Needed
 
-- [ ] Confirm GitHub repo owner/name.
+- [x] Confirm GitHub repo owner/name: `adwasd-dvd/ai-project-os`.
 - [ ] Confirm Linear team.
 - [ ] Approve first Linear import.
 - [ ] Confirm v0.1.0 scope.
@@ -101,5 +101,5 @@ The project is currently a documentation/template repository. It does not ship e
 Phase 1 Audit is complete for the AI Project OS source project.
 No product code was modified.
 No Linear writes were performed.
-The project is ready for private GitHub creation, then Linear import after Linear connection and human approval.
+The project is in a private GitHub repo and is ready for Linear import after Linear connection and human approval.
 ```

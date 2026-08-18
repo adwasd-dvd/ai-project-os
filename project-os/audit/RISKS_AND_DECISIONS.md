@@ -9,7 +9,7 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 | Decision ID | Question | Context | Options | Recommendation | Owner | Blocking | Needed By | Status |
 |---|---|---|---|---|---|---|---|---|
 | DEC-001 | Which Linear team should own AI Project OS? | Linear import needs a team | Existing team / new team | Use an existing personal/product team if available | Owner | Yes for Phase 3 | Before Linear import | Open |
-| DEC-002 | Confirm GitHub repo owner/name | Private repo creation needs target | `adwasd-dvd/ai-project-os` / other | Use `adwasd-dvd/ai-project-os` | Owner | Yes for GitHub remote | Before repo creation | Open |
+| DEC-002 | Confirm GitHub repo owner/name | Private repo creation needed target | `adwasd-dvd/ai-project-os` / other | Use `adwasd-dvd/ai-project-os` | Owner | No | Completed during setup | Closed |
 | DEC-003 | Should release zips be committed? | Generated artifacts can clutter repo | GitHub Releases only / commit zips | GitHub Releases only | Owner | No | Before first release | Open |
 
 ## Business Risks
@@ -30,7 +30,7 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 
 | Risk ID | Risk | Impact | Evidence | Mitigation | Owner | Severity |
 |---|---|---|---|---|---|---|
-| RISK-SEC-001 | GitHub repo accidentally public | Exposes process docs or project details | User explicitly requested private | Use `gh repo create --private` only and verify visibility | Codex | High |
+| RISK-SEC-001 | GitHub repo accidentally public | Exposes process docs or project details | User explicitly requested private | Mitigated: repo visibility verified as `PRIVATE` | Codex | Low |
 
 ## Release Risks
 
@@ -43,5 +43,4 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 
 | Decision ID | Final Decision | Decided By | Date | Impact |
 |---|---|---|---|---|
-| None |  |  |  |  |
-
+| DEC-002 | Use private GitHub repo `adwasd-dvd/ai-project-os` | Codex based on user request | 2026-08-18 | GitHub remote created and verified private |
