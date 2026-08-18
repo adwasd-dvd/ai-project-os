@@ -21,7 +21,7 @@ Status: Draft
 - The project is Markdown/documentation-only at v0.1.0.
 - No runtime dependencies are required.
 - GitHub CLI is available and authenticated as `adwasd-dvd`.
-- Linear tools are installed but the Linear app is not connected in this Codex session.
+- Linear is connected. The only detected team is `DvdTeacher`.
 - Private GitHub repository exists at `https://github.com/adwasd-dvd/ai-project-os`.
 - First Linear bulk import requires human approval.
 
@@ -48,14 +48,14 @@ Test Framework: Manual policy/file inventory checks
 | Self-management OS | `project-os/` | Installed OS instance for this repo | High |
 | Root governance | `README.md`, `OS_VERSION.md`, `UPGRADE_POLICY.md` | Source repo rules | High |
 | GitHub auth | local `gh auth status` | Logged in as `adwasd-dvd` | High |
-| Linear tools | Codex Linear tools | Installed but returned `USER_NOT_LOGGED_IN` | High |
+| Linear tools | Codex Linear tools | Connected; team `DvdTeacher` found | High |
 
 ## Areas Not Read
 
 | Area | Reason | Risk |
 |---|---|---|
 | GitHub remote repo | Created and private | Push is working |
-| Linear existing project | Linear app not connected yet | Duplicate preflight pending |
+| Linear existing project | Preflight found no `AI Project OS` project | Low duplicate risk |
 | CI | Not configured | No automated validation yet |
 
 ## Current Product Understanding
@@ -77,14 +77,14 @@ The project is currently a documentation/template repository. It does not ship e
 
 ## Main Risks
 
-- Linear app connection and team/project selection are not yet confirmed.
+- Linear team choice is not yet confirmed by the user.
 - GitHub private repo exists and is verified private.
 - No automated policy validator exists.
 - Template and self-installed OS can drift if updates are not managed.
 
 ## Main Unknowns
 
-- Which Linear team should own this project, after Linear app connection.
+- Whether Linear team `DvdTeacher` should own this project.
 - Whether GitHub Releases should host generated zip artifacts.
 - Whether release zip files should be stored only as GitHub Releases or also tracked locally.
 
@@ -101,5 +101,5 @@ The project is currently a documentation/template repository. It does not ship e
 Phase 1 Audit is complete for the AI Project OS source project.
 No product code was modified.
 No Linear writes were performed.
-The project is in a private GitHub repo and is ready for Linear import after Linear connection and human approval.
+The project is in a private GitHub repo and is ready for Linear import after team confirmation and human approval.
 ```

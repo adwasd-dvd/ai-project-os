@@ -3,7 +3,7 @@
 ## Import Status
 
 ```text
-Status: Draft - blocked on Linear app connection
+Status: Draft - ready for human confirmation
 Prepared By: Codex
 Prepared Date: 2026-08-18
 Confirmed By:
@@ -24,14 +24,14 @@ Imported Date:
 ### Team
 
 ```text
-Team: TBD
+Team: DvdTeacher
 ```
 
 ### Projects
 
 | Project Name | Purpose | Version | Create / Use Existing | Notes |
 |---|---|---|---|---|
-| AI Project OS v0.1 | Initial OS source project and learning flow | v0.1.0 | Create if not existing | Pair with private GitHub repo `adwasd-dvd/ai-project-os` |
+| AI Project OS v0.1 | Initial OS source project and learning flow | v0.1.0 | Create | No existing matching project found |
 
 ### Labels
 
@@ -63,11 +63,12 @@ Team: TBD
 
 ## Existing Linear Preflight
 
-Must be filled before write. Current blocker: Linear app is not connected in Codex.
+Preflight completed against team `DvdTeacher`.
 
 | Existing Item | Type | Possible Match | Risk | Action |
 |---|---|---|---|---|
-| TBD after team selection |  |  |  |  |
+| No matching project | Project | `AI Project OS v0.1` | Safe | Create project after approval |
+| No matching issues | Issue | `AIPOS-*` | Safe | Create issues after approval |
 
 ## Proposed Issues To Create
 
@@ -121,9 +122,9 @@ Risk: Low.
 ```text
 - [x] Baseline drafted.
 - [ ] Baseline confirmed.
-- [ ] Linear app connected.
+- [x] Linear app connected.
 - [ ] Linear team confirmed.
-- [ ] Duplicate candidates reviewed.
+- [x] Duplicate candidates reviewed.
 - [ ] First bulk write approved.
 ```
 
@@ -143,7 +144,6 @@ Explicit approval phrase:
 
 Codex must stop if:
 
-- Linear app is not connected.
 - Linear team is unknown.
 - Duplicate preflight finds existing matching project/issues.
 - The user has not explicitly approved the first bulk write.

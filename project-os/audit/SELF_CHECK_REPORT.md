@@ -43,11 +43,11 @@ Status: Draft
 
 | Check | Result | Notes |
 |---|---|---|
-| Linear MCP available | Not connected | Linear app returned `USER_NOT_LOGGED_IN` |
-| Linear workspace known | Not confirmed | Need user/team confirmation |
-| Linear team known | Not confirmed | Must choose from Linear teams |
-| Existing Linear project found | Not checked yet | Preflight will check before writing |
-| Ready for Phase 3 import | No | Needs Linear connection, team confirmation, and explicit approval |
+| Linear MCP available | Yes | Linear app is connected |
+| Linear workspace known | Yes | Linear connection returned teams |
+| Linear team known | Candidate | Only detected team is `DvdTeacher` |
+| Existing Linear project found | No | No `AI Project OS` project found |
+| Ready for Phase 3 import | Almost | Needs team confirmation and explicit approval |
 
 ## Project Shape
 
@@ -105,7 +105,6 @@ These block Phase 1.
 These do not block Phase 1 but must be resolved before later phases.
 
 ```text
-- Linear app is not connected in Codex.
 - Linear team/project not confirmed yet.
 - No automated policy validation script yet.
 ```
@@ -113,8 +112,8 @@ These do not block Phase 1 but must be resolved before later phases.
 ## Questions For User
 
 ```text
-1. Please connect the Linear app in Codex before Phase 3 import.
-2. Which Linear team should own the AI Project OS project?
+1. Confirm whether Linear team `DvdTeacher` should own the AI Project OS project.
+2. Confirm whether to approve first Linear write.
 ```
 
 ## Phase 0 Conclusion
@@ -122,5 +121,5 @@ These do not block Phase 1 but must be resolved before later phases.
 ```text
 Can start Phase 1 Audit: Yes
 Reason: This is a documentation/template repository with no runtime dependencies and no current blockers.
-Recommended next step: Connect the Linear app, choose a Linear team, then approve Phase 3 import when ready.
+Recommended next step: Confirm `DvdTeacher` as the Linear team, then approve Phase 3 import when ready.
 ```
