@@ -66,6 +66,8 @@ Patch 版本不得塞入新 Feature。
 - Decisions：上线前必须解决。
 - UAT Owner：谁验收。
 
+版本范围应在 Linear Project 中体现。每个可交付 Issue 只能属于一个目标版本，详细拆分规则见 `VERSION_PLANNING.md`。
+
 ## 当前版本变更规则
 
 当前版本开发期间，任何新增内容必须先分类：
@@ -79,6 +81,19 @@ Patch 版本不得塞入新 Feature。
 | Decision | 等人工判断 |
 
 Codex 不得因为“顺手”把 Backlog 或下一版本内容加入当前版本。
+
+## Carry-over Closeout
+
+当旧版本 Issue 原始范围已经完成，但出现下版本反馈时：
+
+1. 不要直接移动旧 issue。
+2. 在旧 Issue 留 bilingual closeout comment。
+3. 将旧 Issue 关闭为 `Done`，前提是原范围已完成。
+4. 创建或更新下一版本 carry-over revalidation Issue。
+5. 下一版本 Issue 必须包含 source issue、source comment、revalidation scenario、expected result 和 owner acceptance path。
+6. 在新旧 Issue 中互相留下链接或明确 ID。
+
+如果旧 Issue 原范围未完成，不得 closeout，必须分类为当前版本修复、patch、下一版本或 Decision。
 
 ## Release Planning Checklist
 
@@ -138,6 +153,7 @@ Codex 不能代替这个结论。
 - GitHub tag/release 已创建，或人工明确决定暂不发布 tag。
 - Linear 中当前版本状态已关闭或归档。
 - 下一版本范围已人工确认。
+- 已完成旧 Issue 的下版本反馈已通过 carry-over revalidation 承接，不要直接移动旧 issue。
 
 ## Release Notes 最小格式
 
@@ -159,4 +175,3 @@ Codex 不能代替这个结论。
 - PRs:
 - CI:
 ```
-

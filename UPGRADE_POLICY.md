@@ -111,6 +111,7 @@ After upgrade, Codex must verify:
 - `LINEAR_POLICY.md` still requires first bulk write approval.
 - `RELEASE_POLICY.md` still requires human UAT.
 - `OS_VERSION.md` and `CHANGELOG.md` are updated.
+- `project-os/tools/validate_project_os.py` passes.
 
 ## Risk Levels
 
@@ -127,4 +128,3 @@ After upgrade, Codex must verify:
 - Never loosen Linear write rules without explicit approval.
 - Never remove UAT gates without explicit approval.
 - Never treat OS upgrade as product code development.
-

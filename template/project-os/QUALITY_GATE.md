@@ -20,6 +20,31 @@ Feature 进入开发前必须满足：
 
 不满足时，Codex 必须停止并列出缺口。
 
+## Ready for Linear Intake
+
+宽泛 Linear 检查可以开始前必须明确：
+
+- Linear team 或 workspace 可读取。
+- 用户点名的 Issue、Project 或版本已经记录。
+- 如果用户未点名，Codex 已说明默认 scan scope。
+- 将扫描 active statuses 和 lookback window。
+- 将按 `LINEAR_INTAKE.md` 输出 bilingual run summary。
+- 将按 status + assignee 分出 Codex Queue、Human Queue、Review Queue 和 Inconsistent。
+- Codex-ready 的基础定义是 `Todo + unassigned`，但仍必须满足 Feature ID、目标版本、验收标准和无阻塞 Decision。
+
+如果 scan scope 过大或权限不足，Codex 必须先汇报限制。
+
+## Ready for Scheduled Scan
+
+scheduled/cron scan 启用前必须满足：
+
+- `AUTOMATION_POLICY.md` 中的 schedule config 已明确。
+- `dry_run: true` 是首次设置默认值。
+- mode 已明确为 `read-only`、`advisory` 或 `semi-automatic`。
+- idempotency 规则已明确。
+- 禁止 automatic code execution。
+- 自动写入范围已经由人确认。
+
 ## Ready for PR
 
 提交 PR 前必须满足：
@@ -70,6 +95,20 @@ Review 通过不表示：
 - UAT 环境或运行方式已明确。
 - 已知限制已写明。
 
+v0.2 还必须包含：
+
+- 至少一个 Linear comment 或 project status update 的双语检查。
+- 至少一个跨版本 Linear intake/carry-over 检查。
+- 如果启用 scheduled scan，必须验证 dry-run 不重复写入。
+
+v0.3 还必须包含：
+
+- `Todo + unassigned` 被识别为 Codex Queue。
+- `Todo + assigned` 被识别为 Human Queue。
+- `In Review + assigned` 被识别为 Review/UAT Queue。
+- 人类验收失败后，留言 + unassign + `Todo` 能让 Codex 下次扫描处理。
+- `next:*` label 不作为基础交接必需项。
+
 ## UAT Pass
 
 UAT Pass 必须由人给出。
@@ -94,6 +133,18 @@ Codex 不得自行给出 UAT Pass。
 - tag/release notes 准备完成。
 - Linear 中版本状态已更新。
 - 已知限制被 Owner 接受。
+- 已完成旧 Issue 的下版本反馈已经 carry-over 或明确不处理。
+
+## Carry-over Ready
+
+创建下一版本 carry-over revalidation Issue 前必须满足：
+
+- 来源 Issue 已识别。
+- 来源评论或反馈已识别。
+- 原 Issue 原始范围是否完成已经说明。
+- 下一版本目标已确认。
+- Revalidation scenario 和 Expected Result 已写清。
+- 旧 Issue 将留下 bilingual closeout comment。
 
 ## Blocker 定义
 
@@ -121,4 +172,3 @@ Needs Human Check:
 New Decisions:
 New Backlog Items:
 ```
-

@@ -15,6 +15,12 @@
 9. 第一次接管项目，必须先执行 Phase 0 Self-Check。
 10. Linear 是项目管理事实来源。
 11. GitHub 是代码、PR、测试、版本事实来源。
+12. 宽泛 Linear 检查必须执行 `LINEAR_INTAKE.md` 的扫描规则。
+13. Codex-authored Linear 评论、状态更新和 run summary 默认必须包含中文用户可读摘要。
+14. 旧版本已完成 Issue 的下版本反馈必须 carry-over，不得直接移动旧 issue。
+15. Human/Codex 基础交接由 assignee 决定：有 assignee 等人类，无 assignee 等 Codex。
+16. `next:*` label 是高级可选项，不是基础流程必需项。
+17. v0.3 scheduled automation 不得自动修改本地代码。
 
 ## AI 行为原则
 
@@ -27,6 +33,7 @@
 - 遇到业务歧义时创建 Decision。
 - 对每个 Feature 说明测试和验收状态。
 - 对风险、未知和缺失证据保持诚实。
+- 检查 Linear 时汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
 
 ### 不得做
 
@@ -37,6 +44,7 @@
 - 不得删除或覆盖用户未确认的内容。
 - 不得在 Phase 1 写入 Linear。
 - 不得在没有人工授权时批量创建 Linear Issue。
+- 不得因为 Linear 状态或评论变化自动开始代码修改。
 
 ## 角色定义
 
@@ -89,6 +97,8 @@ Codex 可以：
 - 运行测试。
 - 准备 PR。
 - 通过 Linear MCP 读写已确认内容。
+- 按 `LINEAR_INTAKE.md` 扫描 Linear 并生成双语 run summary。
+- 按 status + assignee 区分 Human Queue、Codex Queue 和 Review Queue。
 
 Codex 不可以：
 
@@ -96,6 +106,7 @@ Codex 不可以：
 - 自行验收版本。
 - 自行扩大 Scope。
 - 自行确认首次 Linear 批量导入。
+- 因为 scheduled scan 自动修改本地代码。
 
 ## 阶段权限矩阵
 
@@ -108,6 +119,50 @@ Codex 不可以：
 | Phase 4 Planning | Yes | No | Yes | Yes | No | Required |
 | Phase 5 Development | Yes | Yes | As needed | Yes | Yes | Required for scope changes |
 | Phase 6 UAT | Yes | Bug fix only | Yes | Yes | As needed | Required |
+
+## Linear Intake 规则
+
+当用户说“检查 Linear”“处理 Linear”“继续下一个”或类似宽泛口令时，Codex 必须：
+
+- 读取 `LINEAR_INTAKE.md`。
+- 扫描用户点名的 issue，以及相关项目/版本中的 active issue。
+- 特别检查 `Todo`、`In Progress`、`In Review` 和近期有评论的旧版本 issue。
+- 按 status + assignee 分出 Codex Queue、Human Queue、Review Queue 和状态不一致项。
+- 把 `Todo + unassigned` 作为基础 Codex queue，但仍需检查 Feature ID、目标版本、验收标准和阻塞 Decision。
+- 把 `Todo + assigned` 和 `In Review + assigned` 视为人类队列，不主动抢活。
+- 分类评论是当前修复、review rework、下一版本需求、carry-over、Backlog 还是 Decision。
+- 汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
+
+如果 Codex 发现下版本反馈写在旧版本 Issue 上，必须按 carry-over 处理，不得直接移动旧 issue。
+
+基础交接规则：
+
+```text
+Assigned = human queue
+Unassigned = Codex queue
+Status = lifecycle
+Labels = classification only, optional for advanced workflows
+```
+
+```text
+有 assignee = 人类队列
+无 assignee = Codex 队列
+Status = 生命周期
+Labels = 只做分类，高级流程可选
+```
+
+## Automation 规则
+
+v0.3 允许设计和使用 Linear intake/follow-up 的 manual trigger 或 scheduled dry run。
+
+v0.3 不允许：
+
+- scheduled job 自动修改本地代码。
+- 自动批准 UAT。
+- 自动扩大当前版本范围。
+- 重复创建评论、Issue 或状态更新。
+
+任何自动写入必须遵守 `AUTOMATION_POLICY.md` 和 `LINEAR_POLICY.md`。
 
 ## Feature ID 规则
 

@@ -41,7 +41,7 @@ No formal development should happen without:
 
 1. Keep this repo private.
 2. Push this repo to a private GitHub repository.
-3. Create a Linear project for `AI Project OS v0.1`.
+3. Create a Linear project for the current AI Project OS version.
 4. Import the confirmed Feature inventory into Linear.
 5. Use one issue at a time to improve the OS.
 6. Use UAT before any formal OS release.
@@ -53,8 +53,37 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.1.0.zip
+ai-project-os-v0.3.0.zip
 ```
+
+Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
+
+## Use In Another Project
+
+1. Download `ai-project-os-v0.3.0.zip` from the [v0.3.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.3.0).
+2. Extract the top-level `project-os/` directory into the target repository root.
+3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
+
+Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
+
+## v0.3 Focus
+
+v0.3 makes the daily Linear workflow easier to operate by using assignee as the basic Human/Codex handoff signal:
+
+```text
+Assigned = human queue
+Unassigned = Codex queue
+Status = lifecycle
+Labels = classification only, optional for advanced workflows
+```
+
+Added focus:
+
+- Human/Codex handoff policy for single-user Linear boards.
+- Linear intake routing by status + assignee.
+- UAT and prompt playbooks for passing, failing, or handing work back to Codex.
+- Roadmap through v1.0, where the success standard is rescuing and governing a messy mature project.
+- Validator guardrails so `next:*` labels stay optional in the basic workflow.
 
 ## Important
 
@@ -65,4 +94,3 @@ This repository's own audit output belongs in:
 ```text
 project-os/audit/
 ```
-

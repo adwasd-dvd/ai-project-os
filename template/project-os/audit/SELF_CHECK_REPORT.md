@@ -51,6 +51,8 @@ Status: Draft / Complete / Blocked
 | Linear workspace known | Yes / No |  |
 | Linear team known | Yes / No |  |
 | Existing Linear project found | Yes / No / Not checked |  |
+| Linear issue description language | English + Chinese / Chinese / English / Other | Default: English + Chinese unless user chooses otherwise |
+| Linear issue description detail level | Actions + Expected Results / Basic | Linear issues should include execution actions and expected results |
 | Ready for Phase 3 import | Yes / No |  |
 
 ## Project Shape
@@ -129,4 +131,3 @@ Can start Phase 1 Audit: Yes / No
 Reason:
 Recommended next step:
 ```
-
