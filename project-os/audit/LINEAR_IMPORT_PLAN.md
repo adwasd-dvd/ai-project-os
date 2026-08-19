@@ -513,3 +513,12 @@ git diff --check
 ### Remaining Human Gate
 
 After verification and GitHub Draft PR publication, move AIPOS-024 through AIPOS-030 to `In Review`, assign them to `dvdTeacher`, and wait for explicit human UAT. Do not merge, tag, release, complete the issues, or complete the Linear project before approval.
+
+GitHub review evidence:
+
+```text
+Branch: codex/v0.4-whitebox
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
+Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
+Candidate zip SHA-256: 6d9a88e4ee42cb653ea23faa3b182ecace30de76dd337d252ac8e7c67d60bdb6
+```

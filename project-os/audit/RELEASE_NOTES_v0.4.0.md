@@ -64,8 +64,10 @@ git diff --check: Passed
 
 ```text
 Branch: codex/v0.4-whitebox
-PR: Pending
+PR: https://github.com/adwasd-dvd/ai-project-os/pull/2 (Draft)
+Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
 Tag: Not created
 Release: Not published
 Release asset: releases/ai-project-os-v0.4.0.zip (local, ignored by Git)
+Candidate SHA-256: 6d9a88e4ee42cb653ea23faa3b182ecace30de76dd337d252ac8e7c67d60bdb6
 ```

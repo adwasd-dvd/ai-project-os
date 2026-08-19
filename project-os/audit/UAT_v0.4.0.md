@@ -10,10 +10,18 @@ This record must be completed by a human Owner or delegated UAT reviewer.
 Version: v0.4.0
 Date: 2026-08-19
 Environment: local repo + Linear DvdTeacher + GitHub Draft PR
-Build / Commit: Pending GitHub Draft PR
+Build / Commit: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; implementation commit 168ea9266e5dfb8bd60f3029e10995972d16d89d
 Tester: Owner / dvdTeacher
 Owner: dvdTeacher
 Result: Pending
+```
+
+Candidate package:
+
+```text
+Path: releases/ai-project-os-v0.4.0.zip
+SHA-256: 6d9a88e4ee42cb653ea23faa3b182ecace30de76dd337d252ac8e7c67d60bdb6
+Git policy: ignored locally; upload only as a GitHub Release asset after UAT passes
 ```
 
 ## Version Goal

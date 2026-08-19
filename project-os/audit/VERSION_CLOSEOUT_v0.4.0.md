@@ -12,7 +12,7 @@ Status: Ready for Human UAT
 Date Prepared: 2026-08-19
 Prepared By: Codex
 Human UAT: Pending
-GitHub: Draft PR pending; no v0.4 tag or release
+GitHub: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; no v0.4 tag or release
 ```
 
 ## Required Before Release
@@ -25,7 +25,7 @@ GitHub: Draft PR pending; no v0.4 tag or release
 | Template validator | Strict validator passes | 0 failures, 0 warnings | Pass |
 | Scanner tests | Source and template tests pass | 8 tests passed | Pass |
 | Release zip | Top-level `project-os/`, archive test clean | `releases/ai-project-os-v0.4.0.zip`; `unzip -t` passed | Pass |
-| GitHub review surface | Clean dedicated branch and Draft PR | Pending | Pending |
+| GitHub review surface | Clean dedicated branch and Draft PR | `codex/v0.4-whitebox`; PR #2 | Pass |
 | Human UAT | Explicit human conclusion | Not received | Pending |
 | Linear closeout | Included issues Done only after UAT | Not allowed yet | Pending |
 | GitHub release/tag | Publish only after UAT | Not allowed yet | Pending |
