@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.4.0 - 2026-08-19
+
+Project Whitebox release for evidence-backed takeover of mature black-box and gray-box repositories.
+
+Added:
+
+- Phase 0.5 Whitebox Discovery before baseline confirmation for mature or unclear projects.
+- `WHITEBOX_PROTOCOL.md` with Observed, Derived, Claimed, Inferred, Contradicted, and Unknown evidence states.
+- High, Medium, Low, and Unknown confidence levels with explicit next verification.
+- `discovery/PROJECT_MAP.md`, `DEPENDENCY_MAP.md`, `DOCUMENT_INVENTORY.md`, `SETTINGS_AND_DATA_REGISTER.md`, `LOGIC_BOUNDARY_AUDIT.md`, and `WHITEBOX_IMPORT_REPORT.md`.
+- Read-only-by-default `tools/whitebox_scan.py` and scanner unit tests.
+- `examples/WHITEBOX_EXAMPLE.md` with a full evidence-to-Linear handoff.
+
+Updated:
+
+- `BOOTSTRAP.md`, `SELF_CHECK.md`, `AGENTS.md`, `WORKFLOW.md`, `PROJECT.md`, `QUALITY_GATE.md`, `LINEAR_POLICY.md`, `START_HERE.md`, and `UAT_TEMPLATE.md` for Phase 0.5.
+- Validator coverage for required whitebox files, report fields, template sync, and scanner safety guardrails.
+
 ## v0.3.0 - 2026-08-19
 
 Human/Codex handoff release for low-friction single-user Linear operation.

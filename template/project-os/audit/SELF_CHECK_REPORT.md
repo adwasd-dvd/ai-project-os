@@ -18,7 +18,7 @@ Status: Draft / Complete / Blocked
 ## Current Goal
 
 ```text
-完成 AI Project OS Phase 0 Self-Check，并判断是否可以进入 Phase 1 Audit。
+完成 AI Project OS Phase 0 Self-Check，并判断是否需要 Phase 0.5 Whitebox Discovery。
 ```
 
 ## Project Location
@@ -30,6 +30,8 @@ Status: Draft / Complete / Blocked
 | `project-os/` exists | Yes / No |  |
 | Required project-os files exist | Yes / No |  |
 | `project-os/audit/` exists | Yes / No |  |
+| `project-os/discovery/` exists | Yes / No |  |
+| Whitebox scanner exists | Yes / No | `project-os/tools/whitebox_scan.py` |
 
 ## Git / GitHub
 
@@ -69,6 +71,19 @@ Status: Draft / Complete / Blocked
 | Database / migrations |  |  |
 | CI/CD |  |  |
 
+## Whitebox Readiness
+
+| Check | Result | Notes |
+|---|---|---|
+| Project is mature or context is incomplete | Yes / No / Unknown |  |
+| Phase 0.5 required | Yes / No / Not Applicable | New empty projects may use Not Applicable with evidence |
+| Read scope confirmed | Yes / No / Partial |  |
+| Excluded/unavailable areas recorded | Yes / No |  |
+| Scanner dry-run safe | Yes / No / Not checked | Must not write files |
+| Discovery output confined to repository | Yes / No / Not checked | Default: `project-os/discovery/` |
+| Production access required | Must be No |  |
+| Secret values will be recorded | Must be No | Names and paths only |
+
 ## Local Dependencies
 
 | Check | Result | Notes |
@@ -90,9 +105,10 @@ Status: Draft / Complete / Blocked
 ## Permission Boundary Confirmed
 
 ```text
-Phase 0/1 permissions:
+Phase 0/0.5/1 permissions:
 - Read project files: Yes
 - Write project-os/audit docs: Yes
+- Write project-os/discovery docs: Yes
 - Modify product code: No
 - Write Linear: No
 - Create GitHub PR: No
@@ -100,7 +116,7 @@ Phase 0/1 permissions:
 
 ## Blocking Items
 
-These block Phase 1.
+These block Phase 0.5 or Phase 1.
 
 ```text
 - 
@@ -127,7 +143,8 @@ Ask only the next 1 to 3 blocking questions.
 ## Phase 0 Conclusion
 
 ```text
-Can start Phase 1 Audit: Yes / No
+Needs Phase 0.5 Whitebox Discovery: Yes / No / Not Applicable
+Can start Phase 0.5 or Phase 1 Audit: Yes / No
 Reason:
 Recommended next step:
 ```

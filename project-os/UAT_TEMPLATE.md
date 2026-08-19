@@ -56,6 +56,21 @@ Result: Pass / Fail / Conditional Pass
 | LIN-009 | Human failed UAT handoff | Comment + unassign + `Todo` lets Codex process rework next scan |  |  |  |
 | LIN-010 | `next:*` label is optional | Basic handoff works without changing workflow labels |  |  |  |
 
+## Whitebox Scenarios
+
+| Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |
+|---|---|---|---|---|---|
+| WBX-001 | Scanner dry run | Command reports repository evidence and creates no file |  |  |  |
+| WBX-002 | Deterministic write and check | `--write` followed by `--check` passes without evidence drift |  |  |  |
+| WBX-003 | Ignore behavior | Git-ignored and common generated/vendor paths do not enter evidence |  |  |  |
+| WBX-004 | Secret-value boundary | Setting names and secret-like paths may appear; their values do not |  |  |  |
+| WBX-005 | Evidence vocabulary | Important findings distinguish Observed, Claimed, Inferred, Contradicted, and Unknown |  |  |  |
+| WBX-006 | Confidence honesty | High-impact low-confidence findings have a Next Verification or Decision |  |  |  |
+| WBX-007 | Six report handoff | All detailed reports are usable and linked by `WHITEBOX_IMPORT_REPORT.md` |  |  |  |
+| WBX-008 | Linear project summary | Bilingual summary shows freshness, shape, confidence, risks, contradictions, unknowns, and evidence links |  |  |  |
+| WBX-009 | Human usefulness | Owner can explain the system shape and choose the next verification from the reports |  |  |  |
+| WBX-010 | No automatic repair/import | Discovery does not change product code or bypass Linear first-write approval |  |  |  |
+
 ## Issues Found
 
 | ID | Description | Severity | Category | Target Version | Linear Issue | Owner |

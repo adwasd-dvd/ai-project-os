@@ -37,9 +37,20 @@ CORE_FILES = [
     "UAT_TEMPLATE.md",
     "UPGRADE_POLICY.md",
     "VERSION_PLANNING.md",
+    "WHITEBOX_PROTOCOL.md",
     "WORKFLOW.md",
+    "discovery/README.md",
+    "discovery/PROJECT_MAP.md",
+    "discovery/DEPENDENCY_MAP.md",
+    "discovery/DOCUMENT_INVENTORY.md",
+    "discovery/SETTINGS_AND_DATA_REGISTER.md",
+    "discovery/LOGIC_BOUNDARY_AUDIT.md",
+    "discovery/WHITEBOX_IMPORT_REPORT.md",
     "examples/FIRST_PROJECT.md",
+    "examples/WHITEBOX_EXAMPLE.md",
+    "tools/test_whitebox_scan.py",
     "tools/validate_project_os.py",
+    "tools/whitebox_scan.py",
 ]
 
 AUDIT_FILES = [
@@ -67,6 +78,10 @@ POLICY_PHRASES = {
         "一个 Codex 不能自我验收",
         "版本未人工 UAT，不得进入下一正式版本",
         "首次批量写入 Linear 必须人工确认",
+        "WHITEBOX_PROTOCOL.md",
+        "Evidence",
+        "Confidence",
+        "secret 值",
     ],
     "LINEAR_POLICY.md": [
         "English + Chinese",
@@ -114,11 +129,64 @@ POLICY_PHRASES = {
         "OS Self-Upgrade",
         "v1.0",
     ],
+    "WHITEBOX_PROTOCOL.md": [
+        "Observed",
+        "Derived",
+        "Claimed",
+        "Inferred",
+        "Contradicted",
+        "Unknown",
+        "Evidence",
+        "Confidence",
+        "Next Verification",
+        "secret values",
+        "Phase 0.5",
+    ],
+    "BOOTSTRAP.md": [
+        "Phase 0.5 Whitebox Discovery",
+        "whitebox_scan.py",
+        "SCAN_EVIDENCE.json",
+        "LOGIC_BOUNDARY_AUDIT.md",
+    ],
+    "QUALITY_GATE.md": [
+        "Ready for Whitebox Discovery",
+        "Whitebox Complete",
+        "Evidence",
+        "Confidence",
+        "Next Verification",
+    ],
     "OS_VERSION.md": [
-        "v0.3.0",
+        "v0.4.0",
     ],
     "CHANGELOG.md": [
-        "v0.3.0",
+        "v0.4.0",
+    ],
+}
+
+DISCOVERY_REPORT_FIELDS = {
+    "discovery/PROJECT_MAP.md": ["Evidence", "Confidence", "Next Verification"],
+    "discovery/DEPENDENCY_MAP.md": ["Evidence", "Confidence", "Next Verification"],
+    "discovery/DOCUMENT_INVENTORY.md": ["Evidence", "Confidence", "Contradiction"],
+    "discovery/SETTINGS_AND_DATA_REGISTER.md": [
+        "Evidence",
+        "Confidence",
+        "Secret Values Present: Must be No",
+        "Do not paste values",
+    ],
+    "discovery/LOGIC_BOUNDARY_AUDIT.md": [
+        "Evidence",
+        "Confidence",
+        "Next Verification",
+        "Contradiction Register",
+    ],
+    "discovery/WHITEBOX_IMPORT_REPORT.md": [
+        "Evidence freshness",
+        "Confidence",
+        "Contradictions",
+        "Unknowns",
+        "Action Steps",
+        "Expected Result",
+        "No approval means no first bulk write",
     ],
 }
 
@@ -199,6 +267,46 @@ def check_template_drift(root: Path) -> list[Finding]:
                     "If this is not a local override, sync the file.",
                 )
             )
+    return findings
+
+
+def check_discovery_contract(root: Path) -> list[Finding]:
+    findings: list[Finding] = []
+    for base in [root / "project-os", root / "template" / "project-os"]:
+        for rel, phrases in DISCOVERY_REPORT_FIELDS.items():
+            path = base / rel
+            if not path.exists():
+                continue
+            text = read_text(path)
+            for phrase in phrases:
+                if phrase not in text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            path.relative_to(root).as_posix(),
+                            f"Missing whitebox field / 缺少白盒字段: {phrase}",
+                        )
+                    )
+
+        scanner = base / "tools" / "whitebox_scan.py"
+        if scanner.exists():
+            scanner_text = read_text(scanner)
+            for phrase in [
+                '"--write"',
+                '"--check"',
+                '"secret_values_emitted": False',
+                '"environment_values_emitted": False',
+                '"file_contents_emitted": False',
+                "Output directory must be inside the repository root.",
+            ]:
+                if phrase not in scanner_text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            scanner.relative_to(root).as_posix(),
+                            f"Missing scanner guardrail / 缺少 scanner 保护: {phrase}",
+                        )
+                    )
     return findings
 
 
@@ -288,6 +396,7 @@ def main() -> int:
     findings.extend(check_required_files(root))
     findings.extend(check_policy_phrases(root))
     findings.extend(check_template_drift(root))
+    findings.extend(check_discovery_contract(root))
     findings.extend(check_release_zips(root))
 
     failures = [finding for finding in findings if finding.level == "FAIL"]

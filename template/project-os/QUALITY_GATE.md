@@ -34,6 +34,30 @@ Feature 进入开发前必须满足：
 
 如果 scan scope 过大或权限不足，Codex 必须先汇报限制。
 
+## Ready for Whitebox Discovery
+
+Phase 0.5 开始前必须明确：
+
+- 项目根目录已确认。
+- 可读范围、排除范围和不可用系统已记录。
+- 已读取 `WHITEBOX_PROTOCOL.md`。
+- scanner dry-run 默认不写入。
+- 如需写入，目标只能在仓库内的 `project-os/discovery/`。
+- 不需要生产凭证或生产数据。
+- secret 值不会被复制到报告。
+
+## Whitebox Complete
+
+白盒发现只有在以下条件满足时才能进入 Baseline Confirmation：
+
+- `PROJECT_MAP.md`、`DEPENDENCY_MAP.md`、`DOCUMENT_INVENTORY.md`、`SETTINGS_AND_DATA_REGISTER.md`、`LOGIC_BOUNDARY_AUDIT.md` 和 `WHITEBOX_IMPORT_REPORT.md` 均已填写。
+- 空表不被当作完成证据。
+- 每个重要结论都有 State、Evidence、Confidence 和 Next Verification。
+- 重要 Unknown 和 Contradicted 发现可见。
+- 高影响、低置信度项已转入验证或 Decision。
+- discovery 产物不含 secret 值。
+- `WHITEBOX_IMPORT_REPORT.md` 可支持人工 review 和 Linear 草案，但未绕过首次写入授权。
+
 ## Ready for Scheduled Scan
 
 scheduled/cron scan 启用前必须满足：
@@ -108,6 +132,16 @@ v0.3 还必须包含：
 - `In Review + assigned` 被识别为 Review/UAT Queue。
 - 人类验收失败后，留言 + unassign + `Todo` 能让 Codex 下次扫描处理。
 - `next:*` label 不作为基础交接必需项。
+
+v0.4 还必须包含：
+
+- scanner dry-run 不创建文件。
+- scanner `--write` 仅写入指定 discovery 目录。
+- 两次扫描对同一仓库生成确定性结果。
+- ignored/generated 路径不进入证据。
+- 环境变量和 secret 只记录名称/路径，不记录值。
+- 完整示例至少包含一个 Unknown 和一个 Contradicted 发现。
+- 人类确认白盒产物“有用且可信”，Codex 不能自我确认。
 
 ## UAT Pass
 

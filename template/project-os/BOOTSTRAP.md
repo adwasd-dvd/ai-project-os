@@ -1,6 +1,6 @@
 # BOOTSTRAP
 
-本文定义 AI Project OS v0.3 的启动流程。
+本文定义 AI Project OS v0.4 的启动流程。
 
 任何本地 Codex 第一次进入项目时，必须先执行本文件，不允许直接开发。
 
@@ -8,9 +8,10 @@
 
 把一个现有项目整理成可管理、可开发、可验收、可发布的状态。
 
-启动流程分为六个 Phase：
+启动流程分为七个主要阶段，并在 Self-Check 与 Audit 之间加入 Phase 0.5：
 
 0. Phase 0 Self-Check：接管前自我检查。
+0.5. Phase 0.5 Whitebox Discovery：对成熟/不明项目收集证据并建立白盒地图。
 1. Phase 1 Audit：只读审计。
 2. Phase 2 Baseline Confirmation：人工确认现状。
 3. Phase 3 Linear Setup/Import：确认后导入 Linear。
@@ -54,13 +55,89 @@
 Codex 必须输出：
 
 - 是否确认当前目录是项目根目录。
-- 是否可以进入 Phase 1 Audit。
+- 是否需要 Phase 0.5，以及是否可以进入 Phase 0.5/1。
 - 阻塞项。
 - 非阻塞缺口。
 - Linear Issue 描述语言偏好。
 - 接下来建议用户确认什么。
 
-如无阻塞项，Codex 可以建议进入 Phase 1。
+如无阻塞项，成熟/不明项目进入 Phase 0.5；有证据标记为 `Not Applicable` 的全新项目可进入 Phase 1。
+
+## Phase 0.5 Whitebox Discovery
+
+### 何时必须执行
+
+以下任一情况必须执行 Phase 0.5：
+
+- 仓库已经存在一段时间。
+- 原团队、原对话或设计上下文不完整。
+- 代码、文档、配置或 Linear 之间可能不一致。
+- 项目被用户描述为黑盒、灰盒、混乱、糟或无法管理。
+- Codex 无法用高置信度说明主要组件、依赖、数据或边界。
+
+全新空项目可将 Phase 0.5 标记为 `Not Applicable`，但必须写明证据，不得默认跳过。
+
+### 必须先读取
+
+- `WHITEBOX_PROTOCOL.md`
+- `discovery/README.md`
+- `SELF_CHECK_REPORT.md` 中的范围与权限结论
+
+### 机械证据扫描
+
+先 dry run：
+
+```bash
+python3 project-os/tools/whitebox_scan.py --root . --summary
+```
+
+检查输出范围后，才写入：
+
+```bash
+python3 project-os/tools/whitebox_scan.py --root . --write
+```
+
+默认只能写入：
+
+```text
+project-os/discovery/SCAN_EVIDENCE.json
+```
+
+### 必须输出
+
+- `discovery/PROJECT_MAP.md`
+- `discovery/DEPENDENCY_MAP.md`
+- `discovery/DOCUMENT_INVENTORY.md`
+- `discovery/SETTINGS_AND_DATA_REGISTER.md`
+- `discovery/LOGIC_BOUNDARY_AUDIT.md`
+- `discovery/WHITEBOX_IMPORT_REPORT.md`
+
+每个重要结论必须有：
+
+```text
+State
+Evidence
+Confidence
+Unknowns / Contradictions
+Next Verification
+```
+
+### 禁止做
+
+- 禁止修改产品代码、依赖或运行时数据。
+- 禁止记录 secret 值；只可记录设置名和路径。
+- 禁止执行未知脚本或连接生产系统。
+- 禁止把 Claimed 或 Inferred 写成 Observed。
+- 禁止写入 Linear 或自动开始修复发现。
+
+### Phase 0.5 完成条件
+
+- 六份报告均已填写，不是空表。
+- 覆盖范围和未读区域已记录。
+- 高影响、低置信度发现已转入验证队列或 Decision。
+- 重要矛盾和未知项保持可见。
+- discovery 产物不含 secret 值。
+- Codex 可以说明哪些是事实、说法、推断或未知。
 
 ## Phase 1 Audit
 
@@ -74,6 +151,7 @@ Codex 必须输出：
 - 读取 Git 历史、分支、tag、最近提交信息。
 - 读取已有 TODO、注释、Issue 引用、PR 引用。
 - 生成或更新 `project-os/audit/*.md`。
+- 引用并对账 `project-os/discovery/*.md` 和 `SCAN_EVIDENCE.json`。
 - 标注不确定、冲突、缺口、重复项和风险。
 
 ### 禁止做
@@ -94,6 +172,7 @@ Codex 必须输出：
 - `audit/GAPS_AND_DUPLICATES.md`
 - `audit/RISKS_AND_DECISIONS.md`
 - `audit/LINEAR_IMPORT_PLAN.md`
+- 已完成的 Phase 0.5 discovery 报告，或有证据的 `Not Applicable` 结论
 
 ### Phase 1 完成条件
 
@@ -130,6 +209,8 @@ Codex 必须在最终回复中说明：
 - 重复项是否真的重复。
 - 建议目标版本是否符合业务优先级。
 - Decision 是否覆盖所有不确定点。
+- Whitebox 覆盖范围是否诚实、主要组件和边界是否符合理解。
+- 高影响、低置信度发现和重要矛盾是否已解决或正确路由。
 
 ### Codex 允许做
 
@@ -162,6 +243,7 @@ Baseline 已确认，可以进入 Phase 3。
 
 - Phase 2 已人工确认。
 - `audit/LINEAR_IMPORT_PLAN.md` 已更新到最终版本。
+- 如适用，`discovery/WHITEBOX_IMPORT_REPORT.md` 已被人工确认，其发现已对账到 Import Plan。
 - Linear workspace、team、status、label、project 规则已明确。
 - Linear Issue 描述语言已确认，默认建议为 `English + Chinese`。
 - Linear Issue 描述模板已写清执行动作和期待结果。

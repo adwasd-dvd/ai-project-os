@@ -56,6 +56,8 @@ Deliverables:
 
 ## v0.4 - Project Whitebox / Existing Project Intelligence
 
+Status: Current development / 当前开发版本
+
 Goal:
 
 Take an existing black-box or gray-box project and make it understandable, inspectable, and manageable.
@@ -66,6 +68,9 @@ Take an existing black-box or gray-box project and make it understandable, inspe
 
 Deliverables:
 
+- `WHITEBOX_PROTOCOL.md`
+- `tools/whitebox_scan.py`
+- deterministic `discovery/SCAN_EVIDENCE.json` generation
 - `discovery/PROJECT_MAP.md`
 - `discovery/DEPENDENCY_MAP.md`
 - `discovery/DOCUMENT_INVENTORY.md`
@@ -74,6 +79,7 @@ Deliverables:
 - `discovery/WHITEBOX_IMPORT_REPORT.md`
 - Linear project description summary with links to whitebox docs.
 - Evidence and confidence levels for every important conclusion.
+- Worked example, scanner tests, validator guardrails, and human UAT.
 
 ## v0.5 - Repo Safety & Project Memory Boundary
 

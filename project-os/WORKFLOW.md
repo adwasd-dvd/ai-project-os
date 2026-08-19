@@ -18,6 +18,37 @@ Idea
 -> Release
 ```
 
+## Existing Project Intake / 现有项目接管
+
+对已存在的成熟、混乱或上下文不完整项目，业务开发流程前必须先执行：
+
+```text
+Phase 0 Self-Check
+-> Phase 0.5 Whitebox Discovery
+-> Phase 1 Audit
+-> Human Baseline Confirmation
+-> Linear Import
+-> Release Planning
+-> Development
+```
+
+Phase 0.5 必须读取 `WHITEBOX_PROTOCOL.md`，生成 `discovery/` 下的白盒报告。
+
+重要结论必须区分：
+
+```text
+Observed
+Derived
+Claimed
+Inferred
+Contradicted
+Unknown
+```
+
+且必须记录 Evidence、Confidence 和 Next Verification。
+
+Scanner 发现不等于可直接开发。新发现仍必须进入 Decision、Feature、Bug、Backlog 或验证队列。
+
 ## 1. Idea
 
 Idea 是任何新想法、需求、反馈、灵感或用户抱怨。
@@ -254,6 +285,8 @@ Codex 完成后不得把正式版本或 Feature 直接验收为通过。`In Revi
 | 重复 Feature | 标记疑似重复 | 自动关闭其中一个 |
 | 业务规则不清 | 创建 Decision | 猜一个规则继续做 |
 | 测试缺失 | 标记测试缺口 | 声称已验收 |
+| 文档与代码冲突 | 记录 Contradicted、证据和下一步验证 | 静默选一个当真 |
+| 高影响但低置信度 | 转入验证 Feature 或 Decision | 直接按推断改代码 |
 
 ## v0.3 日常 Linear Loop
 

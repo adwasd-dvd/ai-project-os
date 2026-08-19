@@ -1,6 +1,6 @@
 # FIRST_PROJECT Example
 
-本文是 AI Project OS v0.3 的第一个真实项目 walkthrough。
+本文是 AI Project OS v0.4 的第一个真实项目 walkthrough。
 
 示例项目：
 
@@ -25,12 +25,12 @@ tiny-lesson-tracker/
 用户在本地 Codex 输入：
 
 ```text
-请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md。
+请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md、project-os/WHITEBOX_PROTOCOL.md。
 
-请按 AI Project OS v0.3 工作。
+请按 AI Project OS v0.4 工作。
 
 先执行 Phase 0 Self-Check。
-如果 Phase 0 没有阻塞项，再进入 Phase 1 Audit。
+这是现有项目；如果 Phase 0 没有阻塞项，先进入 Phase 0.5 Whitebox Discovery，再进入 Phase 1 Audit。
 ```
 
 ## 2. Phase 0 Self-Check
@@ -49,7 +49,8 @@ Codex 输出示例：
 ```text
 Phase 0 Self-Check complete.
 
-Can start Phase 1 Audit: Yes
+Needs Phase 0.5 Whitebox Discovery: Yes
+Can start Phase 0.5: Yes
 
 Blocking items:
 - None
@@ -62,10 +63,45 @@ Linear Issue Description Language:
 - English + Chinese
 
 Recommended next step:
-- Start Phase 1 Audit.
+- Run the whitebox scanner dry-run, then complete Phase 0.5 reports.
 ```
 
-## 3. Phase 1 Audit
+## 3. Phase 0.5 Whitebox Discovery
+
+Codex 先 dry-run：
+
+```bash
+python3 project-os/tools/whitebox_scan.py --root . --summary
+```
+
+确认路径范围正常后，写入机械证据：
+
+```bash
+python3 project-os/tools/whitebox_scan.py --root . --write
+```
+
+Codex 填写：
+
+```text
+project-os/discovery/PROJECT_MAP.md
+project-os/discovery/DEPENDENCY_MAP.md
+project-os/discovery/DOCUMENT_INVENTORY.md
+project-os/discovery/SETTINGS_AND_DATA_REGISTER.md
+project-os/discovery/LOGIC_BOUNDARY_AUDIT.md
+project-os/discovery/WHITEBOX_IMPORT_REPORT.md
+```
+
+Tiny Lesson Tracker 的示例发现：
+
+| Finding ID | Claim | State | Evidence | Confidence | Next Verification |
+|---|---|---|---|---|---|
+| PM-001 | App has login, course list, progress, and export areas | Observed | route files + tests | High | Run existing route tests |
+| DOC-C001 | README says CSV only; code exposes CSV and JSON export | Contradicted | README + export handlers | Medium | Ask Owner which format is supported |
+| SD-001 | Progress history retention is defined | Unknown | No policy or cleanup job found | Unknown | Create Decision before changing storage |
+
+Codex 不修复这些发现，只将它们转入 Decision、Feature、Bug、Backlog 或验证建议。
+
+## 4. Phase 1 Audit
 
 Codex 只读项目，生成：
 
@@ -87,7 +123,7 @@ Feature inventory 示例：
 | EXPORT-001 | Export progress CSV | export | v0.2.0 | Backlog |
 | DEC-001 | Choose export format | export | v0.2.0 | Needs Decision |
 
-## 4. Baseline Confirmation
+## 5. Baseline Confirmation
 
 Codex 停下来等待人工确认。
 
@@ -103,7 +139,7 @@ Linear team 使用 DvdTeacher。
 
 没有这类明确授权时，Codex 不得首次批量写入 Linear。
 
-## 5. Phase 3 Linear Import
+## 6. Phase 3 Linear Import
 
 Codex 先做 Linear preflight：
 
@@ -144,7 +180,7 @@ Acceptance Criteria / 验收标准:
 - Search state survives refresh if product policy requires it, otherwise DEC needed.
 ```
 
-## 6. One Issue Lifecycle
+## 7. One Issue Lifecycle
 
 v0.3 的基础交接规则：
 
@@ -203,7 +239,7 @@ Codex 应做：
 | 需要自己补信息 | assign 给自己，保持 `Todo` |
 | 是下一版本需求 | 不移动旧 issue；创建或让 Codex 创建下一版本 issue |
 
-## 7. UAT
+## 8. UAT
 
 版本进入 UAT 前，用户使用 `project-os/UAT_TEMPLATE.md`。
 
@@ -222,7 +258,7 @@ UAT 通过，允许发布 v0.1.0。
 
 Codex 不能替用户写这个结论。
 
-## 8. Next Version Carry-over
+## 9. Next Version Carry-over
 
 如果在 v0.1 UAT 后，用户在 `LESSON-001` 留言：
 
@@ -255,7 +291,7 @@ Searching `sx` can find `数学入门` if pinyin-initial search is approved.
 如果拼音首字母搜索被确认，搜索 `sx` 能找到 `数学入门`。
 ```
 
-## 9. Daily Prompts
+## 10. Daily Prompts
 
 检查 Linear 但不直接开工：
 

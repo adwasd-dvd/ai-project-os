@@ -25,6 +25,7 @@ This repository uses AI Project OS to manage AI Project OS development.
 - `template/project-os/` is the product being built.
 - `project-os/` is the installed OS instance for this source repository.
 - `project-os/audit/` contains this repository's own self-check, baseline, inventory, risks, and Linear import plan.
+- `project-os/discovery/` contains this repository's own evidence-backed whitebox maps.
 - Linear will manage roadmap, issues, decisions, and UAT.
 - GitHub will hold the private source repository, PRs, tags, and release facts.
 
@@ -53,7 +54,7 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.3.0.zip
+ai-project-os-v0.4.0.zip
 ```
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
@@ -66,7 +67,22 @@ Generated zip files stay out of Git history. Versioned packages are published as
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## v0.3 Focus
+## Current Development: v0.4
+
+v0.4 adds Project Whitebox for taking over mature black-box or gray-box repositories before baseline confirmation.
+
+Core outputs:
+
+- A read-only-by-default repository scanner that emits paths and safe declaration names, never secret values.
+- Project, dependency, document, settings/data, and logic/boundary maps.
+- Evidence states: Observed, Derived, Claimed, Inferred, Contradicted, and Unknown.
+- Confidence levels and required next verification for important findings.
+- A compact bilingual Linear project summary backed by detailed GitHub/local evidence.
+- Validator and tests that keep source and distributable templates aligned.
+
+The latest stable install remains v0.3.0 until v0.4.0 passes human UAT and is published as a GitHub Release.
+
+## v0.3 Handoff Rule
 
 v0.3 makes the daily Linear workflow easier to operate by using assignee as the basic Human/Codex handoff signal:
 
