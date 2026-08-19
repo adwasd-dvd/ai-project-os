@@ -4,7 +4,7 @@
 
 ## 项目目标
 
-本项目使用 AI Project OS v0.1，把本地代码仓库整理成可以持续推进的工程系统。
+本项目使用 AI Project OS v0.3，把本地代码仓库整理成可以持续推进的工程系统。
 
 系统目标：
 
@@ -14,8 +14,12 @@
 - 让 GitHub 成为代码和版本事实来源。
 - 让本地 Codex 成为开发执行助手。
 - 让每个正式版本经过人工 UAT。
+- 让 Linear 日常评论、状态和版本反馈能被可靠 intake、分类和承接。
+- 让 Human/Codex 交接只靠 status + assignee 就能跑通基础流程。
+- 让 scheduled scan 可以安全运行，但不自动修改本地代码。
+- 让 OS 路线朝向“救活混乱成熟项目”的 v1.0 成功标准推进。
 
-## v0.1 工具边界
+## v0.3 工具边界
 
 ### Linear
 
@@ -27,12 +31,16 @@ Linear 负责：
 - 版本范围。
 - 状态流转。
 - UAT 反馈归档。
+- 跨版本 intake scan。
+- carry-over revalidation。
+- Human Queue、Codex Queue 和 Review Queue。
 
 Linear 不负责：
 
 - 保存代码事实。
 - 替代 GitHub PR。
 - 替代人工 UAT。
+- 自动触发本地代码修改。
 
 ### 本地 Codex
 
@@ -46,6 +54,9 @@ Linear 不负责：
 - 运行本地测试。
 - 准备 PR 内容。
 - 在获得授权后通过 Linear MCP 写入 Linear。
+- 读取 Linear 并按 `LINEAR_INTAKE.md` 生成双语 run summary。
+- 在政策允许时写入幂等的 Linear 评论、承接 Issue 或状态建议。
+- 按 status + assignee 判断下一棒是人类还是 Codex。
 
 本地 Codex 不负责：
 
@@ -53,6 +64,7 @@ Linear 不负责：
 - 自行验收版本。
 - 自行决定业务优先级。
 - 自行首次批量写入 Linear。
+- 因为 scheduled scan 自动修改本地代码。
 
 ### GitHub
 
@@ -66,11 +78,20 @@ GitHub 负责：
 - tag。
 - release notes。
 
-### 云端 Codex
+### Scheduled Automation
 
-AI Project OS v0.1 暂不上云端 Codex。
+AI Project OS v0.3 可以定义 scheduled Linear intake scan。
 
-如未来启用云端 Codex，必须先更新本文和 `AGENTS.md`，明确云端 Codex 的权限、触发方式、写入边界和验收责任。
+默认边界：
+
+- 首次设置 dry-run/read-only。
+- 允许生成双语 summary。
+- 允许 policy 明确的 safe Linear writes。
+- 不允许自动批准 UAT。
+- 不允许自动扩大 scope。
+- 不允许自动修改本地代码。
+
+如未来启用云端 Codex 或自动代码执行，必须先更新本文和 `AGENTS.md`，明确权限、触发方式、写入边界和验收责任。
 
 ## 事实来源
 
@@ -83,6 +104,7 @@ AI Project OS v0.1 暂不上云端 Codex。
 | 当前版本范围 | Linear + RELEASE_POLICY |
 | 业务决策 | Linear Decision Issue + RISKS_AND_DECISIONS |
 | UAT 结论 | UAT_TEMPLATE 记录 + Linear 状态 |
+| OS 路线图 | ROADMAP.md + Linear version projects |
 
 ## 项目角色
 
@@ -103,6 +125,11 @@ AI Project OS v0.1 暂不上云端 Codex。
 | `BOOTSTRAP.md` | Phase 0 到 Phase 6 总流程 |
 | `AGENTS.md` | 所有 AI 和人员的硬规则 |
 | `WORKFLOW.md` | Idea 到 Release 的工作流 |
+| `REQUIREMENT_MANAGEMENT.md` | 需求、评论和 Issue 分类规则 |
+| `VERSION_PLANNING.md` | 版本、patch、分阶段交付和 carry-over 规则 |
+| `LINEAR_INTAKE.md` | 宽泛 Linear 扫描和 run summary 规则 |
+| `AUTOMATION_POLICY.md` | scheduled scan、dry-run、幂等和禁区 |
+| `ROADMAP.md` | v0.3 到 v1.0 以及后续开源准备路线 |
 | `RELEASE_POLICY.md` | 版本推进规则 |
 | `QUALITY_GATE.md` | Ready/Review/UAT/Release 门禁 |
 | `LINEAR_POLICY.md` | Linear 结构和写入规则 |
@@ -110,6 +137,8 @@ AI Project OS v0.1 暂不上云端 Codex。
 | `FEATURE_TEMPLATE.md` | Feature 标准模板 |
 | `UAT_TEMPLATE.md` | 人工验收模板 |
 | `DAILY_MEETING.md` | 每日同步模板 |
+| `examples/FIRST_PROJECT.md` | 第一个项目 walkthrough |
+| `tools/validate_project_os.py` | 轻量政策和包结构 validator |
 | `audit/*.md` | Phase 1 产物和 Phase 3 导入计划 |
 
 ## 项目节奏
@@ -121,6 +150,31 @@ AI Project OS v0.1 暂不上云端 Codex。
 - 每个 PR 对应一个 Feature 或一个清楚的 Bug。
 - 每个正式版本必须 UAT。
 - UAT 未通过，只能修当前版本阻塞项或规划 patch，不得直接进入下一正式版本。
+- 每次宽泛 Linear 检查都必须输出 scan scope、scanned、created、updated、skipped、blockers 和 next action。
+- 每次宽泛 Linear 检查都必须按 status + assignee 分出 Codex Queue、Human Queue、Review Queue。
+- 旧版本已完成 Issue 的下版本反馈必须通过 carry-over revalidation 承接。
+
+## Human/Codex Handoff
+
+基础规则：
+
+```text
+Assigned = human queue
+Unassigned = Codex queue
+Status = lifecycle
+Labels = classification only, optional for advanced workflows
+```
+
+中文规则：
+
+```text
+有 assignee = 人类队列
+无 assignee = Codex 队列
+Status = 生命周期
+Labels = 只做分类，高级流程可选
+```
+
+`next:*` label 可以在高级团队中使用，但不得作为单用户基础流程的必需维护项。
 
 ## Scope 管理
 

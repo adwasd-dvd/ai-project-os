@@ -1,6 +1,6 @@
 # BOOTSTRAP
 
-本文定义 AI Project OS v0.1 的启动流程。
+本文定义 AI Project OS v0.3 的启动流程。
 
 任何本地 Codex 第一次进入项目时，必须先执行本文件，不允许直接开发。
 
@@ -22,7 +22,7 @@
 
 ### 目标
 
-确认 Codex 是否处在正确的项目里，是否能读取必要上下文，哪些依赖、账号、链接或权限需要用户配合。
+确认 Codex 是否处在正确的项目里，是否能读取必要上下文，Linear Issue 用什么语言描述，哪些依赖、账号、链接或权限需要用户配合。
 
 ### 必须先读取
 
@@ -37,6 +37,7 @@
 - 检查 `project-os/` 是否完整。
 - 检查 GitHub remote 是否存在。
 - 检查 Linear MCP 或连接是否可用。
+- 询问或确认 Linear Issue 描述语言，默认建议 `English + Chinese`。
 - 识别包管理器、测试命令、构建命令、环境变量模板。
 - 创建或更新 `project-os/audit/SELF_CHECK_REPORT.md`。
 
@@ -56,6 +57,7 @@ Codex 必须输出：
 - 是否可以进入 Phase 1 Audit。
 - 阻塞项。
 - 非阻塞缺口。
+- Linear Issue 描述语言偏好。
 - 接下来建议用户确认什么。
 
 如无阻塞项，Codex 可以建议进入 Phase 1。
@@ -161,6 +163,8 @@ Baseline 已确认，可以进入 Phase 3。
 - Phase 2 已人工确认。
 - `audit/LINEAR_IMPORT_PLAN.md` 已更新到最终版本。
 - Linear workspace、team、status、label、project 规则已明确。
+- Linear Issue 描述语言已确认，默认建议为 `English + Chinese`。
+- Linear Issue 描述模板已写清执行动作和期待结果。
 
 ### Linear MCP 使用规则
 
@@ -228,6 +232,19 @@ Baseline 已确认，可以进入 Phase 3。
 
 Linear 或 `project-os` 中存在明确的版本范围，且人工确认。
 
+### v0.3 版本规划补充
+
+Phase 4 必须使用 `VERSION_PLANNING.md` 判断：
+
+- 哪些 Issue 属于当前版本。
+- 哪些属于 patch。
+- 哪些属于下一正式版本。
+- 哪些只是 Backlog。
+- 哪些需要 Decision。
+- 旧版本反馈是否需要 carry-over revalidation。
+
+一个可交付 Issue 只能属于一个目标版本。旧版本已完成 Issue 的下版本反馈不得直接移动旧 issue，必须创建或更新下一版本承接 Issue。
+
 ## Phase 5 Development
 
 ### 目标
@@ -254,12 +271,15 @@ Linear 或 `project-os` 中存在明确的版本范围，且人工确认。
 6. 汇报变更、测试结果、风险。
 7. 准备 PR 描述或提交建议。
 
+如果用户用宽泛口令要求 Codex 检查 Linear 并继续工作，Codex 必须先执行 `LINEAR_INTAKE.md` 的 scan contract，并汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
+
 ### 禁止做
 
 - 禁止顺手做无关 Feature。
 - 禁止把验收反馈当新开发直接做掉。
 - 禁止跳过测试说明。
 - 禁止自我声明 UAT 通过。
+- 禁止在 v0.3 因为 scheduled scan 自动修改本地代码。
 
 ## Phase 6 Human Acceptance
 
@@ -279,12 +299,14 @@ Linear 或 `project-os` 中存在明确的版本范围，且人工确认。
   - Decision
 - 更新 Linear 状态。
 - 确认是否允许进入下一正式版本。
+- 对已完成但有下版本反馈的旧 Issue 执行 carry-over revalidation。
 
 ### 硬规则
 
 - 一个 Codex 不能自我验收。
 - 版本未人工 UAT，不得进入下一正式版本。
 - UAT 中发现的新需求不能自动进入当前版本。
+- 旧版本 Issue 原范围完成时，应关闭旧 Issue 并创建下一版本承接 Issue，不要直接移动旧 issue。
 
 ### Phase 6 完成条件
 

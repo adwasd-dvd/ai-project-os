@@ -43,6 +43,8 @@ Triage 负责决定这个事项属于哪一类：
 - Duplicate
 - Backlog
 
+详细分类规则见 `REQUIREMENT_MANAGEMENT.md`。
+
 Triage 必须回答：
 
 - 是否已有类似事项？
@@ -112,6 +114,8 @@ Development 由 Operator 使用本地 Codex 执行。
 - 自动把新需求加入当前版本。
 - 因为发现代码问题就大范围重构。
 
+如果开发请求来自宽泛 Linear 口令，Codex 必须先执行 `LINEAR_INTAKE.md`，确认目标 Feature、目标版本和阻塞 Decision。
+
 ## 7. PR
 
 每个 PR 应该对应：
@@ -169,6 +173,8 @@ Release 以 GitHub tag/release 为事实来源。
 - release notes 已准备。
 - tag 已创建。
 
+版本范围、patch、分阶段交付和旧版本 carry-over 规则见 `VERSION_PLANNING.md` 和 `RELEASE_POLICY.md`。
+
 ## 状态流转建议
 
 ```text
@@ -191,6 +197,54 @@ Won't Do
 Deferred
 ```
 
+## v0.3 Human/Codex Handoff
+
+v0.3 的基础流程不再要求人类维护 `next:*` label。
+
+基础规则：
+
+```text
+Assigned = human queue
+Unassigned = Codex queue
+Status = lifecycle
+Labels = classification only, optional for advanced workflows
+```
+
+中文规则：
+
+```text
+有 assignee = 人类队列
+无 assignee = Codex 队列
+Status = 生命周期
+Labels = 只做分类，高级流程可选
+```
+
+常见循环：
+
+```text
+Human writes requirement or feedback
+-> If Codex should work: Todo + unassigned
+-> Codex starts: In Progress + unassigned
+-> Codex finishes: In Review + assigned to Owner/reviewer
+-> Human passes: Done
+-> Human fails: comment feedback + Todo + unassigned
+```
+
+中文循环：
+
+```text
+人类写需求或反馈
+-> 如果要交给 Codex：Todo + unassigned
+-> Codex 开工：In Progress + unassigned
+-> Codex 完成：In Review + assign 给 Owner/reviewer
+-> 人类通过：Done
+-> 人类不通过：评论反馈 + Todo + unassigned
+```
+
+Codex 看到 `Todo + unassigned` 时，仍然必须先检查 Ready 条件：Feature ID、目标版本、验收标准、阻塞 Decision 和测试计划。
+
+Codex 完成后不得把正式版本或 Feature 直接验收为通过。`In Review + assigned` 是交给人类，不是完成证明。
+
 ## Codex 遇到新发现时的处理
 
 | 新发现 | Codex 应做 | Codex 不得做 |
@@ -201,3 +255,24 @@ Deferred
 | 业务规则不清 | 创建 Decision | 猜一个规则继续做 |
 | 测试缺失 | 标记测试缺口 | 声称已验收 |
 
+## v0.3 日常 Linear Loop
+
+```text
+Check Linear
+-> Intake Scan
+-> Route by status + assignee
+-> Classify comments/status changes
+-> Decide: start work, ask Decision, carry over, backlog, or stop
+-> Execute only if Feature ID + Target Version + Acceptance Criteria are ready
+-> Report changes, tests, Linear writes, skipped items, blockers
+```
+
+宽泛 Linear loop 必须防止：
+
+- 只扫描当前版本而漏掉旧版本 active feedback。
+- 把评论当作自动批准。
+- 把下版本反馈直接塞进当前版本。
+- 把旧版本已完成 Issue 直接移动到下一版本。
+- 把 scheduled scan 当作自动开发触发器。
+- 把 `Todo + assigned` 误判为 Codex-ready。
+- 要求人类维护 `next:*` label 才能完成普通交接。

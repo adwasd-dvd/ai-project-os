@@ -63,6 +63,15 @@ Team:
 | Accepted |  |  |
 | Released |  |  |
 
+### Description Language
+
+```text
+Linear Issue Description Language: English + Chinese
+Confirmed By:
+```
+
+If the user chooses another language, record it here before writing to Linear.
+
 ## Existing Linear Preflight
 
 如果 Linear MCP 可用，Phase 3 写入前必须填充。
@@ -76,6 +85,45 @@ Team:
 | Batch | Feature ID | Title | Type | Module | Target Version | Status | Labels | Depends On | Duplicate Risk |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 |  |  | feature |  |  |  |  |  | Low / Medium / High |
+
+## Linear Issue Description Requirements
+
+Feature / Bug / Chore descriptions must include:
+
+```text
+Feature ID:
+Module:
+Target Version:
+Type:
+Source:
+Problem:
+Action Steps:
+Expected Behavior:
+Expected Result:
+Acceptance Criteria:
+Evidence:
+Dependencies:
+Risks:
+Decisions:
+GitHub:
+UAT:
+```
+
+Decision descriptions must include:
+
+```text
+Decision:
+Context:
+Options:
+Recommendation:
+Action After Decision:
+Impact:
+Owner:
+Needed By:
+Blocking:
+Final Decision:
+Date:
+```
 
 ## Proposed Issues To Update
 
@@ -130,6 +178,8 @@ Risk:
 - [ ] Import plan reviewed.
 - [ ] Duplicate candidates reviewed.
 - [ ] Linear workspace/team confirmed.
+- [ ] Linear issue description language confirmed.
+- [ ] Action Steps and Expected Result included in issue descriptions.
 - [ ] First bulk write approved.
 ```
 
@@ -157,4 +207,3 @@ Codex 在以下情况必须停止并询问：
 - 状态映射不确定。
 - 写入会覆盖既有内容。
 - 业务状态和代码证据冲突。
-

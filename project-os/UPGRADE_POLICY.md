@@ -66,4 +66,5 @@ Codex must verify:
 - `LINEAR_POLICY.md` requires first bulk write approval.
 - `RELEASE_POLICY.md` requires human UAT.
 - `OS_VERSION.md` and `CHANGELOG.md` are updated.
-
+- `REQUIREMENT_MANAGEMENT.md`, `VERSION_PLANNING.md`, `LINEAR_INTAKE.md`, and `AUTOMATION_POLICY.md` are present.
+- `tools/validate_project_os.py` passes for the upgraded repository.

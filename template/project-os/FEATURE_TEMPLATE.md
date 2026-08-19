@@ -11,9 +11,16 @@ Module:
 Type: Feature
 Target Version:
 Linear Issue:
+Linear Description Language: English + Chinese
+Source:
+Source Issues:
+Source Comments:
+Carry-over From:
 GitHub PR:
 Owner:
 Status:
+Current Assignee:
+Handoff Route: Human Queue / Codex Queue / Review Queue / Blocked
 Confidence:
 ```
 
@@ -36,6 +43,46 @@ Confidence:
 ## Expected Behavior
 
 完成后应该是什么样？
+
+```text
+
+```
+
+## Action Steps
+
+执行者需要做什么？写给 Operator / Codex / Owner 看。
+
+```text
+1.
+2.
+3.
+```
+
+## Human/Codex Handoff
+
+基础路由：
+
+```text
+Assigned = human queue
+Unassigned = Codex queue
+Status = lifecycle
+Labels = classification only, optional for advanced workflows
+```
+
+当前交接：
+
+```text
+Current Status:
+Current Assignee:
+Next Actor: Human / Codex
+Next Action:
+If Human Fails UAT: comment feedback + unassign + Todo
+If Human Passes UAT: Done
+```
+
+## Expected Result
+
+执行后应该看到、得到或验证到什么？
 
 ```text
 
@@ -93,6 +140,21 @@ UAT Data:
 Pass Criteria:
 ```
 
+## Carry-over Revalidation
+
+如果本 Feature 是旧版本反馈承接项，必须填写：
+
+```text
+Source Issue:
+Source Comment:
+Original Version:
+Next Version:
+Revalidation Scenario:
+Expected Result:
+Owner Acceptance Path:
+Trace Comment Added: Yes / No
+```
+
 ## Risks
 
 ```text
@@ -118,6 +180,6 @@ Pass Criteria:
 
 请先读取本 Feature、Linear Issue、相关代码和测试。
 确认 Feature Ready 后再开始。
+如果这是宽泛 Linear 扫描选中的事项，基础 Codex-ready 条件必须是 Todo + unassigned。
 如果缺少 Feature ID、目标版本、验收标准或存在未解决 Decision，请停止并说明缺口。
 ```
-
