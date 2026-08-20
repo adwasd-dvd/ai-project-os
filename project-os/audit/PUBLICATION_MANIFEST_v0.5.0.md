@@ -13,10 +13,10 @@ Prepared By: Codex
 Destination Profile: private
 Repository / Channel: GitHub repository + GitHub Release
 Repository Visibility: PRIVATE (verified with GitHub)
-Commit / Tag: Draft PR #3 on codex/v0.5-repo-safety; tag pending human UAT
+Commit / Tag: Draft PR #3; tag v0.5.0 authorized
 Release Asset: ai-project-os-v0.5.0.zip
 Human Approver: dvdTeacher / Owner
-Decision: Review - pending human UAT and final tracked/public scan
+Decision: Go for the current PRIVATE GitHub destination
 ```
 
 ## Scope
@@ -53,17 +53,17 @@ Review Findings: private/staged 0; public/tracked advisory 32
 Review Conclusions: 30 SAF008 records fit the current Private Repo destination; 2 SAF009 Agent docs fit Team Shared in the current private repo. This is not approval for future public visibility; reclassification is required before any visibility change.
 Validator Result: 0 failures, 0 warnings
 Test Result: 10 passed
-UAT Result: Pending human Owner
+UAT Result: Pass - Owner approved 2026-08-20
 Archive / Artifact Check: unzip test and extracted standalone strict validation passed
-Remote Asset Digest: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120
+Remote Asset Digest: fb242467d1729c5cbee09cb06e5c06aabbcc234d8970b696026be19d3e8495dd
 ```
 
 ## Agent Documents
 
 | File | Canonical or Wrapper | Classification | Conflict Checked | Public Safe | Owner |
 |---|---|---|---|---|---|
-| `project-os/AGENTS.md` | Canonical | Public Safe | Yes | Yes, pending UAT | Owner |
-| `template/project-os/AGENTS.md` | Distribution copy | Public Safe | Yes, validator drift check | Yes, pending UAT | Owner |
+| `project-os/AGENTS.md` | Canonical | Public Safe | Yes | Yes for current release | Owner |
+| `template/project-os/AGENTS.md` | Distribution copy | Public Safe | Yes, validator drift check | Yes for current release | Owner |
 | Repository-root Agent wrapper | Not present | N/A | N/A | N/A | Owner |
 
 ## Project Memory
@@ -73,17 +73,17 @@ Private Audit Included: Yes in the private source repository; no project-specifi
 Discovery Detail Included: Existing dogfood evidence in the private source repository; generic blank templates only in the release zip
 Raw Conversation Included: No
 Local Overrides Included: Blank distributable template plus existing non-secret repository override
-Unresolved High-Impact Gaps: None identified by current automated checks; human review pending
-Human Conclusion: Pending
+Unresolved High-Impact Gaps: None accepted as release blockers
+Human Conclusion: Current private destination approved; future public visibility requires a new classification review
 ```
 
 ## Go / Review / Block
 
 ```text
-Decision: Review
-Decision Evidence: Validator, tests, archive, standalone package, local/worktree, and private/staged gates pass. Public advisory has zero Block and 32 destination-review findings; human UAT remains.
-Approved By: Pending
-Approved Date: Pending
+Decision: Go for current private destination
+Decision Evidence: Validator, tests, archive, standalone package, local/worktree, and private gates pass. Public advisory has zero Block and 32 classified Review findings. Owner approved v0.5.0 UAT.
+Approved By: dvdTeacher / Owner
+Approved Date: 2026-08-20
 Post-Publication Verification: Compare uploaded asset SHA-256, Release tag, README latest link, and Linear closeout.
 Rollback Trigger: Digest mismatch, Block finding, missing QUICKSTART, failed standalone validation, or human UAT failure.
 ```

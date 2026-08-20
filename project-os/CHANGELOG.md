@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## v0.5.0 - 2026-08-19
+## v0.5.0 - 2026-08-20
 
-Repository safety and project-memory boundary release candidate.
+Repository safety and project-memory boundary release.
 
 Added:
 

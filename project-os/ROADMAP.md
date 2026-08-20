@@ -85,7 +85,7 @@ Deliverables:
 
 ## v0.5 - Repo Safety & Project Memory Boundary
 
-Status: Current development / 当前开发版本
+Status: Released / 已发布
 
 Goal:
 
@@ -110,6 +110,8 @@ Deliverables:
 - GitHub README and `QUICKSTART.md` 60-second download/place/prompt startup path.
 
 ## v0.6 - Linear Intake / Cron MVP
+
+Status: Next planned / 下一计划版本
 
 Goal:
 

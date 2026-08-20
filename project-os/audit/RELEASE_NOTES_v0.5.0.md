@@ -1,8 +1,8 @@
 # Release v0.5.0
 
-Candidate release notes for AI Project OS v0.5.0. Do not publish before human UAT.
+Release notes for AI Project OS v0.5.0.
 
-AI Project OS v0.5.0 候选发布说明。人工 UAT 前不得发布。
+AI Project OS v0.5.0 发布说明。
 
 ## Summary
 
@@ -55,7 +55,7 @@ Review disposition: Private Repo dogfood records and Team Shared Agent docs are 
 Release archive integrity: Passed
 Extracted standalone strict validation: Passed
 Extracted standalone tests: 10 passed
-Human UAT: Pending
+Human UAT: Pass - Owner approved 2026-08-20
 ```
 
 ## GitHub
@@ -63,8 +63,8 @@ Human UAT: Pending
 ```text
 Branch: codex/v0.5-repo-safety
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/3
-Tag: Pending UAT
-Release: Pending UAT
+Tag: v0.5.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.5.0
 Release asset: ai-project-os-v0.5.0.zip
-Release SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120
+Release SHA-256: fb242467d1729c5cbee09cb06e5c06aabbcc234d8970b696026be19d3e8495dd
 ```

@@ -80,30 +80,30 @@ Generated zip files stay out of Git history. Versioned packages are published as
 
 ## Use In Another Project
 
-1. Download `ai-project-os-v0.4.0.zip` from the [v0.4.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0).
+1. Download `ai-project-os-v0.5.0.zip` from the [v0.5.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.5.0).
 2. Extract the top-level `project-os/` directory into the target repository root.
 3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## Latest Stable: v0.4.0
+## Latest Stable: v0.5.0
 
-v0.4 adds Project Whitebox for taking over mature black-box or gray-box repositories before baseline confirmation.
+v0.5 adds repository safety and project-memory boundaries around the v0.4 Project Whitebox flow.
 
 Core outputs:
 
-- A read-only-by-default repository scanner that emits paths and safe declaration names, never secret values.
-- Project, dependency, document, settings/data, and logic/boundary maps.
-- Evidence states: Observed, Derived, Claimed, Inferred, Contradicted, and Unknown.
-- Confidence levels and required next verification for important findings.
-- A compact bilingual Linear project summary backed by detailed GitHub/local evidence.
-- Validator and tests that keep source and distributable templates aligned.
+- Local Only, Team Shared, Private Repo, and Public Safe artifact classification.
+- Phase 0.75 Safety Classification before Git/team/public publication.
+- Repository-publication and Agent-document sharing policies.
+- Project-memory audit and documentation-gap records.
+- A read-only scanner that reports risk without emitting matched values or source lines.
+- A 60-second GitHub download/place/prompt startup path.
 
-v0.4.0 passed human UAT on 2026-08-19. Use the tagged GitHub Release for installations in other projects.
+v0.5.0 passed human UAT on 2026-08-20. Use the tagged GitHub Release for installations in other projects.
 
-## Current Development: v0.5
+## Next Planned: v0.6
 
-v0.5 adds repository safety and project-memory boundaries: artifact classification, publication policy, Agent document policy, documentation-gap tracking, and sanitized secret-scan gates. It remains unreleased until human UAT passes.
+v0.6 will add the Linear Intake / Cron MVP. It remains planning scope until the v0.6 version is confirmed.
 
 ## v0.3 Handoff Rule
 

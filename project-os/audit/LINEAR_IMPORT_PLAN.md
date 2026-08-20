@@ -580,7 +580,7 @@ Local/worktree safety scan: Block 0, Review 0, Go
 Staged/private safety scan: Block 0, Review 0, Go
 Public/tracked advisory: Block 0, Review 32; 30 Private Repo memory records + 2 Team Shared Agent docs are compatible with current PRIVATE GitHub, but require reclassification before future public visibility
 Candidate zip: releases/ai-project-os-v0.5.0.zip
-Candidate SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120
+Candidate SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120 (superseded after final release-state metadata)
 Archive integrity: Passed
 Extracted package strict validation: Passed
 Extracted package tests: 10 passed
@@ -595,11 +595,23 @@ GitHub review evidence:
 ```text
 Branch: codex/v0.5-repo-safety
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/3
-Candidate zip SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120
+Final release zip SHA-256: fb242467d1729c5cbee09cb06e5c06aabbcc234d8970b696026be19d3e8495dd
 ```
 
 Do not merge, tag, release, complete issues, or complete the v0.5 project before the Owner states:
 
 ```text
 UAT 通过，允许发布 v0.5.0。
+```
+
+## v0.5 UAT Approval - 2026-08-20
+
+Owner explicitly approved v0.5.0 UAT and authorized release.
+
+Owner 已明确批准 v0.5.0 UAT 并授权发布。
+
+```text
+UAT: Pass
+Approval: UAT 通过，允许发布 v0.5.0。
+Next: finalize package, merge PR #3, publish tag/release, then close DVD-83 through DVD-89 and the v0.5 project.
 ```
