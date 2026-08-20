@@ -578,6 +578,7 @@ Strict validator: 0 failures, 0 warnings
 Automated tests: 10 passed
 Local/worktree safety scan: Block 0, Review 0, Go
 Staged/private safety scan: Block 0, Review 0, Go
+Public/tracked advisory: Block 0, Review 32; 30 Private Repo memory records + 2 Team Shared Agent docs are compatible with current PRIVATE GitHub, but require reclassification before future public visibility
 Candidate zip: releases/ai-project-os-v0.5.0.zip
 Candidate SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120
 Archive integrity: Passed

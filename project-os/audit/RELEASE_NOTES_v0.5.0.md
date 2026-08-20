@@ -48,6 +48,10 @@ v0.5 在 v0.4 白盒流程外增加仓库安全与项目记忆边界：区分仅
 Strict validator: 0 failures, 0 warnings
 Automated tests: 10 passed
 Local/worktree safety scan: Block 0, Review 0, Gate Go
+Staged/private safety scan: Block 0, Review 0, Gate Go
+Public/tracked advisory: Block 0, Review 32, Gate Review
+Current GitHub destination: PRIVATE
+Review disposition: Private Repo dogfood records and Team Shared Agent docs are allowed only for the current private destination; future public visibility requires reclassification
 Release archive integrity: Passed
 Extracted standalone strict validation: Passed
 Extracted standalone tests: 10 passed

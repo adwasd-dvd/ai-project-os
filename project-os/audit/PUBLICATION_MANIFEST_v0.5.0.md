@@ -10,9 +10,9 @@ This is the release-specific publication record for AI Project OS v0.5.0.
 Manifest ID: AIPOS-PUB-v0.5.0
 Prepared Date: 2026-08-20
 Prepared By: Codex
-Destination Profile: public
+Destination Profile: private
 Repository / Channel: GitHub repository + GitHub Release
-Repository Visibility: Verify before release
+Repository Visibility: PRIVATE (verified with GitHub)
 Commit / Tag: codex/v0.5-repo-safety; tag pending human UAT
 Release Asset: ai-project-os-v0.5.0.zip
 Human Approver: dvdTeacher / Owner
@@ -34,23 +34,23 @@ Rollback Location: v0.4.0 GitHub tag and Release.
 
 | Artifact / Path | Classification | Destination | Evidence | Owner | Included? | Notes |
 |---|---|---|---|---|---|---|
-| Root README and version metadata | Public Safe | GitHub source | validator + human review | Owner | Yes | Includes 60-second start |
-| `template/project-os/` | Public Safe | GitHub source + Release zip | strict standalone validation | Owner | Yes | Product distribution source |
-| `project-os/` generic policies/tools | Public Safe | GitHub source | source/template drift check | Owner | Yes | Dogfood installation |
-| `project-os/audit/` release evidence | Public Safe after review | GitHub source | safety scan + human review | Owner | Yes | No raw chat or secret values |
-| Dogfood discovery details not already tracked | Private Repo | None | scope decision | Owner | No | Do not add merely for release |
-| `releases/ai-project-os-v0.5.0.zip` | Public Safe after UAT | GitHub Release asset | archive + extracted-package validation | Owner | Release only | Not committed as source |
+| Root README and version metadata | Public Safe | Private GitHub source | validator + human review | Owner | Yes | Includes 60-second start |
+| `template/project-os/` | Public Safe candidate | Private GitHub source + Release zip | strict standalone validation | Owner | Yes | Product distribution source; public reuse needs later approval |
+| `project-os/` generic policies/tools | Team Shared | Private GitHub source | source/template drift check | Owner | Yes | Dogfood installation |
+| `project-os/audit/` release evidence | Private Repo | Private GitHub source | safety scan + human review | Owner | Yes | No raw chat or secret values |
+| Existing dogfood discovery details | Private Repo | Private GitHub source | public-profile Review classification | Owner | Yes | Excluded from distribution zip |
+| `releases/ai-project-os-v0.5.0.zip` | Public Safe candidate | Private GitHub Release asset | archive + extracted-package validation | Owner | Release only | Not committed as source |
 | Credentials, local environment, raw chat | Local Only | None | policy boundary | Owner | No | Must never enter artifact |
 
 ## Required Evidence
 
 ```text
-Safety Scan Command: private/staged before PR; public/tracked after candidate commit
+Safety Scan Command: private/staged release gate; public/tracked advisory preflight for future visibility change
 Safety Evidence Path: sanitized terminal summary; no persistent matched content
 Safety Evidence Hash: N/A - summary-only scan
 Block Findings: 0 required for Go
-Review Findings: private/staged 0; final public/tracked pending
-Review Conclusions: No staged Review findings; human UAT pending
+Review Findings: private/staged 0; public/tracked advisory 32
+Review Conclusions: 30 SAF008 records fit the current Private Repo destination; 2 SAF009 Agent docs fit Team Shared in the current private repo. This is not approval for future public visibility; reclassification is required before any visibility change.
 Validator Result: 0 failures, 0 warnings
 Test Result: 10 passed
 UAT Result: Pending human Owner
@@ -69,8 +69,8 @@ Remote Asset Digest: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda
 ## Project Memory
 
 ```text
-Private Audit Included: No; only reviewed release evidence and generic template audit files
-Discovery Detail Included: Generic templates and already reviewed v0.4 dogfood evidence only
+Private Audit Included: Yes in the private source repository; no project-specific dogfood audit in the release zip
+Discovery Detail Included: Existing dogfood evidence in the private source repository; generic blank templates only in the release zip
 Raw Conversation Included: No
 Local Overrides Included: Blank distributable template plus existing non-secret repository override
 Unresolved High-Impact Gaps: None identified by current automated checks; human review pending
@@ -81,7 +81,7 @@ Human Conclusion: Pending
 
 ```text
 Decision: Review
-Decision Evidence: Validator, tests, archive, standalone package, local/worktree, and private/staged gates pass; human UAT and final public/tracked scan remain.
+Decision Evidence: Validator, tests, archive, standalone package, local/worktree, and private/staged gates pass. Public advisory has zero Block and 32 destination-review findings; human UAT remains.
 Approved By: Pending
 Approved Date: Pending
 Post-Publication Verification: Compare uploaded asset SHA-256, Release tag, README latest link, and Linear closeout.

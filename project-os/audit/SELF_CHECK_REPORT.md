@@ -21,7 +21,7 @@ Status: Draft
 
 | Check | Result | Notes |
 |---|---|---|
-| Current directory is project root | Yes | `/Users/adwasd/Code/ai-project-os` |
+| Current directory is project root | Yes | Repository root (`.`) |
 | `.git` exists | Yes | Initialized on `main` |
 | `project-os/` exists | Yes | Installed OS instance for this repo |
 | `template/project-os/` exists | Yes | Distributable package source |

@@ -54,7 +54,8 @@ Archive integrity: Passed
 Extracted standalone validator: 0 failures, 0 warnings
 Extracted standalone tests: 10 passed
 Staged/private safety gate: Block 0, Review 0, Gate Go
-Final tracked/public gate: Pending candidate commit
+Public/tracked advisory: Block 0, Review 32, Gate Review
+Review disposition: 30 Private Repo memory records and 2 Team Shared Agent docs are compatible with the current PRIVATE GitHub destination; not pre-approved for future public visibility
 ```
 
 ## Human UAT Scenarios
@@ -71,6 +72,7 @@ Final tracked/public gate: Pending candidate commit
 | SAF-008 | AIPOS-035 | Use a test file containing a secret-like value / 用测试夹具模拟疑似 secret | Finding contains rule/path/classification/disposition/remediation but not value or source line / finding 有处置信息但不泄露值或源行 | Codex: Passed | Pending Owner | Covered by unit tests |
 | SAF-009 | AIPOS-032 | Review a private-repo publication decision / 检查私有仓库发布判断 | Credentials/private keys still Block; repository visibility does not waive classification / 凭证仍阻塞，私有可见性不代表安全分类 | Codex: Policy + tests pass | Pending Owner |  |
 | SAF-010 | AIPOS-036 | Compare source and `template/project-os/` / 比较源码与分发模板 | Generic files match; project-specific audit data does not leak into template package / 通用文件一致且 dogfood 审计不泄露到分发模板 | Codex: strict drift check passed | Pending Owner |  |
+| SAF-011 | AIPOS-032 | Compare private release and future public visibility / 比较当前私有发布与未来公开仓库 | Current private-compatible Review items remain visible and must be reclassified before any visibility change / 当前可进入私有仓库的内容在未来公开前仍需重新分类 | Codex: 32 Review items grouped and dispositioned | Pending Owner |  |
 
 ## Minimal Owner Check
 
