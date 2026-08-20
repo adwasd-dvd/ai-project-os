@@ -15,6 +15,31 @@ Linear 是项目管理事实来源。
 
 如果 Linear workspace 已有不同结构，Codex 必须先读取现状并提出映射建议，不得强行重建。
 
+## v0.4 Project Whitebox Summary
+
+成熟项目完成 Phase 0.5 后，Linear Project Description 应包含一个紧凑的双语白盒摘要，详细证据仍保存在 GitHub/本地 `project-os/discovery/`。
+
+白盒摘要必须包含：
+
+- Evidence freshness：日期 + commit SHA。
+- System shape：系统的主要组件和运行方式。
+- Confidence：总体置信度和重要低置信度区域。
+- Top risks：最高影响发现及 Finding ID。
+- Contradictions：未解矛盾和下一步验证。
+- Unknowns：重要未知项和 owner。
+- Evidence links：六份白盒报告的 GitHub 链接或仓库路径。
+- Next verification：下一个验证动作和期待结果。
+
+可直接使用的格式见 `discovery/WHITEBOX_IMPORT_REPORT.md`。
+
+Linear 里的摘要不得：
+
+- 复制 secret 值。
+- 把 Inferred 或 Claimed 改写为 Observed。
+- 隐藏高影响 Unknown 或 Contradicted 发现。
+- 代替 GitHub/本地详细证据。
+- 绕过 Baseline 确认和首次 Linear 批量写入授权。
+
 ## Linear 输出语言
 
 Phase 0 初始化时，Codex 必须询问或确认 Linear Issue 描述语言。

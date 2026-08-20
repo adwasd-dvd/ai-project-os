@@ -24,6 +24,24 @@ Status: Draft / Reviewed / Confirmed
 - 
 ```
 
+## Whitebox Evidence Summary
+
+| Report | Status | Important Finding | State | Evidence | Confidence | Next Verification |
+|---|---|---|---|---|---|---|
+| `discovery/PROJECT_MAP.md` | Draft / Partial / Complete / Not Applicable |  | Observed / Derived / Claimed / Inferred / Contradicted / Unknown |  | High / Medium / Low / Unknown |  |
+| `discovery/DEPENDENCY_MAP.md` |  |  |  |  |  |  |
+| `discovery/DOCUMENT_INVENTORY.md` |  |  |  |  |  |  |
+| `discovery/SETTINGS_AND_DATA_REGISTER.md` |  |  |  |  |  |  |
+| `discovery/LOGIC_BOUNDARY_AUDIT.md` |  |  |  |  |  |  |
+| `discovery/WHITEBOX_IMPORT_REPORT.md` |  |  |  |  |  |  |
+
+```text
+Whitebox coverage accepted: Yes / No / Pending
+High-impact contradictions open:
+High-impact low-confidence findings:
+Secret values present in discovery outputs: Must be No
+```
+
 ## Repository Overview
 
 ```text
@@ -113,6 +131,12 @@ Test Framework:
 - 
 ```
 
+## Main Contradictions
+
+| Finding ID | Claim A | Claim B | Impact | Evidence | Confidence | Next Verification |
+|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |
+
 ## Human Confirmation Needed
 
 ```text
@@ -131,4 +155,3 @@ No Linear writes were performed.
 The following items require human confirmation before Phase 3:
 -
 ```
-

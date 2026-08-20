@@ -1,10 +1,10 @@
 # SELF_CHECK
 
-本文定义 AI Project OS v0.3 的 Phase 0 Self-Check。
+本文定义 AI Project OS v0.4 的 Phase 0 Self-Check。
 
 Phase 0 是本地 Codex 第一次接管项目时必须执行的初始化自检。
 
-目标：先确认 Codex 是否站在正确的项目里、是否能读取必要上下文、Linear 中用什么语言描述项目事项、哪些依赖或账号需要用户配合、是否存在 scheduled scan 需求，再进入 Phase 1 Audit。
+目标：先确认 Codex 是否站在正确的项目里、是否能读取必要上下文、Linear 中用什么语言描述项目事项、哪些依赖或账号需要用户配合、是否存在 scheduled scan 需求，并判断是否必须进入 Phase 0.5 Whitebox Discovery。
 
 ## 什么时候执行
 
@@ -29,6 +29,8 @@ Phase 0 是本地 Codex 第一次接管项目时必须执行的初始化自检�
 - 如果项目会进入 Linear，必须询问或确认 Linear Issue 描述语言。
 - Linear Issue 描述语言默认建议为 `English + Chinese`，除非用户明确指定其他语言。
 - Codex-authored Linear comments、status updates 和 run summaries 默认也应遵守同一双语用户可读规则。
+- 成熟、不明、上下文不完整的项目默认需要 Phase 0.5 Whitebox Discovery。
+- Phase 0 必须确认 scanner 的读取范围、排除范围和 discovery 写入路径。
 - Phase 0 不修改产品代码。
 - Phase 0 不写入 Linear。
 - Phase 0 不创建 GitHub PR。
@@ -39,7 +41,7 @@ Phase 0 是本地 Codex 第一次接管项目时必须执行的初始化自检�
 当用户说“按照这个懒人包工作”时，Codex 应先说明：
 
 ```text
-我会先做 Phase 0 Self-Check：确认当前仓库、project-os 文件、Git/GitHub、Linear、Linear Issue 描述语言（默认建议 English + Chinese）、依赖、环境变量、测试入口和是否需要 scheduled Linear scan。不会修改产品代码，也不会写入 Linear。完成后我会告诉你缺什么，再进入 Phase 1 Audit。
+我会先做 Phase 0 Self-Check：确认当前仓库、project-os 文件、Git/GitHub、Linear、Linear Issue 描述语言（默认建议 English + Chinese）、依赖、环境变量、测试入口、scheduled Linear scan 需求，并判断是否需要 Phase 0.5 Whitebox Discovery。不会修改产品代码，也不会写入 Linear。
 ```
 
 然后直接开始检查。
@@ -96,6 +98,20 @@ Codex 必须识别：
 
 这一步只做识别，不做深度审计。
 
+### 3.1 Whitebox Need and Scope
+
+Codex 必须判断：
+
+- 这是全新项目，还是已经存在的成熟项目。
+- 原始设计、业务规则、对话和历史是否完整。
+- 是否存在 submodule、关联仓库、大文件、生成目录、vendor 目录或不可读区域。
+- 是否可以运行 `project-os/tools/whitebox_scan.py`。
+- scanner 默认输出是否保持只读。
+- 如果写入证据，是否只写 `project-os/discovery/`。
+- 哪些区域需要人类授权或只能标记为 Unknown。
+
+成熟或上下文不完整的项目必须进入 Phase 0.5。全新空项目可记录 `Not Applicable`，但必须说明证据。
+
 ### 4. Local Dependency Readiness
 
 Codex 必须判断：
@@ -148,7 +164,7 @@ Linear 连接缺失不应阻塞 Phase 1，但会阻塞 Phase 3 写入。
 Codex 必须向用户明确当前阶段权限：
 
 ```text
-Phase 0/1 我只会读取项目并写 project-os/audit 文档。
+Phase 0/0.5/1 我只会读取项目并写 project-os/audit 和 project-os/discovery 文档。
 我不会改产品代码。
 我不会写入 Linear。
 我不会创建 GitHub PR。
@@ -200,6 +216,8 @@ Current Goal: 完成 AI Project OS Phase 0 Self-Check，并判断是否可以进
 | 数据库连接 | Maybe | 不连接生产库，先记录 |
 | UAT Owner | No | Phase 4 前必须确认 |
 | 项目根目录不确定 | Yes | 立即询问 |
+| Whitebox 扫描范围不确定 | Maybe | 先记录可读范围，只在高影响区域受阻时询问 |
+| 生产访问 | No | 不连接，记录为未验证边界 |
 
 ## Phase 0 Output
 
@@ -223,6 +241,8 @@ project-os/audit/SELF_CHECK_REPORT.md
 - 阻塞项。
 - 非阻塞缺口。
 - 是否建议进入 Phase 1。
+- 是否必须进入 Phase 0.5 Whitebox Discovery。
+- Whitebox 读取范围、排除范围和写入路径。
 
 ## Phase 0 Completion
 
@@ -231,7 +251,8 @@ project-os/audit/SELF_CHECK_REPORT.md
 ```text
 Phase 0 Self-Check complete.
 
-Can start Phase 1 Audit: Yes / No
+Needs Phase 0.5 Whitebox Discovery: Yes / No / Not Applicable
+Can start Phase 0.5 or Phase 1 Audit: Yes / No
 
 Blocking items:
 -
@@ -243,10 +264,12 @@ Recommended next step:
 -
 ```
 
-如果可以进入 Phase 1，Codex 应询问用户：
+如果需要 Phase 0.5，Codex 应优先进入白盒发现。如果有证据标记为 `Not Applicable`，才直接进入 Phase 1。
+
+Codex 可向用户说明：
 
 ```text
-是否现在开始 Phase 1 Audit？我会只读项目并生成 audit 文档，不改产品代码、不写 Linear。
+是否现在开始 Phase 0.5/1？我会只读项目，生成 discovery 和 audit 文档，不改产品代码、不写 Linear。
 ```
 
 如果用户一开始已经明确要求“初始化并开始 Phase 1”，且 Phase 0 没有阻塞项，Codex 可以直接进入 Phase 1，但必须先在回复中说明。

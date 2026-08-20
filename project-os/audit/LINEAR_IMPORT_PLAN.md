@@ -460,3 +460,81 @@ Passed
 v0.3 is implemented and ready for human review/UAT.
 
 Do not move AIPOS-019 through AIPOS-023 to `Done` until the Owner gives an explicit UAT/sign-off conclusion.
+
+## v0.3 Closeout Linear Update - 2026-08-19
+
+Owner explicitly approved v0.3.0. Codex moved DVD-51 through DVD-56 to `Done`, completed the v0.3 Linear project, and published the GitHub v0.3.0 release.
+
+Owner 已明确批准 v0.3.0。Codex 已将 DVD-51 到 DVD-56 移至 `Done`，完成 v0.3 Linear project，并发布 GitHub v0.3.0 release。
+
+## v0.4 Implementation Linear Update - 2026-08-19
+
+### Project
+
+| Linear ID | Name | Status | Notes |
+|---|---|---|---|
+| `5647caf5-3ff8-424a-be52-9d36e5000028` | AI Project OS v0.4 | In Progress | Project Whitebox: read-only existing-project discovery, evidence classification, import summary, and human confirmation gate |
+
+### Labels
+
+| Linear ID | Name | Purpose |
+|---|---|---|
+| `b31b9558-b7a8-4034-9bd6-b88ecd9a4a98` | `module:whitebox` | Classify v0.4 whitebox discovery work |
+
+### Decision
+
+| Linear ID | Source ID | Status | Notes |
+|---|---|---|---|
+| DVD-58 | DEC-007 | Done | Confirmed read-only discovery, evidence states, confidence, secret-safe output, and human confirmation boundary |
+
+### Implementation Issues
+
+| Linear ID | Source ID | UAT Status | Implementation Evidence |
+|---|---|---|---|
+| DVD-60 | AIPOS-024 | In Review + dvdTeacher | `WHITEBOX_PROTOCOL.md`, `REQUIREMENT_MANAGEMENT.md`, `FEATURE_TEMPLATE.md` |
+| DVD-59 | AIPOS-025 | In Review + dvdTeacher | `tools/whitebox_scan.py`, `discovery/PROJECT_MAP.md` |
+| DVD-63 | AIPOS-026 | In Review + dvdTeacher | `discovery/DEPENDENCY_MAP.md` |
+| DVD-62 | AIPOS-027 | In Review + dvdTeacher | `discovery/DOCUMENT_INVENTORY.md`, `discovery/SETTINGS_AND_DATA_REGISTER.md` |
+| DVD-61 | AIPOS-028 | In Review + dvdTeacher | `discovery/LOGIC_BOUNDARY_AUDIT.md` |
+| DVD-64 | AIPOS-029 | In Review + dvdTeacher | `discovery/WHITEBOX_IMPORT_REPORT.md`, `LINEAR_POLICY.md` |
+| DVD-65 | AIPOS-030 | In Review + dvdTeacher | validator, scanner tests, worked example, release package, and UAT records |
+
+### Verification
+
+```text
+python3 project-os/tools/validate_project_os.py --root . --strict
+python3 template/project-os/tools/validate_project_os.py --root . --strict
+python3 -m unittest project-os/tools/test_validate_project_os.py template/project-os/tools/test_validate_project_os.py project-os/tools/test_whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
+python3 project-os/tools/whitebox_scan.py --root . --summary
+unzip -t releases/ai-project-os-v0.4.0.zip
+git diff --check
+```
+
+### Remaining Human Gate
+
+Verification and GitHub Draft PR publication are complete. AIPOS-024 through AIPOS-030 are `In Review`, assigned to `dvdTeacher`, and include bilingual implementation evidence comments. Project status update `e25d88f6-17e6-4e91-8956-ecc4f1459cbb` records the UAT handoff.
+
+Wait for explicit human UAT. Do not merge, tag, release, complete the issues, or complete the Linear project before approval.
+
+GitHub review evidence:
+
+```text
+Branch: codex/v0.4-whitebox
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
+Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
+Final candidate zip SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
+```
+
+## v0.4 Closeout Linear Update - 2026-08-19
+
+Owner explicitly approved v0.4.0 UAT. Codex moved DVD-59 through DVD-65 to `Done`, confirmed DVD-58 remained `Done`, completed the v0.4 Linear project, and published the GitHub v0.4.0 release with the distributable zip asset.
+
+Owner 已明确批准 v0.4.0 UAT。Codex 将 DVD-59 到 DVD-65 移至 `Done`，确认 DVD-58 保持 `Done`，完成 v0.4 Linear project，并发布带分发 zip 的 GitHub v0.4.0 release。
+
+```text
+UAT: Pass
+PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
+Tag: v0.4.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0
+Release asset SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
+```

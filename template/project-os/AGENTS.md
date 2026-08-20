@@ -21,6 +21,9 @@
 15. Human/Codex 基础交接由 assignee 决定：有 assignee 等人类，无 assignee 等 Codex。
 16. `next:*` label 是高级可选项，不是基础流程必需项。
 17. v0.3 scheduled automation 不得自动修改本地代码。
+18. 接管成熟或现状不明的项目，Baseline 前必须执行 `WHITEBOX_PROTOCOL.md`。
+19. 重要白盒结论必须记录 State、Evidence、Confidence 和 Next Verification。
+20. discovery 产物可记录设置名和路径，不得记录 secret 值。
 
 ## AI 行为原则
 
@@ -33,6 +36,8 @@
 - 遇到业务歧义时创建 Decision。
 - 对每个 Feature 说明测试和验收状态。
 - 对风险、未知和缺失证据保持诚实。
+- 对成熟项目先生成白盒地图，再给出 Baseline 和开发建议。
+- 区分 Observed、Derived、Claimed、Inferred、Contradicted 和 Unknown。
 - 检查 Linear 时汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
 
 ### 不得做
@@ -45,6 +50,8 @@
 - 不得在 Phase 1 写入 Linear。
 - 不得在没有人工授权时批量创建 Linear Issue。
 - 不得因为 Linear 状态或评论变化自动开始代码修改。
+- 不得把 README、聊天或代码注释中的说法直接当作已观察运行事实。
+- 不得为了 discovery 直接执行未知项目脚本或连接生产系统。
 
 ## 角色定义
 
@@ -99,6 +106,7 @@ Codex 可以：
 - 通过 Linear MCP 读写已确认内容。
 - 按 `LINEAR_INTAKE.md` 扫描 Linear 并生成双语 run summary。
 - 按 status + assignee 区分 Human Queue、Codex Queue 和 Review Queue。
+- 运行只读 whitebox scanner，并生成 `project-os/discovery/` 白盒报告。
 
 Codex 不可以：
 
@@ -113,6 +121,7 @@ Codex 不可以：
 | 阶段 | 读代码 | 改代码 | 写 audit 文档 | 写 Linear | 创建 PR | 人工确认 |
 |---|---:|---:|---:|---:|---:|---:|
 | Phase 0 Self-Check | Yes | No | Yes | No | No | Required for blockers |
+| Phase 0.5 Whitebox Discovery | Yes | No | Yes | No | No | Required for scope, contradictions, and unavailable evidence |
 | Phase 1 Audit | Yes | No | Yes | No | No | Required after |
 | Phase 2 Confirmation | Yes | No | Yes | No | No | Required |
 | Phase 3 Linear Import | Yes | No | Yes | With approval | No | Required before first bulk write |

@@ -74,6 +74,22 @@ If the user chooses another language, record it here before writing to Linear.
 
 ## Existing Linear Preflight
 
+### Whitebox Evidence Source
+
+```text
+Whitebox Import Report: project-os/discovery/WHITEBOX_IMPORT_REPORT.md
+Evidence Commit:
+Evidence Freshness:
+Overall Confidence:
+High-impact Contradictions:
+High-impact Unknowns:
+Human Coverage Confirmation: Pending / Confirmed / Not Applicable
+```
+
+If Phase 0.5 applies, the Linear project description must include the compact bilingual whitebox summary and evidence links from `WHITEBOX_IMPORT_REPORT.md`.
+
+如果适用 Phase 0.5，Linear Project Description 必须包含 `WHITEBOX_IMPORT_REPORT.md` 中的紧凑双语白盒摘要和证据链接。
+
 如果 Linear MCP 可用，Phase 3 写入前必须填充。
 
 | Existing Item | Type | Possible Match | Risk | Action |

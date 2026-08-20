@@ -1,6 +1,6 @@
 # REQUIREMENT_MANAGEMENT
 
-本文定义 AI Project OS v0.3 的需求和 issue 管理规则。
+本文定义 AI Project OS v0.4 的需求和 issue 管理规则。
 
 核心原则：
 
@@ -103,6 +103,38 @@ UAT:
 | 人类验收失败，交回 Codex | Todo | Empty |
 
 即使 issue 是 `Todo + unassigned`，Codex 也必须先检查 Feature ID、目标版本、验收标准和阻塞 Decision。
+
+## Whitebox Finding Intake
+
+Phase 0.5 发现不能自动等同于开发需求。Codex 必须先按证据状态分类：
+
+| Finding State | 默认处理 |
+|---|---|
+| Observed | 预期行为已经确认时可形成 Bug；否则先验证或创建 Decision |
+| Derived | 可以形成机械事实或清单项，但必须引用扫描证据 |
+| Claimed | 先确认来源权威性和新鲜度，再决定是否进入需求 |
+| Inferred | 不直接开发；先收集代码、测试、运行结果或人类确认 |
+| Contradicted | 创建 Decision 或验证任务，记录冲突双方证据 |
+| Unknown | 高影响时创建验证 Feature 或 Decision；低影响时保留在验证队列 |
+
+任何由白盒发现产生的 Linear Issue 或本地 Feature，至少包含：
+
+```text
+Finding ID:
+Finding State:
+Evidence:
+Evidence Freshness:
+Confidence:
+Next Verification:
+```
+
+创建规则：
+
+- “代码这样做”不等于“产品就应该这样做”。预期行为未确认时，不创建普通 Bug。
+- 高影响、低置信度的发现优先成为验证任务，不直接成为实现任务。
+- 一个发现跨越多个版本时，按版本拆分 Issue，并保留同一个 Finding ID。
+- Linear Project Description 只放摘要、风险和链接；详细证据保留在 `project-os/discovery/`。
+- 任何密钥、token、密码、个人数据或配置值都不得复制到 Feature、Issue 或评论。
 
 ## 宽泛需求拆分
 

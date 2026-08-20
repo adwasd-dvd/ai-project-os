@@ -1,8 +1,8 @@
 # ROADMAP
 
-This roadmap captures the intended path from AI Project OS v0.3 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
+This roadmap captures the intended path from AI Project OS v0.4 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
 
-本路线图记录 AI Project OS 从 v0.3 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
+本路线图记录 AI Project OS 从 v0.4 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
 
 ## Product Positioning
 
@@ -27,6 +27,8 @@ Its job is not only to help Codex write code. Its job is to make AI-assisted sof
 - 通过共享项目规则支持不同 AI 编码工具。
 
 ## v0.3 - Human/Codex Handoff
+
+Status: Released / 已发布
 
 Goal:
 
@@ -56,6 +58,8 @@ Deliverables:
 
 ## v0.4 - Project Whitebox / Existing Project Intelligence
 
+Status: Released / 已发布
+
 Goal:
 
 Take an existing black-box or gray-box project and make it understandable, inspectable, and manageable.
@@ -66,6 +70,9 @@ Take an existing black-box or gray-box project and make it understandable, inspe
 
 Deliverables:
 
+- `WHITEBOX_PROTOCOL.md`
+- `tools/whitebox_scan.py`
+- deterministic `discovery/SCAN_EVIDENCE.json` generation
 - `discovery/PROJECT_MAP.md`
 - `discovery/DEPENDENCY_MAP.md`
 - `discovery/DOCUMENT_INVENTORY.md`
@@ -74,8 +81,11 @@ Deliverables:
 - `discovery/WHITEBOX_IMPORT_REPORT.md`
 - Linear project description summary with links to whitebox docs.
 - Evidence and confidence levels for every important conclusion.
+- Worked example, scanner tests, validator guardrails, and human UAT.
 
 ## v0.5 - Repo Safety & Project Memory Boundary
+
+Status: Next development / 下一开发版本
 
 Goal:
 

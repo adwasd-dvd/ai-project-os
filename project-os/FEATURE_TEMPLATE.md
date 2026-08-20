@@ -32,6 +32,23 @@ Confidence:
 
 ```
 
+## Whitebox Trace / 白盒追踪
+
+如果本 Feature 来自既有项目白盒发现，必须填写；新项目或非白盒来源可写 `N/A`。
+
+```text
+Finding ID:
+Finding State: Observed / Derived / Claimed / Inferred / Contradicted / Unknown
+Evidence:
+Evidence Freshness:
+Confidence: High / Medium / Low / Unknown
+Unknowns:
+Contradictions:
+Next Verification:
+```
+
+高影响但低置信度、`Inferred`、`Contradicted` 或 `Unknown` 的发现，默认只能创建验证任务或 Decision，不能把推测直接当作目标行为开发。
+
 ## User / Actor
 
 谁会使用或受影响？

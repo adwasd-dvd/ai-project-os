@@ -4,7 +4,7 @@
 
 ## 项目目标
 
-本项目使用 AI Project OS v0.3，把本地代码仓库整理成可以持续推进的工程系统。
+本项目使用 AI Project OS v0.4，把本地代码仓库整理成可以持续推进的工程系统。
 
 系统目标：
 
@@ -18,8 +18,10 @@
 - 让 Human/Codex 交接只靠 status + assignee 就能跑通基础流程。
 - 让 scheduled scan 可以安全运行，但不自动修改本地代码。
 - 让 OS 路线朝向“救活混乱成熟项目”的 v1.0 成功标准推进。
+- 让成熟黑盒/灰盒项目在 Baseline 前产生证据化白盒地图。
+- 让依赖、文档、设置、数据、逻辑、设计边界、矛盾和未知项可见。
 
-## v0.3 工具边界
+## v0.4 工具边界
 
 ### Linear
 
@@ -34,6 +36,7 @@ Linear 负责：
 - 跨版本 intake scan。
 - carry-over revalidation。
 - Human Queue、Codex Queue 和 Review Queue。
+- 白盒发现的摘要、验证队列、Decision、Feature、Bug 和 Backlog。
 
 Linear 不负责：
 
@@ -57,6 +60,9 @@ Linear 不负责：
 - 读取 Linear 并按 `LINEAR_INTAKE.md` 生成双语 run summary。
 - 在政策允许时写入幂等的 Linear 评论、承接 Issue 或状态建议。
 - 按 status + assignee 判断下一棒是人类还是 Codex。
+- 按 `WHITEBOX_PROTOCOL.md` 运行只读 scanner。
+- 生成并对账 `project-os/discovery/` 白盒报告。
+- 为重要结论记录 State、Evidence、Confidence 和 Next Verification。
 
 本地 Codex 不负责：
 
@@ -65,6 +71,7 @@ Linear 不负责：
 - 自行决定业务优先级。
 - 自行首次批量写入 Linear。
 - 因为 scheduled scan 自动修改本地代码。
+- 为了 discovery 执行未知项目脚本、连接生产系统或记录 secret 值。
 
 ### GitHub
 
@@ -80,7 +87,7 @@ GitHub 负责：
 
 ### Scheduled Automation
 
-AI Project OS v0.3 可以定义 scheduled Linear intake scan。
+AI Project OS v0.4 可以定义 scheduled Linear intake scan。
 
 默认边界：
 
@@ -105,6 +112,8 @@ AI Project OS v0.3 可以定义 scheduled Linear intake scan。
 | 业务决策 | Linear Decision Issue + RISKS_AND_DECISIONS |
 | UAT 结论 | UAT_TEMPLATE 记录 + Linear 状态 |
 | OS 路线图 | ROADMAP.md + Linear version projects |
+| 白盒详细证据 | GitHub/本地 `project-os/discovery/` + commit SHA |
+| 白盒管理摘要 | `WHITEBOX_IMPORT_REPORT.md` + Linear Project Description |
 
 ## 项目角色
 
@@ -130,6 +139,8 @@ AI Project OS v0.3 可以定义 scheduled Linear intake scan。
 | `LINEAR_INTAKE.md` | 宽泛 Linear 扫描和 run summary 规则 |
 | `AUTOMATION_POLICY.md` | scheduled scan、dry-run、幂等和禁区 |
 | `ROADMAP.md` | v0.3 到 v1.0 以及后续开源准备路线 |
+| `WHITEBOX_PROTOCOL.md` | 成熟项目白盒化、证据、置信度和停止规则 |
+| `discovery/*.md` | 项目、依赖、文档、设置/数据、逻辑/边界和 Linear 交接地图 |
 | `RELEASE_POLICY.md` | 版本推进规则 |
 | `QUALITY_GATE.md` | Ready/Review/UAT/Release 门禁 |
 | `LINEAR_POLICY.md` | Linear 结构和写入规则 |
@@ -139,6 +150,7 @@ AI Project OS v0.3 可以定义 scheduled Linear intake scan。
 | `DAILY_MEETING.md` | 每日同步模板 |
 | `examples/FIRST_PROJECT.md` | 第一个项目 walkthrough |
 | `tools/validate_project_os.py` | 轻量政策和包结构 validator |
+| `tools/whitebox_scan.py` | 默认只读、确定性的仓库证据 scanner |
 | `audit/*.md` | Phase 1 产物和 Phase 3 导入计划 |
 
 ## 项目节奏
@@ -153,6 +165,8 @@ AI Project OS v0.3 可以定义 scheduled Linear intake scan。
 - 每次宽泛 Linear 检查都必须输出 scan scope、scanned、created、updated、skipped、blockers 和 next action。
 - 每次宽泛 Linear 检查都必须按 status + assignee 分出 Codex Queue、Human Queue、Review Queue。
 - 旧版本已完成 Issue 的下版本反馈必须通过 carry-over revalidation 承接。
+- 成熟项目首次接管必须在 Baseline 前完成 Phase 0.5 Whitebox Discovery。
+- 高影响、低置信度发现优先进入验证或 Decision，不直接开发。
 
 ## Human/Codex Handoff
 

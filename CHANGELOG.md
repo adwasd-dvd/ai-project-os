@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v0.4.0 - 2026-08-19
+
+Project Whitebox release for evidence-backed takeover of mature black-box and gray-box repositories.
+
+Added:
+
+- Phase 0.5 Whitebox Discovery before baseline confirmation for mature or unclear projects.
+- `WHITEBOX_PROTOCOL.md` with evidence states, confidence levels, precedence, stop conditions, and secret-value boundaries.
+- Six discovery reports for project shape, dependencies, documents, settings/data, logic/boundaries, and Linear handoff.
+- Deterministic, standard-library `whitebox_scan.py` with dry-run, bounded write, and stale-evidence check modes.
+- Scanner tests for ignored paths, deterministic output, output confinement, and secret-value non-emission.
+- Worked whitebox example with observed, inferred, contradicted, and unknown findings.
+
+Updated:
+
+- Bootstrap, self-check, workflow, quality gates, Linear project descriptions, UAT, and validator now enforce the whitebox contract.
+- Validator supports both the source-repository layout and a standalone installed `project-os/` package.
+- Release artifact name to `ai-project-os-v0.4.0.zip`.
+
 ## v0.3.0 - 2026-08-19
 
 Human/Codex handoff release for low-friction single-user Linear operation.

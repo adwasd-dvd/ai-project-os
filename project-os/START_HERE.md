@@ -1,23 +1,24 @@
-# AI Project OS v0.3 - START_HERE
+# AI Project OS v0.4 - START_HERE
 
 这是一套可以直接放进本地项目仓库的 AI 项目操作系统。
 
 目标不是写漂亮文档，而是让本地 Codex 在进入一个旧项目或半成品项目时，按固定规则完成：
 
 1. 先做自我检查，确认项目位置、依赖、账号和权限边界。
-2. 再审计项目现状。
-3. 生成可人工确认的 Baseline。
-4. 生成 Linear Import Plan。
-5. 经人工确认后再写入 Linear。
-6. 按版本开发。
-7. 每个正式版本必须停下来做人工 UAT。
+2. 如果是成熟或现状不明的项目，先执行 Phase 0.5 Whitebox Discovery。
+3. 审计项目现状，区分事实、说法、推断、矛盾和未知项。
+4. 生成可人工确认的 Baseline。
+5. 生成 Linear Import Plan。
+6. 经人工确认后再写入 Linear。
+7. 按版本开发。
+8. 每个正式版本必须停下来做人工 UAT。
 
 ## 工具分工
 
 - Linear：项目管理、Feature、任务、Bug、Decision、UAT 反馈。
 - 本地 Codex：读取本地仓库、分析、开发、测试、生成 PR 准备材料。
 - GitHub：代码、PR、测试结果、版本 tag、release 事实来源。
-- 云端 Codex / scheduled automation：v0.3 只允许 Linear intake/follow-up 的 dry-run/advisory 设计；不自动修改本地代码。
+- 云端 Codex / scheduled automation：v0.4 只允许 Linear intake/follow-up 的 dry-run/advisory 设计；不自动修改本地代码。
 - Linear MCP：允许使用，但首次批量写入 Linear 必须人工确认。
 
 ## 怎么放到现有仓库
@@ -40,12 +41,12 @@ your-existing-repo/
 在目标项目仓库根目录打开本地 Codex，然后发送：
 
 ```text
-请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md。
+请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md、project-os/WHITEBOX_PROTOCOL.md。
 
-请按 AI Project OS v0.3 工作。
+请按 AI Project OS v0.4 工作。
 
 先执行 Phase 0 Self-Check。
-如果 Phase 0 没有阻塞项，再进入 Phase 1 Audit。
+如果是成熟、混乱或上下文不完整的项目，Phase 0 后先进入 Phase 0.5 Whitebox Discovery，再进入 Phase 1 Audit。
 
 要求：
 - 先确认当前目录、Git/GitHub、Linear、Linear Issue 描述语言（默认 English + Chinese）、依赖、环境变量和测试入口。
@@ -54,10 +55,34 @@ your-existing-repo/
 - 禁止写入 Linear。
 - 禁止创建 GitHub PR。
 - 允许生成或更新 project-os/audit/*.md，包括 SELF_CHECK_REPORT.md。
+- 允许在 Phase 0.5 生成或更新 project-os/discovery/*.md 和 SCAN_EVIDENCE.json。
+- 先 dry-run 运行 `python3 project-os/tools/whitebox_scan.py --root . --summary`；确认范围后才使用 `--write`。
+- 白盒化产物必须包含 PROJECT_MAP、DEPENDENCY_MAP、DOCUMENT_INVENTORY、SETTINGS_AND_DATA_REGISTER、LOGIC_BOUNDARY_AUDIT 和 WHITEBOX_IMPORT_REPORT。
+- 每个重要结论必须写 State、Evidence、Confidence 和 Next Verification。
+- 可记录设置名和路径，禁止记录 secret 值。
 - 输出 PROJECT_BASELINE_DRAFT、PRODUCT_MAP、FEATURE_INVENTORY、GAPS_AND_DUPLICATES、RISKS_AND_DECISIONS、LINEAR_IMPORT_PLAN。
 - 生成 Linear Import Plan 时，Issue 描述必须写清执行动作（Action Steps）和期待结果（Expected Result）。
 - 任何业务不确定必须写入 Decision，不要自己猜。
 - 完成后停下来，等待人工确认。
+```
+
+## 只做成熟项目白盒化
+
+如果你想先看清项目，不进 Linear、不改代码，可以说：
+
+```text
+请读取 project-os/WHITEBOX_PROTOCOL.md 和 project-os/discovery/README.md。
+
+对当前仓库执行 Phase 0.5 Whitebox Discovery。
+
+要求：
+- 默认只读，不改产品代码、不安装依赖、不连生产。
+- 先运行 scanner dry-run 并汇报覆盖范围。
+- 只在 project-os/discovery/ 写入白盒产物。
+- 区分 Observed、Derived、Claimed、Inferred、Contradicted 和 Unknown。
+- 重要结论必须有证据、置信度和下一步验证。
+- 不记录任何 secret 值。
+- 完成后停下，等我确认 Baseline。
 ```
 
 ## 人工确认 Baseline 后推进 Phase 3
@@ -182,7 +207,10 @@ Labels = 只做分类，高级流程可选
 - Human/Codex 基础交接由 assignee 决定：有 assignee 等人类，无 assignee 等 Codex。
 - `next:*` label 是高级可选项，不是基础流程必需项。
 - 旧版本已完成 Issue 的下版本反馈必须 carry-over，不得直接移动旧 issue。
-- v0.3 automation 只允许 Linear intake/follow-up，不允许自动修改本地代码。
+- 成熟或现状不明项目在 Baseline 前必须完成 Phase 0.5 Whitebox Discovery。
+- 白盒重要结论必须有 State、Evidence、Confidence 和 Next Verification。
+- discovery 产物不得记录 secret 值。
+- v0.4 automation 只允许 Linear intake/follow-up，不允许自动修改本地代码。
 
 ## 推荐阅读顺序
 
@@ -190,14 +218,16 @@ Labels = 只做分类，高级流程可选
 2. `OS_VERSION.md`：当前安装的 OS 版本。
 3. `LOCAL_OVERRIDES.md`：本项目自己的规则，升级时不得覆盖。
 4. `AGENTS.md`：所有 AI 和 Operator 必须遵守的总规则。
-5. `BOOTSTRAP.md`：Phase 0 到 Phase 6 的完整启动流程。
-6. `LINEAR_POLICY.md`：Linear 怎么建、怎么写、什么时候必须停。
-7. `REQUIREMENT_MANAGEMENT.md`：需求、评论和 issue 如何分类。
-8. `VERSION_PLANNING.md`：版本、patch、分阶段交付和 carry-over。
-9. `LINEAR_INTAKE.md`：宽泛 Linear 检查和 cron-ready scan 规则。
-10. `AUTOMATION_POLICY.md`：自动跟进、dry-run、幂等和禁止动作。
-11. `ROADMAP.md`：v0.3 到 v1.0 以及 1.0 后开源准备路线。
-12. `RELEASE_POLICY.md`：版本怎么推进，什么时候必须 UAT。
-13. `QUALITY_GATE.md`：什么叫 Ready、Done、Accepted。
-14. `UPGRADE_POLICY.md`：以后怎么升级 AI Project OS。
-15. `examples/FIRST_PROJECT.md`：从 Phase 0 到 Linear 和 UAT 的示例。
+5. `WHITEBOX_PROTOCOL.md`：成熟项目证据、置信度、矛盾和停止规则。
+6. `BOOTSTRAP.md`：Phase 0 到 Phase 6 的完整启动流程。
+7. `LINEAR_POLICY.md`：Linear 怎么建、怎么写、什么时候必须停。
+8. `REQUIREMENT_MANAGEMENT.md`：需求、评论和 issue 如何分类。
+9. `VERSION_PLANNING.md`：版本、patch、分阶段交付和 carry-over。
+10. `LINEAR_INTAKE.md`：宽泛 Linear 检查和 cron-ready scan 规则。
+11. `AUTOMATION_POLICY.md`：自动跟进、dry-run、幂等和禁止动作。
+12. `ROADMAP.md`：v0.3 到 v1.0 以及 1.0 后开源准备路线。
+13. `RELEASE_POLICY.md`：版本怎么推进，什么时候必须 UAT。
+14. `QUALITY_GATE.md`：什么叫 Ready、Done、Accepted。
+15. `UPGRADE_POLICY.md`：以后怎么升级 AI Project OS。
+16. `examples/FIRST_PROJECT.md`：从 Phase 0 到 Linear 和 UAT 的示例。
+17. `examples/WHITEBOX_EXAMPLE.md`：带 Unknown、Contradicted、证据和 Linear 交接的完整白盒示例。
