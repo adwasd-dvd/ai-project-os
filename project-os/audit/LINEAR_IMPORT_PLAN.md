@@ -522,5 +522,19 @@ GitHub review evidence:
 Branch: codex/v0.4-whitebox
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
 Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
-Candidate zip SHA-256: 74ed17948307618c7485d8199439a24e3d337fa4a0ca01bdbb8e0c9ca22dbef3
+Final candidate zip SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
+```
+
+## v0.4 Closeout Linear Update - 2026-08-19
+
+Owner explicitly approved v0.4.0 UAT. Codex moved DVD-59 through DVD-65 to `Done`, confirmed DVD-58 remained `Done`, completed the v0.4 Linear project, and published the GitHub v0.4.0 release with the distributable zip asset.
+
+Owner 已明确批准 v0.4.0 UAT。Codex 将 DVD-59 到 DVD-65 移至 `Done`，确认 DVD-58 保持 `Done`，完成 v0.4 Linear project，并发布带分发 zip 的 GitHub v0.4.0 release。
+
+```text
+UAT: Pass
+PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
+Tag: v0.4.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0
+Release asset SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
 ```

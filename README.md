@@ -61,13 +61,13 @@ Generated zip files stay out of Git history. Versioned packages are published as
 
 ## Use In Another Project
 
-1. Download `ai-project-os-v0.3.0.zip` from the [v0.3.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.3.0).
+1. Download `ai-project-os-v0.4.0.zip` from the [v0.4.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0).
 2. Extract the top-level `project-os/` directory into the target repository root.
 3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## Current Development: v0.4
+## Latest Stable: v0.4.0
 
 v0.4 adds Project Whitebox for taking over mature black-box or gray-box repositories before baseline confirmation.
 
@@ -80,7 +80,11 @@ Core outputs:
 - A compact bilingual Linear project summary backed by detailed GitHub/local evidence.
 - Validator and tests that keep source and distributable templates aligned.
 
-The latest stable install remains v0.3.0 until v0.4.0 passes human UAT and is published as a GitHub Release.
+v0.4.0 passed human UAT on 2026-08-19. Use the tagged GitHub Release for installations in other projects.
+
+## Next Development: v0.5
+
+v0.5 will add repository safety and project-memory boundaries: publication policy, agent-document policy, documentation-gap tracking, and secret-scan gates.
 
 ## v0.3 Handoff Rule
 

@@ -1,8 +1,8 @@
 # ROADMAP
 
-This roadmap captures the intended path from AI Project OS v0.3 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
+This roadmap captures the intended path from AI Project OS v0.4 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
 
-本路线图记录 AI Project OS 从 v0.3 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
+本路线图记录 AI Project OS 从 v0.4 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
 
 ## Product Positioning
 
@@ -27,6 +27,8 @@ Its job is not only to help Codex write code. Its job is to make AI-assisted sof
 - 通过共享项目规则支持不同 AI 编码工具。
 
 ## v0.3 - Human/Codex Handoff
+
+Status: Released / 已发布
 
 Goal:
 
@@ -56,7 +58,7 @@ Deliverables:
 
 ## v0.4 - Project Whitebox / Existing Project Intelligence
 
-Status: Current development / 当前开发版本
+Status: Released / 已发布
 
 Goal:
 
@@ -82,6 +84,8 @@ Deliverables:
 - Worked example, scanner tests, validator guardrails, and human UAT.
 
 ## v0.5 - Repo Safety & Project Memory Boundary
+
+Status: Next development / 下一开发版本
 
 Goal:
 

@@ -1,8 +1,8 @@
 # Release v0.4.0
 
-Draft release notes for AI Project OS v0.4.0. Publication requires explicit human UAT approval.
+Release notes for AI Project OS v0.4.0.
 
-AI Project OS v0.4.0 发布说明草案。正式发布必须获得明确的人类 UAT 批准。
+AI Project OS v0.4.0 发布说明。
 
 ## Summary
 
@@ -41,8 +41,8 @@ v0.4 增加 Project Whitebox：在确认 baseline 或开始开发前，用只读
 ## UAT Result
 
 ```text
-Pending human UAT.
-等待人类 UAT。
+Pass - approved by Owner on 2026-08-19.
+通过 - Owner 于 2026-08-19 批准。
 ```
 
 ## Verification
@@ -65,10 +65,9 @@ git diff --check: Passed
 
 ```text
 Branch: codex/v0.4-whitebox
-PR: https://github.com/adwasd-dvd/ai-project-os/pull/2 (Draft)
-Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
-Tag: Not created
-Release: Not published
-Release asset: releases/ai-project-os-v0.4.0.zip (local, ignored by Git)
-Candidate SHA-256: 74ed17948307618c7485d8199439a24e3d337fa4a0ca01bdbb8e0c9ca22dbef3
+PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
+Tag: v0.4.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0
+Release asset: ai-project-os-v0.4.0.zip
+Release SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
 ```

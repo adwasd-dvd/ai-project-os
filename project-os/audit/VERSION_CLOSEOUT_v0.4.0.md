@@ -8,11 +8,11 @@ This checklist records the AI Project OS v0.4.0 closeout state.
 
 ```text
 Version: v0.4.0
-Status: Ready for Human UAT
+Status: Released
 Date Prepared: 2026-08-19
 Prepared By: Codex
-Human UAT: Pending
-GitHub: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; no v0.4 tag or release
+Human UAT: Pass - Owner approved 2026-08-19
+GitHub: PR #2; tag v0.4.0; https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0
 ```
 
 ## Required Before Release
@@ -26,9 +26,9 @@ GitHub: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; no v0.4 tag
 | Automated tests | Source/template scanner and validator-layout tests pass | 10 tests passed | Pass |
 | Release zip | Top-level `project-os/`, archive and standalone strict validation clean | `releases/ai-project-os-v0.4.0.zip`; archive and extracted-package validation passed | Pass |
 | GitHub review surface | Clean dedicated branch and Draft PR | `codex/v0.4-whitebox`; PR #2 | Pass |
-| Human UAT | Explicit human conclusion | Not received | Pending |
-| Linear closeout | Included issues Done only after UAT | Not allowed yet | Pending |
-| GitHub release/tag | Publish only after UAT | Not allowed yet | Pending |
+| Human UAT | Explicit human conclusion | Owner: `UAT 通过，允许发布 v0.4.0。` | Pass |
+| Linear closeout | Included issues Done only after UAT | DVD-58 through DVD-65 Done; v0.4 project Completed | Pass |
+| GitHub release/tag | Publish only after UAT | `v0.4.0`; release asset `ai-project-os-v0.4.0.zip` | Pass |
 
 ## Closeout Actions After UAT Passes
 
@@ -48,6 +48,6 @@ UAT 通过，允许发布 v0.4.0。
 ## Closeout Decision
 
 ```text
-Implementation may enter human UAT after all pending technical and handoff gates pass.
-全部技术与交接门槛通过后，实现可以进入人类 UAT。
+Human UAT passed. v0.4.0 is approved for release and closeout.
+人类 UAT 已通过。v0.4.0 已批准发布并关账。
 ```

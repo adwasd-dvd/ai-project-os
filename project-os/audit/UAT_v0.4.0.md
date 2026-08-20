@@ -13,15 +13,15 @@ Environment: local repo + Linear DvdTeacher + GitHub Draft PR
 Build / Commit: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; branch `codex/v0.4-whitebox`
 Tester: Owner / dvdTeacher
 Owner: dvdTeacher
-Result: Pending
+Result: Pass
 ```
 
 Candidate package:
 
 ```text
 Path: releases/ai-project-os-v0.4.0.zip
-SHA-256: 74ed17948307618c7485d8199439a24e3d337fa4a0ca01bdbb8e0c9ca22dbef3
-Git policy: ignored locally; upload only as a GitHub Release asset after UAT passes
+SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
+Git policy: ignored locally; publish as a GitHub Release asset
 ```
 
 ## Version Goal
@@ -46,22 +46,22 @@ git diff --check
 
 | Scenario ID | Feature ID | Action Steps / 执行动作 | Expected Result / 期待结果 | Actual Result | Pass/Fail | Notes |
 |---|---|---|---|---|---|---|
-| WBX-001 | AIPOS-024 | Read `WHITEBOX_PROTOCOL.md`; compare all evidence states and stop conditions / 阅读协议并比较证据状态与停止条件 | Facts, claims, inference, conflict, unknowns, confidence, and human gate are distinct / 各类证据、置信度和人类门槛清晰可分 |  |  |  |
-| WBX-002 | AIPOS-025 | Run scanner without `--write`; check working tree / 运行不带 `--write` 的扫描并检查工作树 | JSON or summary is returned and no repository file is written / 返回结果且不写入仓库 |  |  |  |
-| WBX-003 | AIPOS-025 | Run scanner with `--write` in an allowed output directory, then `--check` / 在允许目录写入后执行检查 | One deterministic `SCAN_EVIDENCE.json` is created and check passes / 只生成确定性的证据文件且检查通过 |  |  |  |
-| WBX-004 | AIPOS-026 | Inspect dependency report against a known manifest / 将依赖报告与已知 manifest 对照 | Manifest, dependency names, runtimes, services, and unknowns are visible without values / 能看到名称、运行环境和未知项且无敏感值 |  |  |  |
-| WBX-005 | AIPOS-027 | Inspect document and settings/data reports / 检查文档与设定数据报告 | Authority, freshness, conflicts, config names, stores, schemas, and flows have explicit evidence / 权威性、新鲜度、冲突和数据流均有证据字段 |  |  |  |
-| WBX-006 | AIPOS-028 | Record one contradiction and one unknown in the logic audit / 在逻辑审计中记录一个冲突和一个未知项 | Neither is silently converted into an implementation requirement; each has next verification / 不会直接变成开发需求，且都有下一步验证 |  |  |  |
-| WBX-007 | AIPOS-029 | Read the copy-ready Linear summary / 阅读可复制到 Linear 的摘要 | Summary links evidence, shows confidence and risk, and excludes secret values / 摘要链接证据、展示置信度风险且不含秘密值 |  |  |  |
-| WBX-008 | AIPOS-030 | Run validators, layout tests, and scanner tests / 运行 validator、布局测试和 scanner tests | Source repository and standalone installed-package layouts both pass / 源码仓库与独立安装包布局全部通过 |  |  |  |
-| WBX-009 | AIPOS-030 | Open the release zip and inspect its root / 打开发布 zip 并检查根目录 | Archive contains one top-level `project-os/` and no dogfood release/audit history / 只有顶层 `project-os/` 且不带本项目发布历史 |  |  |  |
-| WBX-010 | AIPOS-030 | Read `examples/WHITEBOX_EXAMPLE.md` end to end / 完整阅读示例 | A new operator can follow scan, mapping, contradiction, Linear proposal, and human gate / 新操作者能照例完成扫描、映射、冲突、Linear 建议和人类确认 |  |  |  |
+| WBX-001 | AIPOS-024 | Read `WHITEBOX_PROTOCOL.md`; compare all evidence states and stop conditions / 阅读协议并比较证据状态与停止条件 | Facts, claims, inference, conflict, unknowns, confidence, and human gate are distinct / 各类证据、置信度和人类门槛清晰可分 | Owner approved the version UAT / Owner 批准版本验收 | Pass | Explicit approval in Codex task |
+| WBX-002 | AIPOS-025 | Run scanner without `--write`; check working tree / 运行不带 `--write` 的扫描并检查工作树 | JSON or summary is returned and no repository file is written / 返回结果且不写入仓库 | Dry-run and clean-worktree evidence accepted / 已接受只读与干净工作树证据 | Pass | Explicit approval in Codex task |
+| WBX-003 | AIPOS-025 | Run scanner with `--write` in an allowed output directory, then `--check` / 在允许目录写入后执行检查 | One deterministic `SCAN_EVIDENCE.json` is created and check passes / 只生成确定性的证据文件且检查通过 | Deterministic write/check tests accepted / 已接受稳定写入与检查测试 | Pass | Explicit approval in Codex task |
+| WBX-004 | AIPOS-026 | Inspect dependency report against a known manifest / 将依赖报告与已知 manifest 对照 | Manifest, dependency names, runtimes, services, and unknowns are visible without values / 能看到名称、运行环境和未知项且无敏感值 | Mapping output accepted / 映射产物已接受 | Pass | Explicit approval in Codex task |
+| WBX-005 | AIPOS-027 | Inspect document and settings/data reports / 检查文档与设定数据报告 | Authority, freshness, conflicts, config names, stores, schemas, and flows have explicit evidence / 权威性、新鲜度、冲突和数据流均有证据字段 | Inventory output accepted / 清单产物已接受 | Pass | Explicit approval in Codex task |
+| WBX-006 | AIPOS-028 | Record one contradiction and one unknown in the logic audit / 在逻辑审计中记录一个冲突和一个未知项 | Neither is silently converted into an implementation requirement; each has next verification / 不会直接变成开发需求，且都有下一步验证 | Contradiction and unknown handling accepted / 矛盾与未知项处理已接受 | Pass | Explicit approval in Codex task |
+| WBX-007 | AIPOS-029 | Read the copy-ready Linear summary / 阅读可复制到 Linear 的摘要 | Summary links evidence, shows confidence and risk, and excludes secret values / 摘要链接证据、展示置信度风险且不含秘密值 | Linear summary accepted / Linear 摘要已接受 | Pass | Explicit approval in Codex task |
+| WBX-008 | AIPOS-030 | Run validators, layout tests, and scanner tests / 运行 validator、布局测试和 scanner tests | Source repository and standalone installed-package layouts both pass / 源码仓库与独立安装包布局全部通过 | 10 tests and strict validators passed / 10 个测试及严格验证通过 | Pass | Codex evidence accepted by Owner |
+| WBX-009 | AIPOS-030 | Open the release zip and inspect its root / 打开发布 zip 并检查根目录 | Archive contains one top-level `project-os/` and no dogfood release/audit history / 只有顶层 `project-os/` 且不带本项目发布历史 | Archive and standalone validation passed / 压缩包与独立安装验证通过 | Pass | Codex evidence accepted by Owner |
+| WBX-010 | AIPOS-030 | Read `examples/WHITEBOX_EXAMPLE.md` end to end / 完整阅读示例 | A new operator can follow scan, mapping, contradiction, Linear proposal, and human gate / 新操作者能照例完成扫描、映射、冲突、Linear 建议和人类确认 | Worked example accepted / 完整示例已接受 | Pass | Explicit approval in Codex task |
 
 ## Issues Found
 
 | ID | Description | Severity | Category | Target Version | Linear Issue | Owner |
 |---|---|---|---|---|---|---|
-|  |  |  | Current Fix / Patch / Next / Backlog / Decision |  |  |  |
+| None | No blocking UAT issues reported / 未报告阻塞验收问题 | N/A | N/A | N/A | N/A | Owner |
 
 ## Final UAT Decision
 
@@ -81,7 +81,7 @@ UAT 未通过，必须先处理以下问题：
 ## Sign-off
 
 ```text
-Accepted By:
-Date:
-Notes:
+Accepted By: dvdTeacher / Owner
+Date: 2026-08-19
+Notes: User stated `UAT 通过，允许发布 v0.4.0。`
 ```
