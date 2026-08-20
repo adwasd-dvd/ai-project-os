@@ -10,7 +10,7 @@ This record must be completed by a human Owner or delegated UAT reviewer.
 Version: v0.5.0
 Date: 2026-08-20
 Environment: local repo + Linear DvdTeacher + GitHub Draft PR
-Build / Commit: branch codex/v0.5-repo-safety; Draft PR pending
+Build / Commit: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/3; branch codex/v0.5-repo-safety
 Tester: Owner / dvdTeacher
 Owner: dvdTeacher
 Result: Pending

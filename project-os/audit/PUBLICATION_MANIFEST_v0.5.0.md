@@ -13,7 +13,7 @@ Prepared By: Codex
 Destination Profile: private
 Repository / Channel: GitHub repository + GitHub Release
 Repository Visibility: PRIVATE (verified with GitHub)
-Commit / Tag: codex/v0.5-repo-safety; tag pending human UAT
+Commit / Tag: Draft PR #3 on codex/v0.5-repo-safety; tag pending human UAT
 Release Asset: ai-project-os-v0.5.0.zip
 Human Approver: dvdTeacher / Owner
 Decision: Review - pending human UAT and final tracked/public scan

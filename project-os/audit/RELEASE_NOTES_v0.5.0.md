@@ -62,7 +62,7 @@ Human UAT: Pending
 
 ```text
 Branch: codex/v0.5-repo-safety
-Draft PR: Pending
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/3
 Tag: Pending UAT
 Release: Pending UAT
 Release asset: ai-project-os-v0.5.0.zip

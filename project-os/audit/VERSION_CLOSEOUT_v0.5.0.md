@@ -12,7 +12,7 @@ Status: Ready for human UAT
 Date Prepared: 2026-08-20
 Prepared By: Codex
 Human UAT: Pending
-GitHub: branch codex/v0.5-repo-safety; Draft PR pending
+GitHub: branch codex/v0.5-repo-safety; Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/3
 Publication Decision: Review for current PRIVATE GitHub destination
 ```
 
@@ -29,7 +29,7 @@ Publication Decision: Review for current PRIVATE GitHub destination
 | Release digest | SHA-256 recorded | `75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120` | Pass |
 | Staged/private gate | Block 0 | Block 0, Review 0, Go | Pass |
 | Public/tracked advisory | Block 0 + Review dispositions | Block 0; 30 Private Repo memory records and 2 Team Shared Agent docs; future public reclassification required | Pass for advisory, not public approval |
-| GitHub review surface | Dedicated branch and Draft PR | Branch ready; PR pending | Pending |
+| GitHub review surface | Dedicated branch and Draft PR | `codex/v0.5-repo-safety`; PR #3 | Pass |
 | Linear UAT handoff | Issues In Review + Owner, bilingual evidence | Pending | Pending |
 | Human UAT | Explicit Owner conclusion | Pending | Pending |
 | Publication manifest | Human Go | Review pending Owner | Pending |

@@ -590,6 +590,14 @@ Extracted package tests: 10 passed
 
 Prepare a GitHub Draft PR and bilingual Linear evidence comments. Then move DVD-83 through DVD-89 to `In Review`, assign them to `dvdTeacher`, and wait for explicit human UAT.
 
+GitHub review evidence:
+
+```text
+Branch: codex/v0.5-repo-safety
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/3
+Candidate zip SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120
+```
+
 Do not merge, tag, release, complete issues, or complete the v0.5 project before the Owner states:
 
 ```text
