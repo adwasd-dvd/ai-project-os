@@ -20,7 +20,7 @@ GitHub: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; no v0.4 tag
 | Gate | Required Evidence | Current Evidence | Status |
 |---|---|---|---|
 | Scope confirmed | DEC-007 Done | DVD-58 Done | Pass |
-| Included features implemented | AIPOS-024 through AIPOS-030 with evidence comments | Local implementation complete; Linear UAT handoff pending | Pending handoff |
+| Included features implemented | AIPOS-024 through AIPOS-030 with evidence comments | DVD-59 through DVD-65 `In Review`, assigned to dvdTeacher, with bilingual evidence comments | Pass |
 | Source validator | Strict validator passes | 0 failures, 0 warnings | Pass |
 | Template validator | Strict validator passes | 0 failures, 0 warnings | Pass |
 | Scanner tests | Source and template tests pass | 8 tests passed | Pass |

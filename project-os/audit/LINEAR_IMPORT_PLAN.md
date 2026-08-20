@@ -489,7 +489,7 @@ Owner 已明确批准 v0.3.0。Codex 已将 DVD-51 到 DVD-56 移至 `Done`，�
 
 ### Implementation Issues
 
-| Linear ID | Source ID | Intended UAT Status | Implementation Evidence |
+| Linear ID | Source ID | UAT Status | Implementation Evidence |
 |---|---|---|---|
 | DVD-60 | AIPOS-024 | In Review + dvdTeacher | `WHITEBOX_PROTOCOL.md`, `REQUIREMENT_MANAGEMENT.md`, `FEATURE_TEMPLATE.md` |
 | DVD-59 | AIPOS-025 | In Review + dvdTeacher | `tools/whitebox_scan.py`, `discovery/PROJECT_MAP.md` |
@@ -512,7 +512,9 @@ git diff --check
 
 ### Remaining Human Gate
 
-After verification and GitHub Draft PR publication, move AIPOS-024 through AIPOS-030 to `In Review`, assign them to `dvdTeacher`, and wait for explicit human UAT. Do not merge, tag, release, complete the issues, or complete the Linear project before approval.
+Verification and GitHub Draft PR publication are complete. AIPOS-024 through AIPOS-030 are `In Review`, assigned to `dvdTeacher`, and include bilingual implementation evidence comments. Project status update `e25d88f6-17e6-4e91-8956-ecc4f1459cbb` records the UAT handoff.
+
+Wait for explicit human UAT. Do not merge, tag, release, complete the issues, or complete the Linear project before approval.
 
 GitHub review evidence:
 
