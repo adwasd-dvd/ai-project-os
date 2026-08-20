@@ -4,6 +4,25 @@ AI Project OS is a local Codex operating manual for taking over software project
 
 This repository is the source project for the OS itself.
 
+## 60-Second Start
+
+1. Download the latest zip from [GitHub Releases](https://github.com/adwasd-dvd/ai-project-os/releases/latest).
+2. Extract the top-level `project-os/` directory into your project root.
+3. Open that project in Codex and send:
+
+```text
+请读取 project-os/START_HERE.md，并按 AI Project OS 工作。
+先检查当前项目状态。
+如果这是成熟或混乱项目，先执行 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification。
+Linear 默认使用 English + Chinese。
+只问真正阻塞的问题；其余按安全默认值继续。
+先告诉我发现、风险和下一步，然后开始执行。
+```
+
+Expected path: `your-project/project-os/START_HERE.md`.
+
+Full quickstart: [`project-os/QUICKSTART.md`](project-os/QUICKSTART.md).
+
 ## Repository Layout
 
 ```text
@@ -54,7 +73,7 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.4.0.zip
+ai-project-os-v0.5.0.zip
 ```
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
@@ -82,9 +101,9 @@ Core outputs:
 
 v0.4.0 passed human UAT on 2026-08-19. Use the tagged GitHub Release for installations in other projects.
 
-## Next Development: v0.5
+## Current Development: v0.5
 
-v0.5 will add repository safety and project-memory boundaries: publication policy, agent-document policy, documentation-gap tracking, and secret-scan gates.
+v0.5 adds repository safety and project-memory boundaries: artifact classification, publication policy, Agent document policy, documentation-gap tracking, and sanitized secret-scan gates. It remains unreleased until human UAT passes.
 
 ## v0.3 Handoff Rule
 

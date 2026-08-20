@@ -1,6 +1,6 @@
 # REQUIREMENT_MANAGEMENT
 
-本文定义 AI Project OS v0.4 的需求和 issue 管理规则。
+本文定义 AI Project OS v0.5 的需求和 issue 管理规则。
 
 核心原则：
 
@@ -135,6 +135,35 @@ Next Verification:
 - 一个发现跨越多个版本时，按版本拆分 Issue，并保留同一个 Finding ID。
 - Linear Project Description 只放摘要、风险和链接；详细证据保留在 `project-os/discovery/`。
 - 任何密钥、token、密码、个人数据或配置值都不得复制到 Feature、Issue 或评论。
+
+## Safety and Memory Finding Intake
+
+Phase 0.75 finding 不自动等同于普通 Bug：
+
+| Finding | 默认处理 |
+|---|---|
+| 疑似有效 secret、private key 或生产连接 | `Block` publication，创建脱敏 incident/verification 记录并交给人工 |
+| 个人路径、raw chat、local-only Agent 文档 | `Review` classification，确认删除、保留本地或替换为 public-safe 内容 |
+| 聊天中提出但无项目证据的需求 | 写入 `PROJECT_MEMORY_AUDIT.md` 或验证 Issue，不当作已批准 Feature |
+| 文档与代码或两份决策冲突 | 写入 `DOC_GAP_REGISTER.md`，创建 Decision 或 verification Issue |
+| Public-safe 文档或模板 | 可进入目标版本，但仍需 publication gate |
+
+Safety/Memory Issue 至少包含：
+
+```text
+Finding ID:
+Rule ID:
+Path:
+Classification:
+Severity:
+Disposition: Block / Review / Info
+Evidence State:
+Remediation:
+Next Verification:
+Owner:
+```
+
+任何 Linear Issue、评论、GitHub PR 或报告都不得记录 matched value、source line、environment value 或 file content。凭证轮换、删除、历史改写和发布操作必须由人工授权。
 
 ## 宽泛需求拆分
 

@@ -20,10 +20,15 @@
 14. 旧版本已完成 Issue 的下版本反馈必须 carry-over，不得直接移动旧 issue。
 15. Human/Codex 基础交接由 assignee 决定：有 assignee 等人类，无 assignee 等 Codex。
 16. `next:*` label 是高级可选项，不是基础流程必需项。
-17. v0.3 scheduled automation 不得自动修改本地代码。
+17. scheduled automation 不得自动修改本地代码。
 18. 接管成熟或现状不明的项目，Baseline 前必须执行 `WHITEBOX_PROTOCOL.md`。
 19. 重要白盒结论必须记录 State、Evidence、Confidence 和 Next Verification。
 20. discovery 产物可记录设置名和路径，不得记录 secret 值。
+21. 进入 Git、PR 或 Release 前必须读取 `SECURITY_BOUNDARY.md` 和 `REPO_PUBLICATION_POLICY.md`。
+22. Private repository is not a secret store；私有仓库也不得存放密码、token、private key 或真实生产连接信息。
+23. 安全扫描和审计报告不得输出 matched value、source line、environment value 或 file content。
+24. `AGENTS.md`、agent wrapper 和本地 AI 指令在进入 Git 前必须按 `AGENT_DOC_POLICY.md` 分类。
+25. 聊天断档、未证实需求和文档逻辑缺口必须保持可见，不得静默当作已确认项目记忆。
 
 ## AI 行为原则
 
@@ -37,7 +42,9 @@
 - 对每个 Feature 说明测试和验收状态。
 - 对风险、未知和缺失证据保持诚实。
 - 对成熟项目先生成白盒地图，再给出 Baseline 和开发建议。
+- 在白盒发现后执行 Phase 0.75 Safety Classification，确认目标发布位置、敏感资产和文档共享边界。
 - 区分 Observed、Derived、Claimed、Inferred、Contradicted 和 Unknown。
+- 安全报告只记录规则 ID、路径、分类、处置和修复建议，不复制命中内容。
 - 检查 Linear 时汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
 
 ### 不得做
@@ -52,6 +59,8 @@
 - 不得因为 Linear 状态或评论变化自动开始代码修改。
 - 不得把 README、聊天或代码注释中的说法直接当作已观察运行事实。
 - 不得为了 discovery 直接执行未知项目脚本或连接生产系统。
+- 不得把 private repository 当作凭证库。
+- 不得在未获人工授权时轮换凭证、删除文件、改写 Git 历史或发布仓库内容。
 
 ## 角色定义
 
@@ -107,6 +116,7 @@ Codex 可以：
 - 按 `LINEAR_INTAKE.md` 扫描 Linear 并生成双语 run summary。
 - 按 status + assignee 区分 Human Queue、Codex Queue 和 Review Queue。
 - 运行只读 whitebox scanner，并生成 `project-os/discovery/` 白盒报告。
+- 运行只读 safety scanner，并生成经脱敏的 `project-os/safety/` 安全证据和人工审查材料。
 
 Codex 不可以：
 
@@ -122,6 +132,7 @@ Codex 不可以：
 |---|---:|---:|---:|---:|---:|---:|
 | Phase 0 Self-Check | Yes | No | Yes | No | No | Required for blockers |
 | Phase 0.5 Whitebox Discovery | Yes | No | Yes | No | No | Required for scope, contradictions, and unavailable evidence |
+| Phase 0.75 Safety Classification | Yes | No | Yes | No | No | Required for publication profile, Block findings, and destructive remediation |
 | Phase 1 Audit | Yes | No | Yes | No | No | Required after |
 | Phase 2 Confirmation | Yes | No | Yes | No | No | Required |
 | Phase 3 Linear Import | Yes | No | Yes | With approval | No | Required before first bulk write |

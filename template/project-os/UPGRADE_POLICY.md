@@ -55,6 +55,10 @@ Codex must not overwrite:
 - Linear import results.
 - UAT records.
 - Project-specific decisions.
+- `safety/PROJECT_MEMORY_AUDIT.md` project findings.
+- `safety/DOC_GAP_REGISTER.md` project findings.
+- `safety/SECRET_SCAN_REPORT.md` project evidence.
+- `safety/PUBLICATION_MANIFEST.md` human dispositions.
 
 ## Verify After Upgrade
 
@@ -67,4 +71,6 @@ Codex must verify:
 - `RELEASE_POLICY.md` requires human UAT.
 - `OS_VERSION.md` and `CHANGELOG.md` are updated.
 - `REQUIREMENT_MANAGEMENT.md`, `VERSION_PLANNING.md`, `LINEAR_INTAKE.md`, and `AUTOMATION_POLICY.md` are present.
+- `SECURITY_BOUNDARY.md`, `REPO_PUBLICATION_POLICY.md`, `AGENT_DOC_POLICY.md`, and `QUICKSTART.md` are present.
+- `tools/safety_scan.py` passes its tests and still omits matched values and source content.
 - `tools/validate_project_os.py` passes for the upgraded repository.

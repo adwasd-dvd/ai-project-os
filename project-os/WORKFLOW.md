@@ -25,6 +25,7 @@ Idea
 ```text
 Phase 0 Self-Check
 -> Phase 0.5 Whitebox Discovery
+-> Phase 0.75 Safety Classification
 -> Phase 1 Audit
 -> Human Baseline Confirmation
 -> Linear Import
@@ -48,6 +49,8 @@ Unknown
 且必须记录 Evidence、Confidence 和 Next Verification。
 
 Scanner 发现不等于可直接开发。新发现仍必须进入 Decision、Feature、Bug、Backlog 或验证队列。
+
+Phase 0.75 必须读取 `SECURITY_BOUNDARY.md`、`REPO_PUBLICATION_POLICY.md` 和 `AGENT_DOC_POLICY.md`，确认 publication profile、Agent 文档共享模式、项目记忆缺口与脱敏安全证据。疑似凭证、生产连接、危险共享边界或破坏性修复必须停下来交给人工。
 
 ## 1. Idea
 
@@ -163,6 +166,9 @@ PR 必须包含：
 - 测试结果。
 - 风险说明。
 - UAT 影响。
+- safety profile、scan scope 和 Block/Review disposition。
+
+创建或更新 PR 前，必须对 staged 内容执行目标 profile 的 safety gate。报告只允许包含规则 ID、路径、分类、处置和修复建议。
 
 ## 8. Review
 
@@ -203,6 +209,8 @@ Release 以 GitHub tag/release 为事实来源。
 - 已知阻塞项清零。
 - release notes 已准备。
 - tag 已创建。
+- `safety/PUBLICATION_MANIFEST.md` 已由人给出 `Go`，目标发布集合无 Block finding。
+- Release asset digest 已记录。
 
 版本范围、patch、分阶段交付和旧版本 carry-over 规则见 `VERSION_PLANNING.md` 和 `RELEASE_POLICY.md`。
 
@@ -287,6 +295,9 @@ Codex 完成后不得把正式版本或 Feature 直接验收为通过。`In Revi
 | 测试缺失 | 标记测试缺口 | 声称已验收 |
 | 文档与代码冲突 | 记录 Contradicted、证据和下一步验证 | 静默选一个当真 |
 | 高影响但低置信度 | 转入验证 Feature 或 Decision | 直接按推断改代码 |
+| 疑似 secret 或生产连接 | 只记录脱敏 finding，停止发布并请求人工处置 | 输出命中值、自动轮换或静默提交 |
+| 聊天断档或未证实需求 | 写入 project memory/doc gap 并标注证据状态 | 当作已批准项目事实 |
+| Agent 文档共享边界不清 | 按 `AGENT_DOC_POLICY.md` 建立 Decision | 默认全部提交或全部忽略 |
 
 ## v0.3 日常 Linear Loop
 

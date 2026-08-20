@@ -1,6 +1,6 @@
 # BOOTSTRAP
 
-本文定义 AI Project OS v0.4 的启动流程。
+本文定义 AI Project OS v0.5 的启动流程。
 
 任何本地 Codex 第一次进入项目时，必须先执行本文件，不允许直接开发。
 
@@ -8,10 +8,11 @@
 
 把一个现有项目整理成可管理、可开发、可验收、可发布的状态。
 
-启动流程分为七个主要阶段，并在 Self-Check 与 Audit 之间加入 Phase 0.5：
+启动流程分为七个主要阶段，并在 Self-Check 与 Audit 之间加入 Phase 0.5 和 Phase 0.75：
 
 0. Phase 0 Self-Check：接管前自我检查。
 0.5. Phase 0.5 Whitebox Discovery：对成熟/不明项目收集证据并建立白盒地图。
+0.75. Phase 0.75 Safety Classification：识别发布边界、敏感资产、Agent 文档和项目记忆缺口。
 1. Phase 1 Audit：只读审计。
 2. Phase 2 Baseline Confirmation：人工确认现状。
 3. Phase 3 Linear Setup/Import：确认后导入 Linear。
@@ -55,13 +56,13 @@
 Codex 必须输出：
 
 - 是否确认当前目录是项目根目录。
-- 是否需要 Phase 0.5，以及是否可以进入 Phase 0.5/1。
+- 是否需要 Phase 0.5 和 Phase 0.75，以及是否可以进入 Phase 0.5/0.75/1。
 - 阻塞项。
 - 非阻塞缺口。
 - Linear Issue 描述语言偏好。
 - 接下来建议用户确认什么。
 
-如无阻塞项，成熟/不明项目进入 Phase 0.5；有证据标记为 `Not Applicable` 的全新项目可进入 Phase 1。
+如无阻塞项，成熟/不明项目进入 Phase 0.5；有证据标记为 `Not Applicable` 的全新项目仍须完成 Phase 0.75，再进入 Phase 1。
 
 ## Phase 0.5 Whitebox Discovery
 
@@ -139,6 +140,74 @@ Next Verification
 - discovery 产物不含 secret 值。
 - Codex 可以说明哪些是事实、说法、推断或未知。
 
+## Phase 0.75 Safety Classification
+
+### 何时必须执行
+
+任何准备由 Codex 管理、进入 Git、与团队共享或公开发布的项目都必须执行。以下情况尤其不能跳过：
+
+- 现有或历史仓库可能包含凭证、用户路径、生产配置或聊天导出。
+- 项目包含 `AGENTS.md`、agent wrapper、本地提示词或个人工作说明。
+- 项目将从 local-only 变为 private、team-shared 或 public。
+- 白盒发现识别到关键设置、数据资产、信任边界或文档断档。
+
+### 必须先读取
+
+- `SECURITY_BOUNDARY.md`
+- `REPO_PUBLICATION_POLICY.md`
+- `AGENT_DOC_POLICY.md`
+- `safety/README.md`
+
+### 只读安全扫描
+
+先运行 local/worktree dry run：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile local --scope worktree --summary
+```
+
+scanner 默认不写文件。需要保留机械证据时，只能显式写入仓库内的安全目录：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile local --scope worktree --output-dir project-os/safety --write
+```
+
+### 必须输出或确认
+
+- 每个重要资产属于 `Local Only`、`Team Shared`、`Private Repo` 或 `Public Safe`。
+- 当前 publication profile 和目标 destination。
+- `safety/PROJECT_MEMORY_AUDIT.md`：哪些事实有证据，哪些只存在于聊天或个人记忆。
+- `safety/DOC_GAP_REGISTER.md`：未解决、冲突或缺证据的需求和控制文档。
+- `safety/SECRET_SCAN_REPORT.md`：只记录规则 ID、路径、严重度、处置和修复建议。
+- 发布前按需填写 `safety/PUBLICATION_MANIFEST.md`。
+
+### 安全证据限制
+
+报告和 Linear/GitHub 评论不得包含：
+
+- matched secret values。
+- source lines 或文件正文。
+- environment variable values。
+- private key、token、password 或真实连接字符串。
+- 未经分类的 raw conversation export。
+
+### 必须停止并交给人工的情况
+
+- 发现疑似有效凭证、private key 或生产连接信息。
+- 无法判断仓库将私有共享还是公开发布。
+- Agent 文档包含个人、本地或组织敏感规则，但共享模式未确认。
+- 修复需要删除文件、轮换凭证、改写 Git 历史或修改远端可见性。
+- 项目记忆存在高影响冲突，且没有足够证据决定哪个说法有效。
+
+### Phase 0.75 完成条件
+
+- publication profile 和 destination 已记录。
+- Block findings 已由人工处理或明确阻止后续发布。
+- Review findings 有 owner、disposition 或明确的下一步验证。
+- Agent 文档共享模式已确认。
+- 项目记忆与文档缺口保持可见，没有把聊天说法升级成项目事实。
+- 安全证据未泄露命中值或源文件内容。
+
 ## Phase 1 Audit
 
 ### 目标
@@ -152,6 +221,7 @@ Next Verification
 - 读取已有 TODO、注释、Issue 引用、PR 引用。
 - 生成或更新 `project-os/audit/*.md`。
 - 引用并对账 `project-os/discovery/*.md` 和 `SCAN_EVIDENCE.json`。
+- 引用并对账 Phase 0.75 的安全分类、项目记忆和文档缺口。
 - 标注不确定、冲突、缺口、重复项和风险。
 
 ### 禁止做
@@ -173,6 +243,7 @@ Next Verification
 - `audit/RISKS_AND_DECISIONS.md`
 - `audit/LINEAR_IMPORT_PLAN.md`
 - 已完成的 Phase 0.5 discovery 报告，或有证据的 `Not Applicable` 结论
+- 已完成的 Phase 0.75 安全分类，以及尚未解决的 Block/Review finding
 
 ### Phase 1 完成条件
 
@@ -211,6 +282,7 @@ Codex 必须在最终回复中说明：
 - Decision 是否覆盖所有不确定点。
 - Whitebox 覆盖范围是否诚实、主要组件和边界是否符合理解。
 - 高影响、低置信度发现和重要矛盾是否已解决或正确路由。
+- publication profile、Agent 文档共享模式和项目记忆缺口是否符合实际用途。
 
 ### Codex 允许做
 

@@ -25,6 +25,7 @@ Imported Date:
 - 不得覆盖 Linear 既有 Issue。
 - 疑似重复必须停下来问人。
 - 状态变化必须由人确认。
+- Linear 只保存脱敏安全摘要，不保存 matched value、source line、environment value、file content 或 raw chat。
 
 ## Proposed Linear Structure
 
@@ -89,6 +90,23 @@ Human Coverage Confirmation: Pending / Confirmed / Not Applicable
 If Phase 0.5 applies, the Linear project description must include the compact bilingual whitebox summary and evidence links from `WHITEBOX_IMPORT_REPORT.md`.
 
 如果适用 Phase 0.5，Linear Project Description 必须包含 `WHITEBOX_IMPORT_REPORT.md` 中的紧凑双语白盒摘要和证据链接。
+
+### Safety / Publication Evidence Source
+
+```text
+Publication Profile:
+Publication Destination:
+Safety Reports: project-os/safety/
+Evidence Commit Or Tag:
+Block Findings:
+Review Findings And Dispositions:
+Agent Document Mode:
+Project Memory / Document Gaps:
+Human Publication Decision: Pending / Go / Review / Block
+Matched Values Or Source Lines Included: Must be No
+```
+
+Phase 0.75 摘要可以写入 Linear Project Description，但详细证据必须留在 GitHub/本地 `project-os/safety/`，并使用稳定 tag/commit 链接。发现疑似凭证时只记录规则 ID 和 repository-relative path。
 
 如果 Linear MCP 可用，Phase 3 写入前必须填充。
 
@@ -196,6 +214,7 @@ Risk:
 - [ ] Linear workspace/team confirmed.
 - [ ] Linear issue description language confirmed.
 - [ ] Action Steps and Expected Result included in issue descriptions.
+- [ ] Phase 0.75 safety summary is sanitized and publication profile is recorded.
 - [ ] First bulk write approved.
 ```
 

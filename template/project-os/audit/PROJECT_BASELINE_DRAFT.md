@@ -42,6 +42,27 @@ High-impact low-confidence findings:
 Secret values present in discovery outputs: Must be No
 ```
 
+## Safety And Project Memory Summary
+
+```text
+Publication Profile: local / private / team / public / Unknown
+Publication Destination:
+Agent Document Mode: local-only / team-shared / organization-shared / public-safe / Unknown
+Block Findings:
+Review Findings:
+Project Memory Gaps:
+Document Gaps:
+Matched Values Or Source Lines Present: Must be No
+Human Safety Decision: Pending / Go / Review / Block
+```
+
+| Report | Status | Important Finding | Classification | Disposition | Evidence | Owner | Next Verification |
+|---|---|---|---|---|---|---|---|
+| `safety/PROJECT_MEMORY_AUDIT.md` | Draft / Partial / Complete |  | Local Only / Team Shared / Private Repo / Public Safe | Go / Review / Block |  |  |  |
+| `safety/DOC_GAP_REGISTER.md` |  |  |  |  |  |  |  |
+| `safety/SECRET_SCAN_REPORT.md` |  |  |  |  |  |  |  |
+| `safety/PUBLICATION_MANIFEST.md` |  |  |  |  |  |  |  |
+
 ## Repository Overview
 
 ```text
@@ -152,6 +173,7 @@ Codex must fill this section before stopping:
 Phase 1 Audit is complete.
 No product code was modified.
 No Linear writes were performed.
+No matched secret values or source lines were copied into reports.
 The following items require human confirmation before Phase 3:
 -
 ```

@@ -1,8 +1,8 @@
 # ROADMAP
 
-This roadmap captures the intended path from AI Project OS v0.4 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
+This roadmap captures the intended path from AI Project OS v0.5 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
 
-本路线图记录 AI Project OS 从 v0.4 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
+本路线图记录 AI Project OS 从 v0.5 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
 
 ## Product Positioning
 
@@ -85,7 +85,7 @@ Deliverables:
 
 ## v0.5 - Repo Safety & Project Memory Boundary
 
-Status: Next development / 下一开发版本
+Status: Current development / 当前开发版本
 
 Goal:
 
@@ -103,8 +103,11 @@ Deliverables:
 - `PROJECT_MEMORY_AUDIT.md`
 - `DOC_GAP_REGISTER.md`
 - `SECRET_SCAN_REPORT.md`
+- `tools/safety_scan.py` with worktree/staged/tracked scopes and local/private/team/public profiles.
+- `safety/PUBLICATION_MANIFEST.md` with human Go/Review/Block disposition.
 - Git and secret-scan gates before release or publication.
 - Policy for local-only, team-shared, private-repo, and public-safe OS documents.
+- GitHub README and `QUICKSTART.md` 60-second download/place/prompt startup path.
 
 ## v0.6 - Linear Intake / Cron MVP
 

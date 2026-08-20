@@ -15,7 +15,7 @@ Linear 是项目管理事实来源。
 
 如果 Linear workspace 已有不同结构，Codex 必须先读取现状并提出映射建议，不得强行重建。
 
-## v0.4 Project Whitebox Summary
+## Project Whitebox and Safety Summary
 
 成熟项目完成 Phase 0.5 后，Linear Project Description 应包含一个紧凑的双语白盒摘要，详细证据仍保存在 GitHub/本地 `project-os/discovery/`。
 
@@ -32,6 +32,16 @@ Linear 是项目管理事实来源。
 
 可直接使用的格式见 `discovery/WHITEBOX_IMPORT_REPORT.md`。
 
+完成 Phase 0.75 后，Project Description 还应包含紧凑的安全摘要：
+
+- Publication profile 和 destination。
+- `Local Only`、`Team Shared`、`Private Repo`、`Public Safe` 的高层分类结果。
+- Block/Review/Info 数量，不包含命中值。
+- Agent document mode。
+- Project memory 和 document gap 摘要。
+- `safety/` 报告与 publication manifest 的 GitHub tag/commit 链接或仓库路径。
+- 人工 `Go`、`Review` 或 `Block` 状态。
+
 Linear 里的摘要不得：
 
 - 复制 secret 值。
@@ -39,6 +49,8 @@ Linear 里的摘要不得：
 - 隐藏高影响 Unknown 或 Contradicted 发现。
 - 代替 GitHub/本地详细证据。
 - 绕过 Baseline 确认和首次 Linear 批量写入授权。
+- 复制 matched value、source line、environment value、file content 或 raw conversation export。
+- 把 private repository 描述成允许存放 secret 的位置。
 
 ## Linear 输出语言
 
@@ -91,6 +103,7 @@ module:visit
 module:auth
 module:reporting
 module:admin
+module:safety
 ```
 
 模块名称应来自 `audit/PRODUCT_MAP.md` 和人工确认结果。

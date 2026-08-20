@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v0.5.0 - 2026-08-19
+
+Repository safety and project-memory boundary release candidate.
+
+Added:
+
+- `SECURITY_BOUNDARY.md` with Local Only, Team Shared, Private Repo, and Public Safe classifications.
+- `REPO_PUBLICATION_POLICY.md` with staged/private and tracked/public gates.
+- `AGENT_DOC_POLICY.md` for single-user, team, and public Agent instructions.
+- `safety/` publication manifest, memory audit, documentation-gap register, and sanitized secret-scan report.
+- Read-only `tools/safety_scan.py` with worktree/staged/tracked scopes and local/private/team/public profiles.
+- Scanner tests proving matched values and source lines are never emitted.
+- `QUICKSTART.md` with a 60-second install and Codex startup path.
+- `examples/SAFETY_EXAMPLE.md`.
+
+Updated:
+
+- Bootstrap, workflow, GitHub, release, quality, and UAT policies for Phase 0.75 Safety Classification.
+- Validator coverage for v0.5 files, report fields, scanner guardrails, and install-package support.
+
 ## v0.4.0 - 2026-08-19
 
 Project Whitebox release for evidence-backed takeover of mature black-box and gray-box repositories.

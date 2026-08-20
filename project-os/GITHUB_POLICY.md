@@ -4,6 +4,18 @@
 
 GitHub 是代码、PR、测试和版本事实来源。
 
+Private repository is not a secret store。密码、token、private key、真实生产连接信息、个人绝对路径和未分类的聊天导出不得因为仓库私有就进入 Git。
+
+## Publication Profile
+
+任何 GitHub 写入前都必须按 `REPO_PUBLICATION_POLICY.md` 记录目标 profile：
+
+- `private`：有限成员可见，但仍禁止 secret。
+- `team`：团队共享的稳定规则、代码和经审查文档。
+- `public`：任何人均可读取、fork 和长期引用的内容。
+
+Agent 文档必须另外按 `AGENT_DOC_POLICY.md` 确认 local-only、team-shared、organization-shared 或 public-safe 模式。
+
 ## 分支规则
 
 推荐分支名：
@@ -67,8 +79,28 @@ PR 描述必须包含：
 
 ## Risks
 
+## Safety Evidence
+- Publication profile:
+- Scan scope:
+- Block findings:
+- Review dispositions:
+
 ## UAT Notes
 ```
+
+创建或更新 PR 前，对 staged 内容运行：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile private --scope staged --fail-on-block --summary
+```
+
+如果目标是 public，合并或发布前还要检查最终 tracked 集合：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile public --scope tracked --fail-on-block --summary
+```
+
+scanner 输出不得包含 matched value、source line、environment value 或 file content。
 
 ## 测试规则
 
@@ -118,6 +150,8 @@ Tag 必须对应：
 - 明确的 release notes。
 - Linear 中对应版本范围。
 
+需要长期引用的证据链接应指向 tag 或保留分支上的 commit，不应只指向即将删除的临时开发分支。
+
 ## Release Notes
 
 GitHub Release 应包含：
@@ -129,6 +163,22 @@ GitHub Release 应包含：
 - UAT 结论。
 - 主要 PR。
 - 部署或回滚说明。
+- publication profile 和 manifest disposition。
+- Release asset SHA-256。
+
+Release zip 放在 GitHub Releases，不作为源码长期提交。上传后必须核对 digest 与 closeout 记录一致。
+
+## Secret Incident
+
+发现疑似有效凭证时：
+
+1. 停止 commit、push、PR、merge 和 release。
+2. 只记录规则 ID、路径、严重度和修复建议，不复制命中值。
+3. 由人工判断并轮换或撤销凭证。
+4. 如果内容已进入 Git 历史，由人工批准历史清理方案。
+5. 重新扫描目标发布集合，Block 为零后才能继续。
+
+Codex 不得自行轮换凭证、删除文件或改写远端历史。
 
 ## Codex 与 GitHub
 
@@ -145,4 +195,4 @@ Codex 不可以：
 - 在没有人工确认时发布正式版本。
 - 删除他人分支或 tag。
 - 强行覆盖远端历史。
-
+- 把 private repository 当作凭证库。

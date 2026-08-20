@@ -10,6 +10,7 @@ Markdown-first package, not a build system.
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 import zipfile
 from dataclasses import dataclass
@@ -17,6 +18,7 @@ from pathlib import Path
 
 
 CORE_FILES = [
+    "AGENT_DOC_POLICY.md",
     "AGENTS.md",
     "AUTOMATION_POLICY.md",
     "BOOTSTRAP.md",
@@ -29,11 +31,14 @@ CORE_FILES = [
     "LOCAL_OVERRIDES.md",
     "OS_VERSION.md",
     "PROJECT.md",
+    "QUICKSTART.md",
     "QUALITY_GATE.md",
+    "REPO_PUBLICATION_POLICY.md",
     "ROADMAP.md",
     "RELEASE_POLICY.md",
     "REQUIREMENT_MANAGEMENT.md",
     "SELF_CHECK.md",
+    "SECURITY_BOUNDARY.md",
     "START_HERE.md",
     "UAT_TEMPLATE.md",
     "UPGRADE_POLICY.md",
@@ -48,7 +53,15 @@ CORE_FILES = [
     "discovery/LOGIC_BOUNDARY_AUDIT.md",
     "discovery/WHITEBOX_IMPORT_REPORT.md",
     "examples/FIRST_PROJECT.md",
+    "examples/SAFETY_EXAMPLE.md",
     "examples/WHITEBOX_EXAMPLE.md",
+    "safety/README.md",
+    "safety/DOC_GAP_REGISTER.md",
+    "safety/PROJECT_MEMORY_AUDIT.md",
+    "safety/PUBLICATION_MANIFEST.md",
+    "safety/SECRET_SCAN_REPORT.md",
+    "tools/safety_scan.py",
+    "tools/test_safety_scan.py",
     "tools/test_validate_project_os.py",
     "tools/test_whitebox_scan.py",
     "tools/validate_project_os.py",
@@ -84,6 +97,9 @@ POLICY_PHRASES = {
         "Evidence",
         "Confidence",
         "secret 值",
+        "SECURITY_BOUNDARY.md",
+        "Private repository is not a secret store",
+        "matched value",
     ],
     "LINEAR_POLICY.md": [
         "English + Chinese",
@@ -94,12 +110,15 @@ POLICY_PHRASES = {
         "Assigned = human queue",
         "Unassigned = Codex queue",
         "`next:*` label 可以在多人团队或高级自动化中作为辅助信号",
+        "Publication profile",
     ],
     "RELEASE_POLICY.md": [
         "UAT 通过，允许发布",
         "Patch 版本不得塞入新 Feature",
         "carry-over",
         "不要直接移动旧 issue",
+        "Publication Safety Gate",
+        "Release Asset SHA-256",
     ],
     "VERSION_PLANNING.md": [
         "一个可交付 Issue 只属于一个目标版本",
@@ -146,22 +165,52 @@ POLICY_PHRASES = {
     ],
     "BOOTSTRAP.md": [
         "Phase 0.5 Whitebox Discovery",
+        "Phase 0.75 Safety Classification",
         "whitebox_scan.py",
+        "safety_scan.py",
         "SCAN_EVIDENCE.json",
         "LOGIC_BOUNDARY_AUDIT.md",
     ],
     "QUALITY_GATE.md": [
         "Ready for Whitebox Discovery",
         "Whitebox Complete",
+        "Ready for Safety Classification",
+        "Safety Classification Complete",
         "Evidence",
         "Confidence",
         "Next Verification",
     ],
     "OS_VERSION.md": [
-        "v0.4.0",
+        "v0.5.0",
     ],
     "CHANGELOG.md": [
-        "v0.4.0",
+        "v0.5.0",
+    ],
+    "QUICKSTART.md": [
+        "60-Second Start",
+        "project-os/START_HERE.md",
+        "English + Chinese",
+    ],
+    "SECURITY_BOUNDARY.md": [
+        "Local Only",
+        "Team Shared",
+        "Private Repo",
+        "Public Safe",
+        "private repository is not a secret store",
+    ],
+    "REPO_PUBLICATION_POLICY.md": [
+        "Publication Profiles",
+        "--scope staged",
+        "--scope tracked",
+        "Go",
+        "Review",
+        "Block",
+    ],
+    "AGENT_DOC_POLICY.md": [
+        "Single-User Pattern",
+        "Team Pattern",
+        "Public Pattern",
+        "Canonical Source",
     ],
 }
 
@@ -189,6 +238,35 @@ DISCOVERY_REPORT_FIELDS = {
         "Action Steps",
         "Expected Result",
         "No approval means no first bulk write",
+    ],
+}
+
+SAFETY_REPORT_FIELDS = {
+    "safety/PUBLICATION_MANIFEST.md": [
+        "Destination Profile",
+        "Artifact Classification",
+        "Decision: Go / Review / Block",
+    ],
+    "safety/PROJECT_MEMORY_AUDIT.md": [
+        "Sources Reviewed",
+        "Confidence",
+        "Next Verification",
+        "Chat-only",
+    ],
+    "safety/DOC_GAP_REGISTER.md": [
+        "Gap ID",
+        "Evidence",
+        "Decision Needed",
+        "Next Verification",
+    ],
+    "safety/SECRET_SCAN_REPORT.md": [
+        "Finding ID",
+        "Rule ID",
+        "Classification",
+        "Disposition",
+        "Remediation",
+        "Matched Values Emitted: Must be No",
+        "Source Lines Emitted: Must be No",
     ],
 }
 
@@ -323,6 +401,48 @@ def check_discovery_contract(root: Path) -> list[Finding]:
     return findings
 
 
+def check_safety_contract(root: Path) -> list[Finding]:
+    findings: list[Finding] = []
+    for base in project_os_bases(root):
+        for rel, phrases in SAFETY_REPORT_FIELDS.items():
+            path = base / rel
+            if not path.exists():
+                continue
+            text = read_text(path)
+            for phrase in phrases:
+                if phrase not in text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            path.relative_to(root).as_posix(),
+                            f"Missing safety field / 缺少安全字段: {phrase}",
+                        )
+                    )
+
+        scanner = base / "tools" / "safety_scan.py"
+        if scanner.exists():
+            scanner_text = read_text(scanner)
+            for phrase in [
+                '"--write"',
+                '"--check"',
+                '"--fail-on-block"',
+                '"matched_values_emitted": False',
+                '"source_lines_emitted": False',
+                '"environment_values_emitted": False',
+                '"file_contents_emitted": False',
+                "Output directory must be inside the repository root.",
+            ]:
+                if phrase not in scanner_text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            scanner.relative_to(root).as_posix(),
+                            f"Missing safety scanner guardrail / 缺少安全 scanner 保护: {phrase}",
+                        )
+                    )
+    return findings
+
+
 def check_release_zips(root: Path) -> list[Finding]:
     findings: list[Finding] = []
     if not (root / "template" / "project-os").exists():
@@ -383,6 +503,22 @@ def check_release_zips(root: Path) -> list[Finding]:
                             "Zip must contain project-os/START_HERE.md / zip 必须包含启动文件",
                         )
                     )
+                version_match = re.search(
+                    r"-v(\d+)\.(\d+)\.(\d+)\.zip$", zip_path.name
+                )
+                version = (
+                    tuple(int(part) for part in version_match.groups())
+                    if version_match
+                    else (0, 0, 0)
+                )
+                if version >= (0, 5, 0) and "project-os/QUICKSTART.md" not in names:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            rel_label,
+                            "v0.5+ zip must contain project-os/QUICKSTART.md / v0.5+ zip 必须包含快速启动文件",
+                        )
+                    )
                 if not all(name.startswith("project-os/") for name in names):
                     findings.append(
                         Finding(
@@ -412,6 +548,7 @@ def main() -> int:
     findings.extend(check_policy_phrases(root))
     findings.extend(check_template_drift(root))
     findings.extend(check_discovery_contract(root))
+    findings.extend(check_safety_contract(root))
     findings.extend(check_release_zips(root))
 
     failures = [finding for finding in findings if finding.level == "FAIL"]

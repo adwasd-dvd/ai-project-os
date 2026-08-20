@@ -4,7 +4,7 @@
 
 ## 项目目标
 
-本项目使用 AI Project OS v0.4，把本地代码仓库整理成可以持续推进的工程系统。
+本项目使用 AI Project OS v0.5，把本地代码仓库整理成可以持续推进的工程系统。
 
 系统目标：
 
@@ -20,8 +20,12 @@
 - 让 OS 路线朝向“救活混乱成熟项目”的 v1.0 成功标准推进。
 - 让成熟黑盒/灰盒项目在 Baseline 前产生证据化白盒地图。
 - 让依赖、文档、设置、数据、逻辑、设计边界、矛盾和未知项可见。
+- 让 local、team、private 和 public 发布边界可见并可检查。
+- 让安全证据脱敏，私有仓库也不成为 secret store。
+- 让 Agent 文档和断档项目记忆按明确规则共享、保留或阻止发布。
+- 让新用户从 GitHub 下载后，用一句 Codex 启动语在 60 秒内开始接管项目。
 
-## v0.4 工具边界
+## v0.5 工具边界
 
 ### Linear
 
@@ -63,6 +67,8 @@ Linear 不负责：
 - 按 `WHITEBOX_PROTOCOL.md` 运行只读 scanner。
 - 生成并对账 `project-os/discovery/` 白盒报告。
 - 为重要结论记录 State、Evidence、Confidence 和 Next Verification。
+- 运行只读 safety scanner，按目标 profile 输出经脱敏的 Block/Review/Info finding。
+- 维护 project memory audit、doc gap register 和 publication manifest 草案。
 
 本地 Codex 不负责：
 
@@ -72,6 +78,7 @@ Linear 不负责：
 - 自行首次批量写入 Linear。
 - 因为 scheduled scan 自动修改本地代码。
 - 为了 discovery 执行未知项目脚本、连接生产系统或记录 secret 值。
+- 自动轮换凭证、删除文件、改写 Git 历史或批准 publication manifest。
 
 ### GitHub
 
@@ -87,7 +94,7 @@ GitHub 负责：
 
 ### Scheduled Automation
 
-AI Project OS v0.4 可以定义 scheduled Linear intake scan。
+AI Project OS v0.5 可以定义 scheduled Linear intake scan。
 
 默认边界：
 
@@ -114,6 +121,9 @@ AI Project OS v0.4 可以定义 scheduled Linear intake scan。
 | OS 路线图 | ROADMAP.md + Linear version projects |
 | 白盒详细证据 | GitHub/本地 `project-os/discovery/` + commit SHA |
 | 白盒管理摘要 | `WHITEBOX_IMPORT_REPORT.md` + Linear Project Description |
+| 安全详细证据 | GitHub/本地 `project-os/safety/` + commit SHA |
+| 发布判定 | `safety/PUBLICATION_MANIFEST.md` + human disposition |
+| Agent 文档共享边界 | `AGENT_DOC_POLICY.md` + project decision |
 
 ## 项目角色
 
@@ -130,6 +140,7 @@ AI Project OS v0.4 可以定义 scheduled Linear intake scan。
 | 文件 | 用途 |
 |---|---|
 | `START_HERE.md` | 用户启动说明 |
+| `QUICKSTART.md` | GitHub 下载后的 60 秒启动路径 |
 | `SELF_CHECK.md` | 第一次接管项目时的自我检查 |
 | `BOOTSTRAP.md` | Phase 0 到 Phase 6 总流程 |
 | `AGENTS.md` | 所有 AI 和人员的硬规则 |
@@ -141,6 +152,10 @@ AI Project OS v0.4 可以定义 scheduled Linear intake scan。
 | `ROADMAP.md` | v0.3 到 v1.0 以及后续开源准备路线 |
 | `WHITEBOX_PROTOCOL.md` | 成熟项目白盒化、证据、置信度和停止规则 |
 | `discovery/*.md` | 项目、依赖、文档、设置/数据、逻辑/边界和 Linear 交接地图 |
+| `SECURITY_BOUNDARY.md` | 四级资产分类、信任边界和停止条件 |
+| `REPO_PUBLICATION_POLICY.md` | private/team/public Git 发布门禁 |
+| `AGENT_DOC_POLICY.md` | Agent 文档共享与本地保留规则 |
+| `safety/*.md` | 项目记忆、文档缺口、安全报告和 publication manifest |
 | `RELEASE_POLICY.md` | 版本推进规则 |
 | `QUALITY_GATE.md` | Ready/Review/UAT/Release 门禁 |
 | `LINEAR_POLICY.md` | Linear 结构和写入规则 |
@@ -151,6 +166,7 @@ AI Project OS v0.4 可以定义 scheduled Linear intake scan。
 | `examples/FIRST_PROJECT.md` | 第一个项目 walkthrough |
 | `tools/validate_project_os.py` | 轻量政策和包结构 validator |
 | `tools/whitebox_scan.py` | 默认只读、确定性的仓库证据 scanner |
+| `tools/safety_scan.py` | 默认只读、不会输出命中值的 publication safety scanner |
 | `audit/*.md` | Phase 1 产物和 Phase 3 导入计划 |
 
 ## 项目节奏
@@ -166,6 +182,7 @@ AI Project OS v0.4 可以定义 scheduled Linear intake scan。
 - 每次宽泛 Linear 检查都必须按 status + assignee 分出 Codex Queue、Human Queue、Review Queue。
 - 旧版本已完成 Issue 的下版本反馈必须通过 carry-over revalidation 承接。
 - 成熟项目首次接管必须在 Baseline 前完成 Phase 0.5 Whitebox Discovery。
+- 项目进入 Git、团队共享或公开发布前必须完成 Phase 0.75 Safety Classification。
 - 高影响、低置信度发现优先进入验证或 Decision，不直接开发。
 
 ## Human/Codex Handoff

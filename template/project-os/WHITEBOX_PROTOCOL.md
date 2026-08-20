@@ -32,9 +32,9 @@ Whitebox discovery is not a promise that every behavior is understood. It is a c
 
 ## Safety Contract / 安全契约
 
-The v0.4 discovery path is read-only by default.
+The discovery path is read-only by default.
 
-v0.4 discovery 路径默认只读。
+Discovery 路径默认只读。
 
 Allowed:
 
@@ -70,9 +70,9 @@ Forbidden:
 - 把推断的安全属性描述为已验证；
 - 把未确认的白盒发现自动写入 Linear。
 
-Deep secret scanning, publication classification, and repository-sharing policy belong to v0.5. v0.4 still uses the minimum safe rule: names and paths may be recorded; secret values may not.
+After whitebox discovery, v0.5 runs Phase 0.75 Safety Classification. Use `SECURITY_BOUNDARY.md`, `REPO_PUBLICATION_POLICY.md`, and `tools/safety_scan.py` before Git, team sharing, or public publication. Whitebox evidence may record names and paths; secret values may never be recorded.
 
-深度 secret scan、公开分类和仓库共享政策属于 v0.5。v0.4 仍遵守最小安全规则：可记录名称和路径，不可记录 secret 值。
+白盒发现完成后，v0.5 进入 Phase 0.75 Safety Classification。进入 Git、团队共享或公开发布前，使用 `SECURITY_BOUNDARY.md`、`REPO_PUBLICATION_POLICY.md` 和 `tools/safety_scan.py`。白盒证据可记录名称和路径，但绝不能记录 secret 值。
 
 ## Evidence Vocabulary / 证据语汇
 
