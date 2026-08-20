@@ -563,13 +563,13 @@ Release asset SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d598774
 
 | Linear ID | Source ID | UAT Status | Implementation Evidence |
 |---|---|---|---|
-| DVD-83 | AIPOS-031 | In Progress | `SECURITY_BOUNDARY.md`, Phase 0.75, safe finding contract |
-| DVD-84 | AIPOS-032 | In Progress | `REPO_PUBLICATION_POLICY.md`, GitHub/release gates, publication manifest |
-| DVD-85 | AIPOS-033 | In Progress | `AGENT_DOC_POLICY.md` and upgrade preservation |
-| DVD-86 | AIPOS-034 | In Progress | project-memory audit and document-gap register |
-| DVD-87 | AIPOS-035 | In Progress | `tools/safety_scan.py` and focused scanner tests |
-| DVD-88 | AIPOS-036 | In Progress | validator, example, package, digest, and v0.5 UAT records |
-| DVD-89 | AIPOS-037 | In Progress | README and `QUICKSTART.md` 60-second GitHub start |
+| DVD-83 | AIPOS-031 | In Review + dvdTeacher | `SECURITY_BOUNDARY.md`, Phase 0.75, safe finding contract |
+| DVD-84 | AIPOS-032 | In Review + dvdTeacher | `REPO_PUBLICATION_POLICY.md`, GitHub/release gates, publication manifest |
+| DVD-85 | AIPOS-033 | In Review + dvdTeacher | `AGENT_DOC_POLICY.md` and upgrade preservation |
+| DVD-86 | AIPOS-034 | In Review + dvdTeacher | project-memory audit and document-gap register |
+| DVD-87 | AIPOS-035 | In Review + dvdTeacher | `tools/safety_scan.py` and focused scanner tests |
+| DVD-88 | AIPOS-036 | In Review + dvdTeacher | validator, example, package, digest, and v0.5 UAT records |
+| DVD-89 | AIPOS-037 | In Review + dvdTeacher | README and `QUICKSTART.md` 60-second GitHub start |
 
 ### Candidate Verification
 
@@ -588,7 +588,7 @@ Extracted package tests: 10 passed
 
 ### Remaining Human Gate
 
-Prepare a GitHub Draft PR and bilingual Linear evidence comments. Then move DVD-83 through DVD-89 to `In Review`, assign them to `dvdTeacher`, and wait for explicit human UAT.
+GitHub Draft PR and bilingual Linear evidence comments are complete. DVD-83 through DVD-89 are `In Review`, assigned to `dvdTeacher`. Project status update `f71da708-bb04-4dd7-bcb5-2f20fa4a26d0` records the UAT handoff; the v0.5 project remains `In Progress`.
 
 GitHub review evidence:
 

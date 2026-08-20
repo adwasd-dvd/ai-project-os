@@ -30,7 +30,7 @@ Publication Decision: Review for current PRIVATE GitHub destination
 | Staged/private gate | Block 0 | Block 0, Review 0, Go | Pass |
 | Public/tracked advisory | Block 0 + Review dispositions | Block 0; 30 Private Repo memory records and 2 Team Shared Agent docs; future public reclassification required | Pass for advisory, not public approval |
 | GitHub review surface | Dedicated branch and Draft PR | `codex/v0.5-repo-safety`; PR #3 | Pass |
-| Linear UAT handoff | Issues In Review + Owner, bilingual evidence | Pending | Pending |
+| Linear UAT handoff | Issues In Review + Owner, bilingual evidence | DVD-83 through DVD-89 In Review + dvdTeacher; project update `f71da708-bb04-4dd7-bcb5-2f20fa4a26d0` | Pass |
 | Human UAT | Explicit Owner conclusion | Pending | Pending |
 | Publication manifest | Human Go | Review pending Owner | Pending |
 | GitHub release/tag | Only after UAT | Not created | Correctly blocked |
