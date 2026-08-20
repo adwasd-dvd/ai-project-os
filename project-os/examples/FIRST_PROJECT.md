@@ -1,6 +1,6 @@
 # FIRST_PROJECT Example
 
-本文是 AI Project OS v0.4 的第一个真实项目 walkthrough。
+本文是 AI Project OS v0.5 的第一个真实项目 walkthrough。
 
 示例项目：
 
@@ -25,12 +25,10 @@ tiny-lesson-tracker/
 用户在本地 Codex 输入：
 
 ```text
-请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md、project-os/WHITEBOX_PROTOCOL.md。
-
-请按 AI Project OS v0.4 工作。
+请读取 project-os/START_HERE.md 和 project-os/QUICKSTART.md，并按 AI Project OS 工作。
 
 先执行 Phase 0 Self-Check。
-这是现有项目；如果 Phase 0 没有阻塞项，先进入 Phase 0.5 Whitebox Discovery，再进入 Phase 1 Audit。
+这是现有项目；如果 Phase 0 没有阻塞项，先进入 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification，再进入 Phase 1 Audit。
 ```
 
 ## 2. Phase 0 Self-Check
@@ -50,6 +48,7 @@ Codex 输出示例：
 Phase 0 Self-Check complete.
 
 Needs Phase 0.5 Whitebox Discovery: Yes
+Needs Phase 0.75 Safety Classification: Yes
 Can start Phase 0.5: Yes
 
 Blocking items:
@@ -100,6 +99,24 @@ Tiny Lesson Tracker 的示例发现：
 | SD-001 | Progress history retention is defined | Unknown | No policy or cleanup job found | Unknown | Create Decision before changing storage |
 
 Codex 不修复这些发现，只将它们转入 Decision、Feature、Bug、Backlog 或验证建议。
+
+## 3.5 Phase 0.75 Safety Classification
+
+Codex 先运行只读扫描：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile local --scope worktree --summary
+```
+
+然后记录：
+
+- `Tiny Lesson Tracker` 预计进入 private team repository。
+- `.env` 和个人工作说明属于 `Local Only`。
+- 稳定项目规则属于 `Team Shared` 或 `Private Repo`。
+- Release 中的模板和示例必须是 `Public Safe`。
+- findings 只保留规则 ID、路径、分类和处置，不复制命中值或源文件行。
+
+疑似有效凭证会阻止 Git/PR，交给人工轮换；Codex 不自动删除、轮换或改写历史。
 
 ## 4. Phase 1 Audit
 
@@ -182,7 +199,7 @@ Acceptance Criteria / 验收标准:
 
 ## 7. One Issue Lifecycle
 
-v0.3 的基础交接规则：
+基础交接规则：
 
 ```text
 Assigned = human queue

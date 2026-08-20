@@ -18,7 +18,7 @@ Status: Draft / Complete / Blocked
 ## Current Goal
 
 ```text
-完成 AI Project OS Phase 0 Self-Check，并判断是否需要 Phase 0.5 Whitebox Discovery。
+完成 AI Project OS Phase 0 Self-Check，并判断是否需要 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification。
 ```
 
 ## Project Location
@@ -32,6 +32,8 @@ Status: Draft / Complete / Blocked
 | `project-os/audit/` exists | Yes / No |  |
 | `project-os/discovery/` exists | Yes / No |  |
 | Whitebox scanner exists | Yes / No | `project-os/tools/whitebox_scan.py` |
+| `project-os/safety/` exists | Yes / No |  |
+| Safety scanner exists | Yes / No | `project-os/tools/safety_scan.py` |
 
 ## Git / GitHub
 
@@ -84,6 +86,20 @@ Status: Draft / Complete / Blocked
 | Production access required | Must be No |  |
 | Secret values will be recorded | Must be No | Names and paths only |
 
+## Safety / Publication Readiness
+
+| Check | Result | Notes |
+|---|---|---|
+| Phase 0.75 required | Yes / No | Required before Git/team/public publication |
+| Intended publication profile | local / private / team / public / Unknown |  |
+| Intended destination |  | Repository, Release, or local-only |
+| Agent document mode | local-only / team-shared / organization-shared / public-safe / Unknown |  |
+| Safety scanner dry-run safe | Yes / No / Not checked | Must not write files |
+| Safety output confined to repository | Yes / No / Not checked | Default: `project-os/safety/` |
+| Project memory gaps identified | Yes / No / Not checked | No raw chat dumps |
+| Matched values/source lines emitted | Must be No | Sanitized evidence only |
+| Private repo treated as secret store | Must be No |  |
+
 ## Local Dependencies
 
 | Check | Result | Notes |
@@ -105,10 +121,11 @@ Status: Draft / Complete / Blocked
 ## Permission Boundary Confirmed
 
 ```text
-Phase 0/0.5/1 permissions:
+Phase 0/0.5/0.75/1 permissions:
 - Read project files: Yes
 - Write project-os/audit docs: Yes
 - Write project-os/discovery docs: Yes
+- Write sanitized project-os/safety docs: Yes
 - Modify product code: No
 - Write Linear: No
 - Create GitHub PR: No
@@ -116,7 +133,7 @@ Phase 0/0.5/1 permissions:
 
 ## Blocking Items
 
-These block Phase 0.5 or Phase 1.
+These block Phase 0.5, Phase 0.75, or Phase 1.
 
 ```text
 - 
@@ -144,7 +161,8 @@ Ask only the next 1 to 3 blocking questions.
 
 ```text
 Needs Phase 0.5 Whitebox Discovery: Yes / No / Not Applicable
-Can start Phase 0.5 or Phase 1 Audit: Yes / No
+Needs Phase 0.75 Safety Classification: Yes / No
+Can start Phase 0.5, Phase 0.75, or Phase 1 Audit: Yes / No
 Reason:
 Recommended next step:
 ```

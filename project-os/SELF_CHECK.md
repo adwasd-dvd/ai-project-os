@@ -1,10 +1,10 @@
 # SELF_CHECK
 
-本文定义 AI Project OS v0.4 的 Phase 0 Self-Check。
+本文定义 AI Project OS v0.5 的 Phase 0 Self-Check。
 
 Phase 0 是本地 Codex 第一次接管项目时必须执行的初始化自检。
 
-目标：先确认 Codex 是否站在正确的项目里、是否能读取必要上下文、Linear 中用什么语言描述项目事项、哪些依赖或账号需要用户配合、是否存在 scheduled scan 需求，并判断是否必须进入 Phase 0.5 Whitebox Discovery。
+目标：先确认 Codex 是否站在正确的项目里、是否能读取必要上下文、Linear 中用什么语言描述项目事项、哪些依赖或账号需要用户配合、是否存在 scheduled scan 需求，并判断是否必须进入 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification。
 
 ## 什么时候执行
 
@@ -31,6 +31,8 @@ Phase 0 是本地 Codex 第一次接管项目时必须执行的初始化自检�
 - Codex-authored Linear comments、status updates 和 run summaries 默认也应遵守同一双语用户可读规则。
 - 成熟、不明、上下文不完整的项目默认需要 Phase 0.5 Whitebox Discovery。
 - Phase 0 必须确认 scanner 的读取范围、排除范围和 discovery 写入路径。
+- 任何准备进入 Git、团队共享或公开发布的项目都必须进入 Phase 0.75 Safety Classification。
+- Phase 0 必须确认预期 publication profile、Agent 文档共享模式和 safety scanner 是否可用。
 - Phase 0 不修改产品代码。
 - Phase 0 不写入 Linear。
 - Phase 0 不创建 GitHub PR。
@@ -41,7 +43,7 @@ Phase 0 是本地 Codex 第一次接管项目时必须执行的初始化自检�
 当用户说“按照这个懒人包工作”时，Codex 应先说明：
 
 ```text
-我会先做 Phase 0 Self-Check：确认当前仓库、project-os 文件、Git/GitHub、Linear、Linear Issue 描述语言（默认建议 English + Chinese）、依赖、环境变量、测试入口、scheduled Linear scan 需求，并判断是否需要 Phase 0.5 Whitebox Discovery。不会修改产品代码，也不会写入 Linear。
+我会先做 Phase 0 Self-Check：确认当前仓库、project-os 文件、Git/GitHub、Linear、Linear Issue 描述语言（默认建议 English + Chinese）、依赖、环境变量、测试入口、scheduled Linear scan 需求，并判断是否需要 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification。不会修改产品代码，也不会写入 Linear。
 ```
 
 然后直接开始检查。
@@ -112,6 +114,19 @@ Codex 必须判断：
 
 成熟或上下文不完整的项目必须进入 Phase 0.5。全新空项目可记录 `Not Applicable`，但必须说明证据。
 
+### 3.2 Safety Need and Scope
+
+Codex 必须判断：
+
+- 项目预计保持 local-only、进入 private/team repository，还是公开发布。
+- 是否存在 `.env`、private key、token、生产连接、用户绝对路径或 raw conversation export 风险。
+- `AGENTS.md`、agent wrapper 和其他 AI 指令应当 local-only、team-shared、organization-shared 还是 public-safe。
+- 是否可以运行 `project-os/tools/safety_scan.py`。
+- safety scanner 是否保持只读，写入是否仅限仓库内 `project-os/safety/`。
+- 项目事实是否有只存在于聊天、个人记忆或未确认文档中的缺口。
+
+所有进入 Git、团队共享或公开发布的项目都必须进入 Phase 0.75。无法确认 destination 时，先采用最保守 profile 并把选择交给人工。
+
 ### 4. Local Dependency Readiness
 
 Codex 必须判断：
@@ -133,6 +148,8 @@ Codex 必须判断：
 - 是否有 GitHub remote。
 - 是否能读取本地 Git 历史。
 - 是否有创建 PR 所需连接或登录状态。
+- 当前 repository visibility 和预期 publication destination。
+- 是否存在需要长期引用的 tag/release 路径。
 
 Phase 1 不要求 GitHub 登录。
 
@@ -164,10 +181,11 @@ Linear 连接缺失不应阻塞 Phase 1，但会阻塞 Phase 3 写入。
 Codex 必须向用户明确当前阶段权限：
 
 ```text
-Phase 0/0.5/1 我只会读取项目并写 project-os/audit 和 project-os/discovery 文档。
+Phase 0/0.5/0.75/1 我只会读取项目并写 project-os/audit、project-os/discovery 和经脱敏的 project-os/safety 文档。
 我不会改产品代码。
 我不会写入 Linear。
 我不会创建 GitHub PR。
+我不会输出命中 secret、源文件行、环境变量值或文件正文。
 ```
 
 如果需要超出这些权限，必须单独请求用户确认。
@@ -243,6 +261,11 @@ project-os/audit/SELF_CHECK_REPORT.md
 - 是否建议进入 Phase 1。
 - 是否必须进入 Phase 0.5 Whitebox Discovery。
 - Whitebox 读取范围、排除范围和写入路径。
+- 是否必须进入 Phase 0.75 Safety Classification。
+- 预期 publication profile 和 destination。
+- Agent 文档共享模式。
+- Safety scanner 可用性、读取范围和写入路径。
+- 已知 project memory 和 document gap 风险。
 
 ## Phase 0 Completion
 
@@ -252,7 +275,8 @@ project-os/audit/SELF_CHECK_REPORT.md
 Phase 0 Self-Check complete.
 
 Needs Phase 0.5 Whitebox Discovery: Yes / No / Not Applicable
-Can start Phase 0.5 or Phase 1 Audit: Yes / No
+Needs Phase 0.75 Safety Classification: Yes / No
+Can start Phase 0.5, Phase 0.75, or Phase 1 Audit: Yes / No
 
 Blocking items:
 -
@@ -264,12 +288,12 @@ Recommended next step:
 -
 ```
 
-如果需要 Phase 0.5，Codex 应优先进入白盒发现。如果有证据标记为 `Not Applicable`，才直接进入 Phase 1。
+如果需要 Phase 0.5，Codex 应优先进入白盒发现。Phase 0.75 在任何 Git/team/public 路径中都必须完成；只有 local-only 且有明确证据时才可以记录为不进入发布流程。
 
 Codex 可向用户说明：
 
 ```text
-是否现在开始 Phase 0.5/1？我会只读项目，生成 discovery 和 audit 文档，不改产品代码、不写 Linear。
+是否现在开始 Phase 0.5/0.75/1？我会只读项目，生成 discovery、safety 和 audit 文档，不改产品代码、不写 Linear。
 ```
 
 如果用户一开始已经明确要求“初始化并开始 Phase 1”，且 Phase 0 没有阻塞项，Codex 可以直接进入 Phase 1，但必须先在回复中说明。

@@ -538,3 +538,80 @@ Tag: v0.4.0
 Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.4.0
 Release asset SHA-256: 7482351b91167e624efda97fb518d2f6a0690c39c1c7bbd4f1d5987744d90477
 ```
+
+## v0.5 Implementation Linear Update - 2026-08-20
+
+### Project
+
+| Linear ID | Name | Status | Notes |
+|---|---|---|---|
+| `6e957cef-d72f-4f10-ba81-8337c05ae8e8` | AI Project OS v0.5 | In Progress | Repo Safety, publication profiles, Agent-doc sharing, project memory, sanitized scanner, and GitHub quickstart |
+
+### Label
+
+| Linear ID | Name | Purpose |
+|---|---|---|
+| `79160e62-7fd3-4e95-b330-16f527168ad8` | `module:safety` | Classify v0.5 safety and publication work |
+
+### Decision
+
+| Linear ID | Source ID | Status | Notes |
+|---|---|---|---|
+| DVD-82 | DEC-008 | Done | Confirmed four-level classification, private-repo boundary, sanitized evidence, Agent-doc policy, and project-memory gap handling |
+
+### Implementation Issues
+
+| Linear ID | Source ID | UAT Status | Implementation Evidence |
+|---|---|---|---|
+| DVD-83 | AIPOS-031 | In Review + dvdTeacher | `SECURITY_BOUNDARY.md`, Phase 0.75, safe finding contract |
+| DVD-84 | AIPOS-032 | In Review + dvdTeacher | `REPO_PUBLICATION_POLICY.md`, GitHub/release gates, publication manifest |
+| DVD-85 | AIPOS-033 | In Review + dvdTeacher | `AGENT_DOC_POLICY.md` and upgrade preservation |
+| DVD-86 | AIPOS-034 | In Review + dvdTeacher | project-memory audit and document-gap register |
+| DVD-87 | AIPOS-035 | In Review + dvdTeacher | `tools/safety_scan.py` and focused scanner tests |
+| DVD-88 | AIPOS-036 | In Review + dvdTeacher | validator, example, package, digest, and v0.5 UAT records |
+| DVD-89 | AIPOS-037 | In Review + dvdTeacher | README and `QUICKSTART.md` 60-second GitHub start |
+
+### Candidate Verification
+
+```text
+Strict validator: 0 failures, 0 warnings
+Automated tests: 10 passed
+Local/worktree safety scan: Block 0, Review 0, Go
+Staged/private safety scan: Block 0, Review 0, Go
+Public/tracked advisory: Block 0, Review 32; 30 Private Repo memory records + 2 Team Shared Agent docs are compatible with current PRIVATE GitHub, but require reclassification before future public visibility
+Candidate zip: releases/ai-project-os-v0.5.0.zip
+Candidate SHA-256: 75eee07ddc40075399ae237044676dfb419f257c7e55461c04205d1fdda44120 (superseded after final release-state metadata)
+Archive integrity: Passed
+Extracted package strict validation: Passed
+Extracted package tests: 10 passed
+```
+
+### Remaining Human Gate
+
+GitHub Draft PR and bilingual Linear evidence comments are complete. DVD-83 through DVD-89 are `In Review`, assigned to `dvdTeacher`. Project status update `f71da708-bb04-4dd7-bcb5-2f20fa4a26d0` records the UAT handoff; the v0.5 project remains `In Progress`.
+
+GitHub review evidence:
+
+```text
+Branch: codex/v0.5-repo-safety
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/3
+Final release zip SHA-256: fb242467d1729c5cbee09cb06e5c06aabbcc234d8970b696026be19d3e8495dd
+```
+
+Do not merge, tag, release, complete issues, or complete the v0.5 project before the Owner states:
+
+```text
+UAT 通过，允许发布 v0.5.0。
+```
+
+## v0.5 UAT Approval - 2026-08-20
+
+Owner explicitly approved v0.5.0 UAT and authorized release.
+
+Owner 已明确批准 v0.5.0 UAT 并授权发布。
+
+```text
+UAT: Pass
+Approval: UAT 通过，允许发布 v0.5.0。
+Next: finalize package, merge PR #3, publish tag/release, then close DVD-83 through DVD-89 and the v0.5 project.
+```

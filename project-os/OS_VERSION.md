@@ -2,15 +2,15 @@
 
 ```text
 Product: AI Project OS
-Installed OS Version: v0.4.0
+Installed OS Version: v0.5.0
 Installed Date: 2026-08-18
 Local Customizations: This repo manages the AI Project OS source package itself.
-Last Upgrade: 2026-08-19 to v0.4.0
+Last Upgrade: 2026-08-19 to v0.5.0
 ```
 
 ## Compatibility
 
-AI Project OS v0.4.0 expects:
+AI Project OS v0.5.0 expects:
 
 - Local Codex as the development executor.
 - Linear as the project management system.
@@ -21,6 +21,11 @@ AI Project OS v0.4.0 expects:
 - Mature or unclear repositories run Phase 0.5 Whitebox Discovery before baseline confirmation.
 - Important whitebox findings record state, evidence, confidence, and next verification.
 - The whitebox scanner is read-only by default and never emits secret values.
+- Repository artifacts use Local Only, Team Shared, Private Repo, or Public Safe classification.
+- Private repositories are never treated as secret stores.
+- Commit/publication gates use sanitized safety evidence and human approval.
+- Agent documents separate stable shared rules from local personal context.
+- Project-memory gaps and chat-only claims remain visible until verified.
 
 ## Upgrade Rule
 

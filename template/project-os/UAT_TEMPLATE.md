@@ -71,6 +71,23 @@ Result: Pass / Fail / Conditional Pass
 | WBX-009 | Human usefulness | Owner can explain the system shape and choose the next verification from the reports |  |  |  |
 | WBX-010 | No automatic repair/import | Discovery does not change product code or bypass Linear first-write approval |  |  |  |
 
+## Safety / Publication Scenarios
+
+| Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |
+|---|---|---|---|---|---|
+| SAF-001 | Four-level classification | Assets can be classified as Local Only, Team Shared, Private Repo, or Public Safe |  |  |  |
+| SAF-002 | Read-only default | Scanner dry run creates no file and changes no source |  |  |  |
+| SAF-003 | No secret-value output | Findings omit matched values, source lines, environment values, and file contents |  |  |  |
+| SAF-004 | Scope selection | Worktree, staged, and tracked scans examine the documented file sets |  |  |  |
+| SAF-005 | Profile disposition | Local, private, team, and public profiles produce deterministic Block/Review/Info dispositions |  |  |  |
+| SAF-006 | Output confinement | `--write` refuses destinations outside the repository |  |  |  |
+| SAF-007 | Private repo boundary | A private repository still blocks credentials and private keys |  |  |  |
+| SAF-008 | Agent document mode | Local-only and shared Agent documents have an explicit owner and sharing decision |  |  |  |
+| SAF-009 | Project memory audit | Chat-only claims, contradictions, and stale decisions remain visible as gaps |  |  |  |
+| SAF-010 | Publication manifest | Human can record destination, evidence, Review dispositions, and Go/Block decision |  |  |  |
+| SAF-011 | Release artifact digest | Generated zip has a recorded SHA-256 that matches the uploaded asset |  |  |  |
+| SAF-012 | 60-second GitHub start | User can download, place `project-os/`, paste the Codex prompt, and receive the expected initial assessment |  |  |  |
+
 ## Issues Found
 
 | ID | Description | Severity | Category | Target Version | Linear Issue | Owner |
@@ -144,7 +161,7 @@ Notes:
 ## Codex Follow-up Prompt
 
 ```text
-请读取 project-os/UAT_TEMPLATE.md、project-os/LINEAR_INTAKE.md、project-os/VERSION_PLANNING.md 和当前 UAT 记录。
+请读取 project-os/UAT_TEMPLATE.md、project-os/LINEAR_INTAKE.md、project-os/VERSION_PLANNING.md、project-os/REPO_PUBLICATION_POLICY.md 和当前 UAT 记录。
 
 把 UAT 发现的问题分类为：
 - 当前版本立即修

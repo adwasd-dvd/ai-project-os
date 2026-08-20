@@ -65,6 +65,8 @@ Patch 版本不得塞入新 Feature。
 - Deferred：延期到未来版本。
 - Decisions：上线前必须解决。
 - UAT Owner：谁验收。
+- Publication Profile：local/private/team/public 中的目标发布边界。
+- Publication Destination：目标 GitHub repository、Release 或其他分发位置。
 
 版本范围应在 Linear Project 中体现。每个可交付 Issue 只能属于一个目标版本，详细拆分规则见 `VERSION_PLANNING.md`。
 
@@ -108,6 +110,9 @@ Codex 不得因为“顺手”把 Backlog 或下一版本内容加入当前版�
 - 阻塞 Decision 已清理。
 - UAT 负责人已定。
 - GitHub 分支策略已定。
+- publication profile 和 destination 已定。
+- Agent 文档共享模式已定。
+- `safety/PUBLICATION_MANIFEST.md` 已开始填写。
 
 ## Version Freeze
 
@@ -144,6 +149,28 @@ UAT 未通过，必须先处理以下问题。
 
 Codex 不能代替这个结论。
 
+## Publication Safety Gate
+
+创建 PR 前必须对 staged 内容执行 private-profile gate：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile private --scope staged --fail-on-block --summary
+```
+
+公开发布前必须对最终 tracked 内容执行 public-profile gate，并由人工完成 `safety/PUBLICATION_MANIFEST.md`：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile public --scope tracked --fail-on-block --summary
+```
+
+发布要求：
+
+- Block findings 为零。
+- Review findings 均有明确 disposition。
+- 安全证据未输出命中值、源文件行、环境变量值或文件正文。
+- manifest 的最终结论是人工 `Go`。
+- 任何凭证轮换、删除或历史改写由人工授权和执行。
+
 ## 下一版本启动规则
 
 只有满足以下条件，才可以启动下一正式版本：
@@ -154,6 +181,7 @@ Codex 不能代替这个结论。
 - Linear 中当前版本状态已关闭或归档。
 - 下一版本范围已人工确认。
 - 已完成旧 Issue 的下版本反馈已通过 carry-over revalidation 承接，不要直接移动旧 issue。
+- 目标发布集合通过 safety gate，publication manifest 已给出 `Go`。
 
 ## Release Notes 最小格式
 
@@ -174,4 +202,7 @@ Codex 不能代替这个结论。
 - Tag:
 - PRs:
 - CI:
+- Publication Profile:
+- Publication Manifest:
+- Release Asset SHA-256:
 ```

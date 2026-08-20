@@ -24,13 +24,17 @@ class WhiteboxScanTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp_dir = tempfile.TemporaryDirectory()
         self.root = Path(self.temp_dir.name)
+        self.placeholder_value = "-".join(["placeholder", "secret", "value"])
+        self.actual_value = "-".join(["actual", "super", "secret"])
+        self.ignored_marker = "-".join(["ignored", "secret", "marker"])
+        self.dependency_version = "-".join(["not", "emitted", "version"])
         self._write(".gitignore", "node_modules/\n")
         self._write(
             "package.json",
             json.dumps(
                 {
-                    "dependencies": {"react": "not-emitted-version"},
-                    "devDependencies": {"vitest": "not-emitted-version"},
+                    "dependencies": {"react": self.dependency_version},
+                    "devDependencies": {"vitest": self.dependency_version},
                 }
             ),
         )
@@ -38,9 +42,12 @@ class WhiteboxScanTests(unittest.TestCase):
         self._write("tests/test_app.py", "def test_fixture():\n    assert True\n")
         self._write("docs/README.md", "# Fixture\n")
         self._write("migrations/001_create.sql", "create table example(id int);\n")
-        self._write(".env.example", "API_TOKEN=placeholder-secret-value\nPUBLIC_MODE=true\n")
-        self._write(".env", "PASSWORD=actual-super-secret\n")
-        self._write("node_modules/ignored.js", "ignored-secret-marker\n")
+        self._write(
+            ".env.example",
+            f"API_TOKEN={self.placeholder_value}\nPUBLIC_MODE=true\n",
+        )
+        self._write(".env", f"PASSWORD={self.actual_value}\n")
+        self._write("node_modules/ignored.js", f"{self.ignored_marker}\n")
         subprocess.run(["git", "init", "-q", str(self.root)], check=True)
 
     def tearDown(self) -> None:
@@ -68,7 +75,7 @@ class WhiteboxScanTests(unittest.TestCase):
         evidence = whitebox_scan.build_evidence(self.root, self.output_dir)
         rendered = whitebox_scan.render_json(evidence)
         self.assertNotIn("node_modules/ignored.js", rendered)
-        self.assertNotIn("ignored-secret-marker", rendered)
+        self.assertNotIn(self.ignored_marker, rendered)
 
     def test_names_are_collected_without_secret_or_setting_values(self) -> None:
         evidence = whitebox_scan.build_evidence(self.root, self.output_dir)
@@ -79,9 +86,9 @@ class WhiteboxScanTests(unittest.TestCase):
         self.assertIn('"name": "react"', rendered)
         self.assertIn('"name": "vitest"', rendered)
         self.assertIn('".env"', rendered)
-        self.assertNotIn("placeholder-secret-value", rendered)
-        self.assertNotIn("actual-super-secret", rendered)
-        self.assertNotIn("not-emitted-version", rendered)
+        self.assertNotIn(self.placeholder_value, rendered)
+        self.assertNotIn(self.actual_value, rendered)
+        self.assertNotIn(self.dependency_version, rendered)
 
     def test_write_is_deterministic_and_check_passes(self) -> None:
         first = whitebox_scan.render_json(

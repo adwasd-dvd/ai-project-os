@@ -58,6 +58,28 @@ Phase 0.5 开始前必须明确：
 - discovery 产物不含 secret 值。
 - `WHITEBOX_IMPORT_REPORT.md` 可支持人工 review 和 Linear 草案，但未绕过首次写入授权。
 
+## Ready for Safety Classification
+
+Phase 0.75 开始前必须明确：
+
+- 项目根目录和预期 publication profile 已确认，或已明确标记为待人工确认。
+- 已读取 `SECURITY_BOUNDARY.md`、`REPO_PUBLICATION_POLICY.md` 和 `AGENT_DOC_POLICY.md`。
+- scanner 先 dry run，默认不写文件。
+- 写入目标只能位于仓库内，且报告不得包含 matched value、source line、environment value 或 file content。
+- 任何删除、凭证轮换、Git 历史改写或远端发布都需要人工授权。
+
+## Safety Classification Complete
+
+Phase 0.75 只有在以下条件满足时才能完成：
+
+- 重要资产已归入 `Local Only`、`Team Shared`、`Private Repo` 或 `Public Safe`。
+- publication profile 和目标 destination 已记录。
+- Block findings 已处理或明确阻止发布。
+- Review findings 已有 disposition、owner 或 Next Verification。
+- Agent 文档共享模式已确认。
+- 项目记忆和文档缺口已记录，聊天说法未被当作事实。
+- 生成的证据不包含命中值、源文件内容或环境变量值。
+
 ## Ready for Scheduled Scan
 
 scheduled/cron scan 启用前必须满足：
@@ -79,6 +101,11 @@ scheduled/cron scan 启用前必须满足：
 - 新增或修改行为有测试覆盖，或说明为什么暂不覆盖。
 - 文档或配置变更已说明。
 - 已记录风险和已知限制。
+- 已按目标 destination 执行 staged/private safety scan，且 Block findings 为零：
+
+```bash
+python3 project-os/tools/safety_scan.py --root . --profile private --scope staged --fail-on-block --summary
+```
 
 ## Ready for Review
 
@@ -143,6 +170,16 @@ v0.4 还必须包含：
 - 完整示例至少包含一个 Unknown 和一个 Contradicted 发现。
 - 人类确认白盒产物“有用且可信”，Codex 不能自我确认。
 
+v0.5 还必须包含：
+
+- `Local Only`、`Team Shared`、`Private Repo` 和 `Public Safe` 四级分类可实际使用。
+- scanner 默认只读，且不输出 matched value、source line、environment value 或 file content。
+- `worktree`、`staged`、`tracked` scopes 与 `local`、`private`、`team`、`public` profiles 有确定性结果。
+- private repository 不被当作 secret store。
+- Agent 文档可以选择 local-only、team-shared、organization-shared 或 public-safe 模式。
+- 项目记忆审计能保留聊天断档、未证实需求和文档冲突。
+- GitHub README 和 `QUICKSTART.md` 能让新用户完成“下载、放入项目、告诉 Codex 开始”流程。
+
 ## UAT Pass
 
 UAT Pass 必须由人给出。
@@ -168,6 +205,9 @@ Codex 不得自行给出 UAT Pass。
 - Linear 中版本状态已更新。
 - 已知限制被 Owner 接受。
 - 已完成旧 Issue 的下版本反馈已经 carry-over 或明确不处理。
+- `safety/PUBLICATION_MANIFEST.md` 已给出目标 profile、destination 和人工 `Go` 判定。
+- 对目标发布集合运行 safety scan 后 Block findings 为零，Review findings 已有明确 disposition。
+- GitHub Release asset 已生成 SHA-256，并记录在 release notes 或 closeout 证据中。
 
 ## Carry-over Ready
 
