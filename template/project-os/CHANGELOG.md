@@ -17,6 +17,7 @@ Updated:
 
 - `BOOTSTRAP.md`, `SELF_CHECK.md`, `AGENTS.md`, `WORKFLOW.md`, `PROJECT.md`, `QUALITY_GATE.md`, `LINEAR_POLICY.md`, `START_HERE.md`, and `UAT_TEMPLATE.md` for Phase 0.5.
 - Validator coverage for required whitebox files, report fields, template sync, and scanner safety guardrails.
+- Validator layout detection so strict checks pass in both the source repository and an installed package containing only `project-os/`.
 
 ## v0.3.0 - 2026-08-19
 

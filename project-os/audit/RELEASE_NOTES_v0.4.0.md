@@ -53,10 +53,11 @@ Codex verification result:
 
 ```text
 Strict validators: 0 failures, 0 warnings
-Scanner tests: 8 passed
+Automated tests: 10 passed (8 scanner + 2 validator-layout)
 Python compilation: Passed
-Repository scan: 99 files, 0 secret-like paths, no secret values emitted
+Repository scan: 101 files, 0 secret-like paths, no secret values emitted
 Release archive test: Passed
+Extracted standalone package strict validation: Passed
 git diff --check: Passed
 ```
 
@@ -69,5 +70,5 @@ Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
 Tag: Not created
 Release: Not published
 Release asset: releases/ai-project-os-v0.4.0.zip (local, ignored by Git)
-Candidate SHA-256: 6d9a88e4ee42cb653ea23faa3b182ecace30de76dd337d252ac8e7c67d60bdb6
+Candidate SHA-256: 74ed17948307618c7485d8199439a24e3d337fa4a0ca01bdbb8e0c9ca22dbef3
 ```

@@ -23,8 +23,8 @@ GitHub: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; no v0.4 tag
 | Included features implemented | AIPOS-024 through AIPOS-030 with evidence comments | DVD-59 through DVD-65 `In Review`, assigned to dvdTeacher, with bilingual evidence comments | Pass |
 | Source validator | Strict validator passes | 0 failures, 0 warnings | Pass |
 | Template validator | Strict validator passes | 0 failures, 0 warnings | Pass |
-| Scanner tests | Source and template tests pass | 8 tests passed | Pass |
-| Release zip | Top-level `project-os/`, archive test clean | `releases/ai-project-os-v0.4.0.zip`; `unzip -t` passed | Pass |
+| Automated tests | Source/template scanner and validator-layout tests pass | 10 tests passed | Pass |
+| Release zip | Top-level `project-os/`, archive and standalone strict validation clean | `releases/ai-project-os-v0.4.0.zip`; archive and extracted-package validation passed | Pass |
 | GitHub review surface | Clean dedicated branch and Draft PR | `codex/v0.4-whitebox`; PR #2 | Pass |
 | Human UAT | Explicit human conclusion | Not received | Pending |
 | Linear closeout | Included issues Done only after UAT | Not allowed yet | Pending |

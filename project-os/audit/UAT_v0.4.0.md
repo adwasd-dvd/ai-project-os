@@ -10,7 +10,7 @@ This record must be completed by a human Owner or delegated UAT reviewer.
 Version: v0.4.0
 Date: 2026-08-19
 Environment: local repo + Linear DvdTeacher + GitHub Draft PR
-Build / Commit: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; implementation commit 168ea9266e5dfb8bd60f3029e10995972d16d89d
+Build / Commit: Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/2; branch `codex/v0.4-whitebox`
 Tester: Owner / dvdTeacher
 Owner: dvdTeacher
 Result: Pending
@@ -20,7 +20,7 @@ Candidate package:
 
 ```text
 Path: releases/ai-project-os-v0.4.0.zip
-SHA-256: 6d9a88e4ee42cb653ea23faa3b182ecace30de76dd337d252ac8e7c67d60bdb6
+SHA-256: 74ed17948307618c7485d8199439a24e3d337fa4a0ca01bdbb8e0c9ca22dbef3
 Git policy: ignored locally; upload only as a GitHub Release asset after UAT passes
 ```
 
@@ -35,8 +35,8 @@ Recover a difficult existing project into an evidence-linked whitebox map withou
 ```text
 python3 project-os/tools/validate_project_os.py --root . --strict
 python3 template/project-os/tools/validate_project_os.py --root . --strict
-python3 -m unittest project-os/tools/test_whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
-python3 -m py_compile project-os/tools/validate_project_os.py project-os/tools/whitebox_scan.py project-os/tools/test_whitebox_scan.py template/project-os/tools/validate_project_os.py template/project-os/tools/whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
+python3 -m unittest project-os/tools/test_validate_project_os.py template/project-os/tools/test_validate_project_os.py project-os/tools/test_whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
+python3 -m py_compile project-os/tools/validate_project_os.py project-os/tools/test_validate_project_os.py project-os/tools/whitebox_scan.py project-os/tools/test_whitebox_scan.py template/project-os/tools/validate_project_os.py template/project-os/tools/test_validate_project_os.py template/project-os/tools/whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
 python3 project-os/tools/whitebox_scan.py --root . --summary
 unzip -t releases/ai-project-os-v0.4.0.zip
 git diff --check
@@ -53,7 +53,7 @@ git diff --check
 | WBX-005 | AIPOS-027 | Inspect document and settings/data reports / 检查文档与设定数据报告 | Authority, freshness, conflicts, config names, stores, schemas, and flows have explicit evidence / 权威性、新鲜度、冲突和数据流均有证据字段 |  |  |  |
 | WBX-006 | AIPOS-028 | Record one contradiction and one unknown in the logic audit / 在逻辑审计中记录一个冲突和一个未知项 | Neither is silently converted into an implementation requirement; each has next verification / 不会直接变成开发需求，且都有下一步验证 |  |  |  |
 | WBX-007 | AIPOS-029 | Read the copy-ready Linear summary / 阅读可复制到 Linear 的摘要 | Summary links evidence, shows confidence and risk, and excludes secret values / 摘要链接证据、展示置信度风险且不含秘密值 |  |  |  |
-| WBX-008 | AIPOS-030 | Run validators and scanner tests / 运行 validator 和 scanner tests | All checks pass for source and distributable template / 源项目与分发模板全部通过 |  |  |  |
+| WBX-008 | AIPOS-030 | Run validators, layout tests, and scanner tests / 运行 validator、布局测试和 scanner tests | Source repository and standalone installed-package layouts both pass / 源码仓库与独立安装包布局全部通过 |  |  |  |
 | WBX-009 | AIPOS-030 | Open the release zip and inspect its root / 打开发布 zip 并检查根目录 | Archive contains one top-level `project-os/` and no dogfood release/audit history / 只有顶层 `project-os/` 且不带本项目发布历史 |  |  |  |
 | WBX-010 | AIPOS-030 | Read `examples/WHITEBOX_EXAMPLE.md` end to end / 完整阅读示例 | A new operator can follow scan, mapping, contradiction, Linear proposal, and human gate / 新操作者能照例完成扫描、映射、冲突、Linear 建议和人类确认 |  |  |  |
 

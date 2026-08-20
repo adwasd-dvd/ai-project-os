@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Lightweight AI Project OS validator.
 
-Checks required files, key policy guardrails, template drift, and release zip
-shape. It is intentionally small because AI Project OS is a Markdown-first
-package, not a build system.
+Checks required files and policy guardrails in both source-repository and
+installed-package layouts. Source repositories also check template drift and
+release zip shape. It is intentionally small because AI Project OS is a
+Markdown-first package, not a build system.
 """
 
 from __future__ import annotations
@@ -48,6 +49,7 @@ CORE_FILES = [
     "discovery/WHITEBOX_IMPORT_REPORT.md",
     "examples/FIRST_PROJECT.md",
     "examples/WHITEBOX_EXAMPLE.md",
+    "tools/test_validate_project_os.py",
     "tools/test_whitebox_scan.py",
     "tools/validate_project_os.py",
     "tools/whitebox_scan.py",
@@ -207,9 +209,18 @@ def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def project_os_bases(root: Path) -> list[Path]:
+    """Return installed OS plus the distributable copy when this is a source repo."""
+    bases = [root / "project-os"]
+    template_root = root / "template"
+    if template_root.exists():
+        bases.append(template_root / "project-os")
+    return bases
+
+
 def check_required_files(root: Path) -> list[Finding]:
     findings: list[Finding] = []
-    for base in [root / "project-os", root / "template" / "project-os"]:
+    for base in project_os_bases(root):
         label = base.relative_to(root).as_posix()
         if not base.exists():
             findings.append(
@@ -231,7 +242,7 @@ def check_required_files(root: Path) -> list[Finding]:
 
 def check_policy_phrases(root: Path) -> list[Finding]:
     findings: list[Finding] = []
-    for base in [root / "project-os", root / "template" / "project-os"]:
+    for base in project_os_bases(root):
         for rel, phrases in POLICY_PHRASES.items():
             path = base / rel
             if not path.exists():
@@ -253,6 +264,8 @@ def check_template_drift(root: Path) -> list[Finding]:
     findings: list[Finding] = []
     project_os = root / "project-os"
     template_os = root / "template" / "project-os"
+    if not template_os.exists():
+        return findings
     for rel in MIRRORED_FILES:
         left = project_os / rel
         right = template_os / rel
@@ -272,7 +285,7 @@ def check_template_drift(root: Path) -> list[Finding]:
 
 def check_discovery_contract(root: Path) -> list[Finding]:
     findings: list[Finding] = []
-    for base in [root / "project-os", root / "template" / "project-os"]:
+    for base in project_os_bases(root):
         for rel, phrases in DISCOVERY_REPORT_FIELDS.items():
             path = base / rel
             if not path.exists():
@@ -312,6 +325,8 @@ def check_discovery_contract(root: Path) -> list[Finding]:
 
 def check_release_zips(root: Path) -> list[Finding]:
     findings: list[Finding] = []
+    if not (root / "template" / "project-os").exists():
+        return findings
     releases = root / "releases"
     if not releases.exists():
         findings.append(

@@ -16,6 +16,7 @@ Added:
 Updated:
 
 - Bootstrap, self-check, workflow, quality gates, Linear project descriptions, UAT, and validator now enforce the whitebox contract.
+- Validator supports both the source-repository layout and a standalone installed `project-os/` package.
 - Release artifact name to `ai-project-os-v0.4.0.zip`.
 
 ## v0.3.0 - 2026-08-19

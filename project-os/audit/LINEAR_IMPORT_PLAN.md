@@ -504,7 +504,7 @@ Owner 已明确批准 v0.3.0。Codex 已将 DVD-51 到 DVD-56 移至 `Done`，�
 ```text
 python3 project-os/tools/validate_project_os.py --root . --strict
 python3 template/project-os/tools/validate_project_os.py --root . --strict
-python3 -m unittest project-os/tools/test_whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
+python3 -m unittest project-os/tools/test_validate_project_os.py template/project-os/tools/test_validate_project_os.py project-os/tools/test_whitebox_scan.py template/project-os/tools/test_whitebox_scan.py
 python3 project-os/tools/whitebox_scan.py --root . --summary
 unzip -t releases/ai-project-os-v0.4.0.zip
 git diff --check
@@ -522,5 +522,5 @@ GitHub review evidence:
 Branch: codex/v0.4-whitebox
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/2
 Implementation commit: 168ea9266e5dfb8bd60f3029e10995972d16d89d
-Candidate zip SHA-256: 6d9a88e4ee42cb653ea23faa3b182ecace30de76dd337d252ac8e7c67d60bdb6
+Candidate zip SHA-256: 74ed17948307618c7485d8199439a24e3d337fa4a0ca01bdbb8e0c9ca22dbef3
 ```
