@@ -41,7 +41,7 @@ Safely automate Linear intake and explicitly authorized idempotent Linear writes
 | Check | Expected Result | Candidate Result | Status |
 |---|---|---|---|
 | Python compile | New tools compile with Python 3 | Passed | Pass |
-| Full source tests | Intake, safety, traceability, validator, and whitebox tests pass | 36/36 passed | Pass |
+| Full source tests | Packaging, intake, safety, traceability, validator, and whitebox tests pass | 38/38 passed | Pass |
 | Strict validator | Source and template match; 0 failures, 0 warnings | 0 failures, 0 warnings | Pass |
 | Fixture determinism | Repeated unchanged scan output matches | Covered by test + generated report | Pass |
 | Missing credential | Live scan fails closed without exposing a token | Covered by test; local token unavailable | Pass |
@@ -53,7 +53,7 @@ Safely automate Linear intake and explicitly authorized idempotent Linear writes
 | Change impact | Seven areas complete; declared gate READY | `CHANGE_IMPACT_REPORT_v0.6.0.md` | Pass |
 | Traceability | All features structurally justify the declared state | Structural PASS; 7 features accepted after human UAT | Pass |
 | Safety gates | Target private staged gate has Block 0 | Staged private: Block 0, Review 0; staged public: Block 0, 13 expected publication-review items | Pass |
-| Final release package | Zip, digest, extraction, strict validation, and tests pass | Archive valid; extracted validator clean; 36/36 tests; SHA-256 `baf6a19ac284aaeca486c6c923be841862e0a8237d763db17e2b6b0f06ad309c` | Pass |
+| Final release package | Zip, digest, extraction, strict validation, and tests pass | Two delayed builds byte-identical; extracted validator clean; 38/38 tests; SHA-256 `565e81b722ddba1b02514c2a8485e2f831332125428f2ae7284f55be3c45639b` | Pass |
 
 ## Human UAT Scenarios / 人工验收场景
 

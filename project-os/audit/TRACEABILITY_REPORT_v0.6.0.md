@@ -21,7 +21,7 @@ Findings: 0
 | AIPOS-041 | accepted | DVD-222 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 3 | 1 | pass | 1 | 1 |
 | AIPOS-042 | accepted | DVD-223 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pass | 1 | 1 |
 | AIPOS-043 | accepted | DVD-224 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pass | 1 | 1 |
-| AIPOS-044 | accepted | DVD-225 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 2 | pass | 1 | 2 |
+| AIPOS-044 | accepted | DVD-225 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 5 | 3 | pass | 1 | 2 |
 
 ## Release Evidence / 发布证据
 

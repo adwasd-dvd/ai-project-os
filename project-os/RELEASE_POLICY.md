@@ -171,6 +171,23 @@ python3 project-os/tools/safety_scan.py --root . --profile public --scope tracke
 - manifest 的最终结论是人工 `Go`。
 - 任何凭证轮换、删除或历史改写由人工授权和执行。
 
+## Deterministic Release Package / 确定性发布包
+
+Release zip 必须从已提交的 `template/project-os/` 构建，不得依赖工作区文件时间或未提交内容：
+
+```bash
+python3 project-os/tools/build_release.py --root . \
+  --output releases/ai-project-os-vX.Y.Z.zip
+```
+
+发布前必须连续构建两次并确认：
+
+- 两个文件逐字节相同；
+- SHA-256 相同；
+- 顶层只有 `project-os/`；
+- 解压后的 strict validator 和自动测试通过；
+- zip 仍是 GitHub Release asset，不提交进 Git history。
+
 ## 下一版本启动规则
 
 只有满足以下条件，才可以启动下一正式版本：

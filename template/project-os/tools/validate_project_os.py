@@ -76,7 +76,9 @@ CORE_FILES = [
     "traceability/TRACEABILITY_MANIFEST.example.json",
     "traceability/CHANGE_IMPACT_INPUT.example.json",
     "tools/linear_intake.py",
+    "tools/build_release.py",
     "tools/safety_scan.py",
+    "tools/test_build_release.py",
     "tools/test_linear_intake.py",
     "tools/test_safety_scan.py",
     "tools/test_trace_project.py",
@@ -138,6 +140,7 @@ POLICY_PHRASES = {
         "不要直接移动旧 issue",
         "Publication Safety Gate",
         "Release Asset SHA-256",
+        "Deterministic Release Package",
     ],
     "VERSION_PLANNING.md": [
         "一个可交付 Issue 只属于一个目标版本",
@@ -507,6 +510,24 @@ def check_train_a_contract(root: Path) -> list[Finding]:
         "rollout_rollback",
     }
     for base in project_os_bases(root):
+        builder = base / "tools" / "build_release.py"
+        if builder.exists():
+            builder_text = read_text(builder)
+            for phrase in [
+                "FIXED_ZIP_TIME",
+                "committed_source_tar",
+                "Distributable template has uncommitted changes",
+                "Output must stay under the repository releases/ directory",
+            ]:
+                if phrase not in builder_text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            builder.relative_to(root).as_posix(),
+                            f"Missing deterministic package guardrail / 缺少确定性打包保护: {phrase}",
+                        )
+                    )
+
         runner = base / "tools" / "linear_intake.py"
         if runner.exists():
             runner_text = read_text(runner)

@@ -78,6 +78,15 @@ ai-project-os-v0.6.0.zip
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
 
+Release packages are built from committed template content with fixed archive metadata:
+
+```bash
+python3 project-os/tools/build_release.py --root . \
+  --output releases/ai-project-os-v0.6.0.zip
+```
+
+Repeated builds from the same commit must be byte-identical and produce the same SHA-256.
+
 ## Use In Another Project
 
 1. Download `ai-project-os-v0.6.0.zip` from the [v0.6.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0).

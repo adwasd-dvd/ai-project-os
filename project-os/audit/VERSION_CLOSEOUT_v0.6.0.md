@@ -25,9 +25,9 @@ Publication Decision: Go for current PRIVATE GitHub destination
 | Change impact | Seven areas, no blocker | `CHANGE_IMPACT_REPORT_v0.6.0.md`: READY | Pass |
 | Traceability | Every included feature justified as `accepted` | `TRACEABILITY_REPORT_v0.6.0.md` | Pass |
 | Source/template validator | 0 failures, 0 warnings | Source and extracted package both clean | Pass |
-| Automated tests | Full source suite | Source 36/36; extracted package 36/36 | Pass |
+| Automated tests | Full source suite | Source 38/38; extracted deterministic package 38/38 | Pass |
 | Safety gates | Private Block 0; public advisory classified | Staged private Block 0 / Review 0; staged public Block 0 / 13 expected review items | Pass |
-| Release zip | Correct root, digest, standalone validation/tests | SHA-256 `baf6a19ac284aaeca486c6c923be841862e0a8237d763db17e2b6b0f06ad309c`; archive/validation/tests pass | Pass |
+| Release zip | Correct root, digest, standalone validation/tests | Two delayed builds byte-identical; SHA-256 `565e81b722ddba1b02514c2a8485e2f831332125428f2ae7284f55be3c45639b`; archive/validation/tests pass | Pass |
 | GitHub review | Dedicated Draft PR | PR #4 created and kept Draft for Owner UAT | Pass |
 | Linear handoff | DVD-219 through DVD-225 In Review + Owner | Completed; project update `1e2cd8a5-0f80-4828-a692-6ab6ffc9da1c` | Pass |
 | Human UAT | Explicit Owner conclusion | `UAT 通过，允许发布 v0.6.0。` | Pass |
