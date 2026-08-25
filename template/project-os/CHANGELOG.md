@@ -11,6 +11,7 @@ Added:
 - `AUTOMATION_RUNBOOK.md` with manual, cron-compatible, Codex recurring, credential, write-enable, and failure-handoff steps.
 - `CHANGE_IMPACT.md`, `TRACEABILITY.md`, reusable JSON inputs, and `tools/trace_project.py`.
 - Automated tests for routing, Ready checks, credentials, triple write gates, idempotency, partial failure, evidence states, and change-impact blockers.
+- Deterministic release packaging from committed template content with fixed archive metadata.
 - Development Train cadence from DEC-009 and one consolidated v0.6.0 human UAT.
 
 Updated:

@@ -12,6 +12,7 @@ Added:
 - Manual, cron-compatible, and Codex recurring automation runbook.
 - Seven-area change-impact gates and deterministic requirement-to-release traceability.
 - Focused tests, standalone package verification, and one consolidated human UAT.
+- Deterministic release packaging from committed template content with fixed archive metadata.
 
 Updated:
 

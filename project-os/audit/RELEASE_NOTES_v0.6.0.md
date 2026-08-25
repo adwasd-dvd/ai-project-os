@@ -49,11 +49,11 @@ v0.6 把文档化的 Linear intake 变成可执行、默认 dry-run 的 runner�
 ```text
 Change-impact gate: READY
 Traceability state: accepted; structural validation passed
-Automated tests: 36/36 passed in source and extracted package
+Automated tests: 38/38 passed in source; extracted deterministic package pending final rebuild
 Strict validator: 0 failures, 0 warnings in source and extracted package
 Private staged safety gate: Block 0, Review 0
 Public staged advisory: Block 0; 13 expected review items for audit/Agent publication classification
-Candidate zip/extracted package: archive valid; validation and tests passed
+Deterministic zip/extracted package: pending final rebuild
 Human UAT: Pass - Owner approved 2026-08-25
 ```
 
@@ -65,5 +65,5 @@ PR: https://github.com/adwasd-dvd/ai-project-os/pull/4
 Tag: v0.6.0 authorized; pending publication
 Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0 (pending publication)
 Release asset: ai-project-os-v0.6.0.zip
-Release SHA-256: baf6a19ac284aaeca486c6c923be841862e0a8237d763db17e2b6b0f06ad309c
+Release SHA-256: pending deterministic rebuild
 ```

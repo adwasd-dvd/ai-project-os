@@ -46,12 +46,12 @@ Rollback Location: v0.5.0 GitHub tag and Release.
 
 ```text
 Strict Validator: source and extracted package both 0 failures, 0 warnings
-Automated Tests: source 36/36 pass; extracted package 36/36 pass
+Automated Tests: source 38/38 pass; extracted deterministic package pending final rebuild
 Change Impact: READY
 Traceability: accepted, structural PASS
 Safety Scan: private staged Block 0 / Review 0; public staged Block 0 / 13 expected publication-review items
 UAT: Pass - Owner approved 2026-08-25
-Archive / Artifact: valid; SHA-256 baf6a19ac284aaeca486c6c923be841862e0a8237d763db17e2b6b0f06ad309c
+Archive / Artifact: pending deterministic rebuild from merged release-fix commit
 PR: https://github.com/adwasd-dvd/ai-project-os/pull/4
 Remote Asset Digest: pending publication verification
 ```

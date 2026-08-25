@@ -101,10 +101,11 @@
       "linear_issue": "DVD-225",
       "requirement_sources": ["project-os/audit/FEATURE_INVENTORY.md", "project-os/audit/LINEAR_IMPORT_PLAN.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
-      "code_paths": ["project-os/tools/validate_project_os.py", "project-os/UAT_TEMPLATE.md"],
+      "code_paths": ["project-os/tools/validate_project_os.py", "project-os/tools/build_release.py", "project-os/UAT_TEMPLATE.md"],
       "evidence_paths": ["project-os/examples/TRAIN_A_EXAMPLE.md", "project-os/audit/UAT_v0.6.0.md"],
       "tests": [
         {"id": "FULL-SOURCE-SUITE", "path": "project-os/tools/test_validate_project_os.py", "status": "pass"},
+        {"id": "DETERMINISTIC-PACKAGE", "path": "project-os/tools/test_build_release.py", "status": "pass"},
         {"id": "PACKAGE-SUITE", "path": "project-os/tools/test_validate_project_os.py", "status": "pass"}
       ],
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
