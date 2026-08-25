@@ -224,7 +224,7 @@ POLICY_PHRASES = {
         "Traceability Complete for Declared State",
     ],
     "OS_VERSION.md": [
-        "v0.6.0",
+        "v0.8.0",
     ],
     "CHANGELOG.md": [
         "v0.6.0",
