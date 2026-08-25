@@ -123,7 +123,7 @@ Deliverables:
 
 ## v0.6 - Development Train A: Automation + Traceability
 
-Status: Release authorized / 已批准发布
+Status: Released / 已发布
 
 Goal:
 

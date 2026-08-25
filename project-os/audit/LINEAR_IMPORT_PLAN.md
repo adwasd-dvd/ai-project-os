@@ -626,7 +626,7 @@ Owner 批准三大批开发节奏，并授权 Codex 完成 Development Train A �
 
 | Linear ID | Name | Status | Purpose |
 |---|---|---|---|
-| `0f99810a-c014-4b2b-9203-791c32535053` | AI Project OS v0.6 - Development Train A | In Progress | Combine former v0.6 automation and v0.7 traceability as formal v0.6.0 |
+| `0f99810a-c014-4b2b-9203-791c32535053` | AI Project OS v0.6 - Development Train A | Completed | Combine former v0.6 automation and v0.7 traceability as formal v0.6.0 |
 
 ### Labels
 
@@ -645,13 +645,13 @@ Owner 批准三大批开发节奏，并授权 Codex 完成 Development Train A �
 
 | Linear ID | Source ID | Status | Assignee | Scope |
 |---|---|---|---|---|
-| DVD-219 | AIPOS-038 | In Review | dvdTeacher / Owner | Config and executable intake runner |
-| DVD-220 | AIPOS-039 | In Review | dvdTeacher / Owner | Routing, Ready checks, feedback classification |
-| DVD-221 | AIPOS-040 | In Review | dvdTeacher / Owner | Guarded idempotent writes and ledger |
-| DVD-222 | AIPOS-041 | In Review | dvdTeacher / Owner | Cron and Codex automation runbook |
-| DVD-223 | AIPOS-042 | In Review | dvdTeacher / Owner | Traceability manifest and validator |
-| DVD-224 | AIPOS-043 | In Review | dvdTeacher / Owner | Change-impact planner/report |
-| DVD-225 | AIPOS-044 | In Review | dvdTeacher / Owner | Validation, example, package, Draft PR, consolidated UAT |
+| DVD-219 | AIPOS-038 | Done | dvdTeacher / Owner | Config and executable intake runner |
+| DVD-220 | AIPOS-039 | Done | dvdTeacher / Owner | Routing, Ready checks, feedback classification |
+| DVD-221 | AIPOS-040 | Done | dvdTeacher / Owner | Guarded idempotent writes and ledger |
+| DVD-222 | AIPOS-041 | Done | dvdTeacher / Owner | Cron and Codex automation runbook |
+| DVD-223 | AIPOS-042 | Done | dvdTeacher / Owner | Traceability manifest and validator |
+| DVD-224 | AIPOS-043 | Done | dvdTeacher / Owner | Change-impact planner/report |
+| DVD-225 | AIPOS-044 | Done | dvdTeacher / Owner | Validation, example, package, Draft PR, consolidated UAT |
 
 ### Human Gate
 
@@ -666,3 +666,15 @@ UAT 通过，允许发布 v0.6.0。
 On 2026-08-25, the Owner explicitly stated `UAT 通过，允许发布 v0.6.0。` and authorized the v0.6.0 release transaction.
 
 2026-08-25，Owner 明确确认 `UAT 通过，允许发布 v0.6.0。`，并批准执行 v0.6.0 发布流程。
+
+### Release Closeout
+
+```text
+PRs: #4 and #5 merged
+Tag: v0.6.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0
+Asset SHA-256: 565e81b722ddba1b02514c2a8485e2f831332125428f2ae7284f55be3c45639b
+Linear issues: DVD-219 through DVD-225 Done
+Linear project: Completed
+Project update: 3790a66e-6cab-494b-a594-ba15d6fc82e2
+```
