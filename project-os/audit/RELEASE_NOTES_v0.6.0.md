@@ -61,7 +61,7 @@ Human UAT: Pending
 
 ```text
 Branch: codex/v0.6-train-a
-Draft PR: pending
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/4
 Tag: not created before human UAT
 Release: not published before human UAT
 Release asset: ai-project-os-v0.6.0.zip (candidate only)

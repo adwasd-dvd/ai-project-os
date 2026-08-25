@@ -5,7 +5,7 @@
     "status": "candidate",
     "uat_status": "pending",
     "branch": "codex/v0.6-train-a",
-    "pr_url": null,
+    "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/4",
     "tag": null,
     "release_url": null
   },

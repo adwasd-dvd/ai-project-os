@@ -13,7 +13,7 @@ Prepared By: Codex
 Destination Profile: private
 Repository / Channel: GitHub repository + future GitHub Release
 Repository Visibility: PRIVATE; reverify before publication
-Commit / Tag: Draft PR candidate; no tag before human UAT
+Commit / Tag: implementation commit fbcb331; Draft PR #4; no tag before human UAT
 Release Asset: ai-project-os-v0.6.0.zip candidate
 Human Approver: dvdTeacher / Owner
 Decision: Review - blocked on human UAT and final release verification
@@ -52,7 +52,7 @@ Traceability: uat_pending, structural PASS
 Safety Scan: private staged Block 0 / Review 0; public staged Block 0 / 13 expected publication-review items
 UAT: Pending Human
 Archive / Artifact: valid; SHA-256 c453e8732a4b77907055ebb82fb980a864201a7ffefd090d3ac2f95a4c65f217
-Draft PR: pending
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/4
 Remote Asset Digest: N/A before release
 ```
 
@@ -72,7 +72,7 @@ Scheduled Code Modification: forbidden
 
 ```text
 Decision: Review
-Blocking Conditions: Draft PR evidence and explicit human UAT Pass
+Blocking Conditions: explicit human UAT Pass
 Approved By: Pending
 Approved Date: Pending
 Post-Publication Verification: compare uploaded asset SHA-256, tag, README stable link, traceability release state, and Linear closeout

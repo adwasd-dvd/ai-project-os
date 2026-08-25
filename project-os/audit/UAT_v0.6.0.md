@@ -6,7 +6,7 @@
 Version: v0.6.0 candidate
 Date: 2026-08-24
 Environment: local source repo + Linear DvdTeacher + GitHub Draft PR
-Build / Commit: pending final candidate commit
+Build / Commit: implementation commit fbcb331; Draft PR #4
 Tester: Owner / dvdTeacher
 Owner: dvdTeacher
 Result: Pending Human UAT
@@ -81,7 +81,7 @@ Safely automate Linear intake and explicitly authorized idempotent Linear writes
 - [x] Final full test and strict validation evidence recorded.
 - [x] Final safety gates recorded.
 - [x] Candidate zip and digest verified.
-- [ ] GitHub Draft PR created.
+- [x] GitHub Draft PR created: https://github.com/adwasd-dvd/ai-project-os/pull/4
 - [ ] Linear issues moved to In Review and assigned to Owner.
 - [ ] Owner completes human scenarios and explicitly passes v0.6.0.
 ```

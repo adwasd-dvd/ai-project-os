@@ -26,7 +26,7 @@ Findings: 0
 ## Release Evidence / 发布证据
 
 - Branch: `codex/v0.6-train-a`
-- Pull Request: -
+- Pull Request: https://github.com/adwasd-dvd/ai-project-os/pull/4
 - Tag: `-`
 - Release: -
 
