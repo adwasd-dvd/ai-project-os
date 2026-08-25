@@ -188,6 +188,27 @@ python3 project-os/tools/build_release.py --root . \
 - 解压后的 strict validator 和自动测试通过；
 - zip 仍是 GitHub Release asset，不提交进 Git history。
 
+## Executable Release Readiness / 可执行发布就绪
+
+Train B versions must generate a deterministic readiness report and release-notes draft:
+
+```bash
+python3 project-os/tools/release_project.py --root . plan \
+  --input project-os/audit/RELEASE_INPUT_vX.Y.Z.json \
+  --report project-os/audit/RELEASE_READINESS_vX.Y.Z.md \
+  --notes project-os/audit/RELEASE_NOTES_vX.Y.Z.md
+```
+
+`READY` requires exact scope/traceability alignment, human UAT Pass, READY change impact, safety Go with Block 0, passing test evidence, deterministic package digest and extracted validation, rollback plan, and GitHub PR evidence.
+
+`READY` 要求范围与 traceability 精确一致、人工 UAT Pass、READY change impact、安全 Go 且 Block 0、测试证据通过、确定性安装包摘要与解压验证、回滚计划和 GitHub PR 证据。
+
+The command is evidence-only. It cannot create or move tags, publish/delete Releases, merge PRs, update Linear, approve UAT, rotate credentials, or execute rollback.
+
+命令只生成证据，不能创建/移动 tag、发布/删除 Release、merge PR、更新 Linear、批准 UAT、轮换凭证或执行回滚。
+
+After publication, `release_project.py post-release` must compare local/remote asset digests and record declared checks in a sanitized receipt. Post-release status is separate from UAT and released status.
+
 ## 下一版本启动规则
 
 只有满足以下条件，才可以启动下一正式版本：
@@ -199,6 +220,7 @@ python3 project-os/tools/build_release.py --root . \
 - 下一版本范围已人工确认。
 - 已完成旧 Issue 的下版本反馈已通过 carry-over revalidation 承接，不要直接移动旧 issue。
 - 目标发布集合通过 safety gate，publication manifest 已给出 `Go`。
+- 当前版本 post-release verification 已完成，或已明确记录为版本发布后的待办门禁。
 
 ## Release Notes 最小格式
 

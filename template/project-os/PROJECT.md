@@ -157,6 +157,8 @@ AI Project OS v0.5 可以定义 scheduled Linear intake scan。
 | `AGENT_DOC_POLICY.md` | Agent 文档共享与本地保留规则 |
 | `safety/*.md` | 项目记忆、文档缺口、安全报告和 publication manifest |
 | `RELEASE_POLICY.md` | 版本推进规则 |
+| `RELEASE_CONTROL.md` | 可执行 release readiness、反馈分类、回滚边界和发布后验证 |
+| `UPGRADE_POLICY.md` | 已安装/上游版本检查、三方升级计划和受控迁移 |
 | `QUALITY_GATE.md` | Ready/Review/UAT/Release 门禁 |
 | `LINEAR_POLICY.md` | Linear 结构和写入规则 |
 | `GITHUB_POLICY.md` | GitHub 分支、PR、tag 规则 |
@@ -167,6 +169,9 @@ AI Project OS v0.5 可以定义 scheduled Linear intake scan。
 | `tools/validate_project_os.py` | 轻量政策和包结构 validator |
 | `tools/whitebox_scan.py` | 默认只读、确定性的仓库证据 scanner |
 | `tools/safety_scan.py` | 默认只读、不会输出命中值的 publication safety scanner |
+| `tools/trace_project.py` | change impact 与 requirement-to-release 证据验证 |
+| `tools/release_project.py` | 确定性发布就绪、release notes、反馈分类和发布后回执 |
+| `tools/upgrade_project_os.py` | 版本发现、升级计划、受控 apply 和 hash verify |
 | `audit/*.md` | Phase 1 产物和 Phase 3 导入计划 |
 
 ## 项目节奏

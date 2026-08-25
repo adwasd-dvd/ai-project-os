@@ -14,6 +14,9 @@ from typing import Any
 FEATURE_ID_RE = re.compile(r"^[A-Z][A-Z0-9-]+-\d+$")
 LINEAR_ID_RE = re.compile(r"^[A-Z][A-Z0-9]+-\d+$")
 VERSION_RE = re.compile(r"^v\d+\.\d+\.\d+$")
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+LINEAR_URL_RE = re.compile(r"^https://linear\.app/")
+SUPPORTED_SCHEMA_VERSIONS = {1, 2}
 TRACE_STATES = [
     "planned",
     "implemented",
@@ -33,6 +36,8 @@ REQUIRED_IMPACT_AREAS = {
     "uat",
     "rollout_rollback",
 }
+LINEAR_RECORD_TYPES = {"issue", "document", "project"}
+POST_RELEASE_STATES = {"pending", "pass", "fail", "not_applicable"}
 
 
 class TraceError(RuntimeError):
@@ -79,10 +84,84 @@ def path_findings(
     return findings
 
 
+def validate_linear_reference(feature: dict[str, Any], feature_id: str, schema_version: int) -> list[str]:
+    findings: list[str] = []
+    linear_issue = feature.get("linear_issue")
+    linear_record = feature.get("linear_record")
+    if linear_issue and linear_record:
+        return [f"{feature_id}: use linear_issue or linear_record, not both"]
+    if linear_issue:
+        if not isinstance(linear_issue, str) or not LINEAR_ID_RE.match(linear_issue):
+            findings.append(f"{feature_id}.linear_issue is invalid")
+        return findings
+    if schema_version < 2:
+        return [f"{feature_id}.linear_issue is invalid"]
+    if not isinstance(linear_record, dict):
+        return [f"{feature_id}.linear_record is required when no Linear issue exists"]
+    record_type = linear_record.get("type")
+    record_id = linear_record.get("id")
+    record_url = linear_record.get("url")
+    reason = linear_record.get("reason")
+    if record_type not in LINEAR_RECORD_TYPES:
+        findings.append(f"{feature_id}.linear_record.type is invalid")
+    if not isinstance(record_id, str) or not record_id.strip():
+        findings.append(f"{feature_id}.linear_record.id is required")
+    if not isinstance(record_url, str) or not LINEAR_URL_RE.match(record_url):
+        findings.append(f"{feature_id}.linear_record.url must be a Linear URL")
+    if record_type != "issue" and (not isinstance(reason, str) or not reason.strip()):
+        findings.append(f"{feature_id}.linear_record.reason is required for an equivalent record")
+    return findings
+
+
+def validate_structured_uat(
+    uat: dict[str, Any],
+    prefix: str,
+    root: Path,
+    *,
+    require_pass: bool,
+) -> list[str]:
+    findings: list[str] = []
+    expected_status = "pass" if require_pass else None
+    if expected_status and uat.get("status") != expected_status:
+        findings.append(f"{prefix}.status must be pass")
+    evidence = uat.get("evidence")
+    if not isinstance(evidence, str) or not existing_path(root, evidence):
+        findings.append(f"{prefix}.evidence must reference an existing path")
+    scenarios = uat.get("scenarios")
+    if not isinstance(scenarios, list) or not scenarios or not all(
+        isinstance(item, str) and item.strip() for item in scenarios
+    ):
+        findings.append(f"{prefix}.scenarios must be a non-empty string array")
+    if require_pass:
+        actor = uat.get("actor")
+        date = uat.get("date")
+        disposition = uat.get("limitations_disposition")
+        if not isinstance(actor, str) or not actor.strip():
+            findings.append(f"{prefix}.actor is required for human UAT pass")
+        if not isinstance(date, str) or not DATE_RE.match(date):
+            findings.append(f"{prefix}.date must use YYYY-MM-DD")
+        if not isinstance(disposition, str) or not disposition.strip():
+            findings.append(f"{prefix}.limitations_disposition is required")
+    return findings
+
+
+def linear_reference_label(feature: dict[str, Any]) -> str:
+    if feature.get("linear_issue"):
+        return str(feature["linear_issue"])
+    record = feature.get("linear_record") or {}
+    if isinstance(record, dict):
+        record_type = record.get("type", "record")
+        record_id = record.get("id", "-")
+        return f"{record_type}:{record_id}"
+    return "-"
+
+
 def validate_manifest(manifest: dict[str, Any], root: Path) -> list[str]:
     findings: list[str] = []
-    if manifest.get("schema_version") != 1:
-        findings.append("schema_version must be 1")
+    schema_version = manifest.get("schema_version")
+    if schema_version not in SUPPORTED_SCHEMA_VERSIONS:
+        findings.append(f"schema_version must be one of {sorted(SUPPORTED_SCHEMA_VERSIONS)}")
+        schema_version = 1
     release = manifest.get("release")
     if not isinstance(release, dict):
         return findings + ["release must be an object"]
@@ -93,6 +172,23 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> list[str]:
         findings.append("release.status must be planning, candidate, or released")
     if release.get("uat_status") not in {"pending", "pass", "fail"}:
         findings.append("release.uat_status must be pending, pass, or fail")
+    if schema_version >= 2:
+        release_uat = release.get("uat")
+        if not isinstance(release_uat, dict):
+            findings.append("release.uat must be an object for schema version 2")
+            release_uat = {}
+        elif release_uat.get("status") != release.get("uat_status"):
+            findings.append("release.uat.status must equal release.uat_status")
+        post_release = release.get("post_release")
+        if not isinstance(post_release, dict) or post_release.get("status") not in POST_RELEASE_STATES:
+            findings.append(f"release.post_release.status must be one of {sorted(POST_RELEASE_STATES)}")
+        elif post_release.get("status") == "pass":
+            evidence = post_release.get("evidence")
+            checks = post_release.get("checks")
+            if not isinstance(evidence, str) or not existing_path(root, evidence):
+                findings.append("release.post_release.evidence must reference an existing path")
+            if not isinstance(checks, list) or not checks:
+                findings.append("release.post_release.checks must not be empty when status=pass")
     features = manifest.get("features")
     if not isinstance(features, list) or not features:
         return findings + ["features must be a non-empty array"]
@@ -116,9 +212,7 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> list[str]:
             continue
         if feature.get("target_version") != version:
             findings.append(f"{feature_id}.target_version must equal release.version")
-        linear_issue = feature.get("linear_issue")
-        if not isinstance(linear_issue, str) or not LINEAR_ID_RE.match(linear_issue):
-            findings.append(f"{feature_id}.linear_issue is invalid")
+        findings.extend(validate_linear_reference(feature, feature_id, schema_version))
         requirements = feature.get("requirement_sources") or []
         if not isinstance(requirements, list) or not requirements:
             findings.append(f"{feature_id}.requirement_sources must not be empty")
@@ -173,11 +267,20 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> list[str]:
         if state_index >= TRACE_STATES.index("uat_pending"):
             if uat.get("status") not in {"pending", "pass"}:
                 findings.append(f"{feature_id}.uat.status must be pending or pass")
+            if schema_version >= 2:
+                findings.extend(
+                    validate_structured_uat(
+                        uat,
+                        f"{feature_id}.uat",
+                        root,
+                        require_pass=state_index >= TRACE_STATES.index("accepted"),
+                    )
+                )
         if state_index >= TRACE_STATES.index("accepted"):
-            if uat.get("status") != "pass":
+            if schema_version < 2 and uat.get("status") != "pass":
                 findings.append(f"{feature_id}: accepted state requires human UAT pass")
             evidence = uat.get("evidence")
-            if not isinstance(evidence, str) or not existing_path(root, evidence):
+            if schema_version < 2 and (not isinstance(evidence, str) or not existing_path(root, evidence)):
                 findings.append(f"{feature_id}: accepted state requires UAT evidence path")
         if state == "released":
             if release.get("uat_status") != "pass":
@@ -189,6 +292,10 @@ def validate_manifest(manifest: dict[str, Any], root: Path) -> list[str]:
             findings.append("released release.status requires release.uat_status=pass")
         if any(feature.get("state") != "released" for feature in features if isinstance(feature, dict)):
             findings.append("released release.status requires every feature state=released")
+    if schema_version >= 2 and release.get("uat_status") == "pass":
+        release_uat = release.get("uat")
+        if isinstance(release_uat, dict):
+            findings.extend(validate_structured_uat(release_uat, "release.uat", root, require_pass=True))
     return findings
 
 
@@ -226,7 +333,7 @@ def render_traceability(manifest: dict[str, Any], findings: list[str]) -> str:
             "| {feature_id} | {state} | {linear_issue} | {requirements} | `{impact}` | {evidence} | {tests} | {uat} | {decisions} | {risks} |".format(
                 feature_id=feature.get("feature_id", "-"),
                 state=feature.get("state", "-"),
-                linear_issue=feature.get("linear_issue", "-"),
+                linear_issue=linear_reference_label(feature),
                 requirements=len(feature.get("requirement_sources") or []),
                 impact=feature.get("change_impact", "-"),
                 evidence=len(feature.get("code_paths") or []) + len(feature.get("evidence_paths") or []),

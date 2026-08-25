@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "version": "v0.8.0",
+  "tag": "v0.8.0",
+  "release_url": "https://github.com/example/ai-project-os/releases/tag/v0.8.0",
+  "local_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "remote_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "rollback_target": "v0.6.0",
+  "checks": [
+    {
+      "id": "REMOTE-ASSET",
+      "status": "pass",
+      "evidence": "Remote digest equals local digest"
+    },
+    {
+      "id": "STABLE-LINK",
+      "status": "pass",
+      "evidence": "README points to the released tag"
+    },
+    {
+      "id": "LINEAR-CLOSEOUT",
+      "status": "pass",
+      "evidence": "Version project and included records are closed"
+    }
+  ]
+}

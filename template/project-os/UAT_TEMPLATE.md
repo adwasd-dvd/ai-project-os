@@ -81,6 +81,33 @@ Result: Pass / Fail / Conditional Pass
 | TRC-006 | Released state | Tag and GitHub Release evidence are required |  |  |  |
 | TRC-007 | Deterministic report | Repeated generation from unchanged inputs is identical |  |  |  |
 
+## Release / Recovery Scenarios
+
+| Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |
+|---|---|---|---|---|---|
+| REL-001 | Lifecycle separation | Implemented, verified, UAT pending, accepted, released, and post-release states are distinguishable |  |  |  |
+| REL-002 | Human UAT evidence | UAT Pass requires actor, date, scenarios, evidence, and limitation disposition |  |  |  |
+| REL-003 | Blocked readiness | Missing UAT, Safety Go, package digest, rollback, or PR produces BLOCKED with next action |  |  |  |
+| REL-004 | Ready release plan | Complete evidence produces deterministic READY report and release notes |  |  |  |
+| REL-005 | Feedback classification | Current fix, hotfix, patch, carry-over, next version, Backlog, and Decision are distinguishable |  |  |  |
+| REL-006 | Rollback boundary | Tool explains target/authority/verification but does not roll back production or rewrite Git |  |  |  |
+| REL-007 | Post-release receipt | Tag, URL, local/remote digest, checks, and rollback target are verified with sanitized metadata |  |  |  |
+
+## OS Upgrade Scenarios
+
+| Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |
+|---|---|---|---|---|---|
+| UPG-001 | Version discovery | Installed and upstream versions, evidence, compatibility, blockers, and next action are visible |  |  |  |
+| UPG-002 | Missing/invalid source | Missing network/source or malformed version fails closed without writes |  |  |  |
+| UPG-003 | Downgrade boundary | Downgrade is blocked unless policy explicitly allows it |  |  |  |
+| UPG-004 | Three-way plan | Identical, add, safe update, migrate, preserve, conflict, and remove-candidate are deterministic |  |  |  |
+| UPG-005 | Protected memory | LOCAL_OVERRIDES, audit/Linear history, safety dispositions, discovery, and runtime/private context remain byte-identical |  |  |  |
+| UPG-006 | Conflict blocker | Both-modified or ambiguous files block apply and request human review |  |  |  |
+| UPG-007 | Apply gates | READY/fresh plan, upgrade branch, CLI flag, runtime authorization, unchanged source, and confined paths are all required |  |  |  |
+| UPG-008 | Idempotent restart | Reapplying the completed plan reports already-applied actions without corruption |  |  |  |
+| UPG-009 | Verification failure | Workflow stops with rollback guidance and never rewrites Git history automatically |  |  |  |
+| UPG-010 | Isolated dogfood | Older package upgrades to candidate while protected project memory survives |  |  |  |
+
 ## Whitebox Scenarios
 
 | Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |

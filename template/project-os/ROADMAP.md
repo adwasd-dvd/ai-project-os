@@ -173,7 +173,7 @@ These deliverables ship in the formal v0.6.0 release so v0.7 is not a separate r
 
 ## v0.8 - Development Train B: Release / Rollback + Self-Upgrade
 
-Status: Next planned after v0.6 release / v0.6 发布后的下一计划
+Status: In Progress / 开发中
 
 Goal:
 

@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "release": {
+    "version": "v0.8.0",
+    "status": "planning",
+    "uat_status": "pending",
+    "uat": {
+      "status": "pending"
+    },
+    "post_release": {
+      "status": "pending"
+    },
+    "branch": "codex/v0.8-train-b",
+    "pr_url": null,
+    "tag": null,
+    "release_url": null
+  },
+  "features": [
+    {
+      "feature_id": "AIPOS-045",
+      "target_version": "v0.8.0",
+      "state": "verified",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": ["project-os/tools/trace_project.py"],
+      "evidence_paths": ["project-os/TRACEABILITY.md", "project-os/RELEASE_CONTROL.md"],
+      "tests": [{"id": "TRACE-LIFECYCLE", "path": "project-os/tools/test_trace_project.py", "status": "pass"}],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-REL-001"]
+    },
+    {
+      "feature_id": "AIPOS-046",
+      "target_version": "v0.8.0",
+      "state": "verified",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/RELEASE_POLICY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": ["project-os/tools/release_project.py", "project-os/release/RELEASE_INPUT.example.json"],
+      "evidence_paths": ["project-os/RELEASE_CONTROL.md"],
+      "tests": [{"id": "RELEASE-READINESS", "path": "project-os/tools/test_release_project.py", "status": "pass"}],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-REL-001"]
+    },
+    {
+      "feature_id": "AIPOS-047",
+      "target_version": "v0.8.0",
+      "state": "verified",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/VERSION_PLANNING.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": ["project-os/tools/release_project.py", "project-os/release/FEEDBACK_TRIAGE.example.json", "project-os/release/POST_RELEASE_INPUT.example.json"],
+      "evidence_paths": ["project-os/RELEASE_CONTROL.md", "project-os/RELEASE_POLICY.md"],
+      "tests": [{"id": "RELEASE-RECOVERY", "path": "project-os/tools/test_release_project.py", "status": "pass"}],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-REL-002"]
+    },
+    {
+      "feature_id": "AIPOS-048",
+      "target_version": "v0.8.0",
+      "state": "verified",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/UPGRADE_POLICY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": ["project-os/tools/upgrade_project_os.py", "project-os/upgrade/UPSTREAM_GITHUB.example.json"],
+      "evidence_paths": ["project-os/UPGRADE_POLICY.md", "project-os/upgrade/README.md"],
+      "tests": [{"id": "UPGRADE-DISCOVERY", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-UPG-003"]
+    },
+    {
+      "feature_id": "AIPOS-049",
+      "target_version": "v0.8.0",
+      "state": "verified",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/UPGRADE_POLICY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": ["project-os/tools/upgrade_project_os.py", "project-os/upgrade/UPGRADE_CONFIG.example.json"],
+      "evidence_paths": ["project-os/UPGRADE_POLICY.md"],
+      "tests": [{"id": "UPGRADE-PLAN", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-UPG-001"]
+    },
+    {
+      "feature_id": "AIPOS-050",
+      "target_version": "v0.8.0",
+      "state": "verified",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/UPGRADE_POLICY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": ["project-os/tools/upgrade_project_os.py"],
+      "evidence_paths": ["project-os/UPGRADE_POLICY.md", "project-os/QUALITY_GATE.md"],
+      "tests": [{"id": "UPGRADE-APPLY", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-UPG-001", "RISK-UPG-002"]
+    },
+    {
+      "feature_id": "AIPOS-051",
+      "target_version": "v0.8.0",
+      "state": "planned",
+      "linear_record": {
+        "type": "document",
+        "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
+        "url": "https://linear.app/dvdteacher/document/development-train-b-feature-register-train-b-%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-ac38bfad1c20",
+        "reason": "The free workspace reached its 250 non-archived issue limit; this Project Document is the temporary equivalent requirement record."
+      },
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+      "code_paths": [],
+      "evidence_paths": [],
+      "tests": [],
+      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-REL-001", "RISK-UPG-001", "RISK-LIN-001"]
+    }
+  ]
+}

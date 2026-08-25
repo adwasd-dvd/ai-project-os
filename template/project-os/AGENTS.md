@@ -32,6 +32,9 @@
 26. 正式开发前必须执行 `CHANGE_IMPACT.md`；高影响低置信度、未解决 Decision 或未批准 scope change 会阻塞开发。
 27. 正式 Feature 必须按 `TRACEABILITY.md` 维护 requirement -> Linear -> code/evidence -> tests -> human UAT -> release 证据链。
 28. Scheduled Linear scan 与 apply 必须分离；自动写入需要配置白名单、命令授权和运行时授权，且必须幂等。
+29. Release readiness、human UAT、GitHub Release 和 post-release verification 必须是独立证据状态。
+30. OS upgrade 必须先 inspect/plan；apply 需要 READY 计划、upgrade branch、CLI 与运行时双重授权，并保护项目记忆。
+31. Release/upgrade 工具不得自动回滚生产、改写 Git 历史、移动 tag、删除 Release、轮换凭证或批准 UAT。
 
 ## AI 行为原则
 
@@ -125,6 +128,8 @@ Codex 可以：
 - 运行只读 safety scanner，并生成经脱敏的 `project-os/safety/` 安全证据和人工审查材料。
 - 运行 `tools/linear_intake.py` 的 dry scan，并在明确授权后执行白名单 Linear writes。
 - 运行 `tools/trace_project.py` 验证 change impact 与 requirement-to-release 证据链。
+- 运行 `tools/release_project.py` 生成只读发布就绪、说明、分类和发布后证据。
+- 运行 `tools/upgrade_project_os.py` 检查版本、生成三方计划，并在完整授权后于升级分支 apply/verify。
 
 Codex 不可以：
 
@@ -133,6 +138,9 @@ Codex 不可以：
 - 自行扩大 Scope。
 - 自行确认首次 Linear 批量导入。
 - 因为 scheduled scan 自动修改本地代码。
+- 把 release readiness、Linear Done、PR 或自动测试当成人工 UAT Pass。
+- 在没有 READY 升级计划、upgrade branch 和双重授权时修改已安装 OS。
+- 自动执行破坏性 rollback 或静默覆盖项目专属记忆。
 
 ## 阶段权限矩阵
 

@@ -141,6 +141,47 @@ scheduled/cron scan 启用前必须满足：
 - `uat_pending` 明确等待人类。
 - `accepted` 必须有人工 UAT Pass 与证据路径。
 - `released` 必须有 tag 和 GitHub Release URL。
+- schema v2 的 Linear equivalent record 必须包含真实 type、ID、Linear URL 和使用原因，禁止虚构 Issue ID。
+- schema v2 的 Feature/版本 UAT Pass 必须包含 actor、date、scenarios、evidence 和 limitations disposition。
+- post-release verification 独立于 `accepted` 和 `released`。
+
+## Ready for Release Plan / 发布计划就绪
+
+运行 `tools/release_project.py plan` 前必须准备：
+
+- Included/Excluded/Deferred 范围；
+- schema v2 traceability manifest；
+- READY change-impact report；
+- publication profile、destination、Safety Go、Block 0 与 Review disposition；
+- 测试和证据路径；
+- 确定性 zip、SHA-256 与 extracted validation；
+- rollback target、plan、authority 与 verification；
+- GitHub branch 和 PR。
+
+缺人工版本 UAT Pass、Feature acceptance、safety Go、package digest、rollback 或 PR 时必须 `BLOCKED`。
+
+## Ready for OS Upgrade Plan / OS 升级计划就绪
+
+- installed、base 和 target 来源已明确；
+- 版本与 source evidence 可验证；
+- downgrade 未发生，或有明确人工授权；
+- protected paths 覆盖 LOCAL_OVERRIDES、audit、Linear mappings、安全处置、discovery 产物和 runtime/private context；
+- 报告只包含 path、hash、classification、risk、decision、validation 和 rollback，不包含文件正文或 secret 值；
+- both-modified 或无可信 base 的歧义文件进入 conflict 并阻塞 apply。
+
+## Ready for OS Upgrade Apply / OS 升级执行就绪
+
+- plan 为新鲜、完整、无 conflict 的 `READY`；
+- source digest 与 installed hashes 未变化；
+- 当前分支符合 upgrade branch prefix；
+- 无无关 tracked worktree 改动；
+- CLI 包含 `--authorize-upgrade`；
+- runtime authorization environment 等于 `APPROVED`；
+- 写入只在 installed `project-os/` 内；
+- protected files 保持逐字节一致；
+- receipt 只写入 ignored `project-os/runtime/`。
+
+apply 后必须进行 hash verify、strict validator、完整测试、目标 safety gate 和项目人工 UAT。工具不得自动 merge、改写历史或批准升级。
 
 ## Ready for PR
 
@@ -246,6 +287,20 @@ v0.6 还必须包含：
 - change-impact gate 能阻止未解决 Decision、scope expansion 和 high-impact low-confidence claim。
 - traceability validator 不把 automated tests 当作 human UAT。
 - requirement -> Linear -> code/evidence -> test -> UAT -> release 证据可追踪。
+
+v0.8 还必须包含：
+
+- code complete、review complete、UAT Pass、released 和 post-release done 可清楚区分；
+- 自动测试、Linear Done 或 PR 不能生成 UAT Pass；
+- release plan 在缺 UAT、安全 Go、包摘要、回滚或 PR 时 fail closed；
+- feedback 能区分 current fix、hotfix、patch、carry-over、next version、Backlog 和 Decision；
+- post-release receipt 验证 tag、Release URL、远端/本地 digest 和声明检查；
+- installed/upstream version discovery 对缺失网络、错误版本和未授权 downgrade fail closed；
+- 三方计划覆盖 identical、add、safe update、migrate、preserve、conflict 和 remove-candidate；
+- LOCAL_OVERRIDES、audit/Linear history、安全处置、discovery 和 runtime/private context 不被覆盖；
+- apply 需要新鲜 READY 计划、upgrade branch、CLI/runtime 双重授权与路径限制；
+- 重跑 apply 幂等，verification failure 只给回滚指引，不自动改写历史；
+- 隔离 dogfood 从旧包升级到候选包并通过 source/extracted package 全套测试。
 
 ## UAT Pass
 

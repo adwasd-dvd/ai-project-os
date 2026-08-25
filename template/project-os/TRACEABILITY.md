@@ -54,7 +54,7 @@ project-os/audit/TRACEABILITY_MANIFEST_<version>.json
 Each feature records:
 
 - stable Feature ID and target version;
-- Linear issue;
+- Linear issue, or in schema v2 an explicit Linear Project/Document equivalent record with ID, URL, and reason when issue creation is unavailable;
 - requirement source paths;
 - change-impact report;
 - code and evidence paths;
@@ -62,6 +62,17 @@ Each feature records:
 - human UAT status and evidence;
 - Decisions and risks;
 - release-level branch, PR, tag, and release evidence.
+
+Schema v2 also separates:
+
+- feature-level UAT evidence;
+- version-level UAT evidence;
+- GitHub Release state;
+- post-release verification state.
+
+An equivalent record is a capacity/permission fallback, not a fake Issue. Never invent a Linear identifier. Create the real Issue later when capacity becomes available and update the manifest.
+
+Schema v2 还会分别记录 Feature 级 UAT、版本级 UAT、GitHub Release 和发布后验证。等价记录只是容量或权限受限时的 fallback，不能伪造 Linear Issue ID；容量恢复后应补建真实 Issue 并更新 manifest。
 
 ## Validate and Render / 验证并生成报告
 

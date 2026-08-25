@@ -220,6 +220,36 @@ Release 以 GitHub tag/release 为事实来源。
 
 版本范围、patch、分阶段交付和旧版本 carry-over 规则见 `VERSION_PLANNING.md` 和 `RELEASE_POLICY.md`。
 
+Train B adds an executable no-write release plan before the human release transaction:
+
+```text
+traceability + human UAT + safety Go + tests + deterministic package + rollback + PR
+-> release_project.py plan
+-> READY or BLOCKED
+-> human-authorized merge/tag/Release
+-> post-release verification receipt
+```
+
+Train B 在人工发布事务前增加可执行的只读 release plan。工具只能生成 READY/BLOCKED 证据，不能自动 merge、tag、Release、回滚或批准 UAT。
+
+## OS Upgrade Workflow / OS 升级流程
+
+```text
+inspect installed/upstream version
+-> three-way plan from installed/base/target
+-> human conflict review
+-> READY plan
+-> upgrade branch + CLI/runtime authorization
+-> apply allowlisted actions
+-> hash verify + validator + tests + safety
+-> project human UAT
+-> accept or abandon branch
+```
+
+Protected project memory is preserved. Conflict and remove-candidate actions are never resolved or deleted automatically.
+
+保护的项目记忆必须保留；conflict 与 remove-candidate 永远不会被自动解决或删除。
+
 ## 状态流转建议
 
 ```text

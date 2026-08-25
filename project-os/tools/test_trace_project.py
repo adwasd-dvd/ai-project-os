@@ -135,6 +135,76 @@ class TraceProjectTests(unittest.TestCase):
         findings = trace_project.validate_manifest(manifest, self.root)
         self.assertTrue(any("missing path" in item for item in findings))
 
+    def test_schema_two_accepts_an_explicit_linear_document_record(self) -> None:
+        manifest = self.manifest("planned")
+        manifest["schema_version"] = 2
+        release = manifest["release"]
+        release["uat"] = {"status": "pending"}
+        release["post_release"] = {"status": "pending"}
+        feature = manifest["features"][0]
+        feature.pop("linear_issue")
+        feature["linear_record"] = {
+            "type": "document",
+            "id": "doc-fixture",
+            "url": "https://linear.app/example/document/fixture",
+            "reason": "Free workspace issue capacity is exhausted.",
+        }
+        findings = trace_project.validate_manifest(manifest, self.root)
+        self.assertEqual([], findings)
+        report = trace_project.render_traceability(manifest, findings)
+        self.assertIn("document:doc-fixture", report)
+
+    def test_schema_two_rejects_an_unverifiable_equivalent_record(self) -> None:
+        manifest = self.manifest("planned")
+        manifest["schema_version"] = 2
+        manifest["release"]["uat"] = {"status": "pending"}
+        manifest["release"]["post_release"] = {"status": "pending"}
+        feature = manifest["features"][0]
+        feature.pop("linear_issue")
+        feature["linear_record"] = {"type": "document", "id": "doc-fixture"}
+        findings = trace_project.validate_manifest(manifest, self.root)
+        self.assertTrue(any("Linear URL" in item for item in findings))
+        self.assertTrue(any("reason is required" in item for item in findings))
+
+    def test_schema_two_accepted_requires_structured_human_uat(self) -> None:
+        manifest = self.manifest("accepted")
+        manifest["schema_version"] = 2
+        release = manifest["release"]
+        release["uat_status"] = "pass"
+        release["uat"] = {"status": "pass", "evidence": "uat.md", "scenarios": ["UAT-001"]}
+        release["post_release"] = {"status": "pending"}
+        feature = manifest["features"][0]
+        feature["uat"] = {"status": "pass", "evidence": "uat.md", "scenarios": ["UAT-001"]}
+        findings = trace_project.validate_manifest(manifest, self.root)
+        self.assertTrue(any("actor is required" in item for item in findings))
+        self.assertTrue(any("date must use" in item for item in findings))
+        self.assertTrue(any("limitations_disposition" in item for item in findings))
+
+    def test_schema_two_keeps_post_release_separate_from_released(self) -> None:
+        manifest = self.manifest("released")
+        manifest["schema_version"] = 2
+        release = manifest["release"]
+        release.update(
+            {
+                "status": "released",
+                "uat_status": "pass",
+                "tag": "v0.8.0",
+                "release_url": "https://github.com/example/os/releases/tag/v0.8.0",
+                "uat": {
+                    "status": "pass",
+                    "evidence": "uat.md",
+                    "actor": "Owner",
+                    "date": "2026-08-25",
+                    "scenarios": ["UAT-001"],
+                    "limitations_disposition": "Accepted",
+                },
+                "post_release": {"status": "pending"},
+            }
+        )
+        manifest["features"][0]["uat"] = dict(release["uat"])
+        findings = trace_project.validate_manifest(manifest, self.root)
+        self.assertEqual([], findings)
+
 
 if __name__ == "__main__":
     unittest.main()

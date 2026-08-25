@@ -1,9 +1,15 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "release": {
     "version": "v0.1.0",
     "status": "planning",
     "uat_status": "pending",
+    "uat": {
+      "status": "pending"
+    },
+    "post_release": {
+      "status": "pending"
+    },
     "branch": "codex/example-feature",
     "pr_url": null,
     "tag": null,
