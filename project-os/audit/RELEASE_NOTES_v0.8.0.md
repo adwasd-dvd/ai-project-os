@@ -66,3 +66,5 @@ Return to the immutable v0.6.0 package on a dedicated branch while preserving pr
 This candidate is waiting for human UAT. No tag or GitHub Release is authorized yet.
 
 本候选版正在等待人工 UAT，尚未授权 tag 或 GitHub Release。
+
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7

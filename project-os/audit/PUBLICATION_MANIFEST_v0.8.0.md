@@ -53,7 +53,7 @@ Dogfood: v0.6.0 to v0.8.0 apply, restart, and verify pass
 Protected Memory: four before/after SHA-256 values byte-identical
 Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
 Human UAT: Pending
-GitHub Draft PR: Pending creation
+GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7
 ```
 
 ## Go / Review / Block

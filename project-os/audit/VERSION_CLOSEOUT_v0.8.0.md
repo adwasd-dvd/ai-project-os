@@ -12,7 +12,7 @@ Status: Candidate - Human UAT Pending
 Date Prepared: 2026-08-25
 Prepared By: Codex
 Human UAT: Pending
-GitHub: Draft PR pending creation; tag and Release not created
+GitHub: Draft PR #7 open; tag and Release not created
 Publication Decision: Review
 ```
 
@@ -29,7 +29,7 @@ Publication Decision: Review
 | Extracted package | archive, validator, 59/59 tests | Pass |
 | Upgrade dogfood | v0.6.0 to v0.8.0; protected memory preserved | Pass |
 | Private safety gate | Block 0; Review 0 in isolated dogfood | Pass |
-| GitHub review | Draft PR | Pending |
+| GitHub review | Draft PR #7 open and merge state clean | Pass for candidate handoff |
 | Human UAT | explicit Owner conclusion | Pending |
 | Publication manifest | human Go | Pending |
 | Tag and GitHub Release | only after UAT and Go | Pending |

@@ -10,7 +10,6 @@ Release State: `candidate`
 - Blocker: Human version UAT Pass is required
 - Blocker: Every included feature must be accepted or released
 - Blocker: Safety publication decision must be Go
-- Blocker: GitHub PR URL is required before release readiness
 
 ## Scope / 范围
 
