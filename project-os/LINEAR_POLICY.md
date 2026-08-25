@@ -359,6 +359,10 @@ Codex 发现疑似重复时：
 Write Actions / 写入动作: None. Dry run only.
 ```
 
+v0.6 的 executable runner、write allowlist、三层授权、幂等账本和 cron-compatible 设置见 `AUTOMATION_POLICY.md` 与 `AUTOMATION_RUNBOOK.md`。
+
+自动化生成的 `planned_actions` 只是建议，不得写进 `created` 或 `updated`。只有 apply 成功并产生脱敏 receipt 后，才算实际 Linear write。
+
 ## Automation Boundary
 
 v0.3 允许 manual trigger 和 scheduled dry-run/advisory Linear intake。

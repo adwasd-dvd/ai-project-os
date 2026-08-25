@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v0.6.0 - 2026-08-25
+
+Development Train A combines scheduled Linear intake automation with change-impact and requirement-to-release traceability.
+
+Added:
+
+- `tools/linear_intake.py` with offline/live reads, deterministic queue routing, bilingual reports, planned actions, guarded writes, idempotency, retry handling, and sanitized receipts.
+- `automation/` config and cross-version fixture plus ignored `runtime/` state boundary.
+- `AUTOMATION_RUNBOOK.md` with manual, cron-compatible, Codex recurring, credential, write-enable, and failure-handoff steps.
+- `CHANGE_IMPACT.md`, `TRACEABILITY.md`, reusable JSON inputs, and `tools/trace_project.py`.
+- Automated tests for routing, Ready checks, credentials, triple write gates, idempotency, partial failure, evidence states, and change-impact blockers.
+- Development Train cadence from DEC-009 and one consolidated v0.6.0 human UAT.
+
+Updated:
+
+- Core Agent, workflow, Linear, quality, UAT, version-planning, roadmap, startup, and package rules for executable automation and traceability.
+- Validator coverage for v0.6 files and safety boundaries.
+
+Human UAT passed on 2026-08-25 and the release was authorized by the Owner.
+
 ## v0.5.0 - 2026-08-20
 
 Repository safety and project-memory boundary release.

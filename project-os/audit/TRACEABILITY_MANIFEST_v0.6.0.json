@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "release": {
+    "version": "v0.6.0",
+    "status": "candidate",
+    "uat_status": "pass",
+    "branch": "codex/v0.6-train-a",
+    "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/4",
+    "tag": null,
+    "release_url": null
+  },
+  "features": [
+    {
+      "feature_id": "AIPOS-038",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-219",
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/tools/linear_intake.py", "project-os/automation/linear_intake.example.json"],
+      "evidence_paths": ["project-os/AUTOMATION_RUNBOOK.md", "project-os/examples/TRAIN_A_INTAKE_REPORT.md"],
+      "tests": [{"id": "AUTOMATION-TESTS", "path": "project-os/tools/test_linear_intake.py", "status": "pass"}],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-AUTO-001", "RISK-AUTO-002"]
+    },
+    {
+      "feature_id": "AIPOS-039",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-220",
+      "requirement_sources": ["project-os/LINEAR_INTAKE.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/tools/linear_intake.py"],
+      "evidence_paths": ["project-os/LINEAR_INTAKE.md", "project-os/examples/TRAIN_A_EXAMPLE.md"],
+      "tests": [{"id": "ROUTING-TESTS", "path": "project-os/tools/test_linear_intake.py", "status": "pass"}],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-AUTO-001"]
+    },
+    {
+      "feature_id": "AIPOS-040",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-221",
+      "requirement_sources": ["project-os/AUTOMATION_POLICY.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/tools/linear_intake.py", "project-os/runtime/.gitignore"],
+      "evidence_paths": ["project-os/AUTOMATION_POLICY.md", "project-os/AUTOMATION_RUNBOOK.md"],
+      "tests": [{"id": "WRITE-SAFETY-TESTS", "path": "project-os/tools/test_linear_intake.py", "status": "pass"}],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-AUTO-003"]
+    },
+    {
+      "feature_id": "AIPOS-041",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-222",
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/AUTOMATION_RUNBOOK.md"],
+      "evidence_paths": ["project-os/QUICKSTART.md", "project-os/START_HERE.md"],
+      "tests": [{"id": "VALIDATOR", "path": "project-os/tools/test_validate_project_os.py", "status": "pass"}],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-001"]
+    },
+    {
+      "feature_id": "AIPOS-042",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-223",
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/tools/trace_project.py", "project-os/traceability/TRACEABILITY_MANIFEST.example.json"],
+      "evidence_paths": ["project-os/TRACEABILITY.md", "project-os/examples/TRACEABILITY_REPORT.md"],
+      "tests": [{"id": "TRACE-TESTS", "path": "project-os/tools/test_trace_project.py", "status": "pass"}],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-TRACE-001"]
+    },
+    {
+      "feature_id": "AIPOS-043",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-224",
+      "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/tools/trace_project.py", "project-os/traceability/CHANGE_IMPACT_INPUT.example.json"],
+      "evidence_paths": ["project-os/CHANGE_IMPACT.md", "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md"],
+      "tests": [{"id": "IMPACT-TESTS", "path": "project-os/tools/test_trace_project.py", "status": "pass"}],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-TRACE-002"]
+    },
+    {
+      "feature_id": "AIPOS-044",
+      "target_version": "v0.6.0",
+      "state": "accepted",
+      "linear_issue": "DVD-225",
+      "requirement_sources": ["project-os/audit/FEATURE_INVENTORY.md", "project-os/audit/LINEAR_IMPORT_PLAN.md"],
+      "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
+      "code_paths": ["project-os/tools/validate_project_os.py", "project-os/UAT_TEMPLATE.md"],
+      "evidence_paths": ["project-os/examples/TRAIN_A_EXAMPLE.md", "project-os/audit/UAT_v0.6.0.md"],
+      "tests": [
+        {"id": "FULL-SOURCE-SUITE", "path": "project-os/tools/test_validate_project_os.py", "status": "pass"},
+        {"id": "PACKAGE-SUITE", "path": "project-os/tools/test_validate_project_os.py", "status": "pass"}
+      ],
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.6.0.md"},
+      "decisions": ["DEC-009"],
+      "risks": ["RISK-AUTO-003", "RISK-TRACE-001"]
+    }
+  ]
+}

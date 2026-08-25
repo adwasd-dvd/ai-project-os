@@ -10,6 +10,7 @@ Markdown-first package, not a build system.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 import zipfile
@@ -21,8 +22,10 @@ CORE_FILES = [
     "AGENT_DOC_POLICY.md",
     "AGENTS.md",
     "AUTOMATION_POLICY.md",
+    "AUTOMATION_RUNBOOK.md",
     "BOOTSTRAP.md",
     "CHANGELOG.md",
+    "CHANGE_IMPACT.md",
     "DAILY_MEETING.md",
     "FEATURE_TEMPLATE.md",
     "GITHUB_POLICY.md",
@@ -40,6 +43,7 @@ CORE_FILES = [
     "SELF_CHECK.md",
     "SECURITY_BOUNDARY.md",
     "START_HERE.md",
+    "TRACEABILITY.md",
     "UAT_TEMPLATE.md",
     "UPGRADE_POLICY.md",
     "VERSION_PLANNING.md",
@@ -52,19 +56,34 @@ CORE_FILES = [
     "discovery/SETTINGS_AND_DATA_REGISTER.md",
     "discovery/LOGIC_BOUNDARY_AUDIT.md",
     "discovery/WHITEBOX_IMPORT_REPORT.md",
+    "automation/README.md",
+    "automation/linear_intake.example.json",
+    "automation/fixtures/train_a_snapshot.json",
+    "runtime/.gitignore",
     "examples/FIRST_PROJECT.md",
+    "examples/CHANGE_IMPACT_REPORT.md",
     "examples/SAFETY_EXAMPLE.md",
+    "examples/TRACEABILITY_REPORT.md",
+    "examples/TRAIN_A_EXAMPLE.md",
+    "examples/TRAIN_A_INTAKE_REPORT.md",
     "examples/WHITEBOX_EXAMPLE.md",
     "safety/README.md",
     "safety/DOC_GAP_REGISTER.md",
     "safety/PROJECT_MEMORY_AUDIT.md",
     "safety/PUBLICATION_MANIFEST.md",
     "safety/SECRET_SCAN_REPORT.md",
+    "traceability/README.md",
+    "traceability/TRACEABILITY_MANIFEST.example.json",
+    "traceability/CHANGE_IMPACT_INPUT.example.json",
+    "tools/linear_intake.py",
     "tools/safety_scan.py",
+    "tools/test_linear_intake.py",
     "tools/test_safety_scan.py",
+    "tools/test_trace_project.py",
     "tools/test_validate_project_os.py",
     "tools/test_whitebox_scan.py",
     "tools/validate_project_os.py",
+    "tools/trace_project.py",
     "tools/whitebox_scan.py",
 ]
 
@@ -143,12 +162,17 @@ POLICY_PHRASES = {
         "不自动修改本地代码",
         "Idempotency",
         "Status + Assignee Routing",
+        "Implemented Runner Interface",
+        "Write Authorization",
+        "AIPOS_LINEAR_WRITE_APPROVED=1",
     ],
     "ROADMAP.md": [
         "Project Whitebox",
         "Repo Safety & Project Memory Boundary",
         "OS Self-Upgrade",
         "v1.0",
+        "Development Train A",
+        "Development Train B",
     ],
     "WHITEBOX_PROTOCOL.md": [
         "Observed",
@@ -179,12 +203,15 @@ POLICY_PHRASES = {
         "Evidence",
         "Confidence",
         "Next Verification",
+        "Ready for Automated Linear Write",
+        "Ready for Change Impact",
+        "Traceability Complete for Declared State",
     ],
     "OS_VERSION.md": [
-        "v0.5.0",
+        "v0.6.0",
     ],
     "CHANGELOG.md": [
-        "v0.5.0",
+        "v0.6.0",
     ],
     "QUICKSTART.md": [
         "60-Second Start",
@@ -211,6 +238,31 @@ POLICY_PHRASES = {
         "Team Pattern",
         "Public Pattern",
         "Canonical Source",
+    ],
+    "AUTOMATION_RUNBOOK.md": [
+        "Dry run",
+        "AIPOS_LINEAR_WRITE_APPROVED=1",
+        "Idempotency and Partial Failure",
+        "Scheduled scans never modify local product code",
+        "Linear GraphQL getting started",
+    ],
+    "CHANGE_IMPACT.md": [
+        "modules",
+        "dependencies",
+        "data_security",
+        "documentation",
+        "tests",
+        "uat",
+        "rollout_rollback",
+        "high-impact claim has low or unknown confidence",
+    ],
+    "TRACEABILITY.md": [
+        "Requirement",
+        "Linear Issue",
+        "Automated Tests",
+        "Human UAT",
+        "GitHub Release",
+        "Automated test Pass never means human UAT Pass",
     ],
 }
 
@@ -443,6 +495,111 @@ def check_safety_contract(root: Path) -> list[Finding]:
     return findings
 
 
+def check_train_a_contract(root: Path) -> list[Finding]:
+    findings: list[Finding] = []
+    required_impact_areas = {
+        "modules",
+        "dependencies",
+        "data_security",
+        "documentation",
+        "tests",
+        "uat",
+        "rollout_rollback",
+    }
+    for base in project_os_bases(root):
+        runner = base / "tools" / "linear_intake.py"
+        if runner.exists():
+            runner_text = read_text(runner)
+            for phrase in [
+                "SUPPORTED_OPERATIONS",
+                "FORBIDDEN_UPDATE_FIELDS",
+                "AIPOS_LINEAR_WRITE_APPROVED",
+                "--authorize-writes",
+                "idempotency_key",
+                "write_json_atomic",
+                "None. Dry run only.",
+                "NoRedirect",
+                "auth.endpoint must be",
+                "scan_complete",
+                "max_plan_age_minutes",
+                "nested connection limit reached",
+            ]:
+                if phrase not in runner_text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            runner.relative_to(root).as_posix(),
+                            f"Missing automation guardrail / 缺少自动化保护: {phrase}",
+                        )
+                    )
+
+        trace_tool = base / "tools" / "trace_project.py"
+        if trace_tool.exists():
+            trace_text = read_text(trace_tool)
+            for phrase in [
+                '"uat_pending"',
+                '"accepted"',
+                '"released"',
+                "human UAT pass",
+                "High-impact",
+                "REQUIRED_IMPACT_AREAS",
+            ]:
+                if phrase not in trace_text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            trace_tool.relative_to(root).as_posix(),
+                            f"Missing traceability guardrail / 缺少追踪保护: {phrase}",
+                        )
+                    )
+
+        config_path = base / "automation" / "linear_intake.example.json"
+        if config_path.exists():
+            try:
+                config = json.loads(read_text(config_path))
+                policy = config.get("write_policy") or {}
+                if config.get("language") != "en+zh":
+                    findings.append(
+                        Finding("FAIL", config_path.relative_to(root).as_posix(), "Default language must be en+zh")
+                    )
+                if policy.get("enabled") is not False:
+                    findings.append(
+                        Finding("FAIL", config_path.relative_to(root).as_posix(), "Example writes must be disabled")
+                    )
+                if config.get("state_file") != "project-os/runtime/linear_intake_ledger.json":
+                    findings.append(
+                        Finding("FAIL", config_path.relative_to(root).as_posix(), "Runtime ledger must stay under project-os/runtime/")
+                    )
+            except json.JSONDecodeError as exc:
+                findings.append(
+                    Finding("FAIL", config_path.relative_to(root).as_posix(), f"Invalid automation JSON: {exc}")
+                )
+
+        impact_path = base / "traceability" / "CHANGE_IMPACT_INPUT.example.json"
+        if impact_path.exists():
+            try:
+                impact = json.loads(read_text(impact_path))
+                areas = {
+                    item.get("area")
+                    for item in impact.get("impacts", [])
+                    if isinstance(item, dict)
+                }
+                missing = required_impact_areas - areas
+                if missing:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            impact_path.relative_to(root).as_posix(),
+                            f"Missing change-impact areas: {sorted(missing)}",
+                        )
+                    )
+            except json.JSONDecodeError as exc:
+                findings.append(
+                    Finding("FAIL", impact_path.relative_to(root).as_posix(), f"Invalid impact JSON: {exc}")
+                )
+    return findings
+
+
 def check_release_zips(root: Path) -> list[Finding]:
     findings: list[Finding] = []
     if not (root / "template" / "project-os").exists():
@@ -549,6 +706,7 @@ def main() -> int:
     findings.extend(check_template_drift(root))
     findings.extend(check_discovery_contract(root))
     findings.extend(check_safety_contract(root))
+    findings.extend(check_train_a_contract(root))
     findings.extend(check_release_zips(root))
 
     failures = [finding for finding in findings if finding.level == "FAIL"]

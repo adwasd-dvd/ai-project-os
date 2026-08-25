@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "language": "en+zh",
+  "team": {
+    "id": "REPLACE_WITH_LINEAR_TEAM_UUID",
+    "key": "EXAMPLE",
+    "name": "Example Team"
+  },
+  "projects": [
+    "Example Product v0.6"
+  ],
+  "project_name_prefixes": [
+    "Example Product"
+  ],
+  "active_statuses": [
+    "Todo",
+    "In Progress",
+    "In Review"
+  ],
+  "lookback_days": 7,
+  "max_issues": 50,
+  "include_issues": [],
+  "exclude_issues": [],
+  "auth": {
+    "type": "personal_api_key",
+    "token_env": "LINEAR_API_KEY",
+    "endpoint": "https://api.linear.app/graphql"
+  },
+  "retry": {
+    "max_retries": 2,
+    "timeout_seconds": 20
+  },
+  "state_file": "project-os/runtime/linear_intake_ledger.json",
+  "write_policy": {
+    "enabled": false,
+    "allowed_operations": [
+      "comment_create"
+    ],
+    "allowed_update_fields": [],
+    "max_plan_age_minutes": 60,
+    "runtime_authorization_env": "AIPOS_LINEAR_WRITE_APPROVED"
+  }
+}

@@ -1,8 +1,20 @@
 # ROADMAP
 
-This roadmap captures the intended path from AI Project OS v0.5 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
+This roadmap captures the approved three-train path from AI Project OS v0.5 to the internal v1.0 stable release, plus post-1.0 open-source readiness.
 
-本路线图记录 AI Project OS 从 v0.5 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
+本路线图记录 AI Project OS 经三个 Development Train 从 v0.5 到公司内部 v1.0 稳定版的计划，以及 1.0 之后的开源准备方向。
+
+## Approved Development Cadence / 已批准开发节奏
+
+DEC-009 authorizes larger implementation batches with one human UAT per train. Feature IDs, Decisions, safety gates, traceability, and release approval remain mandatory.
+
+DEC-009 批准采用更大的实现批次，每个 Train 进行一次人工 UAT。Feature ID、Decision、安全门禁、traceability 和 release approval 仍然是硬规则。
+
+```text
+Development Train A -> v0.6.0 -> former v0.6 + v0.7 scope
+Development Train B -> v0.8.0 -> former v0.8 + v0.9 scope
+Internal Stable -> v1.0.0 -> end-to-end rescue standard
+```
 
 ## Product Positioning
 
@@ -109,17 +121,17 @@ Deliverables:
 - Policy for local-only, team-shared, private-repo, and public-safe OS documents.
 - GitHub README and `QUICKSTART.md` 60-second download/place/prompt startup path.
 
-## v0.6 - Linear Intake / Cron MVP
+## v0.6 - Development Train A: Automation + Traceability
 
-Status: Next planned / 下一计划版本
+Status: Release authorized / 已批准发布
 
 Goal:
 
-Let Codex safely check Linear on demand or on a schedule, summarize attention items, and prepare the next action without surprise code execution.
+Let Codex safely check Linear on demand or on a schedule, execute only explicitly authorized idempotent Linear writes, and trace every formal change from requirement through release without surprise code execution.
 
 目标：
 
-让 Codex 能安全地手动或定时检查 Linear，总结注意事项，并准备下一步，但不突然自动改代码。
+让 Codex 能安全地手动或定时检查 Linear，只执行明确授权且幂等的 Linear 写入，并把每个正式变更从需求追到 release，同时不突然自动改代码。
 
 Deliverables:
 
@@ -128,8 +140,16 @@ Deliverables:
 - Idempotent comments and status recommendations.
 - Human queue, Codex queue, review queue, blockers, skipped items, and next action in every run summary.
 - Permission gates for any automatic write.
+- Executable Python standard-library runner with offline fixture and live Linear reads.
+- Sanitized persistent run ledger, bounded retry, and partial-failure recovery.
+- Cron-compatible and Codex recurring automation runbook.
+- Requirement-to-issue-to-code/evidence-to-test-to-UAT-to-release manifest.
+- Seven-area change-impact gate with confidence and evidence.
+- Consolidated Train A validator, example, package, Draft PR, and human UAT.
 
 ## v0.7 - Change Impact & Traceability
+
+Status: Absorbed into Development Train A / 已并入 Development Train A
 
 Goal:
 
@@ -147,15 +167,21 @@ Deliverables:
 - Evidence links for important implementation claims.
 - Decision and scope-change tracking.
 
-## v0.8 - UAT / Release / Rollback Loop
+These deliverables ship in the formal v0.6.0 release so v0.7 is not a separate release.
+
+这些能力进入正式 v0.6.0 release，因此 v0.7 不单独发布。
+
+## v0.8 - Development Train B: Release / Rollback + Self-Upgrade
+
+Status: Next planned after v0.6 release / v0.6 发布后的下一计划
 
 Goal:
 
-Make "done" mean accepted, releasable, and recoverable.
+Make "done" mean accepted, releasable, recoverable, and safely upgradeable without overwriting project memory.
 
 目标：
 
-让“完成”真正意味着已验收、可发布、可回滚。
+让“完成”真正意味着已验收、可发布、可回滚，并且 OS 能在不覆盖项目记忆的情况下安全升级。
 
 Deliverables:
 
@@ -165,8 +191,14 @@ Deliverables:
 - Rollback and hotfix playbook.
 - Post-release checks.
 - Clear separation between code complete, review complete, UAT pass, release, and post-release done.
+- Detect installed OS and configured upstream version.
+- Generate upgrade plan, migration order, and conflict report.
+- Preserve local overrides, audit history, Linear mappings, and private context.
+- Apply migrations through a branch, validator, UAT, and rollback gate.
 
 ## v0.9 - OS Self-Upgrade & Dogfood Hardening
+
+Status: Absorbed into Development Train B / 已并入 Development Train B
 
 Goal:
 
@@ -184,6 +216,10 @@ Deliverables:
 - Preserve `LOCAL_OVERRIDES.md`, audit history, Linear mappings, and private project context.
 - Apply migrations through a branch and validator.
 - Use AI Project OS to dogfood its own v0.9 release.
+
+These deliverables are implemented and accepted with the formal v0.8.0 Development Train B candidate; v0.9 is not a separate release.
+
+这些能力随正式 v0.8.0 Development Train B 候选一起实现和验收；v0.9 不单独发布。
 
 ## v1.0 - Internal Stable Release
 

@@ -73,37 +73,43 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.5.0.zip
+ai-project-os-v0.6.0.zip
 ```
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
 
 ## Use In Another Project
 
-1. Download `ai-project-os-v0.5.0.zip` from the [v0.5.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.5.0).
+1. Download `ai-project-os-v0.6.0.zip` from the [v0.6.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0).
 2. Extract the top-level `project-os/` directory into the target repository root.
 3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## Latest Stable: v0.5.0
+## Latest Stable: v0.6.0
 
-v0.5 adds repository safety and project-memory boundaries around the v0.4 Project Whitebox flow.
+v0.6 adds executable Linear intake automation and requirement-to-release traceability.
 
 Core outputs:
 
-- Local Only, Team Shared, Private Repo, and Public Safe artifact classification.
-- Phase 0.75 Safety Classification before Git/team/public publication.
-- Repository-publication and Agent-document sharing policies.
-- Project-memory audit and documentation-gap records.
-- A read-only scanner that reports risk without emitting matched values or source lines.
-- A 60-second GitHub download/place/prompt startup path.
+- Dry-run-first manual, cron-compatible, and Codex recurring Linear intake.
+- Status + assignee queues, Ready checks, cross-version feedback watch, and bilingual reports.
+- Explicitly authorized idempotent Linear writes with a sanitized local ledger.
+- Seven-area change-impact gates and requirement-to-release traceability.
+- Independent source and install-package validation with human UAT kept separate.
 
-v0.5.0 passed human UAT on 2026-08-20. Use the tagged GitHub Release for installations in other projects.
+v0.6.0 passed human UAT on 2026-08-25. Use the tagged GitHub Release for installations in other projects.
 
-## Next Planned: v0.6
+## Next Planned: v0.8.0 Development Train B
 
-v0.6 will add the Linear Intake / Cron MVP. It remains planning scope until the v0.6 version is confirmed.
+v0.8 combines the release/rollback loop and OS self-upgrade hardening into one Development Train.
+
+Planned focus:
+
+- version-level release, rollback, and post-release checks;
+- installed/upstream version detection;
+- upgrade planning and conflict reporting;
+- preservation of local overrides, audit history, Linear mappings, and private context.
 
 ## v0.3 Handoff Rule
 

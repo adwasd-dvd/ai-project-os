@@ -615,3 +615,54 @@ UAT: Pass
 Approval: UAT 通过，允许发布 v0.5.0。
 Next: finalize package, merge PR #3, publish tag/release, then close DVD-83 through DVD-89 and the v0.5 project.
 ```
+
+## v0.6 Development Train A Setup - 2026-08-24
+
+Owner approved the three-train cadence and authorized Codex to complete Development Train A before one consolidated UAT.
+
+Owner 批准三大批开发节奏，并授权 Codex 完成 Development Train A 后再进行一次统一 UAT。
+
+### Linear Project
+
+| Linear ID | Name | Status | Purpose |
+|---|---|---|---|
+| `0f99810a-c014-4b2b-9203-791c32535053` | AI Project OS v0.6 - Development Train A | In Progress | Combine former v0.6 automation and v0.7 traceability as formal v0.6.0 |
+
+### Labels
+
+| Linear ID | Name | Purpose |
+|---|---|---|
+| `56e6f86d-ea0a-486e-897b-5be9f88cf00b` | `module:automation` | Scheduled intake, guarded writes, state, and operations |
+| `89defe0d-6391-45c2-8aeb-ba87a25322eb` | `module:traceability` | Requirement, impact, evidence, test, UAT, and release traceability |
+
+### Decision
+
+| Linear ID | Source ID | Status | Result |
+|---|---|---|---|
+| DVD-218 | DEC-009 | Done | Three trains approved; Train A targets v0.6.0 and one consolidated UAT |
+
+### Implementation Issues
+
+| Linear ID | Source ID | Status | Assignee | Scope |
+|---|---|---|---|---|
+| DVD-219 | AIPOS-038 | In Review | dvdTeacher / Owner | Config and executable intake runner |
+| DVD-220 | AIPOS-039 | In Review | dvdTeacher / Owner | Routing, Ready checks, feedback classification |
+| DVD-221 | AIPOS-040 | In Review | dvdTeacher / Owner | Guarded idempotent writes and ledger |
+| DVD-222 | AIPOS-041 | In Review | dvdTeacher / Owner | Cron and Codex automation runbook |
+| DVD-223 | AIPOS-042 | In Review | dvdTeacher / Owner | Traceability manifest and validator |
+| DVD-224 | AIPOS-043 | In Review | dvdTeacher / Owner | Change-impact planner/report |
+| DVD-225 | AIPOS-044 | In Review | dvdTeacher / Owner | Validation, example, package, Draft PR, consolidated UAT |
+
+### Human Gate
+
+Do not merge, tag, release, complete issues, or complete the Linear project before the Owner states:
+
+```text
+UAT 通过，允许发布 v0.6.0。
+```
+
+### UAT Approval
+
+On 2026-08-25, the Owner explicitly stated `UAT 通过，允许发布 v0.6.0。` and authorized the v0.6.0 release transaction.
+
+2026-08-25，Owner 明确确认 `UAT 通过，允许发布 v0.6.0。`，并批准执行 v0.6.0 发布流程。
