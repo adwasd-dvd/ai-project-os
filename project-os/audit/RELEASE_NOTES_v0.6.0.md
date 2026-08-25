@@ -48,22 +48,24 @@ v0.6 把文档化的 Linear intake 变成可执行、默认 dry-run 的 runner�
 
 ```text
 Change-impact gate: READY
-Traceability state: accepted; structural validation passed
+Traceability state: released; structural validation passed
 Automated tests: 38/38 passed in source and extracted deterministic package
 Strict validator: 0 failures, 0 warnings in source and extracted package
-Private staged safety gate: Block 0, Review 0
-Public staged advisory: Block 0; 13 expected review items for audit/Agent publication classification
+Final tracked private safety: Block 0, Review 0
+Final tracked public advisory: Block 0; 40 expected audit/Agent publication-classification review items
 Deterministic zip/extracted package: two delayed builds byte-identical; archive, validation, and tests passed
+Remote release asset: downloaded and byte-identical to the local artifact
 Human UAT: Pass - Owner approved 2026-08-25
 ```
 
 ## GitHub
 
 ```text
-Branch: codex/v0.6-train-a
-PR: https://github.com/adwasd-dvd/ai-project-os/pull/4
-Tag: v0.6.0 authorized; pending publication
-Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0 (pending publication)
+Release commit: a3076d69793ee62ff0c758018984f1b201cc32bb
+Implementation PR: https://github.com/adwasd-dvd/ai-project-os/pull/4
+Deterministic packaging PR: https://github.com/adwasd-dvd/ai-project-os/pull/5
+Tag: v0.6.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0
 Release asset: ai-project-os-v0.6.0.zip
 Release SHA-256: 565e81b722ddba1b02514c2a8485e2f831332125428f2ae7284f55be3c45639b
 ```

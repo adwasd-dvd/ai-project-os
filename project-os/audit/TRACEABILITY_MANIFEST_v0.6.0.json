@@ -2,18 +2,18 @@
   "schema_version": 1,
   "release": {
     "version": "v0.6.0",
-    "status": "candidate",
+    "status": "released",
     "uat_status": "pass",
     "branch": "codex/v0.6-train-a",
     "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/4",
-    "tag": null,
-    "release_url": null
+    "tag": "v0.6.0",
+    "release_url": "https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0"
   },
   "features": [
     {
       "feature_id": "AIPOS-038",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-219",
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
@@ -27,7 +27,7 @@
     {
       "feature_id": "AIPOS-039",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-220",
       "requirement_sources": ["project-os/LINEAR_INTAKE.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
@@ -41,7 +41,7 @@
     {
       "feature_id": "AIPOS-040",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-221",
       "requirement_sources": ["project-os/AUTOMATION_POLICY.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
@@ -55,7 +55,7 @@
     {
       "feature_id": "AIPOS-041",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-222",
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
@@ -69,7 +69,7 @@
     {
       "feature_id": "AIPOS-042",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-223",
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
@@ -83,7 +83,7 @@
     {
       "feature_id": "AIPOS-043",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-224",
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
@@ -97,7 +97,7 @@
     {
       "feature_id": "AIPOS-044",
       "target_version": "v0.6.0",
-      "state": "accepted",
+      "state": "released",
       "linear_issue": "DVD-225",
       "requirement_sources": ["project-os/audit/FEATURE_INVENTORY.md", "project-os/audit/LINEAR_IMPORT_PLAN.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md",
