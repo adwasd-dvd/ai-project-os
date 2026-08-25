@@ -53,7 +53,7 @@ Safely automate Linear intake and explicitly authorized idempotent Linear writes
 | Change impact | Seven areas complete; declared gate READY | `CHANGE_IMPACT_REPORT_v0.6.0.md` | Pass |
 | Traceability | All features structurally justify the declared state | Structural PASS; 7 features accepted after human UAT | Pass |
 | Safety gates | Target private staged gate has Block 0 | Staged private: Block 0, Review 0; staged public: Block 0, 13 expected publication-review items | Pass |
-| Final release package | Zip, digest, extraction, strict validation, and tests pass | Pending deterministic rebuild from merged release-fix commit | Pending |
+| Final release package | Zip, digest, extraction, strict validation, and tests pass | Two delayed builds byte-identical; extracted validator clean; 38/38 tests; SHA-256 `565e81b722ddba1b02514c2a8485e2f831332125428f2ae7284f55be3c45639b` | Pass |
 
 ## Human UAT Scenarios / 人工验收场景
 
