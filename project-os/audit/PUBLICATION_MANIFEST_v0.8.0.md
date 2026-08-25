@@ -54,6 +54,7 @@ Protected Memory: four before/after SHA-256 values byte-identical
 Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
 Human UAT: Pending
 GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7
+Linear UAT Handoff: project update 8ef6411d-303b-4eb4-b5ff-31d3ab2bbc64
 ```
 
 ## Go / Review / Block

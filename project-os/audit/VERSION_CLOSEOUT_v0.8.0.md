@@ -34,7 +34,8 @@ Publication Decision: Review
 | Publication manifest | human Go | Pending |
 | Tag and GitHub Release | only after UAT and Go | Pending |
 | Post-release verification | remote digest and checks | Pending |
-| Linear closeout | project completion and final update | Pending |
+| Linear UAT handoff | Project update `8ef6411d-303b-4eb4-b5ff-31d3ab2bbc64`; Project remains In Progress | Pass for candidate handoff |
+| Linear release closeout | Project completion and final post-release update | Pending |
 
 ## Remaining Authorized Sequence / 剩余授权顺序
 
