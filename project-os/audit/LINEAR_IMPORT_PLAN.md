@@ -645,13 +645,13 @@ Owner 批准三大批开发节奏，并授权 Codex 完成 Development Train A �
 
 | Linear ID | Source ID | Status | Assignee | Scope |
 |---|---|---|---|---|
-| DVD-219 | AIPOS-038 | In Progress | Unassigned / Codex | Config and executable intake runner |
-| DVD-220 | AIPOS-039 | In Progress | Unassigned / Codex | Routing, Ready checks, feedback classification |
-| DVD-221 | AIPOS-040 | In Progress | Unassigned / Codex | Guarded idempotent writes and ledger |
-| DVD-222 | AIPOS-041 | In Progress | Unassigned / Codex | Cron and Codex automation runbook |
-| DVD-223 | AIPOS-042 | In Progress | Unassigned / Codex | Traceability manifest and validator |
-| DVD-224 | AIPOS-043 | In Progress | Unassigned / Codex | Change-impact planner/report |
-| DVD-225 | AIPOS-044 | In Progress | Unassigned / Codex | Validation, example, package, Draft PR, consolidated UAT |
+| DVD-219 | AIPOS-038 | In Review | dvdTeacher / Owner | Config and executable intake runner |
+| DVD-220 | AIPOS-039 | In Review | dvdTeacher / Owner | Routing, Ready checks, feedback classification |
+| DVD-221 | AIPOS-040 | In Review | dvdTeacher / Owner | Guarded idempotent writes and ledger |
+| DVD-222 | AIPOS-041 | In Review | dvdTeacher / Owner | Cron and Codex automation runbook |
+| DVD-223 | AIPOS-042 | In Review | dvdTeacher / Owner | Traceability manifest and validator |
+| DVD-224 | AIPOS-043 | In Review | dvdTeacher / Owner | Change-impact planner/report |
+| DVD-225 | AIPOS-044 | In Review | dvdTeacher / Owner | Validation, example, package, Draft PR, consolidated UAT |
 
 ### Human Gate
 

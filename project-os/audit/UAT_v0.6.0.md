@@ -82,7 +82,7 @@ Safely automate Linear intake and explicitly authorized idempotent Linear writes
 - [x] Final safety gates recorded.
 - [x] Candidate zip and digest verified.
 - [x] GitHub Draft PR created: https://github.com/adwasd-dvd/ai-project-os/pull/4
-- [ ] Linear issues moved to In Review and assigned to Owner.
+- [x] Linear DVD-219 through DVD-225 moved to In Review and assigned to Owner.
 - [ ] Owner completes human scenarios and explicitly passes v0.6.0.
 ```
 

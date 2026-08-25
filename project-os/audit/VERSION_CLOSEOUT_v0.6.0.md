@@ -29,7 +29,7 @@ Publication Decision: Review
 | Safety gates | Private Block 0; public advisory classified | Staged private Block 0 / Review 0; staged public Block 0 / 13 expected review items | Pass |
 | Candidate zip | Correct root, digest, standalone validation/tests | SHA-256 `c453e8732a4b77907055ebb82fb980a864201a7ffefd090d3ac2f95a4c65f217`; archive/validation/tests pass | Pass |
 | GitHub review | Dedicated Draft PR | PR #4 created and kept Draft for Owner UAT | Pass |
-| Linear handoff | DVD-219 through DVD-225 In Review + Owner | Pending | Pending |
+| Linear handoff | DVD-219 through DVD-225 In Review + Owner | Completed; project update `1e2cd8a5-0f80-4828-a692-6ab6ffc9da1c` | Pass |
 | Human UAT | Explicit Owner conclusion | Pending | Block |
 | Publication manifest | Human Go | Review | Block |
 
