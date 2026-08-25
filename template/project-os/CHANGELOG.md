@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.6.0 - Unreleased
+## v0.6.0 - 2026-08-25
 
 Development Train A combines scheduled Linear intake automation with change-impact and requirement-to-release traceability.
 
@@ -18,7 +18,7 @@ Updated:
 - Core Agent, workflow, Linear, quality, UAT, version-planning, roadmap, startup, and package rules for executable automation and traceability.
 - Validator coverage for v0.6 files and safety boundaries.
 
-Release remains blocked until the Owner explicitly passes v0.6.0 UAT.
+Human UAT passed on 2026-08-25 and the release was authorized by the Owner.
 
 ## v0.5.0 - 2026-08-20
 

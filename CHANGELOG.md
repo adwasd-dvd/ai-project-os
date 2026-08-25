@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.6.0 - 2026-08-25
+
+Development Train A release for safe Linear automation and requirement-to-release traceability.
+
+Added:
+
+- Executable dry-run-first Linear intake with offline fixtures and live GraphQL reads.
+- Status + assignee queue routing, Ready checks, cross-version feedback watch, and bilingual reports.
+- Explicitly authorized idempotent Linear writes, bounded retries, and a sanitized local ledger.
+- Manual, cron-compatible, and Codex recurring automation runbook.
+- Seven-area change-impact gates and deterministic requirement-to-release traceability.
+- Focused tests, standalone package verification, and one consolidated human UAT.
+
+Updated:
+
+- Workflow, quality, UAT, release, version-planning, roadmap, startup, and validator rules for executable automation and traceability.
+- Release artifact name to `ai-project-os-v0.6.0.zip`.
+
 ## v0.5.0 - 2026-08-20
 
 Repository safety and project-memory boundary release.

@@ -1,19 +1,19 @@
-# VERSION_CLOSEOUT v0.6.0 Candidate
+# VERSION_CLOSEOUT v0.6.0
 
-This checklist records the pre-release closeout state for Development Train A.
+This checklist records the approved release closeout state for Development Train A.
 
-本清单记录 Development Train A 的发布前关账状态。
+本清单记录 Development Train A 已批准的发布关账状态。
 
 ## Current State
 
 ```text
-Version: v0.6.0 candidate
-Status: In Review preparation
-Date Prepared: 2026-08-24
+Version: v0.6.0
+Status: Approved for release
+Date Prepared: 2026-08-25
 Prepared By: Codex
-Human UAT: Pending
-GitHub: branch codex/v0.6-train-a; Draft PR https://github.com/adwasd-dvd/ai-project-os/pull/4
-Publication Decision: Review
+Human UAT: Pass - Owner approved 2026-08-25
+GitHub: branch codex/v0.6-train-a; PR https://github.com/adwasd-dvd/ai-project-os/pull/4
+Publication Decision: Go for current PRIVATE GitHub destination
 ```
 
 ## Required Before Release
@@ -23,17 +23,18 @@ Publication Decision: Review
 | Scope confirmed | DEC-009 Done | DVD-218 Done | Pass |
 | Included features implemented | AIPOS-038 through AIPOS-044 | Local candidate implementation | Pass |
 | Change impact | Seven areas, no blocker | `CHANGE_IMPACT_REPORT_v0.6.0.md`: READY | Pass |
-| Traceability | Every included feature justified as `uat_pending` | `TRACEABILITY_REPORT_v0.6.0.md` | Pass |
+| Traceability | Every included feature justified as `accepted` | `TRACEABILITY_REPORT_v0.6.0.md` | Pass |
 | Source/template validator | 0 failures, 0 warnings | Source and extracted package both clean | Pass |
 | Automated tests | Full source suite | Source 36/36; extracted package 36/36 | Pass |
 | Safety gates | Private Block 0; public advisory classified | Staged private Block 0 / Review 0; staged public Block 0 / 13 expected review items | Pass |
-| Candidate zip | Correct root, digest, standalone validation/tests | SHA-256 `c453e8732a4b77907055ebb82fb980a864201a7ffefd090d3ac2f95a4c65f217`; archive/validation/tests pass | Pass |
+| Release zip | Correct root, digest, standalone validation/tests | SHA-256 `baf6a19ac284aaeca486c6c923be841862e0a8237d763db17e2b6b0f06ad309c`; archive/validation/tests pass | Pass |
 | GitHub review | Dedicated Draft PR | PR #4 created and kept Draft for Owner UAT | Pass |
 | Linear handoff | DVD-219 through DVD-225 In Review + Owner | Completed; project update `1e2cd8a5-0f80-4828-a692-6ab6ffc9da1c` | Pass |
-| Human UAT | Explicit Owner conclusion | Pending | Block |
-| Publication manifest | Human Go | Review | Block |
+| Human UAT | Explicit Owner conclusion | `UAT 通过，允许发布 v0.6.0。` | Pass |
+| Publication manifest | Human Go | Go for current PRIVATE GitHub destination | Pass |
+| GitHub release/tag | Only after UAT | Authorized; pending release transaction | Pending |
 
-## Actions Only After UAT Pass / 仅 UAT 通过后执行
+## Authorized Release Actions / 已批准发布动作
 
 ```text
 UAT 通过，允许发布 v0.6.0。
@@ -48,6 +49,9 @@ UAT 通过，允许发布 v0.6.0。
 7. Verify the remote asset digest.
 8. Update traceability to `released`, then complete DVD-219 through DVD-225 and the Linear project.
 
-Do not perform these closeout actions before explicit human UAT Pass.
+## Closeout Decision / 关账决定
 
-在明确人工 UAT Pass 前，不执行这些关账动作。
+```text
+Human UAT passed. v0.6.0 is approved for release and closeout.
+人类 UAT 已通过。v0.6.0 已批准发布并关账。
+```

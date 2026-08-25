@@ -660,3 +660,9 @@ Do not merge, tag, release, complete issues, or complete the Linear project befo
 ```text
 UAT 通过，允许发布 v0.6.0。
 ```
+
+### UAT Approval
+
+On 2026-08-25, the Owner explicitly stated `UAT 通过，允许发布 v0.6.0。` and authorized the v0.6.0 release transaction.
+
+2026-08-25，Owner 明确确认 `UAT 通过，允许发布 v0.6.0。`，并批准执行 v0.6.0 发布流程。

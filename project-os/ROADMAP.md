@@ -123,7 +123,7 @@ Deliverables:
 
 ## v0.6 - Development Train A: Automation + Traceability
 
-Status: In development / 开发中
+Status: Release authorized / 已批准发布
 
 Goal:
 
@@ -167,13 +167,13 @@ Deliverables:
 - Evidence links for important implementation claims.
 - Decision and scope-change tracking.
 
-These deliverables ship in the formal v0.6.0 candidate so v0.7 is not a separate release.
+These deliverables ship in the formal v0.6.0 release so v0.7 is not a separate release.
 
-这些能力进入正式 v0.6.0 候选，因此 v0.7 不单独发布。
+这些能力进入正式 v0.6.0 release，因此 v0.7 不单独发布。
 
 ## v0.8 - Development Train B: Release / Rollback + Self-Upgrade
 
-Status: Planned after v0.6 UAT / v0.6 UAT 后计划
+Status: Next planned after v0.6 release / v0.6 发布后的下一计划
 
 Goal:
 

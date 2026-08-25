@@ -2,7 +2,7 @@
 
 Release: `v0.6.0`
 Release State: `candidate`
-Human UAT: `pending`
+Human UAT: `pass`
 
 ## Validation / 验证
 
@@ -15,13 +15,13 @@ Findings: 0
 
 | Feature | State | Linear | Requirement | Impact | Code/Evidence | Tests | Human UAT | Decisions | Risks |
 |---|---|---|---:|---|---:|---:|---|---:|---:|
-| AIPOS-038 | uat_pending | DVD-219 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pending | 1 | 2 |
-| AIPOS-039 | uat_pending | DVD-220 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-040 | uat_pending | DVD-221 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pending | 1 | 1 |
-| AIPOS-041 | uat_pending | DVD-222 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-042 | uat_pending | DVD-223 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pending | 1 | 1 |
-| AIPOS-043 | uat_pending | DVD-224 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pending | 1 | 1 |
-| AIPOS-044 | uat_pending | DVD-225 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 2 | pending | 1 | 2 |
+| AIPOS-038 | accepted | DVD-219 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pass | 1 | 2 |
+| AIPOS-039 | accepted | DVD-220 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-040 | accepted | DVD-221 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pass | 1 | 1 |
+| AIPOS-041 | accepted | DVD-222 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-042 | accepted | DVD-223 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pass | 1 | 1 |
+| AIPOS-043 | accepted | DVD-224 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 1 | pass | 1 | 1 |
+| AIPOS-044 | accepted | DVD-225 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.6.0.md` | 4 | 2 | pass | 1 | 2 |
 
 ## Release Evidence / 发布证据
 

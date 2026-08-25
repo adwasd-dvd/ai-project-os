@@ -80,40 +80,36 @@ Generated zip files stay out of Git history. Versioned packages are published as
 
 ## Use In Another Project
 
-1. Download `ai-project-os-v0.5.0.zip` from the [v0.5.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.5.0).
+1. Download `ai-project-os-v0.6.0.zip` from the [v0.6.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0).
 2. Extract the top-level `project-os/` directory into the target repository root.
 3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## Latest Stable: v0.5.0
+## Latest Stable: v0.6.0
 
-v0.5 adds repository safety and project-memory boundaries around the v0.4 Project Whitebox flow.
+v0.6 adds executable Linear intake automation and requirement-to-release traceability.
 
 Core outputs:
 
-- Local Only, Team Shared, Private Repo, and Public Safe artifact classification.
-- Phase 0.75 Safety Classification before Git/team/public publication.
-- Repository-publication and Agent-document sharing policies.
-- Project-memory audit and documentation-gap records.
-- A read-only scanner that reports risk without emitting matched values or source lines.
-- A 60-second GitHub download/place/prompt startup path.
+- Dry-run-first manual, cron-compatible, and Codex recurring Linear intake.
+- Status + assignee queues, Ready checks, cross-version feedback watch, and bilingual reports.
+- Explicitly authorized idempotent Linear writes with a sanitized local ledger.
+- Seven-area change-impact gates and requirement-to-release traceability.
+- Independent source and install-package validation with human UAT kept separate.
 
-v0.5.0 passed human UAT on 2026-08-20. Use the tagged GitHub Release for installations in other projects.
+v0.6.0 passed human UAT on 2026-08-25. Use the tagged GitHub Release for installations in other projects.
 
-## Current Candidate: v0.6.0 Development Train A
+## Next Planned: v0.8.0 Development Train B
 
-v0.6 combines the former Linear Intake / Cron MVP and Change Impact & Traceability scopes into one candidate and one consolidated human UAT.
+v0.8 combines the release/rollback loop and OS self-upgrade hardening into one Development Train.
 
-Candidate capabilities:
+Planned focus:
 
-- executable dry-run-first Linear intake for manual, cron-compatible, and Codex recurring runs;
-- status + assignee routing, Ready checks, old-version comment watch, and bilingual summaries;
-- explicitly authorized, idempotent Linear writes with a sanitized local ledger;
-- seven-area change-impact gates;
-- requirement -> Linear -> code/evidence -> tests -> human UAT -> release traceability.
-
-The latest stable install remains v0.5.0 until v0.6.0 passes human UAT and is published from GitHub.
+- version-level release, rollback, and post-release checks;
+- installed/upstream version detection;
+- upgrade planning and conflict reporting;
+- preservation of local overrides, audit history, Linear mappings, and private context.
 
 ## v0.3 Handoff Rule
 
