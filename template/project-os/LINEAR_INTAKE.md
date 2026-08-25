@@ -1,11 +1,12 @@
 # LINEAR_INTAKE
 
-本文定义 AI Project OS v0.3 的 Linear intake scan 规则。
+本文定义 AI Project OS v0.6 的 Linear intake scan 规则，并由 `tools/linear_intake.py` 提供确定性执行入口。
 
 这套规则同时用于：
 
 - 手动 prompt，例如 `检查 Linear，然后按 AI Project OS 规则继续工作`。
 - cron 或 scheduled automation 的 dry-run/advisory scan。
+- authorized semi-automatic Linear writes；写入仍与 scan 分离。
 
 ## Intake Scan Contract
 
@@ -18,6 +19,8 @@
 5. 分类每条需要处理的反馈。
 6. 对 off-scope feedback 创建或建议正确承接位置。
 7. 输出 bilingual run summary。
+
+无论手动、cron-compatible 还是 Codex recurring automation，都必须使用同一份 config、路由和 Ready contract。
 
 ## Assignee-driven Routing
 
@@ -74,6 +77,8 @@ Labels = 只做分类，高级流程可选
 ```
 
 如果 scan 范围太大，Codex 可以先汇报将扫描的范围，并分批执行。
+
+实际 runner 使用 `projects` + `project_name_prefixes` 覆盖当前与相邻/旧版本项目，并允许 `include_issues` 强制包含用户点名事项。`exclude_issues` 永远优先于普通项目匹配。
 
 ## Status Sanity Rules
 
@@ -199,9 +204,22 @@ Next Action / 下一步:
 Write Actions / 写入动作: None. Dry run only.
 ```
 
+`planned_actions` 不是已执行动作。只有通过 `AUTOMATION_POLICY.md` 的独立 apply 门禁后，才能成为 `created` 或 `updated` receipt。
+
+## Executable Command / 可执行命令
+
+```bash
+python3 project-os/tools/linear_intake.py --root . scan \
+  --config project-os/runtime/linear_intake.json \
+  --json-out project-os/runtime/latest_linear_intake.json \
+  --markdown-out project-os/runtime/latest_linear_intake.md
+```
+
+完整安装、fixture、cron-compatible 和 guarded write 步骤见 `AUTOMATION_RUNBOOK.md`。
+
 ## UAT Scenario
 
-v0.3 UAT 必须覆盖：
+v0.6 UAT 必须覆盖：
 
 1. 创建或选择 `Todo + unassigned` issue，确认它进入 Codex Queue。
 2. 创建或选择 `Todo + assigned` issue，确认它进入 Human Queue。
@@ -210,3 +228,6 @@ v0.3 UAT 必须覆盖：
 5. 模拟人类验收通过：改为 `Done`，确认 Codex 不再处理原范围。
 6. 在旧版本 Issue 留一个下版本反馈，确认 scan 仍能识别 carry-over。
 7. 确认输出包含 scanned、Codex Queue、Human Queue、Review Queue、created、updated、skipped、blockers、next action。
+8. 连续 apply 同一 plan，第二次必须全部幂等跳过。
+9. 模拟部分失败后，只重试失败 action，不重复成功 action。
+10. 确认运行账本不含 API key、评论正文或 Linear secret payload。

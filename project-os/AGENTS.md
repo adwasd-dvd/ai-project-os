@@ -29,6 +29,9 @@
 23. 安全扫描和审计报告不得输出 matched value、source line、environment value 或 file content。
 24. `AGENTS.md`、agent wrapper 和本地 AI 指令在进入 Git 前必须按 `AGENT_DOC_POLICY.md` 分类。
 25. 聊天断档、未证实需求和文档逻辑缺口必须保持可见，不得静默当作已确认项目记忆。
+26. 正式开发前必须执行 `CHANGE_IMPACT.md`；高影响低置信度、未解决 Decision 或未批准 scope change 会阻塞开发。
+27. 正式 Feature 必须按 `TRACEABILITY.md` 维护 requirement -> Linear -> code/evidence -> tests -> human UAT -> release 证据链。
+28. Scheduled Linear scan 与 apply 必须分离；自动写入需要配置白名单、命令授权和运行时授权，且必须幂等。
 
 ## AI 行为原则
 
@@ -46,6 +49,7 @@
 - 区分 Observed、Derived、Claimed、Inferred、Contradicted 和 Unknown。
 - 安全报告只记录规则 ID、路径、分类、处置和修复建议，不复制命中内容。
 - 检查 Linear 时汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
+- 开发前生成 change-impact report，完工后更新 traceability manifest。
 
 ### 不得做
 
@@ -61,6 +65,8 @@
 - 不得为了 discovery 直接执行未知项目脚本或连接生产系统。
 - 不得把 private repository 当作凭证库。
 - 不得在未获人工授权时轮换凭证、删除文件、改写 Git 历史或发布仓库内容。
+- 不得把 planned automation action 当作已经写入 Linear。
+- 不得把自动测试 Pass 当作人工 UAT Pass，或把 Linear Done 当作 GitHub release 证据。
 
 ## 角色定义
 
@@ -117,6 +123,8 @@ Codex 可以：
 - 按 status + assignee 区分 Human Queue、Codex Queue 和 Review Queue。
 - 运行只读 whitebox scanner，并生成 `project-os/discovery/` 白盒报告。
 - 运行只读 safety scanner，并生成经脱敏的 `project-os/safety/` 安全证据和人工审查材料。
+- 运行 `tools/linear_intake.py` 的 dry scan，并在明确授权后执行白名单 Linear writes。
+- 运行 `tools/trace_project.py` 验证 change impact 与 requirement-to-release 证据链。
 
 Codex 不可以：
 
@@ -173,9 +181,9 @@ Labels = 只做分类，高级流程可选
 
 ## Automation 规则
 
-v0.3 允许设计和使用 Linear intake/follow-up 的 manual trigger 或 scheduled dry run。
+v0.6 允许使用 Linear intake/follow-up 的 manual trigger、scheduled dry run 和明确授权的有限 Linear writes。
 
-v0.3 不允许：
+v0.6 不允许：
 
 - scheduled job 自动修改本地代码。
 - 自动批准 UAT。
@@ -183,6 +191,8 @@ v0.3 不允许：
 - 重复创建评论、Issue 或状态更新。
 
 任何自动写入必须遵守 `AUTOMATION_POLICY.md` 和 `LINEAR_POLICY.md`。
+
+`scan` 默认只读；`apply` 必须同时通过配置、CLI 和运行时授权。成功/失败 receipt 只记录脱敏元数据。
 
 ## Feature ID 规则
 
@@ -243,6 +253,8 @@ Decision 必须包含：
 - 是否有未解决 Decision？
 - 验收标准是什么？
 - 需要运行哪些测试？
+- Change Impact 是否 READY？
+- Traceability manifest 是否已经建立？
 - 改动是否只覆盖该 Feature？
 
 如果不能回答，必须停止并说明缺什么。

@@ -1,4 +1,4 @@
-# AI Project OS v0.5 - START_HERE
+# AI Project OS v0.6 - START_HERE
 
 这是一套可以直接放进本地项目仓库的 AI 项目操作系统。
 
@@ -13,6 +13,8 @@
 7. 经人工确认后再写入 Linear。
 8. 按版本开发。
 9. 每个正式版本必须停下来做人工 UAT。
+10. 正式开发前生成 change-impact report，开发后维护 requirement-to-release traceability。
+11. Linear 可手动或定时扫描；默认 dry-run，绝不自动修改本地产品代码。
 
 ## 60 秒启动
 
@@ -37,6 +39,8 @@ Linear 默认使用 English + Chinese。
 - 本地 Codex：读取本地仓库、分析、开发、测试、生成 PR 准备材料。
 - GitHub：代码、PR、测试结果、版本 tag、release 事实来源。
 - 云端 Codex / scheduled automation：只允许 Linear intake/follow-up 的 dry-run/advisory 设计；不自动修改本地代码。
+- `tools/linear_intake.py`：可执行的 manual/scheduled Linear intake 与受控幂等写入；scan/apply 分离。
+- `tools/trace_project.py`：change-impact 与 requirement-to-release 证据链验证。
 - Linear MCP：允许使用，但首次批量写入 Linear 必须人工确认。
 
 ## 怎么放到现有仓库
@@ -61,7 +65,7 @@ your-existing-repo/
 ```text
 请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md、project-os/WHITEBOX_PROTOCOL.md、project-os/SECURITY_BOUNDARY.md 和 project-os/REPO_PUBLICATION_POLICY.md。
 
-请按 AI Project OS v0.5 工作。
+请按 AI Project OS v0.6 工作。
 
 先执行 Phase 0 Self-Check。
 如果是成熟、混乱或上下文不完整的项目，Phase 0 后先进入 Phase 0.5 Whitebox Discovery。
@@ -148,11 +152,12 @@ Baseline 已人工确认。
 ## 后续日常开发启动语
 
 ```text
-请读取 project-os/AGENTS.md、project-os/WORKFLOW.md、project-os/RELEASE_POLICY.md、project-os/QUALITY_GATE.md、project-os/LINEAR_INTAKE.md。
+请读取 project-os/AGENTS.md、project-os/WORKFLOW.md、project-os/RELEASE_POLICY.md、project-os/QUALITY_GATE.md、project-os/LINEAR_INTAKE.md、project-os/CHANGE_IMPACT.md 和 project-os/TRACEABILITY.md。
 
 我要处理 Feature ID: <填写 Feature ID>，目标版本: <填写版本号>。
 
 请先从 Linear/GitHub/本地代码确认上下文，然后给出开发计划。
+开始修改前生成 change-impact input/report；开发完成后更新 traceability manifest/report。
 如果 Feature ID 或目标版本缺失，请不要开始正式开发。
 ```
 
@@ -200,6 +205,35 @@ Labels = classification only, optional for advanced workflows
 无 assignee = Codex 队列
 Status = 生命周期
 Labels = 只做分类，高级流程可选
+```
+
+## 可执行 Linear 自动扫描
+
+先用内置 fixture 验证，不需要 Linear 凭证：
+
+```bash
+python3 project-os/tools/linear_intake.py --root . scan \
+  --config project-os/automation/linear_intake.example.json \
+  --snapshot project-os/automation/fixtures/train_a_snapshot.json \
+  --as-of 2026-08-24T18:00:00Z
+```
+
+配置 live scan、cron-compatible 运行、Codex recurring prompt 和 guarded writes 前，读取：
+
+```text
+project-os/AUTOMATION_RUNBOOK.md
+project-os/AUTOMATION_POLICY.md
+```
+
+硬边界：scheduled scan 只负责 Linear intake、摘要、建议和已授权 Linear mutation；不会自动修改本地产品代码、批准 Decision/UAT、merge 或 release。
+
+## Change Impact 与 Traceability
+
+```text
+请读取 project-os/CHANGE_IMPACT.md 和 project-os/TRACEABILITY.md。
+为 <Feature ID> / <Target Version> 生成开发前 change-impact report。
+如果 gate 为 READY，再开始实现；完成后更新 traceability 到真实证据支持的状态。
+不要把自动测试 Pass 写成 UAT Pass。
 ```
 
 把模糊需求整理成 Linear 草案：

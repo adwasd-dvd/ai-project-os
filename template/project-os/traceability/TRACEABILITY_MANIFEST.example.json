@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "release": {
+    "version": "v0.1.0",
+    "status": "planning",
+    "uat_status": "pending",
+    "branch": "codex/example-feature",
+    "pr_url": null,
+    "tag": null,
+    "release_url": null
+  },
+  "features": [
+    {
+      "feature_id": "DEMO-001",
+      "target_version": "v0.1.0",
+      "state": "planned",
+      "linear_issue": "EX-101",
+      "requirement_sources": [
+        "project-os/FEATURE_TEMPLATE.md"
+      ],
+      "change_impact": "project-os/traceability/CHANGE_IMPACT_INPUT.example.json",
+      "code_paths": [],
+      "evidence_paths": [],
+      "tests": [],
+      "uat": {
+        "status": "pending",
+        "evidence": null
+      },
+      "decisions": [],
+      "risks": []
+    }
+  ]
+}

@@ -17,6 +17,9 @@ Feature 进入开发前必须满足：
 - 无阻塞 Decision。
 - 依赖项已识别。
 - 测试要求已说明。
+- `CHANGE_IMPACT.md` 七个区域已检查。
+- 高影响低置信度结论已有 Next Verification 或已经阻塞开发。
+- Traceability manifest 已建立 `planned` 状态。
 
 不满足时，Codex 必须停止并列出缺口。
 
@@ -90,6 +93,54 @@ scheduled/cron scan 启用前必须满足：
 - idempotency 规则已明确。
 - 禁止 automatic code execution。
 - 自动写入范围已经由人确认。
+- runtime config、reports 和 ledger 位于忽略的 `project-os/runtime/`。
+- live token 只来自安全环境变量，不进入 config。
+- `scan` 与 `apply` 是不同命令。
+
+## Ready for Automated Linear Write
+
+执行任何自动 Linear write 前必须满足：
+
+- dry-run JSON 的 `planned_actions` 已人工或按既定策略审阅。
+- 本地 config 的 `write_policy.enabled` 为 `true`。
+- operation 和 update fields 均在最小白名单中。
+- apply 命令包含 `--authorize-writes`。
+- runtime authorization environment 等于明确授权值。
+- 每个 action 有稳定 idempotency key。
+- ledger 不记录 API key、评论正文或原始 payload。
+- 不包含 code、Decision approval、scope approval、UAT、merge、tag 或 release 动作。
+
+任一条件缺失时必须 fail closed。
+
+## Ready for Change Impact
+
+正式开发前必须：
+
+- 读取 `CHANGE_IMPACT.md`。
+- 记录 modules、dependencies、data_security、documentation、tests、uat 和 rollout_rollback。
+- 每个重要结论有 level、confidence、evidence 和 next verification。
+- `scope_change` 明确为 true/false。
+- unresolved Decisions 明确列出。
+- automated test plan 与 human UAT plan 分开。
+
+以下情况会阻塞开发：
+
+- 未批准 scope expansion。
+- 未解决 Decision。
+- high impact + low/unknown confidence。
+- 必填区域、test/UAT plan、rollout 或 rollback 缺失。
+- evidence path 不存在。
+
+## Traceability Complete for Declared State
+
+`tools/trace_project.py` 必须验证：
+
+- Feature ID 唯一且目标版本一致。
+- requirement、Linear、change-impact、code/evidence、tests、UAT 和 release 链接与声明状态相符。
+- `verified` 需要 passing automated tests。
+- `uat_pending` 明确等待人类。
+- `accepted` 必须有人工 UAT Pass 与证据路径。
+- `released` 必须有 tag 和 GitHub Release URL。
 
 ## Ready for PR
 
@@ -119,6 +170,8 @@ PR 进入 Review 前必须包含：
 - 截图或录屏，如果是 UI 变更。
 - 数据迁移说明，如果涉及数据库。
 - 回滚建议，如果风险较高。
+- change-impact report。
+- traceability report，声明状态至少为 `verified`。
 
 ## Review Pass
 
@@ -179,6 +232,20 @@ v0.5 还必须包含：
 - Agent 文档可以选择 local-only、team-shared、organization-shared 或 public-safe 模式。
 - 项目记忆审计能保留聊天断档、未证实需求和文档冲突。
 - GitHub README 和 `QUICKSTART.md` 能让新用户完成“下载、放入项目、告诉 Codex 开始”流程。
+
+v0.6 还必须包含：
+
+- fixture 与 live dry-run 使用相同 routing/Ready contract。
+- 缺少 live credential 时 fail closed。
+- `Todo + unassigned`、assigned Todo、assigned In Review、unassigned In Review、Done + recent comment 和 missing Ready fields 全部被正确分类。
+- config、CLI 或 runtime 任一 write authorization 缺失时 fail closed。
+- 连续 apply 同一 plan 不重复写入。
+- 部分失败只重试失败 action。
+- ledger 不含 token、comment body 或 raw payload。
+- cron-compatible 和 Codex recurring setup 不触发本地代码修改。
+- change-impact gate 能阻止未解决 Decision、scope expansion 和 high-impact low-confidence claim。
+- traceability validator 不把 automated tests 当作 human UAT。
+- requirement -> Linear -> code/evidence -> test -> UAT -> release 证据可追踪。
 
 ## UAT Pass
 

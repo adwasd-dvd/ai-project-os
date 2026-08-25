@@ -85,6 +85,12 @@ For a mature or unclear project, Codex will guide the whitebox and safety scans.
 
 成熟或不清晰项目由 Codex 引导白盒和安全扫描。除非明确使用 write 参数，否则扫描保持只读。
 
+## Optional: Check Linear Automatically / 可选：自动检查 Linear
+
+After the normal takeover is working, read `AUTOMATION_RUNBOOK.md`. Start with the included offline fixture, then configure a local live dry-run. Scheduled scans never modify local product code.
+
+正常接管跑通后，读取 `AUTOMATION_RUNBOOK.md`。先运行内置离线 fixture，再配置本地 live dry-run。定时扫描绝不修改本地产品代码。
+
 ## Upgrade Rule / 升级规则
 
 Install from a tagged GitHub Release. Before replacing an existing installation, read `UPGRADE_POLICY.md` and preserve `LOCAL_OVERRIDES.md`, audit history, and project-specific safety decisions.

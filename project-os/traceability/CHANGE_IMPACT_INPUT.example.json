@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "feature_id": "DEMO-001",
+  "target_version": "v0.1.0",
+  "scope_change": false,
+  "unresolved_decisions": [],
+  "impacts": [
+    {
+      "area": "modules",
+      "level": "low",
+      "confidence": "high",
+      "claim": "The example changes only project operating documentation.",
+      "evidence": "Feature scope names the documentation module.",
+      "evidence_path": "project-os/FEATURE_TEMPLATE.md",
+      "next_verification": "Review the final diff before development completes."
+    },
+    {
+      "area": "dependencies",
+      "level": "low",
+      "confidence": "high",
+      "claim": "No runtime dependency is added.",
+      "evidence": "The planned output is Markdown and JSON.",
+      "evidence_path": "project-os/FEATURE_TEMPLATE.md",
+      "next_verification": "Run the dependency inventory after implementation."
+    },
+    {
+      "area": "data_security",
+      "level": "low",
+      "confidence": "high",
+      "claim": "No production data or secret value is required.",
+      "evidence": "Examples use placeholders only.",
+      "evidence_path": "project-os/SECURITY_BOUNDARY.md",
+      "next_verification": "Run the target publication safety gate."
+    },
+    {
+      "area": "documentation",
+      "level": "medium",
+      "confidence": "high",
+      "claim": "Operator instructions must be updated with the feature workflow.",
+      "evidence": "The feature changes an operator-facing process.",
+      "evidence_path": "project-os/WORKFLOW.md",
+      "next_verification": "Review QUICKSTART and START_HERE for discoverability."
+    },
+    {
+      "area": "tests",
+      "level": "medium",
+      "confidence": "high",
+      "claim": "Validation needs deterministic fixture coverage.",
+      "evidence": "The expected output is machine-verifiable.",
+      "evidence_path": "project-os/QUALITY_GATE.md",
+      "next_verification": "Run the focused automated tests."
+    },
+    {
+      "area": "uat",
+      "level": "medium",
+      "confidence": "high",
+      "claim": "A human must confirm the workflow is understandable.",
+      "evidence": "Automated tests cannot establish human usability.",
+      "evidence_path": "project-os/UAT_TEMPLATE.md",
+      "next_verification": "Record explicit Owner pass or fail."
+    },
+    {
+      "area": "rollout_rollback",
+      "level": "low",
+      "confidence": "high",
+      "claim": "Delivery uses a versioned package and can revert to the prior tag.",
+      "evidence": "Release policy pins installable packages to tags.",
+      "evidence_path": "project-os/RELEASE_POLICY.md",
+      "next_verification": "Verify the candidate zip and rollback note."
+    }
+  ],
+  "test_plan": [
+    "Run the strict project validator.",
+    "Run focused deterministic tests."
+  ],
+  "uat_plan": [
+    "Owner follows the feature workflow and records pass or fail."
+  ],
+  "rollout": "Ship through a human-approved tagged release.",
+  "rollback": "Restore the prior tagged package and preserve local project memory."
+}

@@ -1,8 +1,8 @@
 # AUTOMATION_POLICY
 
-本文定义 AI Project OS v0.3 的 Linear follow-up automation 和 cron-ready runner 边界。
+本文定义 AI Project OS v0.6 的 Linear follow-up automation、cron-ready runner 和 guarded write 边界。
 
-v0.3 的自动化目标是：
+v0.6 的自动化目标是：
 
 ```text
 自动扫描 Linear。
@@ -15,16 +15,16 @@ v0.3 的自动化目标是：
 
 ## 触发类型
 
-| 类型 | 说明 | v0.3 是否允许 |
+| 类型 | 说明 | v0.6 是否允许 |
 |---|---|---|
 | Manual Trigger | 用户在 Codex 中明确要求检查或处理 Linear | Yes |
 | Scheduled Check | cron/scheduled job 自动扫描 Linear | Yes, dry-run default |
 | Automatic Linear Write | 自动评论、建议状态、创建承接 Issue | Limited by mode |
-| Automatic Code Execution | 自动拉代码、改文件、跑开发任务 | No in v0.3 |
+| Automatic Code Execution | 自动拉代码、改文件、跑开发任务 | No in v0.6 scheduled runs |
 
-## DEC-004 边界
+## DEC-004 + DEC-009 边界
 
-v0.3 采用以下边界：
+v0.6 采用以下边界：
 
 - 首次设置默认 dry-run/read-only。
 - 可以自动生成双语摘要和建议。
@@ -32,9 +32,11 @@ v0.3 采用以下边界：
 - 所有写入必须幂等，不能重复评论或重复建 Issue。
 - 不得批准 UAT。
 - 不得静默扩大当前版本范围。
-- 不得在 v0.3 自动开始或修改本地代码，除非用户在 Codex 对话里明确要求。
+- 不得在 v0.6 scheduled run 中自动开始或修改本地代码；只有用户在交互式 Codex 对话中明确要求，才可进入正常开发流程。
 - Scheduled scans must route by status + assignee before suggesting action.
 - 定时扫描必须先按 status + assignee 路由，再建议动作。
+- Train A 合并 Linear automation 与 change traceability，但仍只在统一人工 UAT 后发布。
+- Scheduled scan 可以产生交互式 Codex 开工口令，但不能自己修改本地产品代码。
 
 ## Automation Modes
 
@@ -63,7 +65,7 @@ Not safe without explicit human approval:
 
 ## Status + Assignee Routing
 
-All automation modes use the same v0.3 routing rule:
+All automation modes use the same status + assignee routing rule:
 
 ```text
 Assigned = human queue
@@ -85,78 +87,80 @@ Automation must never treat labels as the only proof that an issue is ready. Bas
 
 自动化不得只靠 label 判断 issue ready。基础路由必须先看 status + assignee，再做 Ready 检查。
 
-## Cron-ready Runner Interface
+## Implemented Runner Interface
 
-The runner can be implemented later, but v0.3 defines the contract:
+v0.6 provides `tools/linear_intake.py`:
 
 ```text
-Command:
-  run-linear-intake
+Commands:
+  linear_intake.py scan
+  linear_intake.py apply
 
 Inputs:
-  --team
-  --projects
-  --statuses
-  --lookback
-  --labels
-  --include-issues
-  --exclude-issues
-  --mode
-  --dry-run
-  --max-issues
+  --config
+  --snapshot
+  --as-of
+  --json-out
+  --markdown-out
+  --plan
+  --authorize-writes
 
 Outputs:
-  run summary
-  changed issues
-  skipped issues
-  ambiguous items
-  blockers
-  suggested next actions
+  deterministic JSON run report
+  bilingual Markdown run summary
+  queue routing and readiness blockers
+  planned actions with idempotency keys
+  sanitized apply receipts
 ```
+
+`scan` is always dry-run for Linear mutations. `apply` is a separate command.
 
 ## Schedule Config
 
-Recommended config shape:
+The versioned JSON config shape is defined in:
 
 ```text
-enabled: false
-timezone: America/Toronto
-interval: daily
-dry_run: true
-mode: read-only
-team: DvdTeacher
-projects:
-  - AI Project OS v0.3
-active_statuses:
-  - Todo
-  - In Progress
-  - In Review
-lookback_days: 7
-max_issues_per_run: 50
-labels:
-  - type:feature
-  - type:decision
-exclude_statuses:
-  - Canceled
+project-os/automation/linear_intake.example.json
 ```
 
 Safe defaults:
 
 - `enabled: false`
-- `dry_run: true`
-- `mode: read-only`
-- small `max_issues_per_run`
+- scan and apply are separate commands
+- `write_policy.enabled: false`
+- empty or narrowly scoped operation/field allowlists
+- small `max_issues`
 - explicit team/project filters
+
+Runtime config, reports, and ledger belong in ignored `project-os/runtime/`.
+
+## Write Authorization
+
+Every write requires all of these controls:
+
+```text
+apply command
++ write_policy.enabled=true and operation/field allowlist
++ --authorize-writes
++ AIPOS_LINEAR_WRITE_APPROVED=1
+```
+
+Missing any control means fail closed. Supported operation names are not automatically authorized.
+
+Apply also requires `scan_complete=true` and a plan newer than `max_plan_age_minutes`. Missing project scope, truncated issue/comment/relation pagination, GraphQL partial errors, stale plans, and future-dated plans block every mutation.
 
 ## Idempotency
 
-Each run must produce a stable run key:
+Each run and planned action must produce a stable key:
 
 ```text
-linear-intake:<team>:<project-or-scope>:<date>:<mode>
+linear-run:<stable digest>
+linear-intake:<stable digest>
 ```
 
-Before writing, the runner must check whether it already wrote an equivalent summary or trace comment.
+Before writing, the runner must check the local sanitized ledger for a successful equivalent action.
+
+Comment actions also include the stable marker in Linear. Scanner-authored marker comments are ignored as feedback and suppress equivalent future actions.
 
 Duplicate prevention rules:
 
@@ -175,6 +179,8 @@ Duplicate prevention rules:
 | Ambiguous human reply | Ask question or create Decision |
 | Stale cursor | Re-run read-only scan before writing |
 | Write failure | Report affected Issue and keep next action manual |
+
+Partial GraphQL responses are failures even when HTTP status is 200. Retrying is bounded; successful idempotency keys are never repeated while failed keys remain retryable.
 
 ## Handoff Behavior
 
@@ -196,7 +202,7 @@ Handoff prompt example:
 
 ## UAT Checks
 
-v0.3 UAT must include:
+v0.6 UAT must include:
 
 - Manual Linear scan.
 - Simulated scheduled dry run.
@@ -207,3 +213,10 @@ v0.3 UAT must include:
 - `In Review + assigned` enters Review Queue.
 - Bilingual summary inspection.
 - Confirmation that no code work starts automatically.
+- Missing live credentials fail closed.
+- Config-disabled, CLI-unauthorized, or runtime-unauthorized writes all fail closed.
+- A partial failure retries only failed actions.
+- The ledger contains no API key or comment body.
+- Fixture and live dry-run reports use the same queue contract.
+
+The copy-ready setup, cron-compatible example, Codex recurring prompt, and failure handoff are in `AUTOMATION_RUNBOOK.md`.

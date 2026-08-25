@@ -129,6 +129,8 @@ Ready 前必须满足：
 - 依赖项已识别。
 - 无阻塞 Decision。
 - 测试要求已说明。
+- `CHANGE_IMPACT.md` 的七个影响区域已填写并通过开发门禁。
+- Traceability manifest 已建立 planned 状态证据链。
 
 ## 6. Development
 
@@ -141,6 +143,7 @@ Development 由 Operator 使用本地 Codex 执行。
 - 遇到业务不确定停下来。
 - 更新测试。
 - 汇报风险。
+- 更新 traceability manifest 中的代码、证据和测试链接。
 
 不得：
 
@@ -167,8 +170,11 @@ PR 必须包含：
 - 风险说明。
 - UAT 影响。
 - safety profile、scan scope 和 Block/Review disposition。
+- change-impact report 与 traceability report。
 
 创建或更新 PR 前，必须对 staged 内容执行目标 profile 的 safety gate。报告只允许包含规则 ID、路径、分类、处置和修复建议。
+
+PR 进入人工 review 前，traceability state 至少应为 `verified`；进入 UAT 前应为 `uat_pending`。自动测试不得把 state 直接提升为 `accepted`。
 
 ## 8. Review
 

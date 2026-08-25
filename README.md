@@ -73,7 +73,7 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.5.0.zip
+ai-project-os-v0.6.0.zip
 ```
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
@@ -101,9 +101,19 @@ Core outputs:
 
 v0.5.0 passed human UAT on 2026-08-20. Use the tagged GitHub Release for installations in other projects.
 
-## Next Planned: v0.6
+## Current Candidate: v0.6.0 Development Train A
 
-v0.6 will add the Linear Intake / Cron MVP. It remains planning scope until the v0.6 version is confirmed.
+v0.6 combines the former Linear Intake / Cron MVP and Change Impact & Traceability scopes into one candidate and one consolidated human UAT.
+
+Candidate capabilities:
+
+- executable dry-run-first Linear intake for manual, cron-compatible, and Codex recurring runs;
+- status + assignee routing, Ready checks, old-version comment watch, and bilingual summaries;
+- explicitly authorized, idempotent Linear writes with a sanitized local ledger;
+- seven-area change-impact gates;
+- requirement -> Linear -> code/evidence -> tests -> human UAT -> release traceability.
+
+The latest stable install remains v0.5.0 until v0.6.0 passes human UAT and is published from GitHub.
 
 ## v0.3 Handoff Rule
 

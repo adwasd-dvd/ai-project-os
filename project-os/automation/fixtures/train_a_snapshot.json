@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "source": "fixture",
+  "team": {
+    "id": "fixture-team",
+    "key": "EX",
+    "name": "Example Team"
+  },
+  "issues": [
+    {
+      "id": "issue-901",
+      "identifier": "EX-901",
+      "title": "[DEMO-001] Ready Codex work",
+      "description": "Feature ID: DEMO-001\nTarget Version: v0.6.0\n\n## Acceptance Criteria / 验收标准\n- [ ] Output is deterministic.",
+      "status": "Todo",
+      "assignee": null,
+      "project": {"id": "project-06", "name": "Example Product v0.6"},
+      "labels": ["type:feature"],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": null,
+      "blocked_by": [],
+      "comments": []
+    },
+    {
+      "id": "issue-902",
+      "identifier": "EX-902",
+      "title": "[DEMO-002] Human clarification",
+      "description": "Feature ID: DEMO-002\nTarget Version: v0.6.0\n\n## Acceptance Criteria / 验收标准\n- [ ] Owner confirms wording.",
+      "status": "Todo",
+      "assignee": {"id": "owner", "name": "Owner"},
+      "project": {"id": "project-06", "name": "Example Product v0.6"},
+      "labels": ["type:feature"],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": null,
+      "blocked_by": [],
+      "comments": []
+    },
+    {
+      "id": "issue-903",
+      "identifier": "EX-903",
+      "title": "[DEMO-003] Human UAT",
+      "description": "Feature ID: DEMO-003\nTarget Version: v0.6.0\n\n## Acceptance Criteria / 验收标准\n- [ ] Owner completes UAT.",
+      "status": "In Review",
+      "assignee": {"id": "owner", "name": "Owner"},
+      "project": {"id": "project-06", "name": "Example Product v0.6"},
+      "labels": ["type:feature"],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": null,
+      "blocked_by": [],
+      "comments": []
+    },
+    {
+      "id": "issue-904",
+      "identifier": "EX-904",
+      "title": "[DEMO-004] Review without reviewer",
+      "description": "Feature ID: DEMO-004\nTarget Version: v0.6.0\n\n## Acceptance Criteria / 验收标准\n- [ ] Reviewer is assigned.",
+      "status": "In Review",
+      "assignee": null,
+      "project": {"id": "project-06", "name": "Example Product v0.6"},
+      "labels": ["type:feature"],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": null,
+      "blocked_by": [],
+      "comments": []
+    },
+    {
+      "id": "issue-905",
+      "identifier": "EX-905",
+      "title": "[DEMO-005] Completed old scope",
+      "description": "Feature ID: DEMO-005\nTarget Version: v0.5.0\n\n## Acceptance Criteria / 验收标准\n- [x] Original scope passed.",
+      "status": "Done",
+      "assignee": {"id": "owner", "name": "Owner"},
+      "project": {"id": "project-05", "name": "Example Product v0.5"},
+      "labels": ["type:feature"],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": "2026-08-10T12:00:00Z",
+      "blocked_by": [],
+      "comments": [
+        {
+          "id": "comment-905",
+          "body": "Please carry this into v0.6.0 for revalidation. / 请在 v0.6.0 重新验证。",
+          "created_at": "2026-08-24T12:00:00Z",
+          "updated_at": "2026-08-24T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "issue-906",
+      "identifier": "EX-906",
+      "title": "Missing ready fields",
+      "description": "Please build this soon.",
+      "status": "Todo",
+      "assignee": null,
+      "project": {"id": "project-06", "name": "Example Product v0.6"},
+      "labels": [],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": null,
+      "blocked_by": [],
+      "comments": []
+    },
+    {
+      "id": "issue-999",
+      "identifier": "OTHER-999",
+      "title": "Other product",
+      "description": "Feature ID: OTHER-999\nTarget Version: v1.0.0\nAcceptance Criteria",
+      "status": "Todo",
+      "assignee": null,
+      "project": {"id": "other", "name": "Other Product"},
+      "labels": [],
+      "updated_at": "2026-08-24T12:00:00Z",
+      "completed_at": null,
+      "blocked_by": [],
+      "comments": []
+    }
+  ]
+}

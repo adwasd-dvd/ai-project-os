@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "feature_id": "AIPOS-044",
+  "target_version": "v0.6.0",
+  "scope_change": false,
+  "unresolved_decisions": [],
+  "impacts": [
+    {
+      "area": "modules",
+      "level": "high",
+      "confidence": "high",
+      "claim": "Train A changes core Linear intake, automation, workflow, quality, and release-governance modules.",
+      "evidence": "DEC-009 and DVD-219 through DVD-225 explicitly define the combined Train A scope.",
+      "evidence_path": "project-os/audit/FEATURE_INVENTORY.md",
+      "next_verification": "Review the final diff and traceability matrix before UAT handoff."
+    },
+    {
+      "area": "dependencies",
+      "level": "medium",
+      "confidence": "high",
+      "claim": "The executable tools add no third-party runtime dependency but the live runner depends on Linear GraphQL availability and schema compatibility.",
+      "evidence": "Both tools import only Python standard-library modules; the Linear endpoint and error contract are documented by Linear.",
+      "evidence_path": "project-os/tools/linear_intake.py",
+      "next_verification": "Run py_compile, offline tests, and one authorized live dry scan before human UAT."
+    },
+    {
+      "area": "data_security",
+      "level": "high",
+      "confidence": "high",
+      "claim": "Live scans process issue descriptions/comments and require a Linear token, so config, reports, and receipts must preserve the secret and project-memory boundary.",
+      "evidence": "The token is environment-only; runtime files are ignored; the ledger omits body and token values; write operations use allowlists and runtime authorization.",
+      "evidence_path": "project-os/AUTOMATION_RUNBOOK.md",
+      "next_verification": "Run focused ledger tests and staged/private safety scan; inspect generated runtime files locally only."
+    },
+    {
+      "area": "documentation",
+      "level": "high",
+      "confidence": "high",
+      "claim": "The new tools affect startup, daily Linear operation, development readiness, PR review, UAT, and version cadence documentation.",
+      "evidence": "Core rules now link AUTOMATION_RUNBOOK, CHANGE_IMPACT, and TRACEABILITY into START_HERE, AGENTS, WORKFLOW, QUALITY_GATE, and UAT_TEMPLATE.",
+      "evidence_path": "project-os/START_HERE.md",
+      "next_verification": "Run strict validator and complete the non-engineering Owner walkthrough in UAT."
+    },
+    {
+      "area": "tests",
+      "level": "high",
+      "confidence": "high",
+      "claim": "Automation safety and evidence-state claims require deterministic tests, not documentation-only assertions.",
+      "evidence": "Focused tests cover routing, bilingual output, credentials, write gates, idempotency, partial failure, trace states, evidence paths, and impact blockers.",
+      "evidence_path": "project-os/tools/test_linear_intake.py",
+      "next_verification": "Run the full source suite and the extracted candidate-package suite."
+    },
+    {
+      "area": "uat",
+      "level": "high",
+      "confidence": "high",
+      "claim": "Only a human can confirm that the report, setup, queue routing, write boundary, and traceability matrix are understandable and useful.",
+      "evidence": "DEC-009 requires one consolidated Train A human UAT and release policy forbids Codex self-acceptance.",
+      "evidence_path": "project-os/UAT_TEMPLATE.md",
+      "next_verification": "Owner completes project-os/audit/UAT_v0.6.0.md and explicitly passes or fails."
+    },
+    {
+      "area": "rollout_rollback",
+      "level": "medium",
+      "confidence": "high",
+      "claim": "Train A ships as a versioned GitHub Release asset; rollback restores v0.5.0 while preserving runtime state and project-specific audit memory.",
+      "evidence": "Version planning and release policy keep generated zip assets out of source and require human UAT before tag/release.",
+      "evidence_path": "project-os/RELEASE_POLICY.md",
+      "next_verification": "Verify candidate zip, digest, extracted validation, Draft PR, and documented v0.5.0 rollback path."
+    }
+  ],
+  "test_plan": [
+    "Run py_compile for both new tools.",
+    "Run all Python unit tests, including intake and traceability suites.",
+    "Run the deterministic offline fixture twice and compare outputs.",
+    "Run strict source/template validation.",
+    "Run private staged safety gate and inspect public tracked advisory.",
+    "Build the v0.6.0 candidate zip, extract it, validate it, and run its tests."
+  ],
+  "uat_plan": [
+    "Owner runs or reviews the fixture queues and bilingual summary.",
+    "Owner confirms the live dry-run credential/setup path is understandable.",
+    "Owner confirms scheduled scans cannot modify local product code.",
+    "Owner reviews the triple write gate and sanitized ledger boundary.",
+    "Owner uses the impact and traceability reports to explain what is ready, pending, and not yet released."
+  ],
+  "rollout": "After explicit v0.6.0 UAT Pass, merge the Draft PR, tag the merge commit, publish the verified zip and digest, then close Linear issues/project.",
+  "rollback": "Before release, discard the candidate branch. After release, reinstall the v0.5.0 package from its GitHub Release while preserving LOCAL_OVERRIDES, audit history, runtime config/ledger, and project-specific safety decisions."
+}

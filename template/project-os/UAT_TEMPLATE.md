@@ -56,6 +56,31 @@ Result: Pass / Fail / Conditional Pass
 | LIN-009 | Human failed UAT handoff | Comment + unassign + `Todo` lets Codex process rework next scan |  |  |  |
 | LIN-010 | `next:*` label is optional | Basic handoff works without changing workflow labels |  |  |  |
 
+## Automation Scenarios
+
+| Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |
+|---|---|---|---|---|---|
+| AUT-001 | Offline fixture dry scan | Expected Codex, Human, Review, inconsistent, Closed Watch, and blocked queues appear |  |  |  |
+| AUT-002 | Live credential absent | Command fails closed without exposing credential details |  |  |  |
+| AUT-003 | Triple write gate | Config, CLI, and runtime authorization are all required |  |  |  |
+| AUT-004 | Idempotent apply | Second apply skips every previously successful action |  |  |  |
+| AUT-005 | Partial failure | Retry executes failed keys only and preserves successful receipts |  |  |  |
+| AUT-006 | Sanitized ledger | Ledger contains no API key, comment body, or raw payload |  |  |  |
+| AUT-007 | Scheduled boundary | Scheduled scan produces summary/handoff but never modifies local product code |  |  |  |
+| AUT-008 | Bilingual summary | Report includes scan scope, scanned, created, updated, skipped, blockers, and next action in user-readable English + Chinese |  |  |  |
+
+## Traceability / Change Impact Scenarios
+
+| Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |
+|---|---|---|---|---|---|
+| TRC-001 | Seven-area impact input | Modules, dependencies, data/security, docs, tests, UAT, and rollout/rollback are present |  |  |  |
+| TRC-002 | Impact blocker | Scope expansion, unresolved Decision, or high-impact low-confidence claim blocks development |  |  |  |
+| TRC-003 | Missing evidence path | Trace validator reports the exact missing evidence path |  |  |  |
+| TRC-004 | Verified state | Passing automated tests are required |  |  |  |
+| TRC-005 | Accepted state | Human UAT Pass and evidence are required; tests alone cannot accept |  |  |  |
+| TRC-006 | Released state | Tag and GitHub Release evidence are required |  |  |  |
+| TRC-007 | Deterministic report | Repeated generation from unchanged inputs is identical |  |  |  |
+
 ## Whitebox Scenarios
 
 | Scenario ID | Check | Expected Result | Actual Result | Pass/Fail | Notes |

@@ -1,6 +1,6 @@
 # VERSION_PLANNING
 
-本文定义 AI Project OS v0.3 的版本规划和分阶段交付规则。
+本文定义 AI Project OS v0.6 的版本规划、Development Train 和分阶段交付规则。
 
 核心原则：
 
@@ -8,6 +8,34 @@
 一个可交付 Issue 只属于一个目标版本。
 旧版本历史不搬家。
 下一版本反馈用 carry-over revalidation 承接。
+```
+
+## Development Trains / 大批次开发
+
+DEC-009 允许把多个相邻的小能力合并为一个 Development Train，但不能绕过版本纪律。
+
+Train 必须：
+
+- 指定一个正式 release version。
+- 在 Linear 建立一个 Project 和明确 Included/Excluded scope。
+- 所有 Feature 仍有独立 Feature ID、验收标准和 traceability。
+- 合并开发期间遇到新业务方向仍需 Decision。
+- 只在整个 Train 完成后做一次统一人工 UAT。
+- UAT 前不 merge/tag/release，UAT 后才完成 Linear Project。
+
+Train 不允许：
+
+- 用“批量开发”掩盖 scope creep。
+- 把多个 Feature 的证据混成无法追踪的一条说明。
+- 因为内部小里程碑完成就声称正式版本已发布。
+- 自动跨过 destructive、public、credential 或 business-decision gate。
+
+AI Project OS 当前 train cadence：
+
+```text
+Development Train A -> v0.6.0 -> automation + traceability -> one UAT
+Development Train B -> v0.8.0 -> release/rollback + self-upgrade -> one UAT
+Internal Stable -> v1.0.0 -> end-to-end messy-project rescue -> one UAT
 ```
 
 ## Project Per Version
