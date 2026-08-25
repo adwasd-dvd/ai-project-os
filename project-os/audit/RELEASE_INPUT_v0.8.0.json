@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "version": "v0.8.0",
+  "summary": "Release lifecycle, recovery controls, and safe OS self-upgrade / 发布生命周期、恢复控制与安全自升级",
+  "scope": {
+    "included": [
+      "AIPOS-045",
+      "AIPOS-046",
+      "AIPOS-047",
+      "AIPOS-048",
+      "AIPOS-049",
+      "AIPOS-050",
+      "AIPOS-051"
+    ],
+    "excluded": [
+      "Automatic human approval, merge, tag, Release, production rollback, or Git history rewrite / 自动人工批准、合并、tag、Release、生产回滚或 Git 历史改写",
+      "Automatic resolution of ambiguous both-modified upgrade conflicts / 自动解决双方同时修改的歧义升级冲突"
+    ],
+    "deferred": [
+      "v1.0 end-to-end mature-project rescue certification / v1.0 成熟项目端到端救援认证"
+    ]
+  },
+  "traceability_manifest": "project-os/audit/TRACEABILITY_MANIFEST_v0.8.0.json",
+  "change_impact_report": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+  "safety": {
+    "profile": "private",
+    "destination": "Current private GitHub repository and GitHub Release",
+    "decision": "Review",
+    "block_findings": 0,
+    "review_findings": 0,
+    "review_disposition": "Pending explicit v0.8.0 human UAT and publication approval",
+    "evidence": "project-os/audit/PUBLICATION_MANIFEST_v0.8.0.md"
+  },
+  "tests": [
+    {
+      "id": "FULL-SOURCE-SUITE-59",
+      "status": "pass",
+      "evidence": "project-os/audit/DOGFOOD_REPORT_v0.8.0.md"
+    },
+    {
+      "id": "EXTRACTED-CANDIDATE-SUITE-59",
+      "status": "pass",
+      "evidence": "project-os/audit/DOGFOOD_REPORT_v0.8.0.md"
+    },
+    {
+      "id": "V060-TO-V080-DOGFOOD",
+      "status": "pass",
+      "evidence": "project-os/audit/DOGFOOD_REPORT_v0.8.0.md"
+    }
+  ],
+  "package": {
+    "asset": "ai-project-os-v0.8.0.zip",
+    "sha256": "ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92",
+    "deterministic": true,
+    "extracted_validation": "pass",
+    "evidence": "project-os/audit/DOGFOOD_REPORT_v0.8.0.md"
+  },
+  "rollback": {
+    "target": "v0.6.0",
+    "plan": "Use a dedicated branch to restore the prior immutable OS package while preserving local overrides, audit history, Linear mappings, safety dispositions, discovery evidence, and runtime/private context.",
+    "authority": "Owner",
+    "verification": "Run upgrade verification, strict validator, all tests, private safety gate, and project-specific UAT before accepting the rollback."
+  },
+  "known_limitations": [
+    "GitHub latest-release discovery requires network access; directory, zip, and metadata sources work offline.",
+    "Ambiguous both-modified files require human conflict resolution.",
+    "The free Linear workspace issue limit requires a Project Document as the temporary equivalent requirement record for AIPOS-045 through AIPOS-051.",
+    "Human UAT and publication approval are still pending."
+  ],
+  "github": {
+    "branch": "codex/v0.8-train-b",
+    "pr_url": null,
+    "tag": null,
+    "release_url": null
+  }
+}

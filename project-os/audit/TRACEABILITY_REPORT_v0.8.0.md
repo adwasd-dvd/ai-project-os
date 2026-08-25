@@ -1,7 +1,7 @@
 # Traceability Report / 追踪报告
 
 Release: `v0.8.0`
-Release State: `planning`
+Release State: `candidate`
 Human UAT: `pending`
 
 ## Validation / 验证
@@ -15,13 +15,13 @@ Findings: 0
 
 | Feature | State | Linear | Requirement | Impact | Code/Evidence | Tests | Human UAT | Decisions | Risks |
 |---|---|---|---:|---|---:|---:|---|---:|---:|
-| AIPOS-045 | verified | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-046 | verified | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-047 | verified | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 5 | 1 | pending | 1 | 1 |
-| AIPOS-048 | verified | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 4 | 1 | pending | 1 | 1 |
-| AIPOS-049 | verified | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-050 | verified | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 2 |
-| AIPOS-051 | planned | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 0 | 0 | pending | 1 | 3 |
+| AIPOS-045 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 1 |
+| AIPOS-046 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 1 |
+| AIPOS-047 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 5 | 1 | pending | 1 | 1 |
+| AIPOS-048 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 4 | 1 | pending | 1 | 1 |
+| AIPOS-049 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 1 |
+| AIPOS-050 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 3 | 1 | pending | 1 | 2 |
+| AIPOS-051 | uat_pending | document:f8583467-5009-4f8a-bb3f-f312ece4c704 | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md` | 5 | 2 | pending | 1 | 3 |
 
 ## Release Evidence / 发布证据
 

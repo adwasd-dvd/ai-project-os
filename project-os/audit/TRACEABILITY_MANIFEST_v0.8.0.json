@@ -2,10 +2,12 @@
   "schema_version": 2,
   "release": {
     "version": "v0.8.0",
-    "status": "planning",
+    "status": "candidate",
     "uat_status": "pending",
     "uat": {
-      "status": "pending"
+      "status": "pending",
+      "evidence": "project-os/audit/UAT_v0.8.0.md",
+      "scenarios": ["UAT-0801", "UAT-0802", "UAT-0803", "UAT-0804", "UAT-0805", "UAT-0806", "UAT-0807"]
     },
     "post_release": {
       "status": "pending"
@@ -19,7 +21,7 @@
     {
       "feature_id": "AIPOS-045",
       "target_version": "v0.8.0",
-      "state": "verified",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -31,14 +33,14 @@
       "code_paths": ["project-os/tools/trace_project.py"],
       "evidence_paths": ["project-os/TRACEABILITY.md", "project-os/RELEASE_CONTROL.md"],
       "tests": [{"id": "TRACE-LIFECYCLE", "path": "project-os/tools/test_trace_project.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0801"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-001"]
     },
     {
       "feature_id": "AIPOS-046",
       "target_version": "v0.8.0",
-      "state": "verified",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -50,14 +52,14 @@
       "code_paths": ["project-os/tools/release_project.py", "project-os/release/RELEASE_INPUT.example.json"],
       "evidence_paths": ["project-os/RELEASE_CONTROL.md"],
       "tests": [{"id": "RELEASE-READINESS", "path": "project-os/tools/test_release_project.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0802"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-001"]
     },
     {
       "feature_id": "AIPOS-047",
       "target_version": "v0.8.0",
-      "state": "verified",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -69,14 +71,14 @@
       "code_paths": ["project-os/tools/release_project.py", "project-os/release/FEEDBACK_TRIAGE.example.json", "project-os/release/POST_RELEASE_INPUT.example.json"],
       "evidence_paths": ["project-os/RELEASE_CONTROL.md", "project-os/RELEASE_POLICY.md"],
       "tests": [{"id": "RELEASE-RECOVERY", "path": "project-os/tools/test_release_project.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0806"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-002"]
     },
     {
       "feature_id": "AIPOS-048",
       "target_version": "v0.8.0",
-      "state": "verified",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -88,14 +90,14 @@
       "code_paths": ["project-os/tools/upgrade_project_os.py", "project-os/upgrade/UPSTREAM_GITHUB.example.json"],
       "evidence_paths": ["project-os/UPGRADE_POLICY.md", "project-os/upgrade/README.md"],
       "tests": [{"id": "UPGRADE-DISCOVERY", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0803"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-UPG-003"]
     },
     {
       "feature_id": "AIPOS-049",
       "target_version": "v0.8.0",
-      "state": "verified",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -107,14 +109,14 @@
       "code_paths": ["project-os/tools/upgrade_project_os.py", "project-os/upgrade/UPGRADE_CONFIG.example.json"],
       "evidence_paths": ["project-os/UPGRADE_POLICY.md"],
       "tests": [{"id": "UPGRADE-PLAN", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0803", "UAT-0804"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-UPG-001"]
     },
     {
       "feature_id": "AIPOS-050",
       "target_version": "v0.8.0",
-      "state": "verified",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -126,14 +128,14 @@
       "code_paths": ["project-os/tools/upgrade_project_os.py"],
       "evidence_paths": ["project-os/UPGRADE_POLICY.md", "project-os/QUALITY_GATE.md"],
       "tests": [{"id": "UPGRADE-APPLY", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0804", "UAT-0805"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-UPG-001", "RISK-UPG-002"]
     },
     {
       "feature_id": "AIPOS-051",
       "target_version": "v0.8.0",
-      "state": "planned",
+      "state": "uat_pending",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -142,10 +144,13 @@
       },
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
-      "code_paths": [],
-      "evidence_paths": [],
-      "tests": [],
-      "uat": {"status": "pending", "evidence": null, "scenarios": []},
+      "code_paths": ["project-os/tools/release_project.py", "project-os/tools/upgrade_project_os.py"],
+      "evidence_paths": ["project-os/audit/DOGFOOD_REPORT_v0.8.0.md", "project-os/audit/RELEASE_NOTES_v0.8.0.md", "project-os/audit/VERSION_CLOSEOUT_v0.8.0.md"],
+      "tests": [
+        {"id": "TRAIN-B-SOURCE", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"},
+        {"id": "TRAIN-B-RELEASE", "path": "project-os/tools/test_release_project.py", "status": "pass"}
+      ],
+      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0807"]},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-001", "RISK-UPG-001", "RISK-LIN-001"]
     }
