@@ -14,7 +14,7 @@ Destination Profile: private
 Repository / Channel: current private GitHub repository + GitHub Release
 Repository Visibility: PRIVATE; verified during candidate preparation
 Functional Candidate Source Commit: c6317fa
-UAT Evidence Commit: 69da6ca
+Candidate Branch Verification Commit: 2fa9d6f
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Release Asset: ai-project-os-v1.0.0.zip
 Human Approver: dvdTeacher / Owner

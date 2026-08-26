@@ -11,6 +11,7 @@ Version: v1.0.0
 Date Prepared: 2026-08-26
 Branch: codex/v1.0-internal-stable
 Build Commit: c6317fa
+Candidate Branch Verification Commit: 2fa9d6f
 Candidate SHA-256: e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Tester: Owner / dvdTeacher

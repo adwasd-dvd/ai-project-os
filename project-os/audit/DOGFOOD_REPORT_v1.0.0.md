@@ -133,6 +133,10 @@ Extracted automated tests: 72/72 pass
 Extracted representative messy-project certification: included in full suite
 ```
 
+After the UAT evidence and Draft PR metadata were committed, the package was rebuilt from branch commit `2fa9d6f`. It was byte-identical to Candidate A, kept the same SHA-256 and size, passed archive integrity, and passed the extracted strict validator plus all 72 tests again.
+
+UAT 证据和 Draft PR 元数据提交后，又从分支提交 `2fa9d6f` 重建安装包。它与 Candidate A 逐字节相同，SHA-256 和大小不变，并再次通过归档完整性、解压后严格验证和全部 72 个测试。
+
 The candidate zip remains a local/GitHub Release artifact and is not added to Git source history.
 
 候选 zip 继续作为本地/GitHub Release 产物，不加入 Git 源码历史。
