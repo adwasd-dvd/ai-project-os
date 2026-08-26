@@ -40,7 +40,8 @@ Change-impact gate: READY
 Source strict validator: 0 failures, 0 warnings
 Source automated tests: 59/59 passed
 Candidate builds: byte-identical
-Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
+Accepted functional candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
+Final release package SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
 Extracted candidate: archive valid; strict validator clean; 59/59 tests passed
 Dogfood: v0.6.0 -> v0.8.0 apply + idempotent restart + verify passed
 Protected memory: 4/4 before/after digests byte-identical

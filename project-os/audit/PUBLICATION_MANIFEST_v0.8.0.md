@@ -13,7 +13,7 @@ Prepared By: Codex
 Destination Profile: private
 Repository / Channel: current private GitHub repository + GitHub Release
 Repository Visibility: PRIVATE; verified before the authorized release transaction
-Candidate Commit: 86696a3d37fc4501e9ea970d979bf26b0ae4340f
+Final Package Source Commit: 2a93fdc
 Release Asset: ai-project-os-v0.8.0.zip
 Human Approver: dvdTeacher / Owner
 Decision: Go - Owner passed v0.8.0 UAT and authorized the current private GitHub publication transaction
@@ -51,7 +51,8 @@ Source: strict validator clean; 59/59 tests pass
 Package: two builds byte-identical; extracted validator clean; 59/59 tests pass
 Dogfood: v0.6.0 to v0.8.0 apply, restart, and verify pass
 Protected Memory: four before/after SHA-256 values byte-identical
-Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
+Accepted Functional Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
+Final Release Package SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
 Human UAT: Pass - Owner approved 2026-08-26
 GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7
 Linear UAT Handoff: project update 8ef6411d-303b-4eb4-b5ff-31d3ab2bbc64

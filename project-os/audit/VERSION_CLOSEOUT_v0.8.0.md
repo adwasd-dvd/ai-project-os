@@ -25,8 +25,8 @@ Publication Decision: Go
 | Change impact | `CHANGE_IMPACT_REPORT_v0.8.0.md` | Pass |
 | Traceability | `TRACEABILITY_REPORT_v0.8.0.md` | Pass for declared candidate state |
 | Source validator/tests | 0 failures, 0 warnings; 59/59 tests | Pass |
-| Deterministic package | two identical builds; recorded digest | Pass |
-| Extracted package | archive, validator, 59/59 tests | Pass |
+| Deterministic package | two identical final builds; SHA-256 `cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f` | Pass |
+| Extracted package | archive, validator, 59/59 tests from final release-metadata package | Pass |
 | Upgrade dogfood | v0.6.0 to v0.8.0; protected memory preserved | Pass |
 | Private safety gate | Block 0; Review 0 in isolated dogfood | Pass |
 | GitHub review | Draft PR #7 open and merge state clean | Pass for candidate handoff |

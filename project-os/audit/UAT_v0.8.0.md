@@ -8,6 +8,7 @@ Date: 2026-08-26
 Environment: local source repo + isolated v0.6-to-v0.8 dogfood + GitHub Draft PR
 Build / Commit: package source 6ea9e8fe4b004f415c530a118f9f28fa02931e11; accepted PR head 86696a3d37fc4501e9ea970d979bf26b0ae4340f
 Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92
+Final release-metadata package SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
 Tester: Owner / dvdTeacher
 Owner: dvdTeacher
 Result: Pass
@@ -46,6 +47,7 @@ Make release state explicit, generate release and recovery evidence, and safely 
 | Source strict validator | 0 failures, 0 warnings | Pass |
 | Candidate determinism | Two delayed builds byte-identical | Pass |
 | Candidate digest | `ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3df92` | Pass |
+| Final release-metadata package | Two builds byte-identical; archive valid; strict validator clean; 59/59 tests; `cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f` | Pass |
 | Extracted candidate | Archive, strict validation, and 59/59 tests passed | Pass |
 | Isolated dogfood | v0.6.0 to v0.8.0 apply + verify passed | Pass |
 | Protected memory | Four protected areas byte-identical | Pass |

@@ -67,6 +67,21 @@ Extracted candidate strict validator: 0 failures, 0 warnings
 Extracted candidate tests: 59/59 passed
 ```
 
+## Final Release-Metadata Package / 最终发布元数据安装包
+
+After human UAT, only release-state metadata changed in the distributable template: OS version history, changelog status, and roadmap status. No release or upgrade behavior changed.
+
+人工 UAT 后，分发模板只更新了发布状态元数据：OS 版本历史、changelog 状态和 roadmap 状态；发布或升级行为没有变化。
+
+```text
+Final package source commit: 2a93fdc
+Two final builds: byte-identical
+Final SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
+Archive integrity: pass
+Extracted strict validator: 0 failures, 0 warnings
+Extracted tests: 59/59 passed
+```
+
 ## Conclusion / 结论
 
 Automated dogfood passed. The candidate is technically ready for consolidated human UAT; this is not human acceptance and does not authorize release.
