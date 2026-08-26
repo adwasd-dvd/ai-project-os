@@ -64,8 +64,12 @@ Return to the immutable v0.6.0 package on a dedicated branch while preserving pr
 
 ## Release State / 发布状态
 
-Human UAT passed and the Owner authorized merge, tag, and GitHub Release to the verified private destination.
+Human UAT passed and v0.8.0 was published to the verified private destination. PR #7 is merged, tag `v0.8.0` points to merge commit `4cd2412f06f7fe1e368c1efafa862bd62f560a4e`, and post-release verification passed.
 
-人工 UAT 已通过，Owner 已授权向已验证的 private 目标执行 merge、tag 和 GitHub Release。
+人工 UAT 已通过，v0.8.0 已发布到经过验证的 private 目标。PR #7 已合并，tag `v0.8.0` 指向合并提交 `4cd2412f06f7fe1e368c1efafa862bd62f560a4e`，发布后验证通过。
 
-Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7
+Merged PR: https://github.com/adwasd-dvd/ai-project-os/pull/7
+
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0
+
+Remote asset SHA-256: `cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f`

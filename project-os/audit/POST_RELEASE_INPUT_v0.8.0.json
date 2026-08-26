@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "version": "v0.8.0",
+  "tag": "v0.8.0",
+  "release_url": "https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0",
+  "local_sha256": "cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f",
+  "remote_sha256": "cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f",
+  "rollback_target": "v0.6.0",
+  "checks": [
+    {
+      "id": "TAG-COMMIT",
+      "status": "pass",
+      "evidence": "Tag v0.8.0 and origin/main both resolve to merge commit 4cd2412f06f7fe1e368c1efafa862bd62f560a4e"
+    },
+    {
+      "id": "REMOTE-ASSET",
+      "status": "pass",
+      "evidence": "Downloaded GitHub Release asset is byte-identical to the local package and both digests match"
+    },
+    {
+      "id": "ARCHIVE-INTEGRITY",
+      "status": "pass",
+      "evidence": "Downloaded release archive passed zip integrity verification"
+    },
+    {
+      "id": "RELEASE-VISIBILITY",
+      "status": "pass",
+      "evidence": "GitHub Release is published, non-draft, and non-prerelease"
+    },
+    {
+      "id": "LINEAR-CLOSEOUT",
+      "status": "pass",
+      "evidence": "v0.8.0 Milestone is recorded as released; canonical Project remains In Progress and targets v1.0.0"
+    }
+  ]
+}

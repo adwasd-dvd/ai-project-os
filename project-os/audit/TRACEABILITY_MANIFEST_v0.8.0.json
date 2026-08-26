@@ -2,7 +2,7 @@
   "schema_version": 2,
   "release": {
     "version": "v0.8.0",
-    "status": "candidate",
+    "status": "released",
     "uat_status": "pass",
     "uat": {
       "status": "pass",
@@ -13,18 +13,20 @@
       "limitations_disposition": "Accepted documented network, conflict-resolution, protected-memory, rollback-authority, and Linear-capacity limitations."
     },
     "post_release": {
-      "status": "pending"
+      "status": "pass",
+      "evidence": "project-os/audit/POST_RELEASE_RECEIPT_v0.8.0.md",
+      "checks": ["TAG-COMMIT", "REMOTE-ASSET", "ARCHIVE-INTEGRITY", "RELEASE-VISIBILITY", "LINEAR-CLOSEOUT"]
     },
     "branch": "codex/v0.8-train-b",
     "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/7",
-    "tag": null,
-    "release_url": null
+    "tag": "v0.8.0",
+    "release_url": "https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0"
   },
   "features": [
     {
       "feature_id": "AIPOS-045",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -43,7 +45,7 @@
     {
       "feature_id": "AIPOS-046",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -62,7 +64,7 @@
     {
       "feature_id": "AIPOS-047",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -81,7 +83,7 @@
     {
       "feature_id": "AIPOS-048",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -100,7 +102,7 @@
     {
       "feature_id": "AIPOS-049",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -119,7 +121,7 @@
     {
       "feature_id": "AIPOS-050",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -138,7 +140,7 @@
     {
       "feature_id": "AIPOS-051",
       "target_version": "v0.8.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
