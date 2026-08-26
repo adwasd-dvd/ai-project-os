@@ -783,3 +783,25 @@ Linear status update: c5e1bc0e-a11c-4188-bba7-547f6dbb6e83
 The Feature Register contains bilingual Action Steps, Expected Result, safety boundaries, and the v1.0 success standard. It belongs to the existing `v1.0.0` Milestone in the one long-lived Project. No per-version Project or synthetic issue ID was created.
 
 Feature Register 包含双语执行动作、期待结果、安全边界和 v1.0 成功标准。它属于唯一长期 Project 中已有的 `v1.0.0` Milestone；未创建按版本 Project，也未伪造 Issue ID。
+
+## v1.0.0 Candidate UAT Handoff - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Project State: In Progress
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Feature Scope: AIPOS-052 through AIPOS-059
+Feature State: UAT Pending
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
+Linear Feature Register: a5f2397c-9340-4034-86bf-1fe2d42f472c
+Linear status update: 676ec315-ac91-4bdb-8c7c-e549e02f24ae
+Issue creates: 0
+Project creates: 0
+Release writes: 0
+```
+
+The existing Feature Register, Milestone, Project summary/current gate, and bilingual Project status update now point to the same v1.0 candidate and consolidated Owner UAT. The Project and Milestone remain active; no feature was marked accepted, released, or Done by automation.
+
+现有 Feature Register、Milestone、Project 摘要/当前门禁和双语 Project 状态更新现在都指向同一个 v1.0 候选及统一 Owner UAT。Project 和 Milestone 保持活跃；自动化没有把任何功能标记为 accepted、released 或 Done。

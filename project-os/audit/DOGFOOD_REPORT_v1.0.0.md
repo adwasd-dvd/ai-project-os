@@ -137,6 +137,10 @@ The candidate zip remains a local/GitHub Release artifact and is not added to Gi
 
 候选 zip 继续作为本地/GitHub Release 产物，不加入 Git 源码历史。
 
+The review surface is Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9). It remains unmerged until explicit Owner UAT and release approval.
+
+审查入口为 Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9)。在 Owner 明确通过 UAT 并批准发布前，它保持未合并。
+
 ## Current Conclusion / 当前结论
 
 The v1.0 rescue engine has automated evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, real-repository operation, and extracted-package certification. Consolidated Owner UAT remains pending under AIPOS-059.

@@ -7,7 +7,7 @@
     "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1001", "UAT-1002", "UAT-1003", "UAT-1004", "UAT-1005", "UAT-1006", "UAT-1007", "UAT-1008"]},
     "post_release": {"status": "pending"},
     "branch": "codex/v1.0-internal-stable",
-    "pr_url": null,
+    "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/9",
     "tag": null,
     "release_url": null
   },

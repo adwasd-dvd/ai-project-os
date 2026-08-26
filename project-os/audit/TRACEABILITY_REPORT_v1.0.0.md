@@ -27,7 +27,7 @@ Findings: 0
 ## Release Evidence / 发布证据
 
 - Branch: `codex/v1.0-internal-stable`
-- Pull Request: -
+- Pull Request: https://github.com/adwasd-dvd/ai-project-os/pull/9
 - Tag: `-`
 - Release: -
 
