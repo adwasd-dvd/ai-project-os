@@ -1,14 +1,13 @@
 # Release Readiness Report / 发布就绪报告
 
 Version: `v1.0.0`
-Gate: `BLOCKED`
-Human UAT: `pending`
+Gate: `READY`
+Human UAT: `pass`
 Release State: `candidate`
 
 ## Findings / 发现
 
-- Blocker: Human version UAT Pass is required
-- Blocker: Every included feature must be accepted or released
+- No release blocker found. / 未发现发布阻塞。
 
 ## Scope / 范围
 
@@ -25,6 +24,6 @@ Release State: `candidate`
 
 ## Next Action / 下一步
 
-- Resolve every finding and blocker, regenerate evidence, and rerun this command. / 处理所有发现和阻塞，重新生成证据后再运行本命令。
+- Publish only after this gate is READY and the human release transaction is explicitly authorized. / 只有本门禁为 READY 且人工明确批准发布事务后才能发布。
 
 This report never creates a tag, Release, Linear update, rollback, or human approval. / 本报告绝不会自动创建 tag、Release、Linear 更新、回滚或人工批准。

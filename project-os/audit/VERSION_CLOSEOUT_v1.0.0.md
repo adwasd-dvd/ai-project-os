@@ -8,12 +8,12 @@ This checklist records the candidate closeout state for Internal Stable Rescue.
 
 ```text
 Version: v1.0.0
-Status: Candidate - Pending Owner UAT
+Status: Candidate - UAT accepted; release in progress
 Date Prepared: 2026-08-26
 Prepared By: Codex
-Human UAT: Pending
+Human UAT: Pass - dvdTeacher / Owner, 2026-08-26
 GitHub: Draft PR #9 open; no tag or Release
-Publication Decision: Review - not authorized
+Publication Decision: Go - authorized
 Latest Stable: v0.8.0
 ```
 
@@ -24,7 +24,7 @@ Latest Stable: v0.8.0
 | Scope confirmed | DEC-009 + v1.0 Feature Register | Pass |
 | Included features implemented | AIPOS-052 through AIPOS-059 | Pass for candidate |
 | Change impact | `CHANGE_IMPACT_REPORT_v1.0.0.md` | Pass |
-| Traceability | `TRACEABILITY_REPORT_v1.0.0.md` | Pass for `uat_pending` state |
+| Traceability | `TRACEABILITY_REPORT_v1.0.0.md` | Pass for accepted state |
 | Source validator/tests | 0 failures, 0 warnings; 73/73 tests | Pass |
 | Representative messy project | combined rescue fixture, repeated full runs | Pass |
 | Real-repository dogfood | deterministic; verify PASS; product/external writes 0 | Pass |
@@ -32,10 +32,10 @@ Latest Stable: v0.8.0
 | Deterministic package | two identical corrected builds; SHA-256 `e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e` | Pass |
 | Extracted package | archive and validator clean; 73/73 tests | Pass |
 | Private safety gate | Block 0; Review 0 | Pass |
-| GitHub review | Draft PR #9 | Pending Owner review |
-| Human UAT | `UAT_v1.0.0.md` | Pending |
-| Publication manifest | Review | Pending human Go |
-| Tag and GitHub Release | none | Blocked by UAT |
+| GitHub review | Draft PR #9 | Owner approved; ready to merge after final candidate verification |
+| Human UAT | `UAT_v1.0.0.md` | Pass |
+| Publication manifest | Go | Authorized |
+| Tag and GitHub Release | none | In authorized release transaction |
 | Post-release verification | not applicable before release | Pending |
 | Linear UAT handoff | Updates `676ec315-ac91-4bdb-8c7c-e549e02f24ae` and `86556cc0-6c6e-4c0d-821e-8b300c5e3fb9`; canonical Project remains In Progress | Pass for corrected candidate handoff |
 
@@ -43,8 +43,8 @@ Latest Stable: v0.8.0
 
 1. [x] Create and verify the functional candidate package.
 2. [x] Open Draft PR #9 and prepare consolidated UAT.
-3. [ ] Owner completes `UAT_v1.0.0.md` and explicitly passes.
-4. [ ] Record accepted traceability and publication Go.
+3. [x] Owner completes `UAT_v1.0.0.md` and explicitly passes.
+4. [x] Record accepted traceability and publication Go.
 5. [ ] Merge the approved PR and build the final package from the merge commit.
 6. [ ] Re-run strict validation, all tests, safety, archive, and digest checks.
 7. [ ] Create tag `v1.0.0`, publish the verified zip, and verify the remote digest.
@@ -52,8 +52,8 @@ Latest Stable: v0.8.0
 
 1. [x] 创建并验证功能候选安装包。
 2. [x] 打开 Draft PR #9 并准备统一 UAT。
-3. [ ] Owner 完成 `UAT_v1.0.0.md` 并明确通过。
-4. [ ] 记录 accepted traceability 和 publication Go。
+3. [x] Owner 完成 `UAT_v1.0.0.md` 并明确通过。
+4. [x] 记录 accepted traceability 和 publication Go。
 5. [ ] 合并已批准 PR，并从 merge commit 构建最终安装包。
 6. [ ] 重跑严格验证、全部测试、安全、归档和摘要检查。
 7. [ ] 创建 `v1.0.0` tag，发布已验证 zip，并核对远端摘要。
@@ -62,6 +62,6 @@ Latest Stable: v0.8.0
 ## Closeout Decision / 关账决定
 
 ```text
-Candidate evidence is complete. Release remains blocked until explicit Owner UAT Pass.
-候选证据已完整。发布继续阻塞，直到 Owner 明确通过 UAT。
+Candidate evidence is complete. Owner UAT passed and the controlled release transaction is authorized.
+候选证据已完整。Owner 已通过 UAT，并授权执行受控发布事务。
 ```

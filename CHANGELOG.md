@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v1.0.0 - 2026-08-26
+
+Internal Stable Rescue release for taking over mature or messy projects through one controlled workflow.
+
+Added:
+
+- Guided rescue inspect/plan/verify orchestration with read-only inspection and freshness verification.
+- Sanitized evidence fusion across code, dependencies, documents, settings, tests, CI, Git, safety, and project memory.
+- Structured contradiction, unknown, risk, Decision, impact, confidence, and next-verification routing.
+- Dependency-aware recovery roadmap, bilingual one-Project Linear dry-run package, and proactive PM queues.
+- Representative messy-project certification plus real mature-project UAT.
+
+Fixed:
+
+- Cloudflare Worker `context.env` environment lookup safety classification.
+- Portable documentation references when rescue output uses a custom directory.
+
+Human UAT passed and the Owner authorized release on 2026-08-26.
+
 ## v0.8.0 - 2026-08-26
 
 Development Train B release for explicit release/recovery control and safe OS self-upgrade.

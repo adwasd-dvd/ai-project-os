@@ -2,7 +2,7 @@
 
 Release: `v1.0.0`
 Release State: `candidate`
-Human UAT: `pending`
+Human UAT: `pass`
 
 ## Validation / 验证
 
@@ -15,14 +15,14 @@ Findings: 0
 
 | Feature | State | Linear | Requirement | Impact | Code/Evidence | Tests | Human UAT | Decisions | Risks |
 |---|---|---|---:|---|---:|---:|---|---:|---:|
-| AIPOS-052 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 2 | 1 |
-| AIPOS-053 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 5 | 3 | pending | 1 | 1 |
-| AIPOS-054 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-055 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-056 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-057 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-058 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-059 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 4 | 3 | pending | 2 | 2 |
+| AIPOS-052 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pass | 2 | 1 |
+| AIPOS-053 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 5 | 3 | pass | 1 | 1 |
+| AIPOS-054 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-055 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-056 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-057 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-058 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pass | 1 | 1 |
+| AIPOS-059 | accepted | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 4 | 3 | pass | 2 | 2 |
 
 ## Release Evidence / 发布证据
 

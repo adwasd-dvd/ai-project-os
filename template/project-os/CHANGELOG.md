@@ -1,10 +1,10 @@
 # CHANGELOG
 
-## v1.0.0 - In Development
+## v1.0.0 - 2026-08-26
 
 Internal Stable Rescue combines existing whitebox, safety, Linear, traceability, release, and upgrade controls into one mature-project rescue workflow.
 
-In progress:
+Released:
 
 - `RESCUE_PROTOCOL.md` and `tools/rescue_project.py` with inspect/plan/verify separation.
 - Sanitized product evidence that excludes the installed `project-os/` package by default.
@@ -12,6 +12,8 @@ In progress:
 - Deterministic diagnosis, recovery roadmap, bilingual one-Project Linear dry-run package, proactive PM queues, and artifact receipt.
 - Representative messy-project tests and end-to-end internal-stable certification.
 - Real-project UAT fixes for Worker-context environment lookup classification and portable custom-output references.
+
+Human UAT passed on 2026-08-26 and the release was authorized by the Owner.
 
 ## v0.8.0 - 2026-08-26
 

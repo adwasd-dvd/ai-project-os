@@ -30,7 +30,7 @@
     "decision": "Go",
     "block_findings": 0,
     "review_findings": 0,
-    "review_disposition": "The isolated private candidate safety gate is clean. Overall publication remains pending Owner UAT and explicit authorization.",
+    "review_disposition": "The isolated private candidate safety gate is clean. Owner UAT passed and publication to the current private destination is explicitly authorized.",
     "evidence": "project-os/audit/PUBLICATION_MANIFEST_v1.0.0.md"
   },
   "tests": [
@@ -81,6 +81,7 @@
     "The free Linear workspace issue limit requires the attached v1.0 Project Document as the current equivalent requirement record.",
     "Public or team publication profiles may produce additional safety Review or Block findings."
   ],
+  "known_limitations_disposition": "Accepted by dvdTeacher / Owner for the v1.0.0 internal-stable release on 2026-08-26.",
   "github": {
     "branch": "codex/v1.0-internal-stable",
     "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/9",
