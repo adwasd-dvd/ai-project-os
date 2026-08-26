@@ -115,8 +115,30 @@ Two independent output directories were generated from the same source/input. Re
 | `PM_NEXT_ACTION.md` | `df3e69ce9c13aa70f4608b853d19d01d831bed74605d063a5fc90b322f863f98` |
 | `RECOVERY_ROADMAP.md` | `ee51d3ae437b304cef757699ddb00f572f6807d417acc543b96f33cc9434b92e` |
 
+## Candidate Package / 候选安装包
+
+The implementation and dogfood evidence were committed at `c6317fa`, then two delayed deterministic packages were built from that commit.
+
+实现和 dogfood 证据提交于 `c6317fa`，随后从该提交构建两个有时间间隔的确定性安装包。
+
+```text
+Candidate A: releases/ai-project-os-v1.0.0-candidate-a.zip
+Candidate B: releases/ai-project-os-v1.0.0-candidate-b.zip
+SHA-256: e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e
+Size: 274979 bytes
+Byte comparison: identical
+Archive integrity: pass
+Extracted strict validator: 0 failures, 0 warnings
+Extracted automated tests: 72/72 pass
+Extracted representative messy-project certification: included in full suite
+```
+
+The candidate zip remains a local/GitHub Release artifact and is not added to Git source history.
+
+候选 zip 继续作为本地/GitHub Release 产物，不加入 Git 源码历史。
+
 ## Current Conclusion / 当前结论
 
-The v1.0 rescue engine has automated evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, and real-repository operation. Package and extracted-package certification plus consolidated Owner UAT remain pending under AIPOS-059.
+The v1.0 rescue engine has automated evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, real-repository operation, and extracted-package certification. Consolidated Owner UAT remains pending under AIPOS-059.
 
-v1.0 救援引擎已经拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑和真实仓库运行的自动证据。AIPOS-059 的安装包/解压包认证和统一 Owner UAT 仍待完成。
+v1.0 救援引擎已经拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑、真实仓库运行和解压包认证的自动证据。AIPOS-059 仅剩统一 Owner UAT 待完成。
