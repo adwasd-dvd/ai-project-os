@@ -73,7 +73,7 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.6.0.zip
+ai-project-os-v0.8.0.zip
 ```
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
@@ -82,43 +82,43 @@ Release packages are built from committed template content with fixed archive me
 
 ```bash
 python3 project-os/tools/build_release.py --root . \
-  --output releases/ai-project-os-v0.6.0.zip
+  --output releases/ai-project-os-v0.8.0.zip
 ```
 
 Repeated builds from the same commit must be byte-identical and produce the same SHA-256.
 
 ## Use In Another Project
 
-1. Download `ai-project-os-v0.6.0.zip` from the [v0.6.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.6.0).
+1. Download `ai-project-os-v0.8.0.zip` from the [v0.8.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0).
 2. Extract the top-level `project-os/` directory into the target repository root.
 3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## Latest Stable: v0.6.0
+## Latest Stable: v0.8.0
 
-v0.6 adds executable Linear intake automation and requirement-to-release traceability.
+v0.8 adds explicit release/recovery control and safe OS self-upgrade on top of the v0.6 Linear automation and traceability foundation.
 
 Core outputs:
 
-- Dry-run-first manual, cron-compatible, and Codex recurring Linear intake.
-- Status + assignee queues, Ready checks, cross-version feedback watch, and bilingual reports.
-- Explicitly authorized idempotent Linear writes with a sanitized local ledger.
+- Deterministic release readiness, notes, feedback classification, rollback guidance, and post-release verification.
+- Installed/upstream OS version discovery and deterministic three-way upgrade planning.
+- Guarded branch-based upgrade apply with protected project-memory preservation.
+- Dry-run-first Linear intake, status + assignee routing, and idempotent authorized writes.
 - Seven-area change-impact gates and requirement-to-release traceability.
-- Independent source and install-package validation with human UAT kept separate.
 
-v0.6.0 passed human UAT on 2026-08-25. Use the tagged GitHub Release for installations in other projects.
+v0.8.0 passed human UAT on 2026-08-26. Use the tagged GitHub Release for installations in other projects.
 
-## Next Planned: v0.8.0 Development Train B
+## Next Planned: v1.0.0 Internal Stable
 
-v0.8 combines the release/rollback loop and OS self-upgrade hardening into one Development Train.
+v1.0 targets the internal stable rescue standard for mature, messy projects.
 
 Planned focus:
 
-- version-level release, rollback, and post-release checks;
-- installed/upstream version detection;
-- upgrade planning and conflict reporting;
-- preservation of local overrides, audit history, Linear mappings, and private context.
+- end-to-end project rescue from black-box discovery through managed release;
+- proactive project-manager guidance for non-engineering owners;
+- contradiction, security-boundary, and documentation-gap handling;
+- one canonical Linear Project with version Milestones for AI Project OS itself.
 
 ## v0.3 Handoff Rule
 

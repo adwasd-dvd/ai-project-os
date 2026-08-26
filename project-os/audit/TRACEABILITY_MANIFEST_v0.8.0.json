@@ -3,11 +3,14 @@
   "release": {
     "version": "v0.8.0",
     "status": "candidate",
-    "uat_status": "pending",
+    "uat_status": "pass",
     "uat": {
-      "status": "pending",
+      "status": "pass",
       "evidence": "project-os/audit/UAT_v0.8.0.md",
-      "scenarios": ["UAT-0801", "UAT-0802", "UAT-0803", "UAT-0804", "UAT-0805", "UAT-0806", "UAT-0807"]
+      "scenarios": ["UAT-0801", "UAT-0802", "UAT-0803", "UAT-0804", "UAT-0805", "UAT-0806", "UAT-0807"],
+      "actor": "dvdTeacher / Owner",
+      "date": "2026-08-26",
+      "limitations_disposition": "Accepted documented network, conflict-resolution, protected-memory, rollback-authority, and Linear-capacity limitations."
     },
     "post_release": {
       "status": "pending"
@@ -21,7 +24,7 @@
     {
       "feature_id": "AIPOS-045",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -33,14 +36,14 @@
       "code_paths": ["project-os/tools/trace_project.py"],
       "evidence_paths": ["project-os/TRACEABILITY.md", "project-os/RELEASE_CONTROL.md"],
       "tests": [{"id": "TRACE-LIFECYCLE", "path": "project-os/tools/test_trace_project.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0801"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0801"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-001"]
     },
     {
       "feature_id": "AIPOS-046",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -52,14 +55,14 @@
       "code_paths": ["project-os/tools/release_project.py", "project-os/release/RELEASE_INPUT.example.json"],
       "evidence_paths": ["project-os/RELEASE_CONTROL.md"],
       "tests": [{"id": "RELEASE-READINESS", "path": "project-os/tools/test_release_project.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0802"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0802"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-001"]
     },
     {
       "feature_id": "AIPOS-047",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -71,14 +74,14 @@
       "code_paths": ["project-os/tools/release_project.py", "project-os/release/FEEDBACK_TRIAGE.example.json", "project-os/release/POST_RELEASE_INPUT.example.json"],
       "evidence_paths": ["project-os/RELEASE_CONTROL.md", "project-os/RELEASE_POLICY.md"],
       "tests": [{"id": "RELEASE-RECOVERY", "path": "project-os/tools/test_release_project.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0806"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0806"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-002"]
     },
     {
       "feature_id": "AIPOS-048",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -90,14 +93,14 @@
       "code_paths": ["project-os/tools/upgrade_project_os.py", "project-os/upgrade/UPSTREAM_GITHUB.example.json"],
       "evidence_paths": ["project-os/UPGRADE_POLICY.md", "project-os/upgrade/README.md"],
       "tests": [{"id": "UPGRADE-DISCOVERY", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0803"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0803"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-UPG-003"]
     },
     {
       "feature_id": "AIPOS-049",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -109,14 +112,14 @@
       "code_paths": ["project-os/tools/upgrade_project_os.py", "project-os/upgrade/UPGRADE_CONFIG.example.json"],
       "evidence_paths": ["project-os/UPGRADE_POLICY.md"],
       "tests": [{"id": "UPGRADE-PLAN", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0803", "UAT-0804"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0803", "UAT-0804"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-UPG-001"]
     },
     {
       "feature_id": "AIPOS-050",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -128,14 +131,14 @@
       "code_paths": ["project-os/tools/upgrade_project_os.py"],
       "evidence_paths": ["project-os/UPGRADE_POLICY.md", "project-os/QUALITY_GATE.md"],
       "tests": [{"id": "UPGRADE-APPLY", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"}],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0804", "UAT-0805"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0804", "UAT-0805"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-UPG-001", "RISK-UPG-002"]
     },
     {
       "feature_id": "AIPOS-051",
       "target_version": "v0.8.0",
-      "state": "uat_pending",
+      "state": "accepted",
       "linear_record": {
         "type": "document",
         "id": "f8583467-5009-4f8a-bb3f-f312ece4c704",
@@ -150,7 +153,7 @@
         {"id": "TRAIN-B-SOURCE", "path": "project-os/tools/test_upgrade_project_os.py", "status": "pass"},
         {"id": "TRAIN-B-RELEASE", "path": "project-os/tools/test_release_project.py", "status": "pass"}
       ],
-      "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0807"]},
+      "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v0.8.0.md", "scenarios": ["UAT-0807"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted in consolidated v0.8.0 UAT."},
       "decisions": ["DEC-009"],
       "risks": ["RISK-REL-001", "RISK-UPG-001", "RISK-LIN-001"]
     }

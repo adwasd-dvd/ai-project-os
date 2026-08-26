@@ -1,8 +1,8 @@
 # Release v0.8.0
 
-Release notes for AI Project OS v0.8.0 Development Train B candidate.
+Release notes for AI Project OS v0.8.0 Development Train B.
 
-AI Project OS v0.8.0 Development Train B 候选版发布说明。
+AI Project OS v0.8.0 Development Train B 发布说明。
 
 ## Summary / 摘要
 
@@ -44,7 +44,7 @@ Candidate SHA-256: ec81d2439a4802fc19e1d03cc3a9b7bd739c7c92cd37af4134385d016bd3d
 Extracted candidate: archive valid; strict validator clean; 59/59 tests passed
 Dogfood: v0.6.0 -> v0.8.0 apply + idempotent restart + verify passed
 Protected memory: 4/4 before/after digests byte-identical
-Human UAT: Pending
+Human UAT: Pass - Owner approved 2026-08-26
 ```
 
 ## Known Limitations / 已知限制
@@ -63,8 +63,8 @@ Return to the immutable v0.6.0 package on a dedicated branch while preserving pr
 
 ## Release State / 发布状态
 
-This candidate is waiting for human UAT. No tag or GitHub Release is authorized yet.
+Human UAT passed and the Owner authorized merge, tag, and GitHub Release to the verified private destination.
 
-本候选版正在等待人工 UAT，尚未授权 tag 或 GitHub Release。
+人工 UAT 已通过，Owner 已授权向已验证的 private 目标执行 merge、tag 和 GitHub Release。
 
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7

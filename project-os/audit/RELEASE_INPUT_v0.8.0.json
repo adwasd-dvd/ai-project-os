@@ -25,10 +25,10 @@
   "safety": {
     "profile": "private",
     "destination": "Current private GitHub repository and GitHub Release",
-    "decision": "Review",
+    "decision": "Go",
     "block_findings": 0,
     "review_findings": 0,
-    "review_disposition": "Pending explicit v0.8.0 human UAT and publication approval",
+    "review_disposition": "Owner passed v0.8.0 UAT and approved the current private GitHub publication transaction on 2026-08-26.",
     "evidence": "project-os/audit/PUBLICATION_MANIFEST_v0.8.0.md"
   },
   "tests": [
@@ -65,7 +65,7 @@
     "GitHub latest-release discovery requires network access; directory, zip, and metadata sources work offline.",
     "Ambiguous both-modified files require human conflict resolution.",
     "The free Linear workspace issue limit requires a Project Document as the temporary equivalent requirement record for AIPOS-045 through AIPOS-051.",
-    "Human UAT and publication approval are still pending."
+    "Owner accepted the documented limitations during v0.8.0 UAT."
   ],
   "github": {
     "branch": "codex/v0.8-train-b",

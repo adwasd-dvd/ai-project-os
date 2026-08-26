@@ -2,16 +2,16 @@
 
 ```text
 Product: AI Project OS
-Source Repository Version: v0.6.0
-Installed Self-Management Version: v0.6.0
+Source Repository Version: v0.8.0
+Installed Self-Management Version: v0.8.0
 Release Channel: experimental
 Installed Date: 2026-08-18
-Last Upgrade: 2026-08-25 to v0.6.0
+Last Upgrade: 2026-08-26 to v0.8.0
 ```
 
 ## Compatibility
 
-AI Project OS v0.6.0 expects:
+AI Project OS v0.8.0 expects:
 
 - Local Codex as the development executor.
 - Linear as the project management system.
@@ -31,6 +31,8 @@ AI Project OS v0.6.0 expects:
 - Linear writes require config allowlist, CLI authorization, runtime authorization, and idempotent receipts.
 - Scheduled automation never modifies local product code or approves Decision, scope, UAT, merge, tag, or release.
 - Formal work uses a seven-area change-impact gate and requirement-to-release traceability.
+- Release readiness, structured human UAT, publication, and post-release verification remain separate evidence states.
+- OS upgrades use installed/base/target planning, protected-memory preservation, branch-only apply, dual authorization, hash verification, and project-specific UAT.
 
 ## Upgrade Rule
 

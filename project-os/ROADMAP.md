@@ -173,7 +173,7 @@ These deliverables ship in the formal v0.6.0 release so v0.7 is not a separate r
 
 ## v0.8 - Development Train B: Release / Rollback + Self-Upgrade
 
-Status: In Progress / 开发中
+Status: Released / 已发布
 
 Goal:
 
@@ -217,7 +217,7 @@ Deliverables:
 - Apply migrations through a branch and validator.
 - Use AI Project OS to dogfood its own v0.9 release.
 
-These deliverables are implemented and accepted with the formal v0.8.0 Development Train B candidate; v0.9 is not a separate release.
+These deliverables are implemented and accepted with the formal v0.8.0 Development Train B release; v0.9 is not a separate release.
 
 这些能力随正式 v0.8.0 Development Train B 候选一起实现和验收；v0.9 不单独发布。
 

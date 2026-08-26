@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v0.8.0 - 2026-08-26
+
+Development Train B release for explicit release/recovery control and safe OS self-upgrade.
+
+Added:
+
+- Structured version and Feature UAT evidence with explicit accepted, released, and post-release states.
+- Deterministic release-readiness, release-notes, feedback-classification, rollback-guidance, and post-release receipt tooling.
+- Installed/upstream OS version discovery from directory, zip, metadata, or configured GitHub Release.
+- Deterministic installed/base/target upgrade planning with add, update, migrate, preserve, conflict, and removal-candidate classifications.
+- Guarded branch-based upgrade apply with authorization, freshness, integrity, path-confinement, idempotency, and verification gates.
+- Protected-memory preservation and a real v0.6.0-to-v0.8.0 dogfood upgrade.
+
+Updated:
+
+- Release, UAT, quality, traceability, upgrade, startup, GitHub, and roadmap policies.
+- Release artifact name to `ai-project-os-v0.8.0.zip`.
+
+Human UAT passed and the Owner authorized release on 2026-08-26.
+
 ## v0.6.0 - 2026-08-25
 
 Development Train A release for safe Linear automation and requirement-to-release traceability.

@@ -5,7 +5,7 @@ Product: AI Project OS
 Installed OS Version: v0.8.0
 Installed Date: 2026-08-18
 Local Customizations: This repo manages the AI Project OS source package itself.
-Last Upgrade: 2026-08-25 to v0.8.0 release candidate
+Last Upgrade: 2026-08-26 to v0.8.0
 ```
 
 ## Compatibility

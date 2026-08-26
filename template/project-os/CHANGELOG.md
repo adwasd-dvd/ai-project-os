@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.8.0 - Unreleased
+## v0.8.0 - 2026-08-26
 
 Development Train B combines release/rollback control with safe OS self-upgrade.
 
@@ -11,7 +11,7 @@ Added:
 - Executable `UPGRADE_POLICY.md` flow, reusable upgrade configs, and `tools/upgrade_project_os.py` for version discovery, three-way planning, guarded branch apply, idempotency, and hash verification.
 - Focused release and upgrade tests for evidence gates, conflicts, preservation, authorization, path confinement, downgrade, stale plans, recovery, and deterministic outputs.
 
-Human UAT is pending. No v0.8.0 release is claimed.
+Human UAT passed on 2026-08-26 and the release was authorized by the Owner.
 
 ## v0.6.0 - 2026-08-25
 
