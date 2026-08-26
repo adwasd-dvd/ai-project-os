@@ -142,6 +142,31 @@ class SafetyScanTests(unittest.TestCase):
             self.assertEqual(outside.returncode, 1)
             self.assertIn("inside the repository root", outside.stderr)
 
+    def test_explicit_prefix_exclusion_is_recorded(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "project-os").mkdir()
+            sensitive_value = "-".join(["actual", "sensitive", "value", "12345"])
+            (root / "project-os" / "private.env").write_text(
+                f"PASSWORD={sensitive_value}\n", encoding="utf-8"
+            )
+            (root / "README.md").write_text("safe\n", encoding="utf-8")
+
+            result = run_scan(root, "--profile", "private", "--exclude-prefix", "project-os")
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            evidence = json.loads(result.stdout)
+            self.assertEqual(evidence["findings"], [])
+            self.assertEqual(evidence["excluded_prefixes"], ["project-os"])
+            self.assertGreater(evidence["skipped"]["requested_prefixes"], 0)
+
+    def test_invalid_prefix_exclusion_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            result = run_scan(root, "--exclude-prefix", "../outside")
+            self.assertEqual(result.returncode, 1)
+            self.assertIn("Invalid exclusion prefix", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

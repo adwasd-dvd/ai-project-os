@@ -38,6 +38,7 @@ CORE_FILES = [
     "QUALITY_GATE.md",
     "REPO_PUBLICATION_POLICY.md",
     "RELEASE_CONTROL.md",
+    "RESCUE_PROTOCOL.md",
     "ROADMAP.md",
     "RELEASE_POLICY.md",
     "REQUIREMENT_MANAGEMENT.md",
@@ -68,6 +69,9 @@ CORE_FILES = [
     "examples/TRAIN_A_EXAMPLE.md",
     "examples/TRAIN_A_INTAKE_REPORT.md",
     "examples/WHITEBOX_EXAMPLE.md",
+    "examples/RESCUE_EXAMPLE.md",
+    "rescue/README.md",
+    "rescue/RESCUE_INPUT.example.json",
     "safety/README.md",
     "safety/DOC_GAP_REGISTER.md",
     "safety/PROJECT_MEMORY_AUDIT.md",
@@ -93,6 +97,8 @@ CORE_FILES = [
     "tools/test_trace_project.py",
     "tools/release_project.py",
     "tools/test_release_project.py",
+    "tools/rescue_project.py",
+    "tools/test_rescue_project.py",
     "tools/upgrade_project_os.py",
     "tools/test_upgrade_project_os.py",
     "tools/test_validate_project_os.py",
@@ -189,6 +195,8 @@ POLICY_PHRASES = {
         "v1.0",
         "Development Train A",
         "Development Train B",
+        "AIPOS-052",
+        "AIPOS-059",
     ],
     "WHITEBOX_PROTOCOL.md": [
         "Observed",
@@ -210,8 +218,12 @@ POLICY_PHRASES = {
         "safety_scan.py",
         "SCAN_EVIDENCE.json",
         "LOGIC_BOUNDARY_AUDIT.md",
+        "RESCUE_PROTOCOL.md",
+        "rescue_project.py inspect",
     ],
     "QUALITY_GATE.md": [
+        "Ready for Mature-Project Rescue",
+        "Rescue Evidence Complete",
         "Ready for Whitebox Discovery",
         "Whitebox Complete",
         "Ready for Safety Classification",
@@ -233,6 +245,7 @@ POLICY_PHRASES = {
         "60-Second Start",
         "project-os/START_HERE.md",
         "English + Chinese",
+        "rescue_project.py",
     ],
     "SECURITY_BOUNDARY.md": [
         "Local Only",
@@ -298,6 +311,23 @@ POLICY_PHRASES = {
         "--authorize-upgrade",
         "AIPOS_OS_UPGRADE_APPROVED=APPROVED",
         "Verify After Upgrade",
+    ],
+    "RESCUE_PROTOCOL.md": [
+        "inspect --summary",
+        "plan",
+        "verify",
+        "SAFETY_BLOCKED",
+        "NEEDS_HUMAN_DECISION",
+        "READY_FOR_BASELINE_REVIEW",
+        "READY_FOR_LINEAR_APPROVAL",
+        "READY_FOR_DEVELOPMENT",
+        "Human Queue",
+        "Codex Queue",
+        "Review Queue",
+        "Action Steps",
+        "Expected Result",
+        "project-os/",
+        "writes Linear",
     ],
 }
 
@@ -475,6 +505,7 @@ def check_discovery_contract(root: Path) -> list[Finding]:
                 '"secret_values_emitted": False',
                 '"environment_values_emitted": False',
                 '"file_contents_emitted": False',
+                '"--exclude-prefix"',
                 "Output directory must be inside the repository root.",
             ]:
                 if phrase not in scanner_text:
@@ -517,6 +548,7 @@ def check_safety_contract(root: Path) -> list[Finding]:
                 '"source_lines_emitted": False',
                 '"environment_values_emitted": False',
                 '"file_contents_emitted": False',
+                '"--exclude-prefix"',
                 "Output directory must be inside the repository root.",
             ]:
                 if phrase not in scanner_text:
@@ -653,6 +685,57 @@ def check_train_a_contract(root: Path) -> list[Finding]:
     return findings
 
 
+def check_rescue_contract(root: Path) -> list[Finding]:
+    findings: list[Finding] = []
+    for base in project_os_bases(root):
+        tool = base / "tools" / "rescue_project.py"
+        if tool.exists():
+            text = read_text(tool)
+            for phrase in [
+                '"inspect"',
+                '"plan"',
+                '"verify"',
+                '"product_code_writes": False',
+                '"external_writes": False',
+                '"secret_values_emitted": False',
+                '"source_lines_emitted": False',
+                '"raw_conversations_emitted": False',
+                '"writes_performed": 0',
+                '"project-os"',
+                "Paths must stay inside the repository root.",
+                "RESCUE_EVIDENCE.json",
+                "LINEAR_RESCUE_IMPORT.json",
+                "PM_NEXT_ACTION.md",
+            ]:
+                if phrase not in text:
+                    findings.append(
+                        Finding(
+                            "FAIL",
+                            tool.relative_to(root).as_posix(),
+                            f"Missing rescue guardrail / 缺少救援保护: {phrase}",
+                        )
+                    )
+
+        config_path = base / "rescue" / "RESCUE_INPUT.example.json"
+        if config_path.exists():
+            try:
+                config = json.loads(read_text(config_path))
+                project = config.get("project") or {}
+                linear = config.get("linear") or {}
+                gates = config.get("human_gates") or {}
+                if project.get("language") != "en+zh":
+                    findings.append(Finding("FAIL", config_path.relative_to(root).as_posix(), "Rescue language must be en+zh"))
+                if "project-os" not in (project.get("exclude_prefixes") or []):
+                    findings.append(Finding("FAIL", config_path.relative_to(root).as_posix(), "Rescue must exclude project-os product evidence by default"))
+                if linear.get("write_approved") is not False:
+                    findings.append(Finding("FAIL", config_path.relative_to(root).as_posix(), "Example Linear write approval must be false"))
+                if any(gates.get(field) is not False for field in ("baseline_confirmed", "decisions_resolved", "uat_passed")):
+                    findings.append(Finding("FAIL", config_path.relative_to(root).as_posix(), "Example human gates must remain false"))
+            except json.JSONDecodeError as exc:
+                findings.append(Finding("FAIL", config_path.relative_to(root).as_posix(), f"Invalid rescue JSON: {exc}"))
+    return findings
+
+
 def check_release_zips(root: Path) -> list[Finding]:
     findings: list[Finding] = []
     if not (root / "template" / "project-os").exists():
@@ -760,6 +843,7 @@ def main() -> int:
     findings.extend(check_discovery_contract(root))
     findings.extend(check_safety_contract(root))
     findings.extend(check_train_a_contract(root))
+    findings.extend(check_rescue_contract(root))
     findings.extend(check_release_zips(root))
 
     failures = [finding for finding in findings if finding.level == "FAIL"]

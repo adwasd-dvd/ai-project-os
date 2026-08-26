@@ -1,12 +1,14 @@
 # BOOTSTRAP
 
-本文定义 AI Project OS v0.5 的启动流程。
+本文定义 AI Project OS v1.0 的启动与成熟项目救援流程。
 
 任何本地 Codex 第一次进入项目时，必须先执行本文件，不允许直接开发。
 
 ## 总目标
 
 把一个现有项目整理成可管理、可开发、可验收、可发布的状态。
+
+成熟、混乱或现状不明的项目先读取 `RESCUE_PROTOCOL.md`，运行 `tools/rescue_project.py inspect`。该入口把后续白盒、安全、Baseline、Linear 和恢复路线图证据编排在一起，但不绕过任何人工门禁。
 
 启动流程分为七个主要阶段，并在 Self-Check 与 Audit 之间加入 Phase 0.5 和 Phase 0.75：
 
@@ -89,13 +91,13 @@ Codex 必须输出：
 先 dry run：
 
 ```bash
-python3 project-os/tools/whitebox_scan.py --root . --summary
+python3 project-os/tools/whitebox_scan.py --root . --exclude-prefix project-os --summary
 ```
 
 检查输出范围后，才写入：
 
 ```bash
-python3 project-os/tools/whitebox_scan.py --root . --write
+python3 project-os/tools/whitebox_scan.py --root . --exclude-prefix project-os --write
 ```
 
 默认只能写入：

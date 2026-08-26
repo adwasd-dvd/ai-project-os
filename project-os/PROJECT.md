@@ -4,7 +4,7 @@
 
 ## 项目目标
 
-本项目使用 AI Project OS v0.5，把本地代码仓库整理成可以持续推进的工程系统。
+本项目使用 AI Project OS v1.0，把本地代码仓库整理成可以持续推进的工程系统。
 
 系统目标：
 
@@ -24,8 +24,9 @@
 - 让安全证据脱敏，私有仓库也不成为 secret store。
 - 让 Agent 文档和断档项目记忆按明确规则共享、保留或阻止发布。
 - 让新用户从 GitHub 下载后，用一句 Codex 启动语在 60 秒内开始接管项目。
+- 让成熟混乱项目通过一个 rescue 入口得到诊断、恢复路线图、Linear dry-run 包和积极型 PM 下一步。
 
-## v0.5 工具边界
+## v1.0 工具边界
 
 ### Linear
 
@@ -69,6 +70,7 @@ Linear 不负责：
 - 为重要结论记录 State、Evidence、Confidence 和 Next Verification。
 - 运行只读 safety scanner，按目标 profile 输出经脱敏的 Block/Review/Info finding。
 - 维护 project memory audit、doc gap register 和 publication manifest 草案。
+- 运行 `RESCUE_PROTOCOL.md` 的 inspect/plan/verify，默认排除 OS 自身并生成本地脱敏救援证据。
 
 本地 Codex 不负责：
 
@@ -124,6 +126,7 @@ AI Project OS v0.5 可以定义 scheduled Linear intake scan。
 | 安全详细证据 | GitHub/本地 `project-os/safety/` + commit SHA |
 | 发布判定 | `safety/PUBLICATION_MANIFEST.md` + human disposition |
 | Agent 文档共享边界 | `AGENT_DOC_POLICY.md` + project decision |
+| 成熟项目救援状态 | `project-os/rescue/RESCUE_EVIDENCE.json` + `PM_NEXT_ACTION.md` |
 
 ## 项目角色
 
@@ -151,6 +154,8 @@ AI Project OS v0.5 可以定义 scheduled Linear intake scan。
 | `AUTOMATION_POLICY.md` | scheduled scan、dry-run、幂等和禁区 |
 | `ROADMAP.md` | v0.3 到 v1.0 以及后续开源准备路线 |
 | `WHITEBOX_PROTOCOL.md` | 成熟项目白盒化、证据、置信度和停止规则 |
+| `RESCUE_PROTOCOL.md` | v1.0 成熟项目端到端救援、门禁、队列和安全边界 |
+| `rescue/*` | 救援输入、诊断、恢复路线图、Linear dry-run、PM 下一步和收据 |
 | `discovery/*.md` | 项目、依赖、文档、设置/数据、逻辑/边界和 Linear 交接地图 |
 | `SECURITY_BOUNDARY.md` | 四级资产分类、信任边界和停止条件 |
 | `REPO_PUBLICATION_POLICY.md` | private/team/public Git 发布门禁 |
@@ -172,6 +177,7 @@ AI Project OS v0.5 可以定义 scheduled Linear intake scan。
 | `tools/trace_project.py` | change impact 与 requirement-to-release 证据验证 |
 | `tools/release_project.py` | 确定性发布就绪、release notes、反馈分类和发布后回执 |
 | `tools/upgrade_project_os.py` | 版本发现、升级计划、受控 apply 和 hash verify |
+| `tools/rescue_project.py` | 成熟项目救援编排、证据融合、路由、路线图和 dry-run 导入包 |
 | `audit/*.md` | Phase 1 产物和 Phase 3 导入计划 |
 
 ## 项目节奏

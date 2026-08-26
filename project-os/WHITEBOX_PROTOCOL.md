@@ -181,7 +181,7 @@ runtime observation + environment + date
 Run:
 
 ```bash
-python3 project-os/tools/whitebox_scan.py --root .
+python3 project-os/tools/whitebox_scan.py --root . --exclude-prefix project-os
 ```
 
 This is a dry run and writes nothing. After reviewing the path-only output, write deterministic evidence with:
@@ -189,7 +189,7 @@ This is a dry run and writes nothing. After reviewing the path-only output, writ
 这是 dry run，不写入。检查只包含路径的输出后，可写入确定性证据：
 
 ```bash
-python3 project-os/tools/whitebox_scan.py --root . --write
+python3 project-os/tools/whitebox_scan.py --root . --exclude-prefix project-os --write
 ```
 
 Expected output:

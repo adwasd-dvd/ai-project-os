@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "AI Project OS",
+    "target_version": "v1.0.0",
+    "feature_prefix": "AIPOS",
+    "language": "en+zh",
+    "exclude_prefixes": [
+      "project-os"
+    ]
+  },
+  "linear": {
+    "project": "AI Project OS",
+    "milestone": "v1.0.0",
+    "write_approved": true
+  },
+  "human_gates": {
+    "baseline_confirmed": true,
+    "decisions_resolved": true,
+    "uat_passed": false
+  },
+  "findings": [],
+  "resolutions": [
+    {
+      "finding_id": "DEP-001",
+      "resolution_en": "AI Project OS tools intentionally use the Python standard library and require no product dependency manifest.",
+      "resolution_zh": "AI Project OS 工具有意只使用 Python 标准库，不需要产品依赖清单。",
+      "resolved_by": "Codex",
+      "resolution_evidence": [
+        "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md"
+      ]
+    },
+    {
+      "finding_id": "ENTRY-001",
+      "resolution_en": "AI Project OS is a Markdown-first operating package entered through START_HERE and explicit standard-library tools, not one runtime server.",
+      "resolution_zh": "AI Project OS 是通过 START_HERE 和显式标准库工具进入的 Markdown-first 操作包，不是单一运行服务器。",
+      "resolved_by": "Codex",
+      "resolution_evidence": [
+        "project-os/START_HERE.md",
+        "project-os/PROJECT.md"
+      ]
+    }
+  ]
+}

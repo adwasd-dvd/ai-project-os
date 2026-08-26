@@ -1,4 +1,4 @@
-# AI Project OS v0.8 - START_HERE
+# AI Project OS v1.0 - START_HERE
 
 这是一套可以直接放进本地项目仓库的 AI 项目操作系统。
 
@@ -15,6 +15,7 @@
 9. 每个正式版本必须停下来做人工 UAT。
 10. 正式开发前生成 change-impact report，开发后维护 requirement-to-release traceability。
 11. Linear 可手动或定时扫描；默认 dry-run，绝不自动修改本地产品代码。
+12. 对成熟或混乱项目，用 v1.0 Rescue 把以上步骤编排成一个证据化恢复计划。
 
 ## 60 秒启动
 
@@ -25,13 +26,31 @@
 ```text
 请读取 project-os/START_HERE.md，并按 AI Project OS 工作。
 先检查当前项目状态。
-如果这是成熟或混乱项目，先执行 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification。
+如果这是成熟或混乱项目，读取 project-os/RESCUE_PROTOCOL.md，先运行 rescue inspect，再生成本地 rescue plan。
 Linear 默认使用 English + Chinese。
 只问真正阻塞的问题；其余按安全默认值继续。
 先告诉我发现、风险和下一步，然后开始执行。
 ```
 
 更短的安装说明、目录检查和常用启动口令见 `QUICKSTART.md`。
+
+## v1.0 成熟项目一键救援
+
+先执行只读检查：
+
+```bash
+python3 project-os/tools/rescue_project.py --root . inspect --summary
+```
+
+然后由 Codex 根据仓库证据和 `project-os/rescue/RESCUE_INPUT.example.json` 准备 `RESCUE_INPUT.json`，再生成本地证据包：
+
+```bash
+python3 project-os/tools/rescue_project.py --root . plan \
+  --input project-os/rescue/RESCUE_INPUT.json \
+  --profile private --write --summary
+```
+
+该流程会生成诊断、恢复路线图、Linear dry-run 导入包、人类/Codex/Review 队列、下一步和确定性收据。它默认排除 `project-os/` 自身，不运行产品代码、不安装依赖、不访问生产、不写 Linear/GitHub，也不替人批准 Decision、Baseline、UAT 或 Release。
 
 ## 工具分工
 
@@ -43,6 +62,7 @@ Linear 默认使用 English + Chinese。
 - `tools/trace_project.py`：change-impact 与 requirement-to-release 证据链验证。
 - `tools/release_project.py`：确定性 release readiness、release notes、反馈分类和发布后回执；不自动发布或回滚。
 - `tools/upgrade_project_os.py`：已安装/上游版本检查、三方升级计划、受控分支 apply 与 hash 验证。
+- `tools/rescue_project.py`：v1.0 成熟项目救援编排、诊断、恢复路线图、Linear dry-run 包和 PM 下一步。
 - Linear MCP：允许使用，但首次批量写入 Linear 必须人工确认。
 
 ## 怎么放到现有仓库
@@ -67,7 +87,7 @@ your-existing-repo/
 ```text
 请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md、project-os/WHITEBOX_PROTOCOL.md、project-os/SECURITY_BOUNDARY.md 和 project-os/REPO_PUBLICATION_POLICY.md。
 
-请按 AI Project OS v0.8 工作。
+请按 AI Project OS v1.0 工作。
 
 先执行 Phase 0 Self-Check。
 如果是成熟、混乱或上下文不完整的项目，Phase 0 后先进入 Phase 0.5 Whitebox Discovery。
@@ -82,7 +102,8 @@ your-existing-repo/
 - 允许生成或更新 project-os/audit/*.md，包括 SELF_CHECK_REPORT.md。
 - 允许在 Phase 0.5 生成或更新 project-os/discovery/*.md 和 SCAN_EVIDENCE.json。
 - 允许在 Phase 0.75 生成或更新 project-os/safety/*.md 和经脱敏的 SAFETY_EVIDENCE.json。
-- 先 dry-run 运行 `python3 project-os/tools/whitebox_scan.py --root . --summary`；确认范围后才使用 `--write`。
+- 成熟或混乱项目先运行 `python3 project-os/tools/rescue_project.py --root . inspect --summary`。
+- 单独运行白盒扫描时默认加 `--exclude-prefix project-os`，避免 OS 自身覆盖产品证据；确认范围后才使用 `--write`。
 - 安全报告不得输出 matched value、source line、environment value 或 file content。
 - 白盒化产物必须包含 PROJECT_MAP、DEPENDENCY_MAP、DOCUMENT_INVENTORY、SETTINGS_AND_DATA_REGISTER、LOGIC_BOUNDARY_AUDIT 和 WHITEBOX_IMPORT_REPORT。
 - 每个重要结论必须写 State、Evidence、Confidence 和 Next Verification。

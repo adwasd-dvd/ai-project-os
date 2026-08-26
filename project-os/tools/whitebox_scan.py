@@ -223,9 +223,28 @@ def should_skip(relative: Path) -> bool:
     return any(part.lower() in SKIP_DIRS for part in relative.parts[:-1])
 
 
+def normalize_exclude_prefixes(values: Iterable[str]) -> tuple[str, ...]:
+    prefixes: set[str] = set()
+    for raw in values:
+        value = str(raw).strip().replace("\\", "/").strip("/")
+        path = Path(value)
+        if not value or value == "." or path.is_absolute() or ".." in path.parts:
+            raise ScanError(f"Invalid exclusion prefix: {raw!r}")
+        prefixes.add(path.as_posix())
+    return tuple(sorted(prefixes))
+
+
+def excluded_by_prefix(relative: Path, prefixes: Iterable[str]) -> bool:
+    value = relative.as_posix()
+    return any(value == prefix or value.startswith(prefix + "/") for prefix in prefixes)
+
+
 def list_repository_files(
-    root: Path, output_relative: Path, max_files: int
-) -> tuple[list[Path], str, int, list[str]]:
+    root: Path,
+    output_relative: Path,
+    max_files: int,
+    exclude_prefixes: tuple[str, ...] = (),
+) -> tuple[list[Path], str, int, int, list[str]]:
     """Return safe relative file paths, source, generated exclusions, symlinks."""
 
     result = run_git(root, "ls-files", "-co", "--exclude-standard", "-z")
@@ -246,6 +265,7 @@ def list_repository_files(
     files: list[Path] = []
     symlinks: list[str] = []
     excluded_generated = 0
+    excluded_requested = 0
     for raw in raw_paths:
         if not raw:
             continue
@@ -253,6 +273,9 @@ def list_repository_files(
         if relative.is_absolute() or ".." in relative.parts:
             continue
         if relative == output_relative:
+            continue
+        if excluded_by_prefix(relative, exclude_prefixes):
+            excluded_requested += 1
             continue
         if should_skip(relative):
             excluded_generated += 1
@@ -271,7 +294,7 @@ def list_repository_files(
             f"File limit exceeded: {len(files)} > {max_files}. "
             "Narrow the repository scope or raise --max-files explicitly."
         )
-    return files, source, excluded_generated, sorted(set(symlinks))
+    return files, source, excluded_generated, excluded_requested, sorted(set(symlinks))
 
 
 def is_test_path(path: Path) -> bool:
@@ -495,6 +518,7 @@ def build_evidence(
     max_files: int = 100_000,
     max_items: int = 500,
     large_file_bytes: int = 5 * 1024 * 1024,
+    exclude_prefixes: Iterable[str] = (),
 ) -> dict[str, Any]:
     root = root.resolve()
     output_dir = output_dir.resolve()
@@ -503,8 +527,9 @@ def build_evidence(
     except ValueError as exc:
         raise ScanError("Output directory must be inside the repository root.") from exc
 
-    files, file_source, excluded_generated, symlinks = list_repository_files(
-        root, output_relative, max_files
+    normalized_exclusions = normalize_exclude_prefixes(exclude_prefixes)
+    files, file_source, excluded_generated, excluded_requested, symlinks = list_repository_files(
+        root, output_relative, max_files, normalized_exclusions
     )
 
     languages: Counter[str] = Counter()
@@ -591,6 +616,8 @@ def build_evidence(
             "file_count": len(files),
             "total_bytes": total_bytes,
             "excluded_common_generated_count": excluded_generated,
+            "excluded_requested_count": excluded_requested,
+            "excluded_prefixes": list(normalized_exclusions),
             "symlink_count": len(symlinks),
             "max_files": max_files,
             "max_items_per_category": max_items,
@@ -681,6 +708,12 @@ def main() -> int:
     parser.add_argument("--max-files", type=int, default=100_000)
     parser.add_argument("--max-items", type=int, default=500)
     parser.add_argument("--large-file-mb", type=int, default=5)
+    parser.add_argument(
+        "--exclude-prefix",
+        action="append",
+        default=[],
+        help="Repository-relative path prefix to exclude; repeat as needed.",
+    )
     args = parser.parse_args()
 
     if args.write and args.check:
@@ -700,6 +733,7 @@ def main() -> int:
             max_files=args.max_files,
             max_items=args.max_items,
             large_file_bytes=args.large_file_mb * 1024 * 1024,
+            exclude_prefixes=args.exclude_prefix,
         )
         rendered = render_json(evidence)
     except ScanError as exc:

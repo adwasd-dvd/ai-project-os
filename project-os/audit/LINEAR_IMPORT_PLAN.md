@@ -763,3 +763,23 @@ Linear status update: fcc2a3c0-70eb-4002-87e5-c4d0a44d3bed
 The canonical Project was intentionally not completed. Version completion is recorded on the v0.8.0 Milestone and release evidence; the same Project now continues with the v1.0.0 Milestone.
 
 唯一长期 Project 不会被完成。v0.8.0 的完成状态记录在 Milestone 和发布证据中；同一个 Project 继续推进 v1.0.0 Milestone。
+
+## v1.0.0 Internal Stable Intake - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Equivalent Requirement Record: v1.0 Internal Stable Feature Register / v1.0 内部稳定功能清单
+Document ID: a5f2397c-9340-4034-86bf-1fe2d42f472c
+Feature Scope: AIPOS-052 through AIPOS-059
+Issue creates: 0
+Reason: free workspace non-archived issue capacity remains exhausted
+Development branch: codex/v1.0-internal-stable
+Linear status update: c5e1bc0e-a11c-4188-bba7-547f6dbb6e83
+```
+
+The Feature Register contains bilingual Action Steps, Expected Result, safety boundaries, and the v1.0 success standard. It belongs to the existing `v1.0.0` Milestone in the one long-lived Project. No per-version Project or synthetic issue ID was created.
+
+Feature Register 包含双语执行动作、期待结果、安全边界和 v1.0 成功标准。它属于唯一长期 Project 中已有的 `v1.0.0` Milestone；未创建按版本 Project，也未伪造 Issue ID。

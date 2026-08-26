@@ -114,6 +114,20 @@ class WhiteboxScanTests(unittest.TestCase):
         with self.assertRaises(whitebox_scan.ScanError):
             whitebox_scan.resolve_output_dir(self.root, "../outside")
 
+    def test_explicit_prefix_exclusion_is_recorded(self) -> None:
+        self._write("project-os/internal.md", "# Installed OS\n")
+        evidence = whitebox_scan.build_evidence(
+            self.root, self.output_dir, exclude_prefixes=["project-os"]
+        )
+        rendered = whitebox_scan.render_json(evidence)
+        self.assertNotIn("project-os/internal.md", rendered)
+        self.assertEqual(evidence["coverage"]["excluded_prefixes"], ["project-os"])
+        self.assertGreater(evidence["coverage"]["excluded_requested_count"], 0)
+
+    def test_invalid_prefix_exclusion_fails_closed(self) -> None:
+        with self.assertRaises(whitebox_scan.ScanError):
+            whitebox_scan.normalize_exclude_prefixes(["../outside"])
+
 
 if __name__ == "__main__":
     unittest.main()

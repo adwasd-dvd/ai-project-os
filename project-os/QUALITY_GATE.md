@@ -4,6 +4,30 @@
 
 质量门禁的目的不是增加流程，而是防止 AI 和人把“做了一点”误认为“可以交付”。
 
+## Ready for Mature-Project Rescue
+
+v1.0 救援开始前必须满足：
+
+- 项目根目录和允许读取范围已确认；
+- 已读取 `RESCUE_PROTOCOL.md`；
+- 先运行 `tools/rescue_project.py inspect`，默认不写证据；
+- 产品证据默认排除已安装的 `project-os/`；
+- publication profile 已选择，或明确标记为待确认；
+- 不需要生产凭证、生产数据、未知脚本执行或依赖安装；
+- 任何声明发现都使用 English + Chinese，并包含 Evidence、State、Impact、Confidence、Action Steps、Expected Result 和 Next Verification。
+
+## Rescue Evidence Complete
+
+救援证据只有在以下条件满足时才能交给 Baseline review 或 Linear planning：
+
+- `RESCUE_EVIDENCE.json`、`RESCUE_DIAGNOSIS.md`、`RECOVERY_ROADMAP.md`、`LINEAR_RESCUE_IMPORT.json`、`PM_NEXT_ACTION.md` 和 `RESCUE_RECEIPT.json` 齐全；
+- `verify` 对当前仓库状态通过；
+- 证据不含 matched value、source line、environment value、file content、raw conversation、credential 或 private payload；
+- 当前 gate、Human Queue、Codex Queue、Review Queue、blockers 和 next action 都已明确；
+- high/critical Contradicted 或 Unknown 已进入人工 Decision/验证，不会静默猜测；
+- Linear 包明确为 dry-run、one Project、one Milestone、writes performed 0；
+- 工具没有执行产品代码、依赖安装、生产访问、产品写入或外部写入。
+
 ## Ready for Development
 
 Feature 进入开发前必须满足：
@@ -301,6 +325,19 @@ v0.8 还必须包含：
 - apply 需要新鲜 READY 计划、upgrade branch、CLI/runtime 双重授权与路径限制；
 - 重跑 apply 幂等，verification failure 只给回滚指引，不自动改写历史；
 - 隔离 dogfood 从旧包升级到候选包并通过 source/extracted package 全套测试。
+
+v1.0 还必须包含：
+
+- 一条 rescue inspect/plan/verify 路径可以编排白盒、安全、诊断、恢复路线图、Linear dry-run 和 PM 下一步；
+- 安装的 `project-os/` 不进入产品证据，排除范围可见且路径逃逸会 fail closed；
+- 同一混乱项目重复运行得到确定性产物和收据；
+- 安全 Block、阻塞矛盾、目标版本缺失、Baseline 待确认、Linear 配置/批准和 Ready for Development 具有不同门禁；
+- 每个 Linear 草案含 Feature ID、目标版本、Milestone、Action Steps、Expected Result、证据、queue 和稳定去重键；
+- 工具绝不实际写 Linear，也不把 input 中的 write approval 当作执行授权；
+- credential fixture 会被阻塞，但任何输出都不含命中值；
+- 代表性成熟混乱项目包含文档/实现冲突、依赖风险、测试缺口、安全边界和未解决 Decision；
+- Owner 能根据诊断、路线图、队列和下一步判断项目是否已经从“糊掉”变成可控；
+- source、deterministic package、extracted package、真实仓库 dogfood 和统一 UAT 全部有证据。
 
 ## UAT Pass
 

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "Example Mature Project",
+    "target_version": null,
+    "feature_prefix": "EXAMPLE",
+    "language": "en+zh",
+    "exclude_prefixes": [
+      "project-os"
+    ]
+  },
+  "linear": {
+    "project": "Example Mature Project",
+    "milestone": null,
+    "write_approved": false
+  },
+  "human_gates": {
+    "baseline_confirmed": false,
+    "decisions_resolved": false,
+    "uat_passed": false
+  },
+  "findings": [],
+  "resolutions": []
+}
