@@ -29,7 +29,7 @@ Latest Stable: v0.8.0
 | Representative messy project | combined rescue fixture, repeated full runs | Pass |
 | Real-repository dogfood | deterministic; verify PASS; product/external writes 0 | Pass |
 | Real mature-project UAT | two OS defects found and fixed; final gate `NEEDS_HUMAN_DECISION`; safety Block 0; target product writes 0 | Pass for candidate behavior |
-| Deterministic package | two identical corrected builds; SHA-256 `e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e` | Pass |
+| Deterministic package | two identical accepted builds from `817cae8`; 275400 bytes; SHA-256 `6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99` | Pass |
 | Extracted package | archive and validator clean; 73/73 tests | Pass |
 | Private safety gate | Block 0; Review 0 | Pass |
 | GitHub review | Draft PR #9 | Owner approved; ready to merge after final candidate verification |

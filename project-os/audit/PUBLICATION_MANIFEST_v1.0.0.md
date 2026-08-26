@@ -53,7 +53,8 @@ Messy-Project Fixture: representative combined certification passes
 Real Repository Dogfood: deterministic; verify PASS; product/external writes 0
 Real Mature Project UAT: two OS defects found and fixed; final safety Block 0; deterministic rescue verify PASS
 Package: two builds byte-identical; extracted validator clean; 73/73 tests pass
-Current Candidate SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
+Accepted Package Commit: 817cae8
+Accepted Package SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
 Human UAT: Pass; accepted by dvdTeacher / Owner on 2026-08-26
 GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Linear UAT Handoff: Project update 676ec315-ac91-4bdb-8c7c-e549e02f24ae

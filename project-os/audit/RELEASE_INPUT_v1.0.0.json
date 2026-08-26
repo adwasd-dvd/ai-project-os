@@ -62,7 +62,7 @@
   ],
   "package": {
     "asset": "ai-project-os-v1.0.0.zip",
-    "sha256": "e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e",
+    "sha256": "6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99",
     "deterministic": true,
     "extracted_validation": "pass",
     "evidence": "project-os/audit/DOGFOOD_REPORT_v1.0.0.md"

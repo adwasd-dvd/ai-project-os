@@ -204,12 +204,29 @@ The candidate zip remains a local/GitHub Release artifact and is not added to Gi
 
 候选 zip 继续作为本地/GitHub Release 产物，不加入 Git 源码历史。
 
-The review surface is Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9). It remains unmerged until explicit Owner UAT and release approval.
+## Accepted Release-Metadata Package / 已验收发布元数据安装包
 
-审查入口为 Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9)。在 Owner 明确通过 UAT 并批准发布前，它保持未合并。
+After Owner UAT Pass, two packages were independently built from committed release metadata at `817cae8`.
+
+Owner 通过 UAT 后，从已提交的发布元数据 `817cae8` 独立构建两个安装包。
+
+```text
+Candidate A: releases/ai-project-os-v1.0.0-final-a.zip
+Candidate B: releases/ai-project-os-v1.0.0-final-b.zip
+SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
+Size: 275400 bytes
+Byte comparison: identical
+Archive integrity: pass
+Extracted strict validator: 0 failures, 0 warnings
+Extracted automated tests: 73/73 pass
+```
+
+The review surface is Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9). Owner UAT passed and release was authorized on 2026-08-26.
+
+审查入口为 Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9)。Owner 已于 2026-08-26 通过 UAT 并批准发布。
 
 ## Current Conclusion / 当前结论
 
-The v1.0 rescue engine now has automated and real-mature-project evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, and extracted-package certification. Real UAT found and closed two OS defects without changing the target product. Consolidated Owner judgment and release approval remain pending under AIPOS-059.
+The v1.0 rescue engine now has automated and real-mature-project evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, and extracted-package certification. Real UAT found and closed two OS defects without changing the target product. Consolidated Owner UAT passed and release was authorized under AIPOS-059.
 
-v1.0 救援引擎现在拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑和解压包认证的自动及真实成熟项目证据。真实 UAT 在不修改目标产品的情况下发现并关闭两个 OS 缺陷。AIPOS-059 仍等待 Owner 最终判断与发布批准。
+v1.0 救援引擎现在拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑和解压包认证的自动及真实成熟项目证据。真实 UAT 在不修改目标产品的情况下发现并关闭两个 OS 缺陷。Owner 已在 AIPOS-059 下通过统一 UAT 并批准发布。

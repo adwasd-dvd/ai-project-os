@@ -12,7 +12,8 @@ Date Prepared: 2026-08-26
 Branch: codex/v1.0-internal-stable
 Initial Functional Commit: c6317fa
 Real-Project UAT Fix Commit: 544cd32
-Candidate SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
+Accepted Package Commit: 817cae8
+Accepted Package SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Tester: Owner / dvdTeacher
 Result: Pass - release authorized
@@ -45,7 +46,7 @@ and guide humans and AI through stable releases.
 | Real-repository rescue dogfood | READY_FOR_DEVELOPMENT; deterministic run3/run4; verify PASS | Pass |
 | Real mature-project UAT | 展会宝 TradeShow Copilot; two OS defects found and fixed; final gate NEEDS_HUMAN_DECISION; Safety Block 0; deterministic rerun; verify PASS; product/external/Linear writes 0 | Pass |
 | Candidate determinism | two delayed builds byte-identical | Pass |
-| Candidate digest | `e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e` | Pass |
+| Accepted package digest | `6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99` | Pass |
 | Extracted candidate | archive valid; strict validator clean; 73/73 tests | Pass |
 
 ## Human UAT Scenarios / 人工验收场景

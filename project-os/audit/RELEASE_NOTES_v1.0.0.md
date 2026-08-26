@@ -34,7 +34,7 @@ Mature-project rescue, evidence-backed recovery, and proactive AI project manage
 - REAL-MATURE-PROJECT-UAT: pass
 - Human UAT: pass
 - Safety: Go / Block 0
-- Package SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
+- Package SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
 
 ## Known Limitations / 已知限制
 
