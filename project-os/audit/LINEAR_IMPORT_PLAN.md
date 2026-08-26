@@ -830,3 +830,27 @@ Release writes: 0
 The corrected candidate remains UAT Pending. The real target project's Decisions and suggested work were not imported into this AI Project OS Project; only sanitized v1.0 product-validation facts were recorded.
 
 修正候选继续保持 UAT Pending。真实目标项目的 Decision 和建议工作没有导入 AI Project OS Project；这里只记录脱敏后的 v1.0 产品验证事实。
+
+## v1.0.0 Owner UAT Pass Handoff - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Project State: In Progress
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Feature Scope: AIPOS-052 through AIPOS-059
+Feature State: Accepted
+Owner UAT: Pass
+Publication Authorization: Yes
+Accepted package commit: 817cae8
+Accepted package SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
+Latest Linear status update: ade71b54-fc15-4cbb-8482-66dccea5cf82
+Issue creates: 0
+Project creates: 0
+Release writes: 0
+```
+
+The existing Feature Register, v1.0.0 Milestone, canonical Project summary/current gate, and bilingual status update now record Owner UAT Pass and the authorized release transaction. The long-lived Project remains In Progress; remote release facts will be added only after GitHub verification succeeds.
+
+现有 Feature Register、v1.0.0 Milestone、唯一长期 Project 摘要/当前门禁和双语状态更新现已记录 Owner UAT 通过与获授权发布事务。长期 Project 继续保持 In Progress；只有 GitHub 核验成功后才会补记远端发布事实。

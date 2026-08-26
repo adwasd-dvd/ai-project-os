@@ -37,7 +37,7 @@ Latest Stable: v0.8.0
 | Publication manifest | Go | Authorized |
 | Tag and GitHub Release | none | In authorized release transaction |
 | Post-release verification | not applicable before release | Pending |
-| Linear UAT handoff | Updates `676ec315-ac91-4bdb-8c7c-e549e02f24ae` and `86556cc0-6c6e-4c0d-821e-8b300c5e3fb9`; canonical Project remains In Progress | Pass for corrected candidate handoff |
+| Linear UAT handoff | Updates `676ec315-ac91-4bdb-8c7c-e549e02f24ae`, `86556cc0-6c6e-4c0d-821e-8b300c5e3fb9`, and UAT Pass `ade71b54-fc15-4cbb-8482-66dccea5cf82`; canonical Project remains In Progress | Pass for accepted release handoff |
 
 ## Authorized Release Sequence / 批准后发布顺序
 
