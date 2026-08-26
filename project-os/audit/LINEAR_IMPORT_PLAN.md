@@ -744,3 +744,22 @@ Future AI Project OS work must:
 - scan the exact canonical Project with an empty project_name_prefixes list.
 
 Detailed receipt and IDs: project-os/audit/LINEAR_PROJECT_CONSOLIDATION.md.
+
+## v0.8.0 Release Closeout - 2026-08-26
+
+```text
+Owner approval: UAT 通过，允许发布 v0.8.0。
+PR: #7 merged
+Merge commit and tag target: 4cd2412f06f7fe1e368c1efafa862bd62f560a4e
+Tag: v0.8.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0
+Asset SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
+Post-release verification: Pass
+v0.8.0 Milestone: Released in description
+Canonical Project: In Progress; current target v1.0.0
+Linear status update: fcc2a3c0-70eb-4002-87e5-c4d0a44d3bed
+```
+
+The canonical Project was intentionally not completed. Version completion is recorded on the v0.8.0 Milestone and release evidence; the same Project now continues with the v1.0.0 Milestone.
+
+唯一长期 Project 不会被完成。v0.8.0 的完成状态记录在 Milestone 和发布证据中；同一个 Project 继续推进 v1.0.0 Milestone。

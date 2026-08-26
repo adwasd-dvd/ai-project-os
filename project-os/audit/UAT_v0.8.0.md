@@ -96,3 +96,14 @@ Date: 2026-08-26
 Decision: UAT 通过，允许发布 v0.8.0。
 Known Limitation Disposition: Accepted; network lookup, human conflict resolution, protected write boundaries, human-controlled rollback, and temporary Linear Project Document remain documented.
 ```
+
+## Release Result / 发布结果
+
+```text
+PR: #7 merged
+Merge Commit: 4cd2412f06f7fe1e368c1efafa862bd62f560a4e
+Tag: v0.8.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0
+Remote Asset SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
+Post-Release Verification: Pass
+```

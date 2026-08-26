@@ -14,6 +14,7 @@ Destination Profile: private
 Repository / Channel: current private GitHub repository + GitHub Release
 Repository Visibility: PRIVATE; verified before the authorized release transaction
 Final Package Source Commit: 2a93fdc
+Merged Release Commit: 4cd2412f06f7fe1e368c1efafa862bd62f560a4e
 Release Asset: ai-project-os-v0.8.0.zip
 Human Approver: dvdTeacher / Owner
 Decision: Go - Owner passed v0.8.0 UAT and authorized the current private GitHub publication transaction
@@ -56,6 +57,9 @@ Final Release Package SHA-256: cf9989b993b28689da367d532db233a6d369a8edbe0417129
 Human UAT: Pass - Owner approved 2026-08-26
 GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/7
 Linear UAT Handoff: project update 8ef6411d-303b-4eb4-b5ff-31d3ab2bbc64
+GitHub Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0
+Remote Asset Verification: byte-identical; SHA-256 cf9989b993b28689da367d532db233a6d369a8edbe041712951ddc5e99cdfc1f
+Post-Release Receipt: project-os/audit/POST_RELEASE_RECEIPT_v0.8.0.md - PASS
 ```
 
 ## Go / Review / Block
@@ -73,3 +77,9 @@ Rollback Trigger: digest mismatch, verification failure, safety Block, unresolve
 The Owner explicitly passed v0.8.0 UAT and authorized merge, tag, and GitHub Release to the verified private destination.
 
 Owner 已明确通过 v0.8.0 UAT，并授权向已验证的 private 目标执行合并、tag 和 GitHub Release。
+
+## Publication Result / 发布结果
+
+PR #7 was merged, tag `v0.8.0` was pushed to merge commit `4cd2412f06f7fe1e368c1efafa862bd62f560a4e`, and the GitHub Release asset was published. The downloaded asset is byte-identical to the local package and post-release verification passed.
+
+PR #7 已合并，tag `v0.8.0` 已指向合并提交 `4cd2412f06f7fe1e368c1efafa862bd62f560a4e`，GitHub Release 资产已发布。远端下载资产与本地安装包逐字节一致，发布后验证通过。

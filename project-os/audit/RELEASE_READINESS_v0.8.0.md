@@ -3,7 +3,7 @@
 Version: `v0.8.0`
 Gate: `READY`
 Human UAT: `pass`
-Release State: `candidate`
+Release State: `released`
 
 ## Findings / 发现
 
