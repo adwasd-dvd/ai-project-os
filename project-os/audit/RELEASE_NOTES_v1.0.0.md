@@ -56,6 +56,6 @@ Mature-project rescue, evidence-backed recovery, and proactive AI project manage
 
 - Branch: codex/v1.0-internal-stable
 - PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
-- Tag: None
-- Release: None
+- Tag: v1.0.0
+- Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v1.0.0
 - Asset: ai-project-os-v1.0.0.zip

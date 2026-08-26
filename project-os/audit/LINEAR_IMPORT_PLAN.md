@@ -854,3 +854,26 @@ Release writes: 0
 The existing Feature Register, v1.0.0 Milestone, canonical Project summary/current gate, and bilingual status update now record Owner UAT Pass and the authorized release transaction. The long-lived Project remains In Progress; remote release facts will be added only after GitHub verification succeeds.
 
 现有 Feature Register、v1.0.0 Milestone、唯一长期 Project 摘要/当前门禁和双语状态更新现已记录 Owner UAT 通过与获授权发布事务。长期 Project 继续保持 In Progress；只有 GitHub 核验成功后才会补记远端发布事实。
+
+## v1.0.0 Release Closeout - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Project State: In Progress
+Milestone: v1.0.0 - Released
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Feature State: AIPOS-052 through AIPOS-059 Released
+Merge commit: 48a0c3a12154d5c1aeee1c12d0c241b6d5ae9bfc
+Tag: v1.0.0
+Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v1.0.0
+Asset SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
+Post-release verification: Pass
+Linear status update: dfa0aa13-f7b9-46b6-b4ac-cb18e1dfcfb3
+Issue creates: 0
+Project creates: 0
+```
+
+The version closed without creating another Project or moving released records. The same canonical Project remains active while post-v1.0 pilot scope is selected from real-project feedback.
+
+本版本在未创建新 Project、未移动已发布记录的情况下完成关账。唯一长期 Project 继续活跃，v1.0 后试点范围根据真实项目反馈确定。
