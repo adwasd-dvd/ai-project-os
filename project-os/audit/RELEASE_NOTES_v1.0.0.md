@@ -27,13 +27,14 @@ Mature-project rescue, evidence-backed recovery, and proactive AI project manage
 
 ## Verification / 验证
 
-- FULL-SOURCE-SUITE-72: pass
-- EXTRACTED-CANDIDATE-SUITE-72: pass
+- FULL-SOURCE-SUITE-73: pass
+- EXTRACTED-CANDIDATE-SUITE-73: pass
 - REPRESENTATIVE-MESSY-PROJECT: pass
 - REAL-REPOSITORY-RESCUE: pass
+- REAL-MATURE-PROJECT-UAT: pass
 - Human UAT: pending
 - Safety: Go / Block 0
-- Package SHA-256: e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e
+- Package SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
 
 ## Known Limitations / 已知限制
 

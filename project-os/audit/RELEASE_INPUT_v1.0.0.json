@@ -35,12 +35,12 @@
   },
   "tests": [
     {
-      "id": "FULL-SOURCE-SUITE-72",
+      "id": "FULL-SOURCE-SUITE-73",
       "status": "pass",
       "evidence": "project-os/audit/DOGFOOD_REPORT_v1.0.0.md"
     },
     {
-      "id": "EXTRACTED-CANDIDATE-SUITE-72",
+      "id": "EXTRACTED-CANDIDATE-SUITE-73",
       "status": "pass",
       "evidence": "project-os/audit/DOGFOOD_REPORT_v1.0.0.md"
     },
@@ -53,11 +53,16 @@
       "id": "REAL-REPOSITORY-RESCUE",
       "status": "pass",
       "evidence": "project-os/audit/DOGFOOD_REPORT_v1.0.0.md"
+    },
+    {
+      "id": "REAL-MATURE-PROJECT-UAT",
+      "status": "pass",
+      "evidence": "project-os/audit/DOGFOOD_REPORT_v1.0.0.md"
     }
   ],
   "package": {
     "asset": "ai-project-os-v1.0.0.zip",
-    "sha256": "e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e",
+    "sha256": "e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e",
     "deterministic": true,
     "extracted_validation": "pass",
     "evidence": "project-os/audit/DOGFOOD_REPORT_v1.0.0.md"

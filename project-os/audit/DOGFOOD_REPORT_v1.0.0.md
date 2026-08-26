@@ -115,7 +115,7 @@ Two independent output directories were generated from the same source/input. Re
 | `PM_NEXT_ACTION.md` | `df3e69ce9c13aa70f4608b853d19d01d831bed74605d063a5fc90b322f863f98` |
 | `RECOVERY_ROADMAP.md` | `ee51d3ae437b304cef757699ddb00f572f6807d417acc543b96f33cc9434b92e` |
 
-## Candidate Package / 候选安装包
+## Initial Candidate Package / 初始候选安装包
 
 The implementation and dogfood evidence were committed at `c6317fa`, then two delayed deterministic packages were built from that commit.
 
@@ -137,6 +137,69 @@ After the UAT evidence and Draft PR metadata were committed, the package was reb
 
 UAT 证据和 Draft PR 元数据提交后，又从分支提交 `2fa9d6f` 重建安装包。它与 Candidate A 逐字节相同，SHA-256 和大小不变，并再次通过归档完整性、解压后严格验证和全部 72 个测试。
 
+## Real Mature Project UAT / 真实成熟项目 UAT
+
+The initial candidate was installed on a dedicated branch of **展会宝 TradeShow Copilot**, a working trade-show PWA repository. Three pre-existing vendor SVG deletions were preserved. Product commands, dependency installation, production, Linear, and GitHub writes remained disabled.
+
+初始候选被安装到真实展会 PWA 仓库 **展会宝 TradeShow Copilot** 的专用分支。3 个既有 vendor SVG 删除被原样保留。产品命令、依赖安装、生产访问、Linear 和 GitHub 写入始终禁用。
+
+```text
+Product files: 35
+Documents: 4
+Entrypoints: 2
+Discovered automated tests: 0
+Lockfiles: 0
+Initial gate: SAFETY_BLOCKED
+Initial safety Block: 1
+Initial open findings: 11
+Product writes performed: 0
+External writes performed: 0
+Linear writes performed: 0
+```
+
+The real repository exposed two AI Project OS candidate defects. A Worker-context environment lookup was conservatively misclassified as an embedded credential, and custom rescue output produced documentation references that pointed at the default output directory. Both were fixed in `544cd32` with focused regression tests and source/template parity.
+
+真实仓库暴露了两个 AI Project OS 候选缺陷：Worker context 环境变量读取被保守地误判为嵌入凭证；自定义救援输出生成的文档引用仍指向默认目录。两项均在 `544cd32` 修复，并增加专项回归测试及源码/模板同步验证。
+
+The corrected candidate was installed over the OS package without changing product files. Two full rescue outputs were byte-identical, `verify` passed, provider-credential patterns were absent, and output references stayed portable.
+
+修正候选覆盖 OS 包时没有修改产品文件。两次完整救援输出逐字节一致，`verify` 通过，不含 provider 凭证模式，输出引用保持可移植。
+
+```text
+Corrected gate: NEEDS_HUMAN_DECISION
+Corrected safety Block: 0
+Corrected safety Review: 0
+Open findings: 9
+Resolved OS finding: TSC-SAF-001
+Human Queue: target version, Git state, API access, external-data policy, local-device policy
+Codex Queue: dependency reproducibility, automated tests, service-worker path bug
+Backlog: CI decision
+Product writes performed: 0
+External writes performed: 0
+Linear writes performed: 0
+```
+
+The resulting project diagnosis surfaced a real built-path contradiction in feedback offline registration plus security, privacy, device-retention, test, dependency, Git, and CI gaps. Business answers were not invented; high-impact unknowns remained in the Human Queue.
+
+最终项目诊断发现反馈离线注册存在真实构建路径冲突，并暴露安全、隐私、设备保留、测试、依赖、Git 和 CI 缺口。系统没有虚构业务答案，高影响未知项继续留在人类队列。
+
+## Corrected Candidate Package / 修正候选安装包
+
+Two packages were built from `544cd32` after real-project fixes.
+
+真实项目修复完成后，从 `544cd32` 构建两个安装包。
+
+```text
+Candidate A: releases/ai-project-os-v1.0.0-real-uat-a.zip
+Candidate B: releases/ai-project-os-v1.0.0-real-uat-b.zip
+SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
+Size: 275338 bytes
+Byte comparison: identical
+Archive integrity: pass
+Extracted strict validator: 0 failures, 0 warnings
+Extracted automated tests: 73/73 pass
+```
+
 The candidate zip remains a local/GitHub Release artifact and is not added to Git source history.
 
 候选 zip 继续作为本地/GitHub Release 产物，不加入 Git 源码历史。
@@ -147,6 +210,6 @@ The review surface is Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/
 
 ## Current Conclusion / 当前结论
 
-The v1.0 rescue engine has automated evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, real-repository operation, and extracted-package certification. Consolidated Owner UAT remains pending under AIPOS-059.
+The v1.0 rescue engine now has automated and real-mature-project evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, and extracted-package certification. Real UAT found and closed two OS defects without changing the target product. Consolidated Owner judgment and release approval remain pending under AIPOS-059.
 
-v1.0 救援引擎已经拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑、真实仓库运行和解压包认证的自动证据。AIPOS-059 仅剩统一 Owner UAT 待完成。
+v1.0 救援引擎现在拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑和解压包认证的自动及真实成熟项目证据。真实 UAT 在不修改目标产品的情况下发现并关闭两个 OS 缺陷。AIPOS-059 仍等待 Owner 最终判断与发布批准。

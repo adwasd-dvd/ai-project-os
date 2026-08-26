@@ -22,7 +22,7 @@ Findings: 0
 | AIPOS-056 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
 | AIPOS-057 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
 | AIPOS-058 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 3 | 1 | pending | 1 | 1 |
-| AIPOS-059 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 4 | 2 | pending | 2 | 2 |
+| AIPOS-059 | uat_pending | document:a5f2397c-9340-4034-86bf-1fe2d42f472c | 2 | `project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md` | 4 | 3 | pending | 2 | 2 |
 
 ## Release Evidence / 发布证据
 

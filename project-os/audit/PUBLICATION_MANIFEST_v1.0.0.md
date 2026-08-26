@@ -13,8 +13,8 @@ Prepared By: Codex
 Destination Profile: private
 Repository / Channel: current private GitHub repository + GitHub Release
 Repository Visibility: PRIVATE; verified during candidate preparation
-Functional Candidate Source Commit: c6317fa
-Candidate Branch Verification Commit: 2fa9d6f
+Initial Functional Candidate Commit: c6317fa
+Real-Project UAT Fix Commit: 544cd32
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Release Asset: ai-project-os-v1.0.0.zip
 Human Approver: dvdTeacher / Owner
@@ -48,14 +48,16 @@ Rollback Location: immutable v0.8.0 GitHub tag and Release.
 ```text
 Change Impact: READY
 Traceability: candidate / uat_pending / structural PASS
-Source: strict validator clean; 72/72 tests pass
+Source: strict validator clean; 73/73 tests pass
 Messy-Project Fixture: representative combined certification passes
 Real Repository Dogfood: deterministic; verify PASS; product/external writes 0
-Package: two delayed builds byte-identical; extracted validator clean; 72/72 tests pass
-Functional Candidate SHA-256: e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e
+Real Mature Project UAT: two OS defects found and fixed; final safety Block 0; deterministic rescue verify PASS
+Package: two builds byte-identical; extracted validator clean; 73/73 tests pass
+Current Candidate SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
 Human UAT: Pending
 GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Linear UAT Handoff: Project update 676ec315-ac91-4bdb-8c7c-e549e02f24ae
+Linear Real-Project UAT Update: Project update 86556cc0-6c6e-4c0d-821e-8b300c5e3fb9
 ```
 
 ## Go / Review / Block

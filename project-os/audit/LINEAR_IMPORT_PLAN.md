@@ -805,3 +805,28 @@ Release writes: 0
 The existing Feature Register, Milestone, Project summary/current gate, and bilingual Project status update now point to the same v1.0 candidate and consolidated Owner UAT. The Project and Milestone remain active; no feature was marked accepted, released, or Done by automation.
 
 现有 Feature Register、Milestone、Project 摘要/当前门禁和双语 Project 状态更新现在都指向同一个 v1.0 候选及统一 Owner UAT。Project 和 Milestone 保持活跃；自动化没有把任何功能标记为 accepted、released 或 Done。
+
+## v1.0.0 Real-Project UAT Correction - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Real UAT target: 展会宝 TradeShow Copilot
+OS defects found: 2
+OS defects fixed: 2
+Fix commit: 544cd32
+Corrected candidate SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
+Source/extracted tests: 73/73
+Final real-project gate: NEEDS_HUMAN_DECISION
+Final real-project Safety Block: 0
+Latest Linear status update: 86556cc0-6c6e-4c0d-821e-8b300c5e3fb9
+Issue creates: 0
+Project creates: 0
+Release writes: 0
+```
+
+The corrected candidate remains UAT Pending. The real target project's Decisions and suggested work were not imported into this AI Project OS Project; only sanitized v1.0 product-validation facts were recorded.
+
+修正候选继续保持 UAT Pending。真实目标项目的 Decision 和建议工作没有导入 AI Project OS Project；这里只记录脱敏后的 v1.0 产品验证事实。

@@ -25,18 +25,19 @@ Latest Stable: v0.8.0
 | Included features implemented | AIPOS-052 through AIPOS-059 | Pass for candidate |
 | Change impact | `CHANGE_IMPACT_REPORT_v1.0.0.md` | Pass |
 | Traceability | `TRACEABILITY_REPORT_v1.0.0.md` | Pass for `uat_pending` state |
-| Source validator/tests | 0 failures, 0 warnings; 72/72 tests | Pass |
+| Source validator/tests | 0 failures, 0 warnings; 73/73 tests | Pass |
 | Representative messy project | combined rescue fixture, repeated full runs | Pass |
 | Real-repository dogfood | deterministic; verify PASS; product/external writes 0 | Pass |
-| Deterministic package | two delayed identical builds; SHA-256 `e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e` | Pass |
-| Extracted package | archive and validator clean; 72/72 tests | Pass |
+| Real mature-project UAT | two OS defects found and fixed; final gate `NEEDS_HUMAN_DECISION`; safety Block 0; target product writes 0 | Pass for candidate behavior |
+| Deterministic package | two identical corrected builds; SHA-256 `e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e` | Pass |
+| Extracted package | archive and validator clean; 73/73 tests | Pass |
 | Private safety gate | Block 0; Review 0 | Pass |
 | GitHub review | Draft PR #9 | Pending Owner review |
 | Human UAT | `UAT_v1.0.0.md` | Pending |
 | Publication manifest | Review | Pending human Go |
 | Tag and GitHub Release | none | Blocked by UAT |
 | Post-release verification | not applicable before release | Pending |
-| Linear UAT handoff | Project update `676ec315-ac91-4bdb-8c7c-e549e02f24ae`; canonical Project remains In Progress | Pass for candidate handoff |
+| Linear UAT handoff | Updates `676ec315-ac91-4bdb-8c7c-e549e02f24ae` and `86556cc0-6c6e-4c0d-821e-8b300c5e3fb9`; canonical Project remains In Progress | Pass for corrected candidate handoff |
 
 ## Authorized Release Sequence / 批准后发布顺序
 

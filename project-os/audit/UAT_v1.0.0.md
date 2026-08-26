@@ -10,9 +10,9 @@ This is the consolidated human acceptance checklist for AIPOS-052 through AIPOS-
 Version: v1.0.0
 Date Prepared: 2026-08-26
 Branch: codex/v1.0-internal-stable
-Build Commit: c6317fa
-Candidate Branch Verification Commit: 2fa9d6f
-Candidate SHA-256: e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e
+Initial Functional Commit: c6317fa
+Real-Project UAT Fix Commit: 544cd32
+Candidate SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
 Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
 Tester: Owner / dvdTeacher
 Result: Pending Human UAT
@@ -38,14 +38,15 @@ and guide humans and AI through stable releases.
 |---|---|---|
 | Change impact | Seven required areas; gate READY | Pass |
 | Candidate traceability | AIPOS-052 through AIPOS-059 at UAT Pending; structural PASS | Pass |
-| Source tests | 72/72 | Pass |
+| Source tests | 73/73 | Pass |
 | Source strict validator | 0 failures, 0 warnings | Pass |
 | Private staged safety | Go; Block 0; Review 0 | Pass |
 | Representative messy fixture | combined contradiction, dependency, test, CI, safety, and Git conditions | Pass |
 | Real-repository rescue dogfood | READY_FOR_DEVELOPMENT; deterministic run3/run4; verify PASS | Pass |
+| Real mature-project UAT | 展会宝 TradeShow Copilot; two OS defects found and fixed; final gate NEEDS_HUMAN_DECISION; Safety Block 0; deterministic rerun; verify PASS; product/external/Linear writes 0 | Pass |
 | Candidate determinism | two delayed builds byte-identical | Pass |
-| Candidate digest | `e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e` | Pass |
-| Extracted candidate | archive valid; strict validator clean; 72/72 tests | Pass |
+| Candidate digest | `e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e` | Pass |
+| Extracted candidate | archive valid; strict validator clean; 73/73 tests | Pass |
 
 ## Human UAT Scenarios / 人工验收场景
 

@@ -84,7 +84,7 @@
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/RELEASE_POLICY.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/build_release.py", "project-os/tools/rescue_project.py"],
       "evidence_paths": ["project-os/audit/DOGFOOD_REPORT_v1.0.0.md", "project-os/audit/UAT_v1.0.0.md"],
-      "tests": [{"id": "V100-SOURCE-72", "path": "project-os/tools/test_rescue_project.py", "status": "pass"}, {"id": "V100-EXTRACTED-72", "path": "project-os/tools/test_build_release.py", "status": "pass"}],
+      "tests": [{"id": "V100-SOURCE-73", "path": "project-os/tools/test_rescue_project.py", "status": "pass"}, {"id": "V100-EXTRACTED-73", "path": "project-os/tools/test_build_release.py", "status": "pass"}, {"id": "V100-REAL-MATURE-UAT", "path": "project-os/tools/test_safety_scan.py", "status": "pass"}],
       "uat": {"status": "pending", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1008"]}, "decisions": ["DEC-009", "DEC-010"], "risks": ["RISK-REL-001", "RISK-RES-001"]
     }
   ]

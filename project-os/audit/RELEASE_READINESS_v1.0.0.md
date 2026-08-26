@@ -20,7 +20,7 @@ Release State: `candidate`
 
 - Safety: Go (private)
 - Destination: Current private GitHub repository and GitHub Release
-- Package: ai-project-os-v1.0.0.zip / e8926363aec753dc613a7bde2df2f5906106e778c4b769432c84419328f8094e
+- Package: ai-project-os-v1.0.0.zip / e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
 - Rollback target: v0.8.0
 
 ## Next Action / 下一步
