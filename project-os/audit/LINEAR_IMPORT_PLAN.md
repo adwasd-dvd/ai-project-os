@@ -678,3 +678,69 @@ Linear issues: DVD-219 through DVD-225 Done
 Linear project: Completed
 Project update: 3790a66e-6cab-494b-a594-ba15d6fc82e2
 ```
+
+## Development Train B Intake - 2026-08-25
+
+### Scan Summary
+
+```text
+Scope: AI Project OS v0.8 / Development Train B; AIPOS-045 through AIPOS-051
+Duplicate Projects: 0
+Duplicate Issues: 0
+Unrelated DvdTeacher projects: skipped
+Created: 1 Project, 1 Project Document, 1 bilingual status update
+Issue writes: 0 created, 7 skipped
+Blocker: free workspace reached the 250 non-archived issue limit
+Next Action: develop from the equivalent requirement record; idempotently create issues after capacity is available
+```
+
+### Project And Equivalent Requirement Record
+
+| Linear ID | Type | Name | Status |
+|---|---|---|---|
+| `2a8e9515-50be-40fe-981b-8cd29690d513` | Project | AI Project OS v0.8 - Development Train B | In Progress |
+| `f8583467-5009-4f8a-bb3f-f312ece4c704` | Project Document | Development Train B Feature Register / Train B 功能清单 | Active |
+| `f40e7838-9c84-4a0e-9be5-434a800e09c4` | Project Update | Train B intake / Train B 接入 | On Track |
+
+### Feature Write Result
+
+| Feature ID | Target | Result | Reason |
+|---|---|---|---|
+| AIPOS-045 | v0.8.0 | Skipped | Linear free issue limit |
+| AIPOS-046 | v0.8.0 | Skipped | Linear free issue limit |
+| AIPOS-047 | v0.8.0 | Skipped | Linear free issue limit |
+| AIPOS-048 | v0.8.0 | Skipped | Linear free issue limit |
+| AIPOS-049 | v0.8.0 | Skipped | Linear free issue limit |
+| AIPOS-050 | v0.8.0 | Skipped | Linear free issue limit |
+| AIPOS-051 | v0.8.0 | Skipped | Linear free issue limit |
+
+No synthetic Linear issue IDs are recorded. The Feature Register includes bilingual Action Steps, Expected Result, acceptance boundaries, and AIPOS-045 through AIPOS-051. It is the temporary equivalent record permitted by the Ready gate until individual issue capacity is available.
+
+不记录任何虚构的 Linear Issue ID。Feature Register 已包含双语执行动作、期待结果、验收边界和 AIPOS-045 到 AIPOS-051；在单独 Issue 容量可用前，它是 Ready 门禁允许的临时等价记录。
+
+## One-Project Consolidation - 2026-08-25
+
+Owner decided that AI Project OS must use one long-lived Linear Project. Versions are now Project Milestones.
+
+Owner 决定 AI Project OS 以后只使用一个长期 Linear Project，版本改由 Project Milestone 表示。
+
+Decision: DEC-010
+Canonical Project: AI Project OS
+Canonical Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Canonical URL: https://linear.app/dvdteacher/project/ai-project-os-e72aba5f39a2
+Historical issues moved: 53
+Issue status changes: 0
+Issues missing Milestone: 0
+Old Projects emptied: 6/6
+Milestones: v0.1.0, v0.2.0, v0.3.0, v0.4.0, v0.5.0, v0.6.0, v0.8.0, v1.0.0
+Linear status update: 3e56d7ad-fe67-4e92-9fd1-12eabcd67f3a
+
+Future AI Project OS work must:
+
+- use Project AI Project OS;
+- assign one target-version Milestone;
+- create a Milestone instead of a new Project for every new version;
+- keep released source issues Done and create linked carry-over issues in the new Milestone;
+- scan the exact canonical Project with an empty project_name_prefixes list.
+
+Detailed receipt and IDs: project-os/audit/LINEAR_PROJECT_CONSOLIDATION.md.

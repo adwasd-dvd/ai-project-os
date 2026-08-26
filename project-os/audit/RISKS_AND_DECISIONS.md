@@ -30,6 +30,13 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 | RISK-AUTO-003 | Authorized automation writes an unwanted comment/update | Linear noise or workflow drift | Semi-automatic write capability | Scan/apply separation, minimal allowlist, runtime authorization, stable idempotency key, sanitized ledger | Owner / Codex | High |
 | RISK-TRACE-001 | Traceability manifest becomes stale | False confidence in release readiness | Evidence is partly maintained by process | Validate paths/states before PR, UAT, and release; include in quality gate | Codex | Medium |
 | RISK-TRACE-002 | Change-impact claim is incomplete or overconfident | Missed dependency, security, test, or UAT impact | AI-generated analysis can be wrong | Seven required areas, confidence, evidence, next verification, high-impact low-confidence blocker | Owner / Codex | High |
+| RISK-REL-001 | Release readiness evidence becomes stale or internally contradictory | A release may be published with missing UAT, rollback, safety, or package facts | Train B combines multiple release gates | Deterministic input, freshness checks, fail-closed readiness, and human publication approval | Owner / Codex | High |
+| RISK-REL-002 | Rollback automation damages Git or project state | Recovery can make an incident worse | Rollback touches version and publication state | Generate human-approved guidance and receipts; never rewrite history, delete releases, or roll production back automatically | Owner / Codex | High |
+| RISK-UPG-001 | OS upgrade overwrites project memory or local policy | Project-specific decisions, Linear mappings, and safety dispositions can be lost | Installed OS and upstream share paths | Protected-path policy, three-way classification, conflict blocking, byte-preservation tests, and branch-only apply | Owner / Codex | High |
+| RISK-UPG-002 | A stale or untrusted upgrade plan writes unexpected files | Repository integrity or private context may be damaged | Plan and source can change between inspect and apply | Source/target hashes, plan freshness, path confinement, explicit CLI/runtime authorization, idempotent receipt | Codex | High |
+| RISK-UPG-003 | Upstream metadata or network state is unavailable or misleading | Wrong version comparison or unsafe downgrade | GitHub/local package is an external evidence source | Validate semantic versions and source evidence; fail closed on ambiguity; require explicit downgrade policy | Codex | Medium |
+| RISK-LIN-001 | Free Linear issue limit prevents one-issue-per-feature tracking | Individual queue assignment and issue lifecycle are unavailable | Workspace rejected AIPOS-045..051 creation at 250 non-archived issues | Use a Project Document as an explicit equivalent record; never invent IDs; idempotently create issues after capacity is available | Owner / Codex | Medium |
+| RISK-LIN-002 | A legacy version-prefix scan includes completed historical Projects or truncates the canonical Project | Intake can become noisy or fail closed before reaching current work | DEC-010 consolidated 53 issues into one Project while the v0.6 runner supports exact Project scope and a bounded maximum | Configure exact Project AI Project OS, empty project_name_prefixes, and max_issues 250; use Milestone plus Target Version for release scope | Owner / Codex | Medium |
 
 ## Security / Privacy / Compliance Risks
 
@@ -45,6 +52,8 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 | v0.2.0 | Validator scope creep | Overcomplicates OS | Define acceptance criteria first | Yes |
 | v0.6.0 | Automation and traceability land as disconnected tools | Users cannot operate the full loop | One worked scenario, one trace manifest, one consolidated UAT | No; covered by DEC-009 |
 | v0.6.0 | Live API write behavior differs from fixture | Unintended Linear changes | Default dry-run, comments-only starting allowlist, human review before first live apply | Human approval before live apply |
+| v0.8.0 | Release and self-upgrade controls pass separately but fail as one workflow | False confidence in recoverability | Isolated older-to-candidate dogfood, deterministic package tests, and one consolidated UAT | No; covered by DEC-009 |
+| v0.8.0 | Upgrade conflict handling loses local project memory | Irreversible loss or silent policy drift | Protected-path fixtures, hash verification, branch-only apply, and no automatic destructive rollback | Human approval before any real-project apply |
 
 ## Closed Decisions
 
@@ -52,3 +61,4 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 |---|---|---|---|---|
 | DEC-002 | Use private GitHub repo `adwasd-dvd/ai-project-os` | Codex based on user request | 2026-08-18 | GitHub remote created and verified private |
 | DEC-009 | Use three large development trains; Train A combines former v0.6 + v0.7 as formal v0.6.0 with one consolidated UAT | Owner | 2026-08-24 | DVD-218; enables batch implementation while preserving Feature, safety, traceability, UAT, and release gates |
+| DEC-010 | Use one long-lived Linear Project named AI Project OS; represent releases as Milestones and never create per-version Projects by default | Owner | 2026-08-25 | Consolidated 53 issues into one active Project; six old Projects are empty Completed history pointers; future work uses one Project plus one target-version Milestone |

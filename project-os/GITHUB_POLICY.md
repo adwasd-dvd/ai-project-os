@@ -25,6 +25,7 @@ feature/<feature-id>-short-title
 bugfix/<feature-id-or-bug-id>-short-title
 chore/<short-title>
 release/vX.Y.Z
+codex/upgrade-vX.Y.Z
 ```
 
 示例：
@@ -33,6 +34,7 @@ release/vX.Y.Z
 feature/crm-001-customer-search
 bugfix/uat-014-login-timeout
 release/v0.1.0
+codex/upgrade-v0.8.0
 ```
 
 ## Commit 规则

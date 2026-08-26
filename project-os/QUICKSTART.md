@@ -81,6 +81,21 @@ Optional but recommended after installation:
 python3 project-os/tools/validate_project_os.py --root . --strict
 ```
 
+## Check For An OS Upgrade / 检查 OS 升级
+
+Ask Codex:
+
+```text
+请读取 project-os/UPGRADE_POLICY.md。
+先检查已安装版本和配置的上游版本，只生成只读报告。
+如果有新版本，再生成 installed/base/target 三方升级计划。
+不要 apply，等我审查计划。
+```
+
+The default upgrade flow is inspect -> plan -> human review. It never silently overwrites the installed `project-os/`.
+
+默认升级流程是 inspect -> plan -> 人工 review，绝不会静默覆盖已安装的 `project-os/`。
+
 For a mature or unclear project, Codex will guide the whitebox and safety scans. These scans are read-only unless an explicit write option is used.
 
 成熟或不清晰项目由 Codex 引导白盒和安全扫描。除非明确使用 write 参数，否则扫描保持只读。

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "version": "v0.8.0",
+  "summary": "Release, recovery, and safe self-upgrade / 发布、恢复与安全自升级",
+  "scope": {
+    "included": ["AIPOS-045", "AIPOS-046", "AIPOS-047"],
+    "excluded": ["Automatic human UAT approval / 自动批准人工 UAT"],
+    "deferred": ["Production rollback automation / 生产自动回滚"]
+  },
+  "traceability_manifest": "project-os/audit/TRACEABILITY_MANIFEST_v0.8.0.json",
+  "change_impact_report": "project-os/audit/CHANGE_IMPACT_REPORT_v0.8.0.md",
+  "safety": {
+    "profile": "private",
+    "destination": "Private GitHub repository and GitHub Release",
+    "decision": "Review",
+    "block_findings": 0,
+    "review_findings": 0,
+    "review_disposition": "Pending human publication decision",
+    "evidence": "project-os/safety/PUBLICATION_MANIFEST.md"
+  },
+  "tests": [
+    {
+      "id": "FULL-SOURCE-SUITE",
+      "status": "pending",
+      "evidence": "project-os/tools/test_release_project.py"
+    }
+  ],
+  "package": {
+    "asset": "ai-project-os-v0.8.0.zip",
+    "sha256": null,
+    "deterministic": false,
+    "extracted_validation": "pending",
+    "evidence": "project-os/RELEASE_POLICY.md"
+  },
+  "rollback": {
+    "target": "v0.6.0",
+    "plan": "Install the prior immutable package on a branch while preserving project-specific memory.",
+    "authority": "Owner",
+    "verification": "Run strict validator, tests, safety gate, and project-specific UAT."
+  },
+  "known_limitations": [
+    "Example input is intentionally BLOCKED until real UAT, tests, safety Go, PR, and package evidence exist."
+  ],
+  "github": {
+    "branch": "codex/v0.8-train-b",
+    "pr_url": null,
+    "tag": null,
+    "release_url": null
+  }
+}

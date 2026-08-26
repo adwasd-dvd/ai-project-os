@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "installed_path": "project-os",
+  "source": {
+    "type": "github_release",
+    "repository": "example/ai-project-os",
+    "token_env": "GITHUB_TOKEN"
+  },
+  "allow_downgrade": false,
+  "as_of": "2026-08-25T12:00:00Z",
+  "apply_policy": {
+    "max_plan_age_minutes": 60,
+    "authorization_env": "AIPOS_OS_UPGRADE_APPROVED",
+    "branch_prefix": "codex/upgrade-"
+  }
+}

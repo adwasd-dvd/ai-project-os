@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## v0.8.0 - 2026-08-26
+
+Development Train B combines release/rollback control with safe OS self-upgrade.
+
+Added:
+
+- Traceability schema v2 with explicit equivalent Linear records, structured Feature/version UAT, and separate post-release state.
+- `RELEASE_CONTROL.md`, structured release inputs, and `tools/release_project.py` for deterministic readiness, release notes, feedback classification, and sanitized post-release receipts.
+- Executable `UPGRADE_POLICY.md` flow, reusable upgrade configs, and `tools/upgrade_project_os.py` for version discovery, three-way planning, guarded branch apply, idempotency, and hash verification.
+- Focused release and upgrade tests for evidence gates, conflicts, preservation, authorization, path confinement, downgrade, stale plans, recovery, and deterministic outputs.
+
+Human UAT passed on 2026-08-26 and the release was authorized by the Owner.
+
 ## v0.6.0 - 2026-08-25
 
 Development Train A combines scheduled Linear intake automation with change-impact and requirement-to-release traceability.

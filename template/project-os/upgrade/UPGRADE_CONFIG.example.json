@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "installed_path": "project-os",
+  "source": {
+    "type": "zip",
+    "path": "releases/ai-project-os-v0.8.0.zip"
+  },
+  "base": {
+    "type": "zip",
+    "path": "releases/ai-project-os-v0.6.0.zip"
+  },
+  "allow_downgrade": false,
+  "as_of": "2026-08-25T12:00:00Z",
+  "protected_paths": [],
+  "apply_policy": {
+    "max_plan_age_minutes": 60,
+    "authorization_env": "AIPOS_OS_UPGRADE_APPROVED",
+    "branch_prefix": "codex/upgrade-"
+  }
+}

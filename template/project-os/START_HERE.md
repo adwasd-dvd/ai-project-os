@@ -1,4 +1,4 @@
-# AI Project OS v0.6 - START_HERE
+# AI Project OS v0.8 - START_HERE
 
 这是一套可以直接放进本地项目仓库的 AI 项目操作系统。
 
@@ -41,6 +41,8 @@ Linear 默认使用 English + Chinese。
 - 云端 Codex / scheduled automation：只允许 Linear intake/follow-up 的 dry-run/advisory 设计；不自动修改本地代码。
 - `tools/linear_intake.py`：可执行的 manual/scheduled Linear intake 与受控幂等写入；scan/apply 分离。
 - `tools/trace_project.py`：change-impact 与 requirement-to-release 证据链验证。
+- `tools/release_project.py`：确定性 release readiness、release notes、反馈分类和发布后回执；不自动发布或回滚。
+- `tools/upgrade_project_os.py`：已安装/上游版本检查、三方升级计划、受控分支 apply 与 hash 验证。
 - Linear MCP：允许使用，但首次批量写入 Linear 必须人工确认。
 
 ## 怎么放到现有仓库
@@ -65,7 +67,7 @@ your-existing-repo/
 ```text
 请读取 project-os/START_HERE.md、project-os/SELF_CHECK.md、project-os/AGENTS.md、project-os/BOOTSTRAP.md、project-os/WHITEBOX_PROTOCOL.md、project-os/SECURITY_BOUNDARY.md 和 project-os/REPO_PUBLICATION_POLICY.md。
 
-请按 AI Project OS v0.6 工作。
+请按 AI Project OS v0.8 工作。
 
 先执行 Phase 0 Self-Check。
 如果是成熟、混乱或上下文不完整的项目，Phase 0 后先进入 Phase 0.5 Whitebox Discovery。
@@ -236,6 +238,29 @@ project-os/AUTOMATION_POLICY.md
 不要把自动测试 Pass 写成 UAT Pass。
 ```
 
+## Release 与 Self-Upgrade
+
+生成只读 release readiness 和 release notes：
+
+```text
+请读取 project-os/RELEASE_CONTROL.md 和 project-os/RELEASE_POLICY.md。
+使用 project-os/tools/release_project.py 检查当前版本。
+缺人工 UAT、安全 Go、安装包摘要或回滚计划时必须 BLOCKED。
+不要自动创建 tag、Release、Linear Done 或 UAT Pass。
+```
+
+检查上游版本并规划升级：
+
+```text
+请读取 project-os/UPGRADE_POLICY.md、project-os/SECURITY_BOUNDARY.md 和 project-os/AGENT_DOC_POLICY.md。
+先只读 inspect，再生成 installed/base/target 三方升级计划。
+保护 LOCAL_OVERRIDES、audit、Linear 映射、安全处置和 runtime/private context。
+没有 READY 计划、upgrade branch、CLI 授权和运行时授权时不得 apply。
+apply 后必须 verify、运行 validator/tests/safety，并等待项目人工 UAT。
+```
+
+发布和升级工具绝不自动改写 Git 历史、移动 tag、删除 Release、轮换凭证、回滚生产或批准人类验收。
+
 把模糊需求整理成 Linear 草案：
 
 ```text
@@ -302,7 +327,8 @@ project-os/AUTOMATION_POLICY.md
 16. `ROADMAP.md`：v0.3 到 v1.0 以及 1.0 后开源准备路线。
 17. `RELEASE_POLICY.md`：版本怎么推进，什么时候必须 UAT。
 18. `QUALITY_GATE.md`：什么叫 Ready、Done、Accepted。
-19. `UPGRADE_POLICY.md`：以后怎么升级 AI Project OS。
-20. `examples/FIRST_PROJECT.md`：从 Phase 0 到 Linear 和 UAT 的示例。
-21. `examples/WHITEBOX_EXAMPLE.md`：带 Unknown、Contradicted、证据和 Linear 交接的完整白盒示例。
-22. `examples/SAFETY_EXAMPLE.md`：四级分类、脱敏 finding 和发布判定示例。
+19. `RELEASE_CONTROL.md`：如何生成 release readiness、反馈分类、回滚边界和发布后回执。
+20. `UPGRADE_POLICY.md`：如何检查上游、生成三方计划、受控升级与验证。
+21. `examples/FIRST_PROJECT.md`：从 Phase 0 到 Linear 和 UAT 的示例。
+22. `examples/WHITEBOX_EXAMPLE.md`：带 Unknown、Contradicted、证据和 Linear 交接的完整白盒示例。
+23. `examples/SAFETY_EXAMPLE.md`：四级分类、脱敏 finding 和发布判定示例。

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "kind": "bug",
+  "original_scope_complete": true,
+  "blocks_current_uat": false,
+  "affects_released_version": false,
+  "requires_business_decision": false,
+  "later_version_feedback": true,
+  "severity": "medium"
+}
