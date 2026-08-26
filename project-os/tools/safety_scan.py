@@ -319,7 +319,18 @@ def looks_like_placeholder(value: str) -> bool:
         return True
     if any(marker in normalized for marker in PLACEHOLDER_MARKERS):
         return True
-    if normalized.startswith(("${", "$", "env.", "process.env", "os.environ")):
+    if normalized.startswith(
+        (
+            "${",
+            "$",
+            "env.",
+            "process.env",
+            "os.environ",
+            "context.env",
+            "ctx.env",
+            "import.meta.env",
+        )
+    ):
         return True
     if set(normalized) <= {"x", "*", "-", "_"}:
         return True

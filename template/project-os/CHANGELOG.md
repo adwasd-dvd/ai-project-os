@@ -11,6 +11,7 @@ In progress:
 - Evidence-backed contradiction, unknown, risk, Decision, impact, confidence, and next-verification routing.
 - Deterministic diagnosis, recovery roadmap, bilingual one-Project Linear dry-run package, proactive PM queues, and artifact receipt.
 - Representative messy-project tests and end-to-end internal-stable certification.
+- Real-project UAT fixes for Worker-context environment lookup classification and portable custom-output references.
 
 ## v0.8.0 - 2026-08-26
 

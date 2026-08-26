@@ -137,6 +137,28 @@ class RescueProjectTests(unittest.TestCase):
         self.assertEqual(verified.returncode, 0, verified.stdout + verified.stderr)
         self.assertIn("[PASS]", verified.stdout)
 
+    def test_custom_output_directory_keeps_artifact_references_portable(self) -> None:
+        custom_output = self.root / "project-os" / "runtime" / "custom-rescue"
+        result = self._run(
+            "plan",
+            "--input",
+            "project-os/rescue/RESCUE_INPUT.json",
+            "--output-dir",
+            "project-os/runtime/custom-rescue",
+            "--write",
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+        linear_import = (custom_output / "LINEAR_RESCUE_IMPORT.json").read_text(
+            encoding="utf-8"
+        )
+        roadmap = (custom_output / "RECOVERY_ROADMAP.md").read_text(encoding="utf-8")
+        self.assertIn("selected rescue output directory", linear_import)
+        self.assertIn("RESCUE_DIAGNOSIS.md", linear_import)
+        self.assertIn("selected rescue output directory", roadmap)
+        self.assertNotIn("project-os/rescue/RESCUE_DIAGNOSIS.md", linear_import)
+        self.assertNotIn("generated `project-os/rescue/` evidence", roadmap)
+
     def test_safety_block_is_routed_without_emitting_secret_value(self) -> None:
         actual_value = "-".join(["actual", "production", "credential", "928374"])
         self._write(".env", f"API_TOKEN={actual_value}\n")

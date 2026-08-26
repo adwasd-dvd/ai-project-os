@@ -66,6 +66,10 @@ class SafetyScanTests(unittest.TestCase):
                 "Use /Users/<user>/work or /home/.../work as examples.\n",
                 encoding="utf-8",
             )
+            (root / "runtime-config.js").write_text(
+                'const apiKey = context.env.GOOGLE_MAPS_API_KEY || "";\n',
+                encoding="utf-8",
+            )
 
             result = run_scan(root)
 

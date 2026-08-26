@@ -753,7 +753,8 @@ def build_linear_import(
         f"Product files / 产品文件: {product['coverage']['file_count']}\n\n"
         f"Git commit / Git 提交: `{repository['git'].get('commit') or '-'}`\n\n"
         f"Open findings / 未解决发现: {sum(1 for item in findings if not item['resolved'])}\n\n"
-        "Detailed evidence / 详细证据: `project-os/rescue/RESCUE_DIAGNOSIS.md`, "
+        "Detailed evidence in the selected rescue output directory / "
+        "所选救援输出目录中的详细证据: `RESCUE_DIAGNOSIS.md`, "
         "`RECOVERY_ROADMAP.md`, and `PM_NEXT_ACTION.md`."
     )
     return {
@@ -870,7 +871,7 @@ def render_roadmap(evidence: dict[str, Any]) -> str:
         [
             "## Rollback / 回滚",
             "",
-            "Before product changes, abandon the rescue branch or remove generated `project-os/rescue/` evidence. After controlled changes begin, use project-specific rollback evidence and preserve project memory. The rescue tool never rewrites Git history or rolls production back. / 产品改动前可放弃救援分支或删除生成的 `project-os/rescue/` 证据。受控改动开始后，使用项目自己的回滚证据并保留项目记忆。救援工具绝不改写 Git 历史或自动回滚生产。",
+            "Before product changes, abandon the rescue branch or remove evidence from the selected rescue output directory. After controlled changes begin, use project-specific rollback evidence and preserve project memory. The rescue tool never rewrites Git history or rolls production back. / 产品改动前可放弃救援分支或删除所选救援输出目录中的证据。受控改动开始后，使用项目自己的回滚证据并保留项目记忆。救援工具绝不改写 Git 历史或自动回滚生产。",
             "",
         ]
     )
