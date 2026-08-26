@@ -41,7 +41,7 @@ Open the target project in Codex, start a conversation, and send:
 ```text
 请读取 project-os/START_HERE.md，并按 AI Project OS 工作。
 先检查当前项目状态。
-如果这是成熟或混乱项目，先执行 Phase 0.5 Whitebox Discovery 和 Phase 0.75 Safety Classification。
+如果这是成熟或混乱项目，读取 project-os/RESCUE_PROTOCOL.md，先运行 rescue inspect，再生成本地 rescue plan。
 Linear 默认使用 English + Chinese。
 只问真正阻塞的问题；其余按安全默认值继续。
 先告诉我发现、风险和下一步，然后开始执行。
@@ -62,8 +62,18 @@ New project / 新项目：
 Messy existing project / 混乱旧项目：
 
 ```text
-读取 project-os/START_HERE.md。先对白盒、安全边界和项目记忆做完整接管检查，再给我 baseline 草案。
+读取 project-os/START_HERE.md 和 project-os/RESCUE_PROTOCOL.md。运行 v1.0 rescue inspect；按安全默认值准备输入并生成本地 rescue plan。告诉我当前门禁、人类队列、Codex 队列、阻塞和下一步，然后继续所有不需要人工决定的安全工作。
 ```
+
+Direct read-only command / 直接只读命令：
+
+```bash
+python3 project-os/tools/rescue_project.py --root . inspect --summary
+```
+
+The rescue workflow excludes the installed `project-os/` from product evidence and generates only local evidence until a separate human approval authorizes any external write.
+
+救援流程会从产品证据中排除已安装的 `project-os/`，并且在另行人工批准外部写入前只生成本地证据。
 
 Continue from Linear / 从 Linear 继续：
 

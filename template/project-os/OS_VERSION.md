@@ -2,15 +2,16 @@
 
 ```text
 Product: AI Project OS
-Installed OS Version: v0.8.0
+Installed OS Version: v1.0.0
 Installed Date: 2026-08-18
 Local Customizations: This repo manages the AI Project OS source package itself.
-Last Upgrade: 2026-08-26 to v0.8.0
+Last Upgrade: 2026-08-26 to v1.0.0
+Source Development Target: Post-v1.0 scope pending
 ```
 
 ## Compatibility
 
-AI Project OS v0.8.0 expects:
+AI Project OS v1.0.0 expects:
 
 - Local Codex as the development executor.
 - Linear as the project management system.
@@ -33,6 +34,7 @@ AI Project OS v0.8.0 expects:
 - Formal features maintain requirement-to-release traceability, with automated tests and human UAT kept separate.
 - Release readiness, human UAT, GitHub Release, and post-release verification remain separate evidence states.
 - OS upgrades use installed/base/target planning, protected-path preservation, branch-only apply, dual authorization, hash verification, and project human UAT.
+- Mature-project rescue uses one inspect/plan/verify workflow with sanitized evidence, deterministic outputs, and explicit human Decision gates.
 
 ## Upgrade Rule
 

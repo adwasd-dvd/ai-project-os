@@ -763,3 +763,94 @@ Linear status update: fcc2a3c0-70eb-4002-87e5-c4d0a44d3bed
 The canonical Project was intentionally not completed. Version completion is recorded on the v0.8.0 Milestone and release evidence; the same Project now continues with the v1.0.0 Milestone.
 
 唯一长期 Project 不会被完成。v0.8.0 的完成状态记录在 Milestone 和发布证据中；同一个 Project 继续推进 v1.0.0 Milestone。
+
+## v1.0.0 Internal Stable Intake - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Equivalent Requirement Record: v1.0 Internal Stable Feature Register / v1.0 内部稳定功能清单
+Document ID: a5f2397c-9340-4034-86bf-1fe2d42f472c
+Feature Scope: AIPOS-052 through AIPOS-059
+Issue creates: 0
+Reason: free workspace non-archived issue capacity remains exhausted
+Development branch: codex/v1.0-internal-stable
+Linear status update: c5e1bc0e-a11c-4188-bba7-547f6dbb6e83
+```
+
+The Feature Register contains bilingual Action Steps, Expected Result, safety boundaries, and the v1.0 success standard. It belongs to the existing `v1.0.0` Milestone in the one long-lived Project. No per-version Project or synthetic issue ID was created.
+
+Feature Register 包含双语执行动作、期待结果、安全边界和 v1.0 成功标准。它属于唯一长期 Project 中已有的 `v1.0.0` Milestone；未创建按版本 Project，也未伪造 Issue ID。
+
+## v1.0.0 Candidate UAT Handoff - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Project State: In Progress
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Feature Scope: AIPOS-052 through AIPOS-059
+Feature State: UAT Pending
+Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
+Linear Feature Register: a5f2397c-9340-4034-86bf-1fe2d42f472c
+Linear status update: 676ec315-ac91-4bdb-8c7c-e549e02f24ae
+Issue creates: 0
+Project creates: 0
+Release writes: 0
+```
+
+The existing Feature Register, Milestone, Project summary/current gate, and bilingual Project status update now point to the same v1.0 candidate and consolidated Owner UAT. The Project and Milestone remain active; no feature was marked accepted, released, or Done by automation.
+
+现有 Feature Register、Milestone、Project 摘要/当前门禁和双语 Project 状态更新现在都指向同一个 v1.0 候选及统一 Owner UAT。Project 和 Milestone 保持活跃；自动化没有把任何功能标记为 accepted、released 或 Done。
+
+## v1.0.0 Real-Project UAT Correction - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Real UAT target: 展会宝 TradeShow Copilot
+OS defects found: 2
+OS defects fixed: 2
+Fix commit: 544cd32
+Corrected candidate SHA-256: e86be5ebaa9670d4a41717132b2754e5d49302fac319cc2094d8b772e21f2f2e
+Source/extracted tests: 73/73
+Final real-project gate: NEEDS_HUMAN_DECISION
+Final real-project Safety Block: 0
+Latest Linear status update: 86556cc0-6c6e-4c0d-821e-8b300c5e3fb9
+Issue creates: 0
+Project creates: 0
+Release writes: 0
+```
+
+The corrected candidate remains UAT Pending. The real target project's Decisions and suggested work were not imported into this AI Project OS Project; only sanitized v1.0 product-validation facts were recorded.
+
+修正候选继续保持 UAT Pending。真实目标项目的 Decision 和建议工作没有导入 AI Project OS Project；这里只记录脱敏后的 v1.0 产品验证事实。
+
+## v1.0.0 Owner UAT Pass Handoff - 2026-08-26
+
+```text
+Canonical Project: AI Project OS
+Project ID: 2a8e9515-50be-40fe-981b-8cd29690d513
+Project State: In Progress
+Target Milestone: v1.0.0
+Milestone ID: 5c401d12-22b1-45bd-959a-cf8c58116f45
+Feature Scope: AIPOS-052 through AIPOS-059
+Feature State: Accepted
+Owner UAT: Pass
+Publication Authorization: Yes
+Accepted package commit: 817cae8
+Accepted package SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
+Latest Linear status update: ade71b54-fc15-4cbb-8482-66dccea5cf82
+Issue creates: 0
+Project creates: 0
+Release writes: 0
+```
+
+The existing Feature Register, v1.0.0 Milestone, canonical Project summary/current gate, and bilingual status update now record Owner UAT Pass and the authorized release transaction. The long-lived Project remains In Progress; remote release facts will be added only after GitHub verification succeeds.
+
+现有 Feature Register、v1.0.0 Milestone、唯一长期 Project 摘要/当前门禁和双语状态更新现已记录 Owner UAT 通过与获授权发布事务。长期 Project 继续保持 In Progress；只有 GitHub 核验成功后才会补记远端发布事实。

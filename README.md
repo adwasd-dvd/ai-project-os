@@ -73,7 +73,7 @@ The distributable package is created from `template/project-os/`.
 Recommended artifact name:
 
 ```text
-ai-project-os-v0.8.0.zip
+ai-project-os-v1.0.0.zip
 ```
 
 Generated zip files stay out of Git history. Versioned packages are published as GitHub Release assets so other projects can install an exact OS version without copying this repository's dogfood audit history.
@@ -82,43 +82,42 @@ Release packages are built from committed template content with fixed archive me
 
 ```bash
 python3 project-os/tools/build_release.py --root . \
-  --output releases/ai-project-os-v0.8.0.zip
+  --output releases/ai-project-os-v1.0.0.zip
 ```
 
 Repeated builds from the same commit must be byte-identical and produce the same SHA-256.
 
 ## Use In Another Project
 
-1. Download `ai-project-os-v0.8.0.zip` from the [v0.8.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v0.8.0).
+1. Download `ai-project-os-v1.0.0.zip` from the [v1.0.0 GitHub Release](https://github.com/adwasd-dvd/ai-project-os/releases/tag/v1.0.0).
 2. Extract the top-level `project-os/` directory into the target repository root.
 3. Open Codex in that repository and ask it to read `project-os/START_HERE.md` before doing project work.
 
 Use a tagged release instead of copying files from a development branch. This keeps each target project pinned to a known OS version and makes later upgrades auditable.
 
-## Latest Stable: v0.8.0
+## Latest Stable: v1.0.0
 
-v0.8 adds explicit release/recovery control and safe OS self-upgrade on top of the v0.6 Linear automation and traceability foundation.
+v1.0 turns the existing whitebox, safety, Linear, traceability, release, and upgrade controls into one guided mature-project rescue workflow.
 
 Core outputs:
 
-- Deterministic release readiness, notes, feedback classification, rollback guidance, and post-release verification.
-- Installed/upstream OS version discovery and deterministic three-way upgrade planning.
-- Guarded branch-based upgrade apply with protected project-memory preservation.
-- Dry-run-first Linear intake, status + assignee routing, and idempotent authorized writes.
-- Seven-area change-impact gates and requirement-to-release traceability.
+- One inspect/plan/verify entry point for taking over mature or messy repositories.
+- Sanitized evidence fusion across code, dependencies, documents, settings, tests, CI, Git, safety, and project memory.
+- Explicit contradiction, unknown, risk, Decision, impact, confidence, and human-verification routing.
+- Dependency-aware recovery roadmap, bilingual one-Project Linear package, and proactive Human/Codex/Review queues.
+- Deterministic release, rollback, self-upgrade, traceability, and post-release controls from earlier versions.
 
-v0.8.0 passed human UAT on 2026-08-26. Use the tagged GitHub Release for installations in other projects.
+v1.0.0 passed human UAT on 2026-08-26. Use the tagged GitHub Release for installations in other projects.
 
-## Next Planned: v1.0.0 Internal Stable
+## Next Planned: Post-v1.0 Pilot Hardening
 
-v1.0 targets the internal stable rescue standard for mature, messy projects.
+The next scope will be selected from real-project pilot feedback without changing the v1.0.0 installation contract.
 
 Planned focus:
 
-- end-to-end project rescue from black-box discovery through managed release;
-- proactive project-manager guidance for non-engineering owners;
-- contradiction, security-boundary, and documentation-gap handling;
-- one canonical Linear Project with version Milestones for AI Project OS itself.
+- additional diverse-project rescue certification;
+- targeted v1.0.x fixes for confirmed regressions;
+- later cross-agent and open-source readiness work after the internal workflow is proven.
 
 ## v0.3 Handoff Rule
 

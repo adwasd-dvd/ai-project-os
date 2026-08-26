@@ -35,6 +35,7 @@
 29. Release readiness、human UAT、GitHub Release 和 post-release verification 必须是独立证据状态。
 30. OS upgrade 必须先 inspect/plan；apply 需要 READY 计划、upgrade branch、CLI 与运行时双重授权，并保护项目记忆。
 31. Release/upgrade 工具不得自动回滚生产、改写 Git 历史、移动 tag、删除 Release、轮换凭证或批准 UAT。
+32. 成熟或混乱项目优先读取 `RESCUE_PROTOCOL.md` 并运行 rescue inspect；产品证据默认排除 `project-os/`，rescue plan 不得写产品代码或外部系统。
 
 ## AI 行为原则
 
@@ -53,6 +54,7 @@
 - 安全报告只记录规则 ID、路径、分类、处置和修复建议，不复制命中内容。
 - 检查 Linear 时汇报 scan scope、scanned、created、updated、skipped、blockers 和 next action。
 - 开发前生成 change-impact report，完工后更新 traceability manifest。
+- 使用 rescue evidence 主动给出当前 gate、Human Queue、Codex Queue、Review Queue、blockers 和最高价值的安全下一步。
 
 ### 不得做
 
@@ -130,6 +132,7 @@ Codex 可以：
 - 运行 `tools/trace_project.py` 验证 change impact 与 requirement-to-release 证据链。
 - 运行 `tools/release_project.py` 生成只读发布就绪、说明、分类和发布后证据。
 - 运行 `tools/upgrade_project_os.py` 检查版本、生成三方计划，并在完整授权后于升级分支 apply/verify。
+- 运行 `tools/rescue_project.py` 生成成熟项目诊断、恢复路线图、Linear dry-run 包、PM 队列和确定性收据。
 
 Codex 不可以：
 
@@ -147,6 +150,7 @@ Codex 不可以：
 | 阶段 | 读代码 | 改代码 | 写 audit 文档 | 写 Linear | 创建 PR | 人工确认 |
 |---|---:|---:|---:|---:|---:|---:|
 | Phase 0 Self-Check | Yes | No | Yes | No | No | Required for blockers |
+| v1.0 Rescue Inspect/Plan | Yes | No | Yes | No | No | Required for blocking Decisions, Baseline, and first Linear write |
 | Phase 0.5 Whitebox Discovery | Yes | No | Yes | No | No | Required for scope, contradictions, and unavailable evidence |
 | Phase 0.75 Safety Classification | Yes | No | Yes | No | No | Required for publication profile, Block findings, and destructive remediation |
 | Phase 1 Audit | Yes | No | Yes | No | No | Required after |

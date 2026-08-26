@@ -239,6 +239,17 @@ v1.0 should be stable for company-internal use. It does not need to be public op
 
 v1.0 应该先成为公司内部稳定版，不要求立刻公开开源。
 
+Deliverables / 交付：
+
+- AIPOS-052: one guided rescue inspect/plan/verify entry point / 单一救援 inspect/plan/verify 入口。
+- AIPOS-053: sanitized evidence fusion across product scope, whitebox, safety, Git, dependencies, docs, tests, settings/data, and project memory / 融合产品范围、白盒、安全、Git、依赖、文档、测试、设置/数据和项目记忆的脱敏证据。
+- AIPOS-054: explicit contradiction, unknown, risk, Decision, confidence, impact, and next-verification routing / 明确的矛盾、未知、风险、Decision、置信度、影响和下一步验证路由。
+- AIPOS-055: dependency-aware recovery roadmap, baseline package, human gates, completion evidence, and rollback boundary / 考虑依赖的恢复路线图、Baseline 包、人工门禁、完成证据和回滚边界。
+- AIPOS-056: bilingual one-Project/one-Milestone Linear dry-run package with stable keys, Action Steps, and Expected Result / 双语单 Project/单 Milestone Linear dry-run 包，包含稳定键、执行动作和期待结果。
+- AIPOS-057: proactive PM gate, Human/Codex/Review queues, blockers, stale evidence, and highest-value safe next action / 积极型 PM 门禁、人类/Codex/Review 队列、阻塞、过期证据和最高价值安全下一步。
+- AIPOS-058: deterministic representative messy-project certification with safety and contradiction fixtures / 具有安全和矛盾 fixture 的确定性代表性混乱项目认证。
+- AIPOS-059: source/package/real-project dogfood, consolidated Owner UAT, release, rollback, and post-release evidence / 源码/安装包/真实项目 dogfood、统一 Owner UAT、发布、回滚和发布后证据。
+
 ## v1.1-v1.3 - Open-source Readiness
 
 Goal:

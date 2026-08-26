@@ -90,3 +90,24 @@ The free Linear workspace reached its 250 non-archived issue limit on 2026-08-25
 | AIPOS-049 | Train B Feature Register | UPGRADE / PLANNING | Upgrade planner, migration order, and preservation conflicts | Released | v0.8.0 | three-way hash plan and conflict report | identical/local/upstream/both-modified tests pass | Closed by v0.8.0 UAT Pass and Release | High |
 | AIPOS-050 | Train B Feature Register | UPGRADE / APPLY | Guarded branch-based OS migration and rollback | Released | v0.8.0 | authorized apply/verify flow and receipt | authorization, path, stale-plan, idempotency tests pass | Closed by v0.8.0 UAT Pass and Release | High |
 | AIPOS-051 | Train B Feature Register | QUALITY / PACKAGE / RELEASE | Train B dogfood, package validation, and consolidated UAT | Released | v0.8.0 | dogfood report, Release package, PR #7, UAT, post-release receipt | source and extracted-package 59/59 suites pass | Closed by v0.8.0 UAT Pass, Release, and post-release PASS | High |
+
+## Internal Stable Rescue - v1.0.0
+
+Canonical Linear Project: `2a8e9515-50be-40fe-981b-8cd29690d513`
+
+Target Milestone: `5c401d12-22b1-45bd-959a-cf8c58116f45`
+
+Equivalent requirement record: `a5f2397c-9340-4034-86bf-1fe2d42f472c`
+
+The free workspace remains at its non-archived issue limit. AIPOS-052 through AIPOS-059 therefore use the attached bilingual v1.0 Feature Register; no synthetic issue IDs are claimed.
+
+| Feature ID | Linear Record | Module | Title | Current Status | Target Version | Planned Evidence | Planned Tests | Human Acceptance Gap | Confidence |
+|---|---|---|---|---|---|---|---|---|---|
+| AIPOS-052 | v1.0 Feature Register | RESCUE / ORCHESTRATION | Guided rescue inspect/plan/verify entry point | Accepted | v1.0.0 | `RESCUE_PROTOCOL.md`, `tools/rescue_project.py` | read-only, writes, freshness, path-boundary tests pass | Owner accepted one-command takeover | High |
+| AIPOS-053 | v1.0 Feature Register | RESCUE / EVIDENCE | Sanitized whitebox, safety, Git, dependency, docs, tests, and memory evidence fusion | Accepted | v1.0.0 | `RESCUE_EVIDENCE.json`, OS-self exclusion | exclusion, secret, deterministic evidence tests pass | Owner accepted diagnosis evidence | High |
+| AIPOS-054 | v1.0 Feature Register | RESCUE / DIAGNOSIS | Contradiction, unknown, risk, and Decision routing | Accepted | v1.0.0 | structured findings and `RESCUE_DIAGNOSIS.md` | declared contradiction and safety routing tests pass | Owner accepted human Decision routing | High |
+| AIPOS-055 | v1.0 Feature Register | RESCUE / ROADMAP | Dependency-aware recovery roadmap and Baseline package | Accepted | v1.0.0 | `RECOVERY_ROADMAP.md` | phase and gate derivation tests pass | Owner accepted recovery order | High |
+| AIPOS-056 | v1.0 Feature Register | RESCUE / LINEAR | One-Project/one-Milestone bilingual Linear dry-run package | Accepted | v1.0.0 | `LINEAR_RESCUE_IMPORT.json` | bilingual fields, stable keys, zero-write tests pass | Live writes remain separately authorized | High |
+| AIPOS-057 | v1.0 Feature Register | RESCUE / PM | Proactive gate, queues, blockers, and highest-value safe next action | Accepted | v1.0.0 | `PM_NEXT_ACTION.md` | gate and queue tests pass | Owner accepted proactive guidance | High |
+| AIPOS-058 | v1.0 Feature Register | QUALITY / DOGFOOD | Representative messy-project rescue certification | Accepted | v1.0.0 | `examples/RESCUE_EXAMPLE.md`, dogfood report | repeated full rescue fixture passes | Owner accepted rescue outcome | High |
+| AIPOS-059 | v1.0 Feature Register | QUALITY / PACKAGE / RELEASE | v1.0 internal-stable package, real-project dogfood, and consolidated UAT | Accepted | v1.0.0 | deterministic candidate, source-repository dogfood, real mature-project UAT, Draft PR, release/rollback evidence, `UAT_v1.0.0.md` | source and extracted 73/73 suites pass; real-project rerun passes | Owner passed UAT and authorized release | High |

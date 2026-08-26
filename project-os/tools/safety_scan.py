@@ -185,6 +185,22 @@ def should_skip(relative: Path) -> bool:
     return any(part.lower() in SKIP_DIRS for part in relative.parts[:-1])
 
 
+def normalize_exclude_prefixes(values: Iterable[str]) -> tuple[str, ...]:
+    prefixes: set[str] = set()
+    for raw in values:
+        value = str(raw).strip().replace("\\", "/").strip("/")
+        path = Path(value)
+        if not value or value == "." or path.is_absolute() or ".." in path.parts:
+            raise ScanError(f"Invalid exclusion prefix: {raw!r}")
+        prefixes.add(path.as_posix())
+    return tuple(sorted(prefixes))
+
+
+def excluded_by_prefix(relative: Path, prefixes: Iterable[str]) -> bool:
+    value = relative.as_posix()
+    return any(value == prefix or value.startswith(prefix + "/") for prefix in prefixes)
+
+
 def filesystem_paths(root: Path) -> Iterable[str]:
     for current, dirs, files in os.walk(root, followlinks=False):
         dirs[:] = sorted(
@@ -196,8 +212,12 @@ def filesystem_paths(root: Path) -> Iterable[str]:
 
 
 def list_scope_files(
-    root: Path, scope: str, output_relative: Path, max_files: int
-) -> tuple[list[Path], str, int, int]:
+    root: Path,
+    scope: str,
+    output_relative: Path,
+    max_files: int,
+    exclude_prefixes: tuple[str, ...] = (),
+) -> tuple[list[Path], str, int, int, int]:
     is_repo = is_git_repository(root)
     source = "filesystem fallback"
 
@@ -222,11 +242,15 @@ def list_scope_files(
     files: list[Path] = []
     symlinks_skipped = 0
     generated_skipped = 0
+    requested_skipped = 0
     for raw in sorted(raw_paths):
         relative = Path(raw)
         if not raw or relative.is_absolute() or ".." in relative.parts:
             continue
         if relative == output_relative:
+            continue
+        if excluded_by_prefix(relative, exclude_prefixes):
+            requested_skipped += 1
             continue
         if should_skip(relative):
             generated_skipped += 1
@@ -243,7 +267,7 @@ def list_scope_files(
                 f"File limit exceeded ({max_files}). Narrow the repository or raise --max-files."
             )
 
-    return files, source, symlinks_skipped, generated_skipped
+    return files, source, symlinks_skipped, generated_skipped, requested_skipped
 
 
 def is_env_template(name: str) -> bool:
@@ -295,7 +319,18 @@ def looks_like_placeholder(value: str) -> bool:
         return True
     if any(marker in normalized for marker in PLACEHOLDER_MARKERS):
         return True
-    if normalized.startswith(("${", "$", "env.", "process.env", "os.environ")):
+    if normalized.startswith(
+        (
+            "${",
+            "$",
+            "env.",
+            "process.env",
+            "os.environ",
+            "context.env",
+            "ctx.env",
+            "import.meta.env",
+        )
+    ):
         return True
     if set(normalized) <= {"x", "*", "-", "_"}:
         return True
@@ -420,9 +455,11 @@ def scan_repository(
     output_relative: Path,
     max_files: int,
     max_bytes: int,
+    exclude_prefixes: Iterable[str] = (),
 ) -> dict[str, Any]:
-    files, source, symlinks_skipped, generated_skipped = list_scope_files(
-        root, scope, output_relative, max_files
+    normalized_exclusions = normalize_exclude_prefixes(exclude_prefixes)
+    files, source, symlinks_skipped, generated_skipped, requested_skipped = list_scope_files(
+        root, scope, output_relative, max_files, normalized_exclusions
     )
     tracked = git_paths(root, "ls-files", "-z") if is_git_repository(root) else set()
     staged = (
@@ -496,7 +533,9 @@ def scan_repository(
             **skipped,
             "symlinks": symlinks_skipped,
             "generated_or_vendor": generated_skipped,
+            "requested_prefixes": requested_skipped,
         },
+        "excluded_prefixes": list(normalized_exclusions),
     }
 
 
@@ -570,6 +609,12 @@ def main() -> int:
     )
     parser.add_argument("--max-files", type=int, default=50_000)
     parser.add_argument("--max-bytes", type=int, default=MAX_FILE_BYTES)
+    parser.add_argument(
+        "--exclude-prefix",
+        action="append",
+        default=[],
+        help="Repository-relative path prefix to exclude; repeat as needed.",
+    )
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
@@ -589,6 +634,7 @@ def main() -> int:
             output_relative,
             args.max_files,
             args.max_bytes,
+            args.exclude_prefix,
         )
     except ScanError as exc:
         print(f"Safety scan stopped: {exc}", file=sys.stderr)

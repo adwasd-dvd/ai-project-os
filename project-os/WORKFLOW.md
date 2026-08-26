@@ -24,6 +24,7 @@ Idea
 
 ```text
 Phase 0 Self-Check
+-> v1.0 Rescue Inspect + Evidence Plan
 -> Phase 0.5 Whitebox Discovery
 -> Phase 0.75 Safety Classification
 -> Phase 1 Audit
@@ -32,6 +33,8 @@ Phase 0 Self-Check
 -> Release Planning
 -> Development
 ```
+
+`RESCUE_PROTOCOL.md` 和 `tools/rescue_project.py` 是该序列的统一编排入口。它们生成诊断、恢复路线图、Linear dry-run 导入包和 PM 下一步，但不会运行产品代码、写外部系统或替代人工 Baseline/UAT/Release。
 
 Phase 0.5 必须读取 `WHITEBOX_PROTOCOL.md`，生成 `discovery/` 下的白盒报告。
 
