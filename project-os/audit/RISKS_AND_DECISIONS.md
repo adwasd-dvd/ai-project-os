@@ -36,6 +36,7 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 | RISK-UPG-002 | A stale or untrusted upgrade plan writes unexpected files | Repository integrity or private context may be damaged | Plan and source can change between inspect and apply | Source/target hashes, plan freshness, path confinement, explicit CLI/runtime authorization, idempotent receipt | Codex | High |
 | RISK-UPG-003 | Upstream metadata or network state is unavailable or misleading | Wrong version comparison or unsafe downgrade | GitHub/local package is an external evidence source | Validate semantic versions and source evidence; fail closed on ambiguity; require explicit downgrade policy | Codex | Medium |
 | RISK-LIN-001 | Free Linear issue limit prevents one-issue-per-feature tracking | Individual queue assignment and issue lifecycle are unavailable | Workspace rejected AIPOS-045..051 creation at 250 non-archived issues | Use a Project Document as an explicit equivalent record; never invent IDs; idempotently create issues after capacity is available | Owner / Codex | Medium |
+| RISK-LIN-002 | A legacy version-prefix scan includes completed historical Projects or truncates the canonical Project | Intake can become noisy or fail closed before reaching current work | DEC-010 consolidated 53 issues into one Project while the v0.6 runner supports exact Project scope and a bounded maximum | Configure exact Project AI Project OS, empty project_name_prefixes, and max_issues 250; use Milestone plus Target Version for release scope | Owner / Codex | Medium |
 
 ## Security / Privacy / Compliance Risks
 
@@ -60,3 +61,4 @@ The project is low technical risk because it is Markdown-only. The main risks ar
 |---|---|---|---|---|
 | DEC-002 | Use private GitHub repo `adwasd-dvd/ai-project-os` | Codex based on user request | 2026-08-18 | GitHub remote created and verified private |
 | DEC-009 | Use three large development trains; Train A combines former v0.6 + v0.7 as formal v0.6.0 with one consolidated UAT | Owner | 2026-08-24 | DVD-218; enables batch implementation while preserving Feature, safety, traceability, UAT, and release gates |
+| DEC-010 | Use one long-lived Linear Project named AI Project OS; represent releases as Milestones and never create per-version Projects by default | Owner | 2026-08-25 | Consolidated 53 issues into one active Project; six old Projects are empty Completed history pointers; future work uses one Project plus one target-version Milestone |
