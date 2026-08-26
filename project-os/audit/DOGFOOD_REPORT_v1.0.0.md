@@ -221,12 +221,12 @@ Extracted strict validator: 0 failures, 0 warnings
 Extracted automated tests: 73/73 pass
 ```
 
-The review surface is Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9). Owner UAT passed and release was authorized on 2026-08-26.
+The review surface was PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9). Owner UAT passed and v1.0.0 was released on 2026-08-26. The uploaded asset was re-downloaded and verified byte-identical with SHA-256 `6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99`.
 
-审查入口为 Draft PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9)。Owner 已于 2026-08-26 通过 UAT 并批准发布。
+审查入口为 PR [#9](https://github.com/adwasd-dvd/ai-project-os/pull/9)。Owner 已于 2026-08-26 通过 UAT，v1.0.0 随后发布；上传资产已重新下载并验证为逐字节一致。
 
 ## Current Conclusion / 当前结论
 
-The v1.0 rescue engine now has automated and real-mature-project evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, and extracted-package certification. Real UAT found and closed two OS defects without changing the target product. Consolidated Owner UAT passed and release was authorized under AIPOS-059.
+The v1.0 rescue engine has automated and real-mature-project evidence for orchestration, sanitization, contradiction/safety routing, resolutions, recovery planning, one-Project Linear drafts, proactive PM queues, deterministic reruns, and extracted-package certification. Real UAT found and closed two OS defects without changing the target product. Consolidated Owner UAT, release, remote verification, Linear closeout, and post-release verification passed under AIPOS-059.
 
-v1.0 救援引擎现在拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑和解压包认证的自动及真实成熟项目证据。真实 UAT 在不修改目标产品的情况下发现并关闭两个 OS 缺陷。Owner 已在 AIPOS-059 下通过统一 UAT 并批准发布。
+v1.0 救援引擎拥有编排、脱敏、矛盾/安全路由、解决记录、恢复计划、单 Project Linear 草案、积极型 PM 队列、确定性重跑和解压包认证的自动及真实成熟项目证据。真实 UAT 在不修改目标产品的情况下发现并关闭两个 OS 缺陷；AIPOS-059 的统一 Owner UAT、发布、远端核验、Linear 关账与发布后验证均已通过。

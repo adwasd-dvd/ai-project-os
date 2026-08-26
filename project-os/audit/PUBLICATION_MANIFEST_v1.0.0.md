@@ -15,7 +15,8 @@ Repository / Channel: current private GitHub repository + GitHub Release
 Repository Visibility: PRIVATE; verified during candidate preparation
 Initial Functional Candidate Commit: c6317fa
 Real-Project UAT Fix Commit: 544cd32
-Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
+Merged PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
+Merge Commit: 48a0c3a12154d5c1aeee1c12d0c241b6d5ae9bfc
 Release Asset: ai-project-os-v1.0.0.zip
 Human Approver: dvdTeacher / Owner
 Decision: Go - Owner UAT passed and publication is authorized
@@ -36,7 +37,7 @@ Rollback Location: immutable v0.8.0 GitHub tag and Release.
 
 | Artifact / Path | Classification | Destination | Included? | Notes |
 |---|---|---|---|---|
-| Root README and stable-release links | Public Safe | Current private GitHub source | Yes | Switch to v1.0.0 in the authorized release transaction |
+| Root README and stable-release links | Public Safe | Current private GitHub source | Yes | v1.0.0 is latest stable |
 | `template/project-os/` | Public Safe | GitHub source + Release zip | Yes | Standalone distributable |
 | `project-os/` generic policies/tools | Team Shared | GitHub source | Yes | Dogfood installation |
 | `project-os/audit/` v1.0 evidence | Private Repo | Current private GitHub source | Yes | Sanitized summaries and hashes only |
@@ -47,7 +48,7 @@ Rollback Location: immutable v0.8.0 GitHub tag and Release.
 
 ```text
 Change Impact: READY
-Traceability: candidate / accepted / PASS
+Traceability: released / post-release PASS
 Source: strict validator clean; 73/73 tests pass
 Messy-Project Fixture: representative combined certification passes
 Real Repository Dogfood: deterministic; verify PASS; product/external writes 0
@@ -56,10 +57,13 @@ Package: two builds byte-identical; extracted validator clean; 73/73 tests pass
 Accepted Package Commit: 817cae8
 Accepted Package SHA-256: 6dcec2eae38af467ec68062a5e18be1171152af558578b03323f7a5be1cfdd99
 Human UAT: Pass; accepted by dvdTeacher / Owner on 2026-08-26
-GitHub Draft PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
+GitHub Merged PR: https://github.com/adwasd-dvd/ai-project-os/pull/9
+GitHub Release: https://github.com/adwasd-dvd/ai-project-os/releases/tag/v1.0.0
+Remote Asset Verification: 275400 bytes; byte-identical; SHA-256 matches
 Linear UAT Handoff: Project update 676ec315-ac91-4bdb-8c7c-e549e02f24ae
 Linear Real-Project UAT Update: Project update 86556cc0-6c6e-4c0d-821e-8b300c5e3fb9
 Linear Owner UAT Pass Update: Project update ade71b54-fc15-4cbb-8482-66dccea5cf82
+Linear Release Closeout Update: Project update dfa0aa13-f7b9-46b6-b4ac-cb18e1dfcfb3
 ```
 
 ## Go / Review / Block
@@ -80,6 +84,6 @@ Owner 已明确说 `UAT 通过，允许发布 v1.0.0`，并再次确认 `好的 
 
 ## Publication Result / 发布结果
 
-Authorized but not yet published. Draft PR #9 is ready to leave Draft; v0.8.0 remains the remote stable release until the transaction completes.
+Published and verified. PR #9 merged at `48a0c3a`; tag `v1.0.0` and the non-draft, non-prerelease GitHub Release are published. The remote asset is byte-identical to the accepted local package and all SHA-256 evidence matches. Post-release verification is PASS.
 
-已授权但尚未发布。Draft PR #9 可以离开 Draft；在发布事务完成前，远端 latest stable 仍为 v0.8.0。
+已发布并核验。PR #9 已合并到 `48a0c3a`；`v1.0.0` tag 与非草稿、非预发布 GitHub Release 已发布。远端资产与已验收本地安装包逐字节一致，全部 SHA-256 证据一致；发布后验证为 PASS。

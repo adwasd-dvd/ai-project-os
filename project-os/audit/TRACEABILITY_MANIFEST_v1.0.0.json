@@ -2,20 +2,20 @@
   "schema_version": 2,
   "release": {
     "version": "v1.0.0",
-    "status": "candidate",
+    "status": "released",
     "uat_status": "pass",
     "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1001", "UAT-1002", "UAT-1003", "UAT-1004", "UAT-1005", "UAT-1006", "UAT-1007", "UAT-1008"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted for the v1.0.0 internal-stable release"},
-    "post_release": {"status": "pending"},
+    "post_release": {"status": "pass", "evidence": "project-os/audit/POST_RELEASE_RECEIPT_v1.0.0.md", "checks": ["TAG-COMMIT", "REMOTE-ASSET", "ARCHIVE-INTEGRITY", "SOURCE-VERIFICATION", "EXTRACTED-VERIFICATION", "SAFETY-GATE", "RELEASE-VISIBILITY", "LINEAR-CLOSEOUT"]},
     "branch": "codex/v1.0-internal-stable",
     "pr_url": "https://github.com/adwasd-dvd/ai-project-os/pull/9",
-    "tag": null,
-    "release_url": null
+    "tag": "v1.0.0",
+    "release_url": "https://github.com/adwasd-dvd/ai-project-os/releases/tag/v1.0.0"
   },
   "features": [
     {
       "feature_id": "AIPOS-052",
       "target_version": "v1.0.0",
-      "state": "accepted",
+      "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/audit/FEATURE_INVENTORY.md"],
       "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
@@ -25,7 +25,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1001", "UAT-1002"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted"}, "decisions": ["DEC-009", "DEC-010"], "risks": ["RISK-RES-001"]
     },
     {
-      "feature_id": "AIPOS-053", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-053", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/WHITEBOX_PROTOCOL.md", "project-os/SECURITY_BOUNDARY.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/rescue_project.py", "project-os/tools/whitebox_scan.py", "project-os/tools/safety_scan.py"],
@@ -34,7 +34,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1002", "UAT-1003"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted"}, "decisions": ["DEC-009"], "risks": ["RISK-RES-002"]
     },
     {
-      "feature_id": "AIPOS-054", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-054", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/WHITEBOX_PROTOCOL.md", "project-os/audit/RISKS_AND_DECISIONS.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/rescue_project.py"],
@@ -43,7 +43,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1003", "UAT-1004"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted"}, "decisions": ["DEC-009"], "risks": ["RISK-RES-003"]
     },
     {
-      "feature_id": "AIPOS-055", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-055", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/WORKFLOW.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/rescue_project.py"],
@@ -52,7 +52,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1005"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted"}, "decisions": ["DEC-009"], "risks": ["RISK-RES-001"]
     },
     {
-      "feature_id": "AIPOS-056", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-056", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/LINEAR_POLICY.md", "project-os/audit/LINEAR_PROJECT_CONSOLIDATION.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/rescue_project.py"],
@@ -61,7 +61,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1006"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted; live Linear writes remain separately authorized"}, "decisions": ["DEC-010"], "risks": ["RISK-LIN-001"]
     },
     {
-      "feature_id": "AIPOS-057", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-057", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/LINEAR_INTAKE.md", "project-os/WORKFLOW.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/rescue_project.py"],
@@ -70,7 +70,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1005"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted"}, "decisions": ["DEC-010"], "risks": ["RISK-RES-003"]
     },
     {
-      "feature_id": "AIPOS-058", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-058", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/QUALITY_GATE.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/test_rescue_project.py"],
@@ -79,7 +79,7 @@
       "uat": {"status": "pass", "evidence": "project-os/audit/UAT_v1.0.0.md", "scenarios": ["UAT-1007"], "actor": "dvdTeacher / Owner", "date": "2026-08-26", "limitations_disposition": "Accepted"}, "decisions": ["DEC-009"], "risks": ["RISK-RES-002"]
     },
     {
-      "feature_id": "AIPOS-059", "target_version": "v1.0.0", "state": "accepted",
+      "feature_id": "AIPOS-059", "target_version": "v1.0.0", "state": "released",
       "linear_record": {"type": "document", "id": "a5f2397c-9340-4034-86bf-1fe2d42f472c", "url": "https://linear.app/dvdteacher/document/v10-internal-stable-feature-register-v10-%E5%86%85%E9%83%A8%E7%A8%B3%E5%AE%9A%E5%8A%9F%E8%83%BD%E6%B8%85%E5%8D%95-673f45582c84", "reason": "Linear free issue capacity is exhausted; the canonical Project Document is the truthful equivalent requirement record."},
       "requirement_sources": ["project-os/ROADMAP.md", "project-os/RELEASE_POLICY.md"], "change_impact": "project-os/audit/CHANGE_IMPACT_REPORT_v1.0.0.md",
       "code_paths": ["project-os/tools/build_release.py", "project-os/tools/rescue_project.py"],
